@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Models/big_room/big_room.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SpatialEffects/SpatialSpin.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/RoomBoundary.gd" type="Script" id=3]
 
 [sub_resource type="PhysicsMaterial" id=2]
 rough = true
@@ -11,6 +12,9 @@ extents = Vector3( 9.22328, 1, 9.58789 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.158068, 1, 8.54773 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 8.40088, 6.17733, 8.4149 )
 
 [sub_resource type="Shader" id=4]
 code = "shader_type spatial;
@@ -140,6 +144,13 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4737
 [node name="CollisionShape" type="CollisionShape" parent="big_room/Wall4"]
 shape = SubResource( 3 )
 
+[node name="Area" type="Area" parent="big_room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48563, 0, 7.51745 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="big_room/Area"]
+shape = SubResource( 6 )
+
 [node name="CSGTorus" type="CSGTorus" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.61932, 4.08126, 7.64679 )
 inner_radius = 2.728
@@ -157,3 +168,5 @@ ring_sides = 12
 material = SubResource( 5 )
 script = ExtResource( 2 )
 spin_amount = Vector3( -0.1, -1, -0.2 )
+
+[connection signal="area_exited" from="big_room/Area" to="big_room/Area" method="_on_Area_area_exited"]

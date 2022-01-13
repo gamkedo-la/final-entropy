@@ -19,6 +19,7 @@ var velocity = Vector3.ZERO
 var tColor: Color
 
 onready var timer = Timer.new()
+var time_alive: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,6 +46,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	time_alive += delta
+	if time_alive >= 11.0:
+		call_deferred("queue_free")
 	transform.origin += velocity * delta
 	if velocity < max_velocity * Vector3.ONE:
 		velocity = velocity * 1.02

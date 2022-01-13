@@ -35,7 +35,8 @@ height = 0.02
 radial_segments = 16
 rings = 8
 
-[node name="Bullet_02" type="Area"]
+[node name="Bullet_03" type="Area" groups=["bullet"]]
+monitoring = false
 script = ExtResource( 1 )
 bounces = 1
 max_velocity = 2.0

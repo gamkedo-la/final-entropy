@@ -100,7 +100,7 @@ func take_damage(dmg: float) -> void:
 
 func _on_HitBox_area_entered(area):
 #	print_debug("Area entered player", area)
-	if area.damage:
+	if area.is_in_group("bullet"):
 		take_damage(area.damage)
 		area.hit()
 	pass # Replace with function body.
