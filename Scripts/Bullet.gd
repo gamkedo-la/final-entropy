@@ -37,7 +37,8 @@ func _ready():
 		tColor = trail_color[rand_range(0, trail_color.size())]
 	material.albedo_color = tColor
 	material.emission = tColor
-	bLight.light_color = tColor
+	if is_instance_valid(bLight):
+		bLight.light_color = tColor
 	material.emission_enabled = true
 	material.emission_energy = 4.0
 	particles.draw_pass_1 = particles.draw_pass_1.duplicate(true) 

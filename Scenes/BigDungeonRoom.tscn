@@ -1,20 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Models/big_room/big_room.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SpatialEffects/SpatialSpin.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/RoomBoundary.gd" type="Script" id=3]
-
-[sub_resource type="PhysicsMaterial" id=2]
-rough = true
-
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 9.22328, 1, 9.58789 )
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.158068, 1, 8.54773 )
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 8.40088, 6.17733, 8.4149 )
 
 [sub_resource type="Shader" id=4]
 code = "shader_type spatial;
@@ -78,6 +65,30 @@ shader_param/glow_itensity = 9.267
 shader_param/glow_amount = 4.5
 shader_param/flickering = 0.55
 
+[sub_resource type="PhysicsMaterial" id=2]
+rough = true
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 9.22328, 1, 9.58789 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.158068, 1, 8.54773 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 8.40088, 6.17733, 8.4149 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.176471, 0.0156863, 0.215686, 1 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.5
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0, 0.235294, 0.4, 1 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.25
+
 [node name="BigDungeonRoom" type="Spatial"]
 
 [node name="WallLights" type="Spatial" parent="."]
@@ -111,46 +122,6 @@ light_color = Color( 1, 0.737255, 0, 1 )
 [node name="OmniLight" type="OmniLight" parent="StairLights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74823, 4.47151, 7.5709 )
 
-[node name="big_room" parent="." instance=ExtResource( 1 )]
-
-[node name="Floor" type="StaticBody" parent="big_room"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51595, 0, 7.25495 )
-physics_material_override = SubResource( 2 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Floor"]
-shape = SubResource( 1 )
-
-[node name="Wall" type="StaticBody" parent="big_room"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00382, 2.01939, 7.49422 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Wall"]
-shape = SubResource( 3 )
-
-[node name="Wall2" type="StaticBody" parent="big_room"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9339, 2.01939, 7.49422 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Wall2"]
-shape = SubResource( 3 )
-
-[node name="Wall3" type="StaticBody" parent="big_room"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, 16.0098 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Wall3"]
-shape = SubResource( 3 )
-
-[node name="Wall4" type="StaticBody" parent="big_room"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, -1.02017 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Wall4"]
-shape = SubResource( 3 )
-
-[node name="Area" type="Area" parent="big_room"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48563, 0, 7.51745 )
-script = ExtResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="big_room/Area"]
-shape = SubResource( 6 )
-
 [node name="CSGTorus" type="CSGTorus" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.61932, 4.08126, 7.64679 )
 inner_radius = 2.728
@@ -169,4 +140,79 @@ material = SubResource( 5 )
 script = ExtResource( 2 )
 spin_amount = Vector3( -0.1, -1, -0.2 )
 
-[connection signal="area_exited" from="big_room/Area" to="big_room/Area" method="_on_Area_area_exited"]
+[node name="WallsFloor" type="Spatial" parent="."]
+
+[node name="Floor" type="StaticBody" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51595, 0, 7.25495 )
+physics_material_override = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Floor"]
+shape = SubResource( 1 )
+
+[node name="Wall" type="StaticBody" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00382, 2.01939, 7.49422 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Wall"]
+shape = SubResource( 3 )
+
+[node name="Wall2" type="StaticBody" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9339, 2.01939, 7.49422 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Wall2"]
+shape = SubResource( 3 )
+
+[node name="Wall3" type="StaticBody" parent="WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, 16.0098 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Wall3"]
+shape = SubResource( 3 )
+
+[node name="Wall4" type="StaticBody" parent="WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, -1.02017 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Wall4"]
+shape = SubResource( 3 )
+
+[node name="Area" type="Area" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48563, 0, 7.51745 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallsFloor/Area"]
+shape = SubResource( 6 )
+
+[node name="FloorCube" type="CSGBox" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51621, 0.900956, 7.52888 )
+width = 17.2886
+height = 0.295006
+depth = 17.2613
+material = SubResource( 7 )
+
+[node name="Wall01" type="CSGBox" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05444, 1.68202, 7.4315 )
+width = 0.22338
+height = 1.8767
+depth = 17.2553
+material = SubResource( 8 )
+
+[node name="Wall02" type="CSGBox" parent="WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0283, 2.26753, 7.4315 )
+width = 0.22338
+height = 3.04309
+depth = 17.2553
+material = SubResource( 8 )
+
+[node name="Wall03" type="CSGBox" parent="WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4425, 1.65231, -1.10975 )
+width = 0.22338
+height = 1.80579
+depth = 17.2553
+material = SubResource( 8 )
+
+[node name="Wall04" type="CSGBox" parent="WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.53135, 2.26753, 15.9728 )
+width = 0.22338
+height = 3.04309
+depth = 17.2553
+material = SubResource( 8 )
+
+[connection signal="area_exited" from="WallsFloor/Area" to="WallsFloor/Area" method="_on_Area_area_exited"]

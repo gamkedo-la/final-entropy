@@ -56,7 +56,4 @@ local_coords = false
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 4 )
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0559682, 0 )
-
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
