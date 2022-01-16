@@ -55,7 +55,10 @@ func project() -> void:
 	var raycast_from = project_ray_origin(mouse_position)
 	var raycast_to = raycast_from + project_ray_normal(mouse_position) * 1000
 	# You might need a collision mask to avoid objects like the player...
-	var space_state = get_world().direct_space_state	
+	var space_state = get_world().direct_space_state
+	for body in ignore_bodies:
+		if ! is_instance_valid(body):
+			ignore_bodies.erase(body)
 	var raycast_result = space_state.intersect_ray(raycast_from, raycast_to, ignore_bodies)
 	if (raycast_result):
 		# store the location.

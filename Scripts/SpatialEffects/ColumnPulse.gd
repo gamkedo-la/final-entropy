@@ -9,8 +9,10 @@ onready var columnMeshMaterial: Material = $ColumnMesh.material
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	call_deferred("add_child", pulseTween)
-	call_deferred("init_tween")
+#	if is_instance_valid(columnMeshMaterial):
+#		call_deferred("add_child", pulseTween)
+#		call_deferred("init_tween")
+	pass
 
 func init_tween() -> void:
 	pulseTween.connect("tween_all_completed", self, "_pulseTween_complete")

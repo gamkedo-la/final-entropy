@@ -126,28 +126,28 @@ depth = 17.2613
 material = SubResource( 7 )
 
 [node name="Wall01" type="CSGBox" parent="WallsFloor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05444, 1.68202, 7.4315 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05444, 2.01004, 7.4315 )
 width = 0.22338
 height = 1.8767
-depth = 17.2553
+depth = 16.8191
 material = SubResource( 8 )
 
 [node name="Wall02" type="CSGBox" parent="WallsFloor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0283, 2.26753, 7.4315 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0283, 2.5884, 7.4315 )
 width = 0.22338
 height = 3.04309
-depth = 17.2553
+depth = 16.8446
 material = SubResource( 8 )
 
 [node name="Wall03" type="CSGBox" parent="WallsFloor"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4425, 1.65231, -1.10975 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4425, 2.01503, -1.10975 )
 width = 0.22338
-height = 1.80579
-depth = 17.2553
+height = 1.92408
+depth = 16.8213
 material = SubResource( 8 )
 
 [node name="Wall04" type="CSGBox" parent="WallsFloor"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.53135, 2.26753, 15.9728 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.53135, 2.5778, 15.9728 )
 width = 0.22338
 height = 3.04309
 depth = 17.2553
@@ -157,11 +157,8 @@ material = SubResource( 8 )
 transform = Transform( -0.42731, 0, 0.904105, 0, 1, 0, -0.904105, 0, -0.42731, -5.69722, 3.34506, 7.6385 )
 script = ExtResource( 4 )
 
-[node name="Column01Static" type="RigidBody" parent="Columns"]
+[node name="Column01Static" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
-mode = 3
-continuous_cd = true
-contact_monitor = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column01Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.23326, 0 )
@@ -175,17 +172,14 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562254, 0 )
 use_in_baked_light = true
 height = 4.77484
-cone = true
+smooth_faces = false
 material = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column01Static/HitBox"]
 shape = SubResource( 10 )
 
-[node name="Column02Static" type="RigidBody" parent="Columns"]
+[node name="Column02Static" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-mode = 3
-continuous_cd = true
-contact_monitor = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column02Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.23326, 0 )
@@ -199,17 +193,14 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562254, 0 )
 use_in_baked_light = true
 height = 4.77484
-cone = true
+smooth_faces = false
 material = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column02Static/HitBox"]
 shape = SubResource( 10 )
 
-[node name="Column03Static" type="RigidBody" parent="Columns"]
+[node name="Column03Static" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
-mode = 3
-continuous_cd = true
-contact_monitor = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column03Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.23326, 0 )
@@ -223,17 +214,14 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562254, 0 )
 use_in_baked_light = true
 height = 4.77484
-cone = true
+smooth_faces = false
 material = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column03Static/HitBox"]
 shape = SubResource( 10 )
 
-[node name="Column04Static" type="RigidBody" parent="Columns"]
+[node name="Column04Static" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-mode = 3
-continuous_cd = true
-contact_monitor = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column04Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.23326, 0 )
@@ -247,7 +235,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562254, 0 )
 use_in_baked_light = true
 height = 4.77484
-cone = true
+smooth_faces = false
 material = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Columns/Column04Static/HitBox"]
