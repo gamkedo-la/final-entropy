@@ -14,15 +14,16 @@ func _ready():
 
 func init_tween() -> void:
 	pulseTween.connect("tween_all_completed", self, "_pulseTween_complete")
-	pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 2.0, 6.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 2.0, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	pulseTween.start()
 	pass # Replace with function body.
 
 func _pulseTween_complete() -> void:
+#	print_debug("pulseTween complete")
 	if columnMeshMaterial.emission_energy >= 1.8:
-		pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 0.2, 6.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 0.7, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	else:
-		pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 2.0, 6.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		pulseTween.interpolate_property(columnMeshMaterial, "emission_energy", columnMeshMaterial.emission_energy, 2.0, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	pulseTween.start()
 	
 

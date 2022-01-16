@@ -35,6 +35,10 @@ func _process(delta) -> void:
 	if trauma:
 		trauma = max(trauma - decay * delta, 0)
 		shake()
+	if Input.is_action_just_pressed("camera_1"):
+		projection = Camera.PROJECTION_ORTHOGONAL
+	elif Input.is_action_just_pressed("camera_2"):
+		projection = Camera.PROJECTION_PERSPECTIVE
 
 func _physics_process(delta):
 	project()
