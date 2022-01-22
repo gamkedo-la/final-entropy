@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Enemy_001.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PanoramaSky" id=2]
@@ -20,13 +21,19 @@ ssao_enabled = true
 dof_blur_far_quality = 2
 dof_blur_near_amount = 0.06
 
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.99422, 1, 0.23394 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.12745, 1, 11.2064 )
+
 [node name="World" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
 [node name="TopDown_Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96914, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901877, 0 )
 
 [node name="OrthoCamera" parent="." instance=ExtResource( 3 )]
 transform = Transform( -1, 6.18173e-08, -6.18173e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0.478306, 25.6152, -25.2845 )
@@ -34,11 +41,43 @@ size = 32.0
 near = 0.01
 
 [node name="Enemy_001" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34785, 13.7861 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83553, 13.7861 )
 
 [node name="Level01_Floor01" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.628751, 0, 0.777607, 0, 1, 0, -0.777607, 0, 0.628751, 0, -1.95396, 0 )
 
+[node name="WallHitBoxes" type="Area" parent="Level01_Floor01"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00023, 3.03452, -2.93434 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96956, 3.03452, -2.99424 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01574, 3.03452, -3.01695 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97435, 3.03452, -2.94546 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9784, 3.03452, -3.0454 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0066, 3.03452, -2.99599 )
+shape = SubResource( 4 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.7973, 0 )
+transform = Transform( 1, 0, 0, 0, 0.247811, 0.968808, 0, -0.968808, 0.247811, 0, 12.7973, 0 )
+light_color = Color( 0.898039, 0, 1, 1 )
+light_energy = 2.023
 light_bake_mode = 2
+shadow_enabled = true
+
+[connection signal="area_entered" from="Level01_Floor01/WallHitBoxes" to="Level01_Floor01/WallHitBoxes" method="_on_WallHitBoxes_area_entered"]

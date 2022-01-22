@@ -1,0 +1,275 @@
+{
+	"connections": [
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "occlusion2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 5
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "tonality",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "occlusion2",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 1
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "invert",
+			"to_port": 0
+		},
+		{
+			"from": "invert",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 6
+		},
+		{
+			"from": "beehive",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "beehive",
+			"from_port": 0,
+			"to": "tonality",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@2512",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 172.508835,
+				"y": -340.828308
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.2,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": -243.535889,
+				"y": -217.020279
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 10,
+				"strength": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "normal_map2"
+		},
+		{
+			"name": "occlusion2",
+			"node_position": {
+				"x": -282,
+				"y": -26.733093
+			},
+			"parameters": {
+				"param0": 11,
+				"param1": 20,
+				"param2": 1.5,
+				"param3": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "occlusion2"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -854.247681,
+				"y": -346.587402
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0,
+							"g": 0,
+							"pos": 0.366977,
+							"r": 0
+						},
+						{
+							"a": 1,
+							"b": 0.441833,
+							"g": 0,
+							"pos": 1,
+							"r": 0.496094
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "colorize"
+		},
+		{
+			"name": "tonality",
+			"node_position": {
+				"x": -858.497375,
+				"y": -119.09417
+			},
+			"parameters": {
+				"curve": {
+					"points": [
+						{
+							"ls": 0,
+							"rs": 2,
+							"x": 0,
+							"y": 0
+						},
+						{
+							"ls": 2,
+							"rs": -2,
+							"x": 0.5,
+							"y": 1
+						},
+						{
+							"ls": -2,
+							"rs": 0,
+							"x": 1,
+							"y": 0
+						}
+					],
+					"type": "Curve"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "tonality"
+		},
+		{
+			"name": "blend",
+			"node_position": {
+				"x": -659.807495,
+				"y": -31.845469
+			},
+			"parameters": {
+				"amount": 0.5,
+				"blend_type": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -979.646179,
+				"y": 65.308517
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 5,
+				"noise": 0,
+				"persistence": 0.5,
+				"scale_x": 10,
+				"scale_y": 10
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		},
+		{
+			"name": "invert",
+			"node_position": {
+				"x": -220.387085,
+				"y": 172.133698
+			},
+			"parameters": {
+
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "invert"
+		},
+		{
+			"name": "beehive",
+			"node_position": {
+				"x": -1189.557983,
+				"y": -287.194366
+			},
+			"parameters": {
+				"sx": 4,
+				"sy": 4
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "beehive"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}
