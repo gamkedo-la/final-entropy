@@ -62,6 +62,9 @@ func project() -> void:
 	var raycast_result = space_state.intersect_ray(raycast_from, raycast_to, ignore_bodies)
 	if (raycast_result):
 		# store the location.
+#		Global.raycast_position = raycast_result["position"]
+#		indicator.translation = Global.raycast_position
+#		var result_parent = raycast_result.collider.get_parent()
 		if raycast_result.collider is StaticBody:
 			Global.raycast_position = raycast_result["position"]
 			indicator.translation = Global.raycast_position
