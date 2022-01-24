@@ -2,11 +2,14 @@ extends KinematicBody
 
 export(NodePath) var GunPosPath = ""
 
+var maxHp = 100
+var hp = maxHp
+
 var mouse_sensitivity = 1
 var divide_mouse_sensitivity = 1
 var velocity = Vector3.ZERO
-var MAX_SPEED = 10.0
-var ACCELERATION = 10.0
+var MAX_SPEED = 7.5
+var ACCELERATION = 25.0
 var level_camera = null
 var gun_position: Position3D
 onready var BULLET = preload("res://Scenes/Bullet.tscn")
@@ -18,11 +21,10 @@ onready var rnd = RandomNumberGenerator.new()
 var fired: bool = false
 export var firerate: float = 0.8
 var since_fire: float = 0.0
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
-	pass # Replace with function body.
 
 func _physics_process(delta):
 	rotate_to_cursor()
@@ -96,11 +98,11 @@ func check_fire(delta) -> void:
 
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)
-
+	hp -= dmg
+	print_debug("Player HP left: " + String(hp))
 
 func _on_HitBox_area_entered(area):
 #	print_debug("Area entered player", area)
 	if area.is_in_group("bullet"):
 		take_damage(area.damage)
 		area.hit()
-	pass # Replace with function body.
