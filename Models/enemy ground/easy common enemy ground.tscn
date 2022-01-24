@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Models/enemy ground/easy common enemy ground.glb" type="PackedScene" id=1]
+
+[node name="easy common enemy ground" instance=ExtResource( 1 )]
+
+[node name="leg1" parent="Armature001/root" index="0"]
+transform = Transform( 0.845276, 0.50624, -0.170968, -0.473926, 0.562527, -0.677464, -0.246785, 0.65367, 0.715411, 0.0527304, 1.08244, 0.131686 )
+
+[node name="leg2" parent="Armature001/root" index="1"]
+transform = Transform( 0.706764, -0.69702, 0.121028, 0.658843, 0.586184, -0.471501, 0.257701, 0.412978, 0.873521, -0.222177, 1.08688, -0.0375187 )
+
+[node name="leg3" parent="Armature001/root" index="2"]
+transform = Transform( 0.826665, -0.523647, -0.205958, 0.531739, 0.607252, 0.590338, -0.184061, -0.597527, 0.780437, -0.0239821, 1.08453, -0.277756 )
+
+[node name="arm1" parent="Armature001/root" index="4"]
+transform = Transform( 0.998724, -0.0129688, 0.0488099, 0.015246, 0.998798, -0.0465752, -0.0481472, 0.04726, 0.997721, -2.44972, -0.46376, -0.312405 )
