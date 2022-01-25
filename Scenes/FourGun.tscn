@@ -11,7 +11,6 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [node name="FourGun" type="Position3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 enemy = true
 bullet_path = ExtResource( 1 )

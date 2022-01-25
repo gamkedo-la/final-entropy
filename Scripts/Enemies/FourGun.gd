@@ -17,6 +17,8 @@ var can_fire: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rnd.randomize()
+	cooldown += rnd.randf_range(0.5,5.0)
 	guns = get_children()
 	BULLET = bullet_path
 	cool_time = cooldown

@@ -77,7 +77,7 @@
 	"nodes": [
 		{
 			"export_paths": {
-
+				"Godot": "E:/GD/2022/final-entropy/Textures/BeehiveWallPink/beehive_wall_pink"
 			},
 			"name": "Material",
 			"node_position": {
