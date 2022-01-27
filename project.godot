@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Scripts/AutoLoad/Global.gd"
+PlayerVars="*res://Scripts/AutoLoad/PlayerVars.gd"
 
 [debug]
 

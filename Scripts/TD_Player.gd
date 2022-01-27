@@ -13,6 +13,8 @@ var ACCELERATION = 25.0
 var level_camera = null
 var gun_position: Position3D
 onready var BULLET = preload("res://Scenes/Bullet.tscn")
+onready var WeaponMount = $WeaponMount
+var weapons = []
 
 const RAY_LENGTH = 100
 var raycast_position = null
@@ -25,11 +27,13 @@ var since_fire: float = 0.0
 func _ready():
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
+	weapons.append_array(WeaponMount.get_children())
+	print_debug("Weapons: ", weapons)
 
 func _physics_process(delta):
 	rotate_to_cursor()
 	move_state(delta)
-	check_fire(delta)
+	check_fire()
 
 func _input(event):
 #	if event is InputEventMouseMotion:
@@ -40,27 +44,7 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-#func project_cursor():
-#	if !level_camera:
-#		level_camera = Global.ortho_camera
-#
-#	# Note: this assumes you are using a action for the mouse.
-#	# you might need to replace this with a different method to detect
-#	# whether the mouse has been clicked.
-#
-#	var mouse_position = get_tree().root.get_mouse_position()
-#	var raycast_from = level_camera.project_ray_origin(mouse_position)
-#	var raycast_to = level_camera.project_ray_normal(mouse_position)
-#	# You might need a collision mask to avoid objects like the player...
-#	var space_state = get_world().direct_space_state
-#	var raycast_result = space_state.intersect_ray(raycast_from, raycast_to)
-#	if (raycast_result):
-#		# store the location.
-#		raycast_position = raycast_result["position"]
 
 func rotate_to_cursor() -> void:
 	if Global.raycast_position:
@@ -79,22 +63,26 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector3.ZERO, ACCELERATION * delta)
 	velocity = move_and_slide(velocity)
 
-func check_fire(delta) -> void:
-	since_fire += delta
-	if (Input.is_action_pressed("shoot")) && (since_fire > firerate):
-		Global.emit_signal("shake", 0.035)
-		rnd.randomize()
-		var bullet = BULLET.instance()
-		add_child(bullet)
-		bullet.collision_layer = 0b00000000000000000010
-		bullet.collision_mask = 0b00000000000000000101
-		bullet.set_as_toplevel(true)
-		bullet.transform = gun_position.global_transform
-#		bullet.direction = get_global_transform().basis.z
-#		bullet.apply_central_impulse(-transform.basis.z * (0.25 * rnd.randf_range(0.75, 1.0)))
-		bullet.velocity = -bullet.transform.basis.z * 5
-		since_fire = 0.0
-	pass
+func check_fire() -> void:
+	if (Input.is_action_pressed("shoot")):
+		print_debug(weapons)
+		for weap in weapons:
+			print_debug(weap)
+			if weap.has_method("fire"):
+				weap.fire()
+#		Global.emit_signal("shake", 0.035)
+#		rnd.randomize()
+#		var bullet = BULLET.instance()
+#		add_child(bullet)
+#		bullet.collision_layer = 0b00000000000000000010
+#		bullet.collision_mask = 0b00000000000000000101
+#		bullet.set_as_toplevel(true)
+#		bullet.transform = gun_position.global_transform
+##		bullet.direction = get_global_transform().basis.z
+##		bullet.apply_central_impulse(-transform.basis.z * (0.25 * rnd.randf_range(0.75, 1.0)))
+#		bullet.velocity = -bullet.transform.basis.z * 5
+#		since_fire = 0.0
+#	pass
 
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)

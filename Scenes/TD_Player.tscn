@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/TD_Player.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Scripts/Weapons/BaseGun.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.304886
@@ -21,7 +22,7 @@ height = 0.455865
 
 [node name="TopDown_Player" type="KinematicBody"]
 script = ExtResource( 1 )
-GunPosPath = NodePath("Gun")
+GunPosPath = NodePath("WeaponMount/BaseGun")
 firerate = 0.1
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -40,9 +41,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229605, -0.119375 )
 radius = 0.25
 material = SubResource( 2 )
 
-[node name="Gun" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.431518 )
-
 [node name="HitBox" type="Area" parent="."]
 collision_layer = 2
 collision_mask = 4
@@ -50,5 +48,11 @@ collision_mask = 4
 [node name="CollisionShape" type="CollisionShape" parent="HitBox"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="WeaponMount" type="Spatial" parent="."]
+
+[node name="BaseGun" type="Position3D" parent="WeaponMount"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.431518 )
+script = ExtResource( 3 )
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
