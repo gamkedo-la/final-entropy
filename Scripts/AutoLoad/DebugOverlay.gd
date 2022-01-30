@@ -8,6 +8,8 @@ func _ready():
 		var ev = InputEventKey.new()
 		ev.scancode = KEY_BACKSLASH
 		InputMap.action_add_event("toggle_debug", ev)
+	for n in get_children():
+		n.visible = false
 
 func _input(event):
 	if event.is_action_pressed("toggle_debug"):
