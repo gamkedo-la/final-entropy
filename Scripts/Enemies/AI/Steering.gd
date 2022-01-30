@@ -30,7 +30,6 @@ var danger_pos = []
 var chosen_dir: Vector3 = Vector3.ZERO
 var acceleration: Vector3 = Vector3.ZERO
 var steer_time: float = 1.0
-
 var initialized: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +40,10 @@ func _ready():
 	ray_directions.resize(num_rays)
 	for i in num_rays:
 		var angle = i * 2 * PI / num_rays
-		ray_directions[i] = Vector2.RIGHT.rotated(angle)
+		ray_directions[i] = Vector3.RIGHT.rotated(Vector3.UP, angle)
+
+	DebugOverlay.draw.add_rayarray(self, ray_directions,1,4,Color.purple)
+	DebugOverlay.draw.add_rayarray(self, danger, 1, 4, Color.red)
 		
 func _physics_process(delta: float) -> void:
 	if !initialized:
@@ -74,6 +76,7 @@ func set_danger() -> void:
 		var result = space_state.intersect_ray(actor_ori,
 				actor_ori + ray_directions[i].rotated(actor.transform.basis) * look_ahead,
 				[self,actor])
+		
 		if result:
 			danger[i] = actor_ori.distance_to(result.position) / look_ahead
 			danger_pos.append(result.position)
