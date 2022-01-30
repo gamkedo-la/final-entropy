@@ -28,6 +28,7 @@ func _ready():
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
 	weapons.append_array(WeaponMount.get_children())
+	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0, 1, 0, 0.5))
 	print_debug("Weapons: ", weapons)
 
 func _physics_process(delta):

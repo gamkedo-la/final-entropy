@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name Actor
 
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
@@ -8,7 +9,6 @@ export (NodePath) var steering_path
 export (NodePath) var body_path
 
 var ai
-var steering
 var body
 
 #temp movement logic
@@ -25,11 +25,10 @@ func _ready():
 	noise.octaves = 2
 	if is_instance_valid(ai_path):
 		ai = get_node(ai_path)
-	if is_instance_valid(steering_path):
-		steering = get_node(steering)
+		ai.initialize(self)
 	if is_instance_valid(body_path):
 		body = get_node(body)
-		
+	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0,1,0,0.5))
 	pass # Replace with function body.
 
 func _physics_process(delta) -> void:
