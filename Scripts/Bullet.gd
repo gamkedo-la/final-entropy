@@ -35,8 +35,9 @@ func _ready():
 	material.emission = tColor
 	material.emission_enabled = true
 	material.emission_energy = 4.0
-	particles.draw_pass_1 = particles.draw_pass_1.duplicate(true) 
-	particles.draw_pass_1.surface_set_material(0, material)
+	if particles:
+		particles.draw_pass_1 = particles.draw_pass_1.duplicate(true) 
+		particles.draw_pass_1.surface_set_material(0, material)
 	pass # Replace with function body.
 
 
