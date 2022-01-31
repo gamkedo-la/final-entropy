@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BigDungeonRoom.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Enemy_002.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemy_001.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PanoramaSky" id=2]
@@ -38,8 +37,5 @@ near = 0.01
 
 [node name="Enemy_001" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34785, 13.7861 )
-
-[node name="Enemy_002" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0894985, 1.4992, 18.8605 )
 
 [editable path="BigDungeonRoom"]
