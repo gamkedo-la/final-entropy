@@ -5,7 +5,7 @@ signal near_player
 
 onready var steering: Spatial = $Steering
 
-var actor: Actor = null
+var actor = null
 var actor_velocity: Vector3 = Vector3.ZERO
 
 var target: KinematicBody = null
@@ -66,10 +66,11 @@ func _physics_process(_delta: float) -> void:
 		_:
 			printerr("Error: Found a state for enemy that should not exist", self)
 
-func initialize(newActor: Actor):
+func initialize(newActor):
 	actor = newActor
 	origin = actor.transform.origin
 	_install_state_timers()
+	print_debug("Getting to AI Initialize")
 	steering.initialize(newActor, self)
 
 func set_state(new_state: int) -> void:

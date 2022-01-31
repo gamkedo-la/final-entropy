@@ -18,7 +18,7 @@ var velocity: Vector3 = Vector3.ZERO
 # Context-Base Steering Variables borrowing and adapting from concepts found @
 # https://kidscancode.org/godot_recipes/ai/context_map/
 export var steer_force = 0.1
-export var look_ahead = 25
+export var look_ahead = 10
 export var num_rays = 16
 
 # context arrays
@@ -41,9 +41,10 @@ func _ready():
 	for i in num_rays:
 		var angle = i * 2 * PI / num_rays
 		ray_directions[i] = Vector3.RIGHT.rotated(Vector3.UP, angle)
-
-	DebugOverlay.draw.add_rayarray(self, ray_directions,1,4,Color.purple)
-	DebugOverlay.draw.add_rayarray(self, danger, 1, 4, Color.red)
+	
+	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0,1,0,0.5))
+	DebugOverlay.draw.add_rayarray(self, ray_directions,look_ahead,1,Color.purple)	
+	DebugOverlay.draw.add_hitarray(self, "danger_pos", 5, Color.aqua)
 		
 func _physics_process(delta: float) -> void:
 	if !initialized:
@@ -52,13 +53,22 @@ func _physics_process(delta: float) -> void:
 		move(delta)
 
 func move(delta: float) -> void:
+
 	set_interest()
-	pass
+	set_danger()
+	choose_direction()
+	
+	var desired_velocity = chosen_dir.rotated(Vector3.UP, actor.rotation.y) * (actor.MAX_SPEED)
+	velocity = lerp(velocity, desired_velocity, steer_force * delta)
+#	actor.rotation = velocity.
+
+	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func initialize(newActor: Actor, newAI: AIController):
+
 	actor = newActor
 	ai = newAI
-	origin = actor.position
+	origin = actor.global_transform.origin
 	initialized = true
 
 func set_interest() -> void:
@@ -74,12 +84,23 @@ func set_danger() -> void:
 	var actor_ori: Vector3 = actor.global_transform.origin
 	for i in num_rays:
 		var result = space_state.intersect_ray(actor_ori,
-				actor_ori + ray_directions[i].rotated(actor.transform.basis) * look_ahead,
+				actor_ori + ray_directions[i].rotated(Vector3.UP, actor.rotation.y) * look_ahead,
 				[self,actor])
 		
 		if result:
+#			print_debug("Ray result: ", result)
 			danger[i] = actor_ori.distance_to(result.position) / look_ahead
 			danger_pos.append(result.position)
 		else:
 			danger[i] = 0.0
+#	DebugOverlay.draw.add_hitarray(self, danger_pos, 5, Color.aqua)
 
+func choose_direction() -> void:
+	for i in num_rays:
+		if danger[i] > 0.0:
+			interest[i] *= clamp(danger[i], 0.0, 1.0)
+	
+	chosen_dir = Vector3.ZERO
+	for i in num_rays:
+		chosen_dir += ray_directions[i] * interest[i]
+	chosen_dir = chosen_dir.normalized()

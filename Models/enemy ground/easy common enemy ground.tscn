@@ -5,7 +5,7 @@
 [ext_resource path="res://Models/enemy ground/corpo.material" type="Material" id=3]
 [ext_resource path="res://Models/enemy ground/plastic.material" type="Material" id=4]
 
-[sub_resource type="ArrayMesh" id=1]
+[sub_resource type="ArrayMesh" id=16]
 resource_name = "easy common enemy ground_Cube005"
 surfaces/0 = {
 "aabb": AABB( -0.840002, 1.48558, -0.084678, 1.68002, 2.63324, 1.31653 ),
@@ -55,7 +55,7 @@ surfaces/3 = {
 "vertex_count": 84
 }
 
-[sub_resource type="Skin" id=2]
+[sub_resource type="Skin" id=17]
 resource_name = "Skin"
 bind_count = 8
 bind/0/name = "root"
@@ -83,7 +83,7 @@ bind/7/name = "arm1"
 bind/7/bone = -1
 bind/7/pose = Transform( -0.989193, 9.79803e-08, -0.146619, -1.12996e-07, -1, 1.14443e-07, -0.146619, -2.5844e-08, 0.989193, 0.990376, 2.83719, -0.0500319 )
 
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="ArrayMesh" id=18]
 resource_name = "easy common enemy ground_Cube005"
 surfaces/0 = {
 "aabb": AABB( -0.840002, 1.48558, -0.084678, 1.68002, 2.63324, 1.31653 ),
@@ -133,7 +133,7 @@ surfaces/3 = {
 "vertex_count": 84
 }
 
-[sub_resource type="Skin" id=4]
+[sub_resource type="Skin" id=19]
 resource_name = "Skin"
 bind_count = 8
 bind/0/name = "root"
@@ -165,8 +165,8 @@ bind/7/pose = Transform( -0.989193, 9.79803e-08, -0.146619, -1.12996e-07, -1, 1.
 
 [node name="ARRM001" type="MeshInstance" parent="Armature" index="0"]
 transform = Transform( 1, 1.86265e-09, 0, 0, 1, 1.49012e-08, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 1 )
-skin = SubResource( 2 )
+mesh = SubResource( 16 )
+skin = SubResource( 17 )
 skeleton = NodePath("../Skeleton")
 material/0 = null
 material/1 = null
@@ -175,8 +175,8 @@ material/3 = null
 
 [node name="ARRM002" type="MeshInstance" parent="Armature" index="1"]
 transform = Transform( 1, 1.86265e-09, 0, 0, 1, 1.49012e-08, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 3 )
-skin = SubResource( 4 )
+mesh = SubResource( 18 )
+skin = SubResource( 19 )
 skeleton = NodePath("../Skeleton")
 material/0 = null
 material/1 = null

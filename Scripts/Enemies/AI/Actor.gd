@@ -4,11 +4,9 @@ class_name Actor
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 
-export (NodePath) var ai_path
-export (NodePath) var steering_path
+onready var ai: AIController = $AI
 export (NodePath) var body_path
 
-var ai
 var body
 
 #temp movement logic
@@ -23,16 +21,15 @@ func _ready():
 	noise.seed = randi()
 	noise.period = 4
 	noise.octaves = 2
-	if is_instance_valid(ai_path):
-		ai = get_node(ai_path)
-		ai.initialize(self)
+	ai.initialize(self)
 	if is_instance_valid(body_path):
 		body = get_node(body)
-	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0,1,0,0.5))
+
 	pass # Replace with function body.
 
 func _physics_process(delta) -> void:
-	move_state(delta)
+#	move_state(delta)
+	pass
 
 func move_state(delta) -> void:
 	var move_dir: Vector3 = Vector3.ZERO

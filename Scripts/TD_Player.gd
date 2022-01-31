@@ -66,9 +66,9 @@ func move_state(delta):
 
 func check_fire() -> void:
 	if (Input.is_action_pressed("shoot")):
-		print_debug(weapons)
+#		print_debug(weapons)
 		for weap in weapons:
-			print_debug(weap)
+#			print_debug(weap)
 			if weap.has_method("fire"):
 				weap.fire()
 #		Global.emit_signal("shake", 0.035)

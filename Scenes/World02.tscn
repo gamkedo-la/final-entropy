@@ -51,7 +51,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0056, 2.74832, 4.57532 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2093, 2.74832, 6.35199 )
 
 [node name="Level01_Floor01" parent="Stage" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="WallHitBoxes" type="Area" parent="Stage/Level01_Floor01"]
 script = ExtResource( 4 )

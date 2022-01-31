@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Actor",
 "language": "GDScript",
-"path": "res://Scripts/Enemies/Enemy_001.gd"
+"path": "res://Scripts/Enemies/AI/Actor.gd"
 } ]
 _global_script_class_icons={
 "AIController": "",
