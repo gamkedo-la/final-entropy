@@ -99,7 +99,15 @@ func _install_state_timers() -> void:
 	origin_timer.wait_time = origin_wait
 
 func _patrol() -> void:
-	pass
+	if patrol_target.distance_to(actor.global_transform.origin) < 2:
+		patrol_reached = true
+	if !patrol_reached:
+		journey_percent = clamp(actor.global_transform.origin.distance_to(patrol_target) / journey_distance, 0.2, 1.0)
+	else:
+		var random_x = rng.randf_range(-patrol_range, patrol_range)
+		var random_z = rng.randf_range(-patrol_range, patrol_range)
+		patrol_target = Vector3(random_x, actor.transform.origin.y, random_z) + origin
+
 
 func _engage() -> void:
 	pass

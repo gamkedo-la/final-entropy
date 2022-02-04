@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://Scripts/Enemies/AI/Actor.gd"
+}, {
+"base": "Resource",
+"class": "RoomContainer",
+"language": "GDScript",
+"path": "res://Scripts/RoomGen/RoomContainer.gd"
 } ]
 _global_script_class_icons={
 "AIController": "",
-"Actor": ""
+"Actor": "",
+"RoomContainer": ""
 }
 
 [application]

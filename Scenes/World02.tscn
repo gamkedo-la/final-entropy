@@ -39,7 +39,7 @@ extents = Vector3( 0.565186, 3.28392, 23.0783 )
 environment = SubResource( 1 )
 
 [node name="Stage" type="Spatial" parent="."]
-transform = Transform( 0.547768, 0, 0.836631, 0, 1, 0, -0.836631, 0, 0.547768, 0, 0, 0 )
+transform = Transform( 0.559193, 0, 0.829038, 0, 1, 0, -0.829038, 0, 0.559193, 0, 0, 0 )
 
 [node name="TopDown_Player" parent="Stage" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85131, 2.80093, -16.8377 )
@@ -155,7 +155,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527485, 0, -0.409416 )
 shape = SubResource( 6 )
 
 [node name="OrthoCamera" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 4.80239e-08, -7.3051e-08, 2.15046e-08, 0.945057, 0.326905, 8.47366e-08, 0.326905, -0.945057, -5.51278, 21.8385, -61.8812 )
+transform = Transform( -1, 4.80239e-08, -7.3051e-08, 2.15046e-08, 0.945057, 0.326905, 8.47366e-08, 0.326905, -0.945057, -5, 21.838, -61.881 )
 size = 24.0
 near = 0.01
 
