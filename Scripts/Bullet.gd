@@ -47,7 +47,7 @@ func _physics_process(delta):
 	if time_alive >= 11.0:
 		_remove()
 	transform.origin += velocity * delta
-	if velocity < max_velocity * Vector3.ONE:
+	if abs(velocity.x) < max_velocity and abs(velocity.z) < max_velocity:
 		velocity = velocity * 1.02
 	pass
 

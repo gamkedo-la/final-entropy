@@ -16,8 +16,7 @@ emission_on_uv2 = false
 [node name="Bullet_04" type="Area" groups=["bullet"]]
 monitoring = false
 script = ExtResource( 1 )
-bounces = 1
-max_velocity = 2.0
+max_velocity = 1.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
