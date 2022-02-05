@@ -88,11 +88,13 @@ func check_fire() -> void:
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)
 	hp -= dmg
+
 	$AudioStreamPlayer.play()
 	print_debug("Player HP left: " + String(hp))
 
 func _on_HitBox_area_entered(area):
 #	print_debug("Area entered player", area)
+	$TextureProgress2.value = int((float(hp) / maxHp) * 100)
 	if area.is_in_group("bullet"):
 		take_damage(area.damage)
 		area.hit()

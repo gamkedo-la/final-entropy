@@ -6,7 +6,7 @@ onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 
 export var decay = 0.8
-export var max_offset = Vector2(100, 75)
+export var max_offset = Vector2(1, 1)
 export var max_roll = 0.1
 
 
