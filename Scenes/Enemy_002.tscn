@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Enemies/Experimental/Gun.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Scenes/Actor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Bullet_04.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Enemies/Shot_8BulletFast.tres" type="Resource" id=5]
+[ext_resource path="res://Resources/Enemies/Shot_12BulletSlow.tres" type="Resource" id=6]
+[ext_resource path="res://Resources/Enemies/Shot_4BulletFast.tres" type="Resource" id=7]
+[ext_resource path="res://Resources/Enemies/Shot_Reload.tres" type="Resource" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0, 1, 0.835294, 1 )
@@ -51,7 +55,4 @@ shape = SubResource( 3 )
 [node name="Gun" type="Position3D" parent="." index="5"]
 script = ExtResource( 1 )
 bullet_path = ExtResource( 4 )
-shotDelay = 0.4
-reloadDelay = 4.0
-bulletSpeed = 1.5
-bulletsPerShot = 8
+shots = [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ]
