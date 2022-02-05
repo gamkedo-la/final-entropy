@@ -25,6 +25,7 @@ func _ready():
 	rnd.randomize()
 #	var material:SpatialMaterial = particles.draw_pass_1.surface_get_material(0)
 	
+	
 
 	if is_rainbow:
 		tColor = Color(rnd.randf_range(0.0,1.0),rnd.randf_range(0.0,1.0),rnd.randf_range(0.0,1.0),1.0)
@@ -38,6 +39,7 @@ func _ready():
 	if particles:
 		particles.draw_pass_1 = particles.draw_pass_1.duplicate(true) 
 		particles.draw_pass_1.surface_set_material(0, material)
+	
 	pass # Replace with function body.
 
 
