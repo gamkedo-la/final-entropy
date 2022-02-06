@@ -68,7 +68,7 @@ func initialize(newActor: Actor, newAI: AIController):
 	actor = newActor
 	ai = newAI
 	origin = actor.global_transform.origin
-	DebugOverlay.draw.add_rayarray(self, actor, "ray_directions", "interest", "danger", look_ahead,1,Color.purple)
+	DebugOverlay.draw.add_rayarray(self, actor, ray_directions, "interest", "danger", look_ahead,1,Color.purple)
 	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0,1,0,0.5))
 	DebugOverlay.draw.add_hitarray(self, "danger_pos", 5, Color.aqua)
 	initialized = true
