@@ -20,16 +20,39 @@ class Vector:
 		node.draw_line(start, end, color, width)
 #		node.draw_triangle(end, start.direction_to(end), width*2, color)
 
+class Point:
+	var object
+	var point_vec
+	var radius
+	var color
+	
+	func _init(_object, _point_vec, _radius, _color):
+		object = _object
+		point_vec = _point_vec
+		radius = _radius
+		color = _color
+	
+	func draw(node, camera: Camera):
+		var pointv = object.get(point_vec)
+		var unproj_point = camera.unproject_position(pointv)
+		node.draw_circle(unproj_point, radius, color)
+
 class SteerRay:
 	var object
+	var actor
 	var ray_array
+	var interest
+	var danger
 	var scale
 	var width
 	var color
 	
-	func _init(_object, _ray_array, _scale, _width, _color):
+	func _init(_object, _actor, _ray_array, _interest, _danger, _scale, _width, _color):
 		object = _object
+		actor = _actor
 		ray_array = _ray_array
+		interest = _interest
+		danger = _danger
 		scale = _scale
 		width = _width
 		color = _color
@@ -37,11 +60,21 @@ class SteerRay:
 	func draw(node, camera: Camera):
 		var start
 		var end
-		for ray in ray_array:
-			if ray:
+		var danger_arr = object.get(danger)
+		var interest_arr = object.get(interest)
+		for i in ray_array.size():
+			if ray_array[i]:
+#				ray_array[i].rotate_y(actor.rotation.y)
 				start = camera.unproject_position(object.global_transform.origin)
-				end = camera.unproject_position(object.global_transform.origin + (ray * scale))
+				end = camera.unproject_position(object.global_transform.origin + (ray_array[i] * scale))
 				node.draw_line(start, end, color, width)
+				if interest_arr[i] > 0.0:
+					end = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * interest_arr[i]))
+					node.draw_line(start, end, Color.green, width)
+				if danger_arr[i] > 0.0:
+					start = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * interest_arr[i]))
+					end = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * danger_arr[i]))
+					node.draw_line(start, end, Color.red, width)
 
 class RayHits:
 	var object
@@ -68,6 +101,7 @@ class RayHits:
 
 
 var vectors = []  # Array to hold all registered values.
+var points = []
 var steer_rays = []
 var ray_hits = []
 var ray_hits_tracked = []
@@ -81,6 +115,8 @@ func _draw():
 	var camera = get_viewport().get_camera()
 	for vector in vectors:
 		vector.draw(self, camera)
+	for point in points:
+		point.draw(self, camera)
 	for steer_ray in steer_rays:
 		steer_ray.draw(self, camera)
 	for ray_hit in ray_hits:
@@ -89,8 +125,11 @@ func _draw():
 func add_vector(object, property, scale, width, color):
 	vectors.append(Vector.new(object, property, scale, width, color))
 
-func add_rayarray(object, ray_array, scale, width, color):
-	steer_rays.append(SteerRay.new(object, ray_array, scale, width, color))
+func add_point(object, point_vec, radius, color):
+	points.append(Point.new(object, point_vec, radius, color))
+
+func add_rayarray(object, actor, ray_array, interest, danger, scale, width, color):
+	steer_rays.append(SteerRay.new(object, actor, ray_array, interest, danger, scale, width, color))
 
 func add_hitarray(object, hits_array, radius, color):
 	if ray_hits.size() > 0:

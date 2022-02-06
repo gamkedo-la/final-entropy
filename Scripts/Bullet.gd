@@ -5,7 +5,7 @@ extends Area
 # var a = 2
 # var b = "text"
 onready var mesh = $CSGSphere
-onready var particles = $Particles
+var particles
 onready var rnd = RandomNumberGenerator.new()
 onready var meshInst: MeshInstance = MeshInstance.new()
 onready var material: SpatialMaterial = SpatialMaterial.new()
@@ -24,8 +24,7 @@ var time_alive: float = 0.0
 func _ready():
 	rnd.randomize()
 #	var material:SpatialMaterial = particles.draw_pass_1.surface_get_material(0)
-	
-	
+	particles = get_node_or_null("Particles")	
 
 	if is_rainbow:
 		tColor = Color(rnd.randf_range(0.0,1.0),rnd.randf_range(0.0,1.0),rnd.randf_range(0.0,1.0),1.0)

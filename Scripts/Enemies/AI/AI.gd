@@ -12,6 +12,9 @@ var target: KinematicBody = null
 var origin: Vector3 = Vector3.ZERO
 var journey_distance: float = 0.0
 var journey_percent: float = 0.0
+var last_jp: float = 0.0
+var last_jp_cnt: int = 0
+
 
 var in_range: bool = false
 
@@ -33,7 +36,7 @@ export (float) var engage_speed = 2.0
 onready var patrol_timer = Timer.new()
 export (float) var patrol_wait = 3.0
 var patrol_target: Vector3 = Vector3.ZERO
-export (float, 1.0, 100.0) var patrol_range = 100.0
+export (float, 1.0, 100.0) var patrol_range = 6.0
 var patrol_reached: bool = true
 var num_patrol_points: int = 20
 var current_patrol_point: int = 0
@@ -49,6 +52,7 @@ onready var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 	set_state(State.PATROL)
+	DebugOverlay.draw.add_point(self, "patrol_target", 10, Color.red)
 
 func _physics_process(_delta: float) -> void:
 	if !actor:
@@ -99,15 +103,25 @@ func _install_state_timers() -> void:
 	origin_timer.wait_time = origin_wait
 
 func _patrol() -> void:
-	if patrol_target.distance_to(actor.global_transform.origin) < 2:
+	if patrol_target.distance_to(actor.global_transform.origin) < 0.5 || last_jp_cnt == 60:
 		patrol_reached = true
+		last_jp = 0.0
+		last_jp_cnt = 0
+
 	if !patrol_reached:
 		journey_percent = clamp(actor.global_transform.origin.distance_to(patrol_target) / journey_distance, 0.2, 1.0)
 	else:
 		var random_x = rng.randf_range(-patrol_range, patrol_range)
 		var random_z = rng.randf_range(-patrol_range, patrol_range)
-		patrol_target = Vector3(random_x, actor.transform.origin.y, random_z) + origin
-
+		patrol_target = Vector3(random_x, 0.0, random_z) + actor.global_transform.origin
+		journey_distance = actor.global_transform.origin.distance_to(patrol_target)
+		patrol_reached = false
+	if abs(journey_percent - last_jp) < 0.001:
+		print_debug("journey_percent:", journey_percent, " last_jp: ", last_jp, " diff: ", journey_percent-last_jp)
+		last_jp_cnt += 1
+	else:
+		last_jp = 0
+	last_jp = journey_percent
 
 func _engage() -> void:
 	pass
