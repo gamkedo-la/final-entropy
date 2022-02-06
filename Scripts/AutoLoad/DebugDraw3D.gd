@@ -61,19 +61,20 @@ class SteerRay:
 		var start
 		var end
 		var danger_arr = object.get(danger)
-		var interest_arr = object.get(interest)
+		var interest_arr = object.get(interest)		
 		for i in ray_array.size():
-			if ray_array[i]:
-#				ray_array[i].rotate_y(actor.rotation.y)
-				start = camera.unproject_position(object.global_transform.origin)
-				end = camera.unproject_position(object.global_transform.origin + (ray_array[i] * scale))
+			if ray_array[i]:				
+				var rot_ray = ray_array[i].rotated(Vector3.UP, deg2rad(actor.rotation_degrees.y))
+				ray_array[i].rotated(Vector3.UP, deg2rad(actor.rotation_degrees.y))
+				start = camera.unproject_position(actor.global_transform.origin)
+				end = camera.unproject_position(actor.global_transform.origin + (rot_ray * scale))
 				node.draw_line(start, end, color, width)
 				if interest_arr[i] > 0.0:
-					end = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * interest_arr[i]))
+					end = camera.unproject_position(object.global_transform.origin + ((rot_ray * scale) * interest_arr[i]))
 					node.draw_line(start, end, Color.green, width)
 				if danger_arr[i] > 0.0:
-					start = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * interest_arr[i]))
-					end = camera.unproject_position(object.global_transform.origin + ((ray_array[i] * scale) * danger_arr[i]))
+					start = camera.unproject_position(object.global_transform.origin + ((rot_ray * scale) * interest_arr[i]))
+					end = camera.unproject_position(object.global_transform.origin + ((rot_ray * scale) * danger_arr[i]))
 					node.draw_line(start, end, Color.red, width)
 
 class RayHits:

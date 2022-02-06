@@ -117,7 +117,7 @@ func _patrol() -> void:
 		journey_distance = actor.global_transform.origin.distance_to(patrol_target)
 		patrol_reached = false
 	if abs(journey_percent - last_jp) < 0.001:
-		print_debug("journey_percent:", journey_percent, " last_jp: ", last_jp, " diff: ", journey_percent-last_jp)
+#		print_debug("journey_percent:", journey_percent, " last_jp: ", last_jp, " diff: ", journey_percent-last_jp)
 		last_jp_cnt += 1
 	else:
 		last_jp = 0
