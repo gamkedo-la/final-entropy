@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Enemies/Experimental/Gun.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Scenes/Actor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Bullet_04.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/Actor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Enemies/Shot_8BulletFast.tres" type="Resource" id=5]
 [ext_resource path="res://Resources/Enemies/Shot_12BulletSlow.tres" type="Resource" id=6]
 [ext_resource path="res://Resources/Enemies/Shot_4BulletFast.tres" type="Resource" id=7]
@@ -30,8 +29,8 @@ radius = 0.328618
 height = 0.611938
 
 [node name="Actor" instance=ExtResource( 3 )]
-MAX_SPEED = 2.0
-ACCELERATION = 2.0
+MAX_SPEED = 0.25
+ACCELERATION = 0.25
 health = 100.0
 
 [node name="capsule" type="MeshInstance" parent="." index="2"]
@@ -54,5 +53,4 @@ shape = SubResource( 3 )
 
 [node name="Gun" type="Position3D" parent="." index="5"]
 script = ExtResource( 1 )
-bullet_path = ExtResource( 4 )
 shots = [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ]

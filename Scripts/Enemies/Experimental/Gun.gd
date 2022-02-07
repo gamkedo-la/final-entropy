@@ -1,7 +1,5 @@
 extends Position3D
 
-export (PackedScene) var bullet_path
-var BULLET
 onready var rnd = RandomNumberGenerator.new() #rnd.randf_range(min,max)
 export (Array, Resource) var shots
 
@@ -11,13 +9,16 @@ var angleOffset = 0
 
 func _ready():
 	rnd.randomize()
-	BULLET = bullet_path
 	timer = shots[index].delay
 
 func _process(delta):
 	if timer <= 0:
 		for i in range(shots[index].bullets):
-			var bullet = BULLET.instance()
+			var path = shots[index].bulletPaths[i % shots[index].bulletPaths.size()]
+			if path == null:
+				continue
+			
+			var bullet = path.instance()
 			add_child(bullet)
 			bullet.set_as_toplevel(true)
 			bullet.transform = global_transform

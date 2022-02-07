@@ -1,7 +1,7 @@
 extends Position3D
 
 onready var rnd = RandomNumberGenerator.new()
-onready var BULLET = preload("res://Scenes/Bullet.tscn")
+onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")
 export var weapFireBaseMult: float = 0.5
 var since_fire: float = 0.0
 

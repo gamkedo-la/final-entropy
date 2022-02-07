@@ -12,7 +12,7 @@ var MAX_SPEED = 7.5
 var ACCELERATION = 25.0
 var level_camera = null
 var gun_position: Position3D
-onready var BULLET = preload("res://Scenes/Bullet.tscn")
+onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")
 onready var WeaponMount = $WeaponMount
 var weapons = []
 

@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Final Entropy"
-run/main_scene="res://Scenes/World.tscn"
+run/main_scene="res://Scenes/Worlds/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]

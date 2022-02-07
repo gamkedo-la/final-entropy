@@ -4,7 +4,7 @@
 [ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Enemy_001.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemies/Enemy_001.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PanoramaSky" id=2]
 
