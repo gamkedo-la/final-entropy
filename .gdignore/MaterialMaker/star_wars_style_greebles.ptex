@@ -1,0 +1,359 @@
+{
+	"connections": [
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "tones_step",
+			"to_port": 0
+		},
+		{
+			"from": "tones_step",
+			"from_port": 0,
+			"to": "invert",
+			"to_port": 0
+		},
+		{
+			"from": "invert",
+			"from_port": 0,
+			"to": "fill_2",
+			"to_port": 0
+		},
+		{
+			"from": "fill_2",
+			"from_port": 0,
+			"to": "decompose",
+			"to_port": 0
+		},
+		{
+			"from": "decompose",
+			"from_port": 3,
+			"to": "buffer_2",
+			"to_port": 0
+		},
+		{
+			"from": "buffer_2",
+			"from_port": 0,
+			"to": "tones_step_2",
+			"to_port": 0
+		},
+		{
+			"from": "tones_step_2",
+			"from_port": 0,
+			"to": "tiler",
+			"to_port": 0
+		},
+		{
+			"from": "tiler",
+			"from_port": 0,
+			"to": "gaussian_blur",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "gaussian_blur",
+			"from_port": 0,
+			"to": "occlusion2",
+			"to_port": 0
+		},
+		{
+			"from": "occlusion2",
+			"from_port": 0,
+			"to": "invert_2",
+			"to_port": 0
+		},
+		{
+			"from": "invert_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 6
+		},
+		{
+			"from": "gaussian_blur",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "gaussian_blur",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@285",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 1291,
+				"y": 853
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.25,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -73,
+				"y": 154
+			},
+			"parameters": {
+				"folds": 1,
+				"iterations": 1,
+				"noise": 8,
+				"persistence": 0,
+				"scale_x": 4,
+				"scale_y": 4
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		},
+		{
+			"name": "tones_step",
+			"node_position": {
+				"x": 310,
+				"y": 161
+			},
+			"parameters": {
+				"invert": false,
+				"value": 0.03,
+				"width": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "tones_step"
+		},
+		{
+			"name": "invert",
+			"node_position": {
+				"x": 351,
+				"y": 340
+			},
+			"parameters": {
+
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "invert"
+		},
+		{
+			"name": "fill_2",
+			"node_position": {
+				"x": 171,
+				"y": 456
+			},
+			"parameters": {
+				"param0": 11,
+				"param1": 10
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fill"
+		},
+		{
+			"name": "decompose",
+			"node_position": {
+				"x": 394,
+				"y": 452
+			},
+			"parameters": {
+
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "decompose"
+		},
+		{
+			"name": "buffer_2",
+			"node_position": {
+				"x": 163,
+				"y": 664
+			},
+			"parameters": {
+				"size": 9
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "buffer",
+			"version": 1
+		},
+		{
+			"name": "tones_step_2",
+			"node_position": {
+				"x": 397,
+				"y": 675
+			},
+			"parameters": {
+				"invert": true,
+				"value": 0.5,
+				"width": 0.1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "tones_step"
+		},
+		{
+			"name": "tiler",
+			"node_position": {
+				"x": 118,
+				"y": 814
+			},
+			"parameters": {
+				"fixed_offset": 0,
+				"offset": 1,
+				"overlap": 2,
+				"rotate": 0,
+				"scale": 0.2,
+				"scale_x": 0.5,
+				"scale_y": 0.5,
+				"select_inputs": 2,
+				"tx": 6,
+				"ty": 6,
+				"value": 1,
+				"variations": false
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "tiler"
+		},
+		{
+			"name": "gaussian_blur",
+			"node_position": {
+				"x": 449.809906,
+				"y": 820.694214
+			},
+			"parameters": {
+				"param0": 11,
+				"param1": 4,
+				"param2": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "gaussian_blur"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": 874,
+				"y": 975
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 10,
+				"strength": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "normal_map2"
+		},
+		{
+			"name": "occlusion2",
+			"node_position": {
+				"x": 871,
+				"y": 1143
+			},
+			"parameters": {
+				"param0": 11,
+				"param1": 20,
+				"param2": 1.5,
+				"param3": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "occlusion2"
+		},
+		{
+			"name": "invert_2",
+			"node_position": {
+				"x": 1158,
+				"y": 1157
+			},
+			"parameters": {
+
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "invert"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": 859.004211,
+				"y": 709.399536
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.835938,
+							"g": 0.835938,
+							"pos": 0,
+							"r": 0.835938
+						},
+						{
+							"a": 1,
+							"b": 1,
+							"g": 1,
+							"pos": 1,
+							"r": 1
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "colorize"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}

@@ -38,9 +38,12 @@ export (float) var patrol_wait = 3.0
 var patrol_target: Vector3 = Vector3.ZERO
 export (float, 1.0, 100.0) var patrol_range = 6.0
 var patrol_reached: bool = true
+onready var patrol_points_path: Spatial = $PatrolPoints
+var patrol_points = []
+var has_points: bool = false
 var num_patrol_points: int = 20
 var current_patrol_point: int = 0
-var patrol_points = []
+
 
 # Time to wait to return to origin position after chasing a target to a new area
 onready var origin_timer = Timer.new()
@@ -53,6 +56,11 @@ func _ready() -> void:
 	rng.randomize()
 	set_state(State.PATROL)
 	DebugOverlay.draw.add_point(self, "patrol_target", 10, Color.red)
+		
+	if patrol_points_path.get_child_count() > 0:
+		patrol_points_path.set_as_toplevel(true)
+		patrol_points.append_array(patrol_points_path.get_children())
+		has_points = true
 
 func _physics_process(_delta: float) -> void:
 	if !actor:
@@ -103,7 +111,7 @@ func _install_state_timers() -> void:
 	origin_timer.wait_time = origin_wait
 
 func _patrol() -> void:
-	if patrol_target.distance_to(actor.global_transform.origin) < 0.5 || last_jp_cnt == 60:
+	if (patrol_target.distance_to(actor.global_transform.origin) < 0.5) || (!has_points && last_jp_cnt == 60):
 		patrol_reached = true
 		last_jp = 0.0
 		last_jp_cnt = 0
@@ -111,12 +119,18 @@ func _patrol() -> void:
 	if !patrol_reached:
 		journey_percent = clamp(actor.global_transform.origin.distance_to(patrol_target) / journey_distance, 0.2, 1.0)
 	else:
-		var random_x = rng.randf_range(-patrol_range, patrol_range)
-		var random_z = rng.randf_range(-patrol_range, patrol_range)
-		patrol_target = Vector3(random_x, 0.0, random_z) + actor.global_transform.origin
+		if has_points:
+			current_patrol_point += 1
+			if current_patrol_point > patrol_points.size() - 1:
+				current_patrol_point = 0 
+			patrol_target = patrol_points[current_patrol_point].global_transform.origin
+		else:
+			var random_x = rng.randf_range(-patrol_range, patrol_range)
+			var random_z = rng.randf_range(-patrol_range, patrol_range)
+			patrol_target = Vector3(random_x, 0.0, random_z) + actor.global_transform.origin
 		journey_distance = actor.global_transform.origin.distance_to(patrol_target)
 		patrol_reached = false
-	if abs(journey_percent - last_jp) < 0.001:
+	if !has_points && abs(journey_percent - last_jp) < 0.001:
 #		print_debug("journey_percent:", journey_percent, " last_jp: ", last_jp, " diff: ", journey_percent-last_jp)
 		last_jp_cnt += 1
 	else:
