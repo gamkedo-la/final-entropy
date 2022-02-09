@@ -5,6 +5,7 @@ onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 
 onready var ai: AIController = $AI
+onready var hit_box: Area = $HitBox
 export (NodePath) var body_path
 
 var body
@@ -24,6 +25,9 @@ func _ready():
 	ai.initialize(self)
 	if is_instance_valid(body_path):
 		body = get_node(body)
+	if not hit_box.is_connected("area_entered", self, "_on_HitBox_area_entered"):
+		var con_res = hit_box.connect("area_entered", self, "_on_HitBox_area_entered")
+		assert(con_res == OK)
 
 	pass # Replace with function body.
 
