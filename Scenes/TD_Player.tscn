@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/TD_Player.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Scripts/Weapons/BaseGun.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Weapons/BaseGun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SFX/PlayerHitSFX.wav" type="AudioStream" id=4]
 [ext_resource path="res://Textures/health-shield bar progress.png" type="Texture" id=5]
 [ext_resource path="res://Textures/health-shield bar.png" type="Texture" id=6]
@@ -119,12 +119,11 @@ shape = SubResource( 6 )
 
 [node name="WeaponMount" type="Spatial" parent="."]
 
-[node name="BaseGun" type="Position3D" parent="WeaponMount"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.431518 )
-script = ExtResource( 3 )
+[node name="BaseGun" parent="WeaponMount" instance=ExtResource( 3 )]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
+bus = "SFX"
 
 [node name="TextureProgress3" type="TextureProgress" parent="."]
 margin_left = -51.0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://SFX/BulletFiringLight.wav" type="AudioStream" id=2]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.0586611
@@ -56,9 +55,5 @@ visibility_aabb = AABB( 0, -4.81833, 0, 0, 4.81833, 0 )
 local_coords = false
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 4 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

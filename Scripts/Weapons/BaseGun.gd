@@ -2,6 +2,7 @@ extends Position3D
 
 onready var rnd = RandomNumberGenerator.new()
 onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")
+onready var shot_sfx: AudioStreamPlayer3D = $ShotSFX
 export var weapFireBaseMult: float = 0.5
 var since_fire: float = 0.0
 
@@ -13,6 +14,7 @@ func _process(delta):
 
 func fire() -> void:
 	if since_fire > ((PlayerVars.fireRate * PlayerVars.fireRateMult) * weapFireBaseMult):
+		shot_sfx.play()
 		rnd.randomize()
 		var bullet = BULLET.instance()
 		add_child(bullet)
