@@ -98,3 +98,12 @@ func _on_HitBox_area_entered(area):
 	if area.is_in_group("bullet"):
 		take_damage(area.damage)
 		area.hit()
+
+
+func _on_PickupRadius_area_entered(area):
+	if area.is_in_group("pickup"):
+		#TODO: Pickup and apply powerup
+		var pickup = area.get_parent()
+		pickup.queue_free()
+		
+	pass # Replace with function body.
