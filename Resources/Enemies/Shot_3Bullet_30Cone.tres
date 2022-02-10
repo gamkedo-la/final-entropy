@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Enemies/Experimental/ShotData.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Bullets/Bullet_03.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Bullets/Bullet_06.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+bulletPaths = [ ExtResource( 2 ), ExtResource( 3 ) ]
+delay = 0.5
+bullets = 3
+bulletSpeed = 4.0
+angleRange = 30.0
+angleOffset = 0.0

@@ -9,4 +9,6 @@ bulletPaths = [ ExtResource( 2 ) ]
 delay = 0.5
 bullets = 4
 bulletSpeed = 1.25
-angleOffset = 10
+startingAngle = 0.0
+angleRange = 360.0
+angleOffset = 10.0

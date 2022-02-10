@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export(NodePath) var GunPosPath = ""
+export(NodePath) var player;
 
 var maxHp = 100
 var hp = maxHp
@@ -26,6 +27,8 @@ export var firerate: float = 0.8
 var since_fire: float = 0.0
 
 func _ready():
+	Global.player_node = get_node(player)
+
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
 	weapons.append_array(WeaponMount.get_children())

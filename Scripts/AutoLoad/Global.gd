@@ -4,6 +4,7 @@ signal shake(val)
 
 var ortho_camera: Camera = null
 var raycast_position = null
+var player_node: Spatial = null
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS

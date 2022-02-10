@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.0586611
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0, 0.878431, 1 )
+emission_enabled = true
+emission = Color( 0.603922, 0.392157, 1, 1 )
+emission_energy = 16.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.8
+direction = Vector3( 0, 0, 1 )
+spread = 22.79
+flatness = 1.0
+gravity = Vector3( 0, -0.98, 0 )
+initial_velocity = 0.1
+
+[sub_resource type="SpatialMaterial" id=5]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 5 )
+radius = 0.01
+height = 0.02
+radial_segments = 16
+rings = 8
+
+[node name="Bullet_06" type="Area" groups=["bullet"]]
+monitoring = false
+script = ExtResource( 1 )
+trail_color = [ Color( 1, 0, 0.74902, 1 ), Color( 0.815686, 0, 0.74902, 1 ), Color( 0.498039, 0, 0.74902, 1 ), Color( 0.27451, 0, 0.74902, 1 ) ]
+damage = 1.0
+max_velocity = 8.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+radius = 0.05
+material = SubResource( 6 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.87145e-05, 0 )
+amount = 16
+explosiveness = 0.16
+randomness = 1.0
+visibility_aabb = AABB( 0, -4.81833, 0, 0, 4.81833, 0 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

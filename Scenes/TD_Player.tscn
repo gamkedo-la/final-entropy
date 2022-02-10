@@ -85,6 +85,7 @@ shader_param/palette_speed = 0.1
 [node name="TopDown_Player" type="KinematicBody"]
 script = ExtResource( 1 )
 GunPosPath = NodePath("WeaponMount/BaseGun")
+player = NodePath("Player")
 firerate = 0.1
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

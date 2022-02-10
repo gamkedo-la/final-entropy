@@ -1,0 +1,182 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/RoomBoundary.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Enemies/Enemy_003.tscn" type="PackedScene" id=4]
+
+[sub_resource type="PhysicsMaterial" id=2]
+rough = true
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 9.22328, 1, 9.58789 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.158068, 1, 8.54773 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 8.40088, 6.17733, 8.4149 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.176471, 0.0156863, 0.215686, 1 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.5
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0, 0.235294, 0.4, 1 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.25
+
+[sub_resource type="PanoramaSky" id=9]
+
+[sub_resource type="Environment" id=10]
+background_mode = 1
+background_sky = SubResource( 9 )
+fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 0.0
+auto_exposure_min_luma = 0.0
+auto_exposure_max_luma = 7.3
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_quality = 2
+dof_blur_near_amount = 0.06
+
+[node name="World" type="Spatial"]
+
+[node name="BigDungeonRoom" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="WallLights" type="Spatial" parent="BigDungeonRoom"]
+
+[node name="OmniLight" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71268, 1.61502, -0.718485 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="OmniLight2" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78287, 1.61502, -0.718485 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="OmniLight5" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4881, 1.61502, -0.718485 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="OmniLight3" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71268, 1.61502, 15.4236 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="OmniLight4" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78287, 1.61502, 15.4236 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="OmniLight6" type="OmniLight" parent="BigDungeonRoom/WallLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4881, 1.61502, 15.4236 )
+light_color = Color( 1, 0.737255, 0, 1 )
+
+[node name="StairLights" type="Spatial" parent="BigDungeonRoom"]
+
+[node name="OmniLight" type="OmniLight" parent="BigDungeonRoom/StairLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74823, 4.47151, 7.5709 )
+
+[node name="WallsFloor" type="Spatial" parent="BigDungeonRoom"]
+
+[node name="Floor" type="StaticBody" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51595, 0, 7.25495 )
+physics_material_override = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Floor"]
+shape = SubResource( 1 )
+
+[node name="Wall" type="StaticBody" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00382, 2.01939, 7.49422 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Wall"]
+shape = SubResource( 3 )
+
+[node name="Wall2" type="StaticBody" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9339, 2.01939, 7.49422 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Wall2"]
+shape = SubResource( 3 )
+
+[node name="Wall3" type="StaticBody" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, 16.0098 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Wall3"]
+shape = SubResource( 3 )
+
+[node name="Wall4" type="StaticBody" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.47374, 2.01939, -1.02017 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Wall4"]
+shape = SubResource( 3 )
+
+[node name="Area" type="Area" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48563, 0, 7.51745 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BigDungeonRoom/WallsFloor/Area"]
+shape = SubResource( 6 )
+
+[node name="FloorCube" type="CSGBox" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51621, 0.900956, 7.52888 )
+width = 17.2886
+height = 0.295006
+depth = 17.2613
+material = SubResource( 7 )
+
+[node name="Wall01" type="CSGBox" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05444, 2.01004, 7.4315 )
+width = 0.22338
+height = 1.8767
+depth = 16.8191
+material = SubResource( 8 )
+
+[node name="Wall02" type="CSGBox" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0283, 2.5884, 7.4315 )
+width = 0.22338
+height = 3.04309
+depth = 16.8446
+material = SubResource( 8 )
+
+[node name="Wall03" type="CSGBox" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4425, 2.01503, -1.10975 )
+width = 0.22338
+height = 1.92408
+depth = 16.8213
+material = SubResource( 8 )
+
+[node name="Wall04" type="CSGBox" parent="BigDungeonRoom/WallsFloor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.53135, 2.5778, 15.9728 )
+width = 0.22338
+height = 3.04309
+depth = 17.2553
+material = SubResource( 8 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="BigDungeonRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16947, 18.2014, 7.73356 )
+light_energy = 0.578
+light_indirect_energy = 0.0
+light_bake_mode = 2
+
+[node name="BakedLightmap" type="BakedLightmap" parent="BigDungeonRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24186, 3.64405, 6.86462 )
+extents = Vector3( 10.348, 4.76174, 10 )
+environment_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
+
+[node name="TopDown_Player2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
+
+[node name="OrthoCamera" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 6.18173e-08, -6.18173e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0.526043, 14.395, -2.9496 )
+near = 0.01
+
+[node name="Enemy_003" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39822, 1.59653, 9.88968 )
+
+[connection signal="area_exited" from="BigDungeonRoom/WallsFloor/Area" to="BigDungeonRoom/WallsFloor/Area" method="_on_Area_area_exited"]
