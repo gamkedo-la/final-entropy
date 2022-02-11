@@ -10,7 +10,7 @@ var mouse_sensitivity = 1
 var divide_mouse_sensitivity = 1
 var velocity = Vector3.ZERO
 var MAX_SPEED = 7.5
-var ACCELERATION = 25.0
+var ACCELERATION = 50.0
 var level_camera = null
 var gun_position: Position3D
 onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")

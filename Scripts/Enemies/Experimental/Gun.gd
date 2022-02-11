@@ -2,23 +2,30 @@ extends Position3D
 
 onready var rnd = RandomNumberGenerator.new() #rnd.randf_range(min,max)
 export (Array, Resource) var shots
-export (bool) var towardsPlayer;
+export(NodePath) var target = null
 
 var index = 0
 var timer = 0
 var targetAngle = 0
 var angleOffset = 0
+var targetPosition : Position3D = null
 
 func _ready():
 	rnd.randomize()
 	timer = shots[index].delay
+	if target:
+		targetPosition = get_node(target)
 
 func _process(delta):
-
-	if towardsPlayer and Global.player_node:
-		var playerPos = Vector2(Global.player_node.global_transform.origin.x, Global.player_node.global_transform.origin.z)
-		var pos = Vector2(global_transform.origin.x, global_transform.origin.z)
-		targetAngle = playerPos.angle_to_point(pos)
+	if shots[index].angleRange < 360.0 and shots[index].angleRange >= 0.0:
+		if targetPosition:
+			var targetPos = Vector2(targetPosition.global_transform.origin.x, targetPosition.global_transform.origin.z)
+			var pos = Vector2(global_transform.origin.x, global_transform.origin.z)
+			targetAngle = targetPos.angle_to_point(pos)
+		elif Global.player_node:
+			var playerPos = Vector2(Global.player_node.global_transform.origin.x, Global.player_node.global_transform.origin.z)
+			var pos = Vector2(global_transform.origin.x, global_transform.origin.z)
+			targetAngle = playerPos.angle_to_point(pos)
 
 	if timer <= 0:
 		for i in range(shots[index].bullets):
