@@ -12,3 +12,5 @@ bullets = 5
 bulletSpeed = 1.0
 angleRange = 50.0
 angleOffset = 0.0
+bulletAngleRandom = 2.5
+shotAngleRandom = 5.0

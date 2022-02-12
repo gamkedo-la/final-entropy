@@ -26,6 +26,8 @@ func _process(delta):
 			var playerPos = Vector2(Global.player_node.global_transform.origin.x, Global.player_node.global_transform.origin.z)
 			var pos = Vector2(global_transform.origin.x, global_transform.origin.z)
 			targetAngle = playerPos.angle_to_point(pos)
+	
+	targetAngle += deg2rad(rnd.randf_range(-shots[index].shotAngleRandom, shots[index].shotAngleRandom))
 
 	if timer <= 0:
 		for i in range(shots[index].bullets):
@@ -39,8 +41,8 @@ func _process(delta):
 			bullet.transform = global_transform
 			bullet.collision_layer = 0b00000000000000000100
 			bullet.collision_mask = 0b00000000000000000011
-			bullet.velocity.x = shots[index].bulletSpeed * cos(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange)))
-			bullet.velocity.z = shots[index].bulletSpeed * sin(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange)))
+			bullet.velocity.x = shots[index].bulletSpeed * cos(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
+			bullet.velocity.z = shots[index].bulletSpeed * sin(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
 		angleOffset += shots[index].angleOffset
 		timer = shots[index].delay
 		index = index + 1
