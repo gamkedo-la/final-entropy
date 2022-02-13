@@ -41,6 +41,7 @@ near = 0.01
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.178, 1.6, 13.236 )
 axis_lock_motion_y = true
 move_lock_y = true
+health = 100.0
 
 [node name="Position3D" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45922, 0, 5.20145 )

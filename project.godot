@@ -22,7 +22,12 @@ _global_script_classes=[ {
 "base": "RigidBody",
 "class": "PowerUP",
 "language": "GDScript",
-"path": "res://Scripts/Powerup.gd"
+"path": "res://Scripts/PowerUps/Powerup.gd"
+}, {
+"base": "Resource",
+"class": "PowerUps",
+"language": "GDScript",
+"path": "res://Scripts/PowerUps/PowerupsResource.gd"
 }, {
 "base": "Resource",
 "class": "RoomContainer",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "AIController": "",
 "Actor": "",
 "PowerUP": "",
+"PowerUps": "",
 "RoomContainer": "",
 "Shot": ""
 }

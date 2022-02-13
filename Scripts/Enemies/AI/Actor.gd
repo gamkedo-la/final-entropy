@@ -16,6 +16,8 @@ export(float) var ACCELERATION = 10.0
 
 export(float) var health = 1000.0
 var velocity: Vector3 = Vector3.ZERO
+onready var powerup_drops = preload("res://Resources/PowerUps.tres")
+onready var rng = RandomNumberGenerator.new()
 
 func _ready():
 	randomize()
@@ -35,6 +37,12 @@ func _physics_process(delta) -> void:
 #	move_state(delta)
 	pass
 
+func _process(delta) -> void: 
+#	print_debug(powerup_drops.powerup_scenes)
+	pass
+
+	
+
 func move_state(delta) -> void:
 	var move_dir: Vector3 = Vector3.ZERO
 	noise_y += 1 
@@ -49,8 +57,20 @@ func move_state(delta) -> void:
 
 func take_damage(dmg: float) -> void:
 	health -= dmg
+	var rand_scene = rng.randi_range(0, powerup_drops.powerup_scenes.size() - 1)
+	print_debug(rand_scene)
 	if health <= 0:
+		drop_loot()
 		call_deferred("queue_free")
+	pass
+
+func drop_loot() -> void:
+	#TODO: Drop Chances etc..
+	var rand_scene = rng.randi_range(0, powerup_drops.powerup_scenes.size() - 1)
+	var new_powerup: RigidBody = powerup_drops.powerup_scenes[rand_scene].instance()
+	new_powerup.transform.origin = transform.origin + (Vector3.UP) 
+	get_tree().root.add_child(new_powerup)
+	new_powerup.apply_central_impulse(Vector3.UP * 10)
 	pass
 
 func _on_HitBox_area_entered(area):
