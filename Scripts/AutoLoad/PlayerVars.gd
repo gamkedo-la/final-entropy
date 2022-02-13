@@ -10,6 +10,7 @@ var fireRate: float = 1.0
 var fireRateMult: float = 1.0
 var shotDmg: float = 10.0
 var shotDmgMult: float = 1.0
+var shotSpeed: float = 20.0
 var bulletCount: int = 1
 
 func _ready():
@@ -22,6 +23,7 @@ func pickup(power: PowerUP) -> void:
 	fireRateMult += power.fireRateMult
 	shotDmg += power.shotDmg
 	shotDmgMult += power.shotDmgMult
+	shotSpeed += power.shotSpeed
 	bulletCount += power.bulletCount
 
 func drop_pickup(power: PowerUP) -> void:
@@ -31,4 +33,5 @@ func drop_pickup(power: PowerUP) -> void:
 	fireRateMult -= power.fireRateMult
 	shotDmg -= power.shotDmg
 	shotDmgMult -= power.shotDmgMult
+	shotSpeed -= power.shotSpeed
 	bulletCount -= power.bulletCount

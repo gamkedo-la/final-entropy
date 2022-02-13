@@ -24,6 +24,6 @@ func fire() -> void:
 		bullet.transform = global_transform
 #		bullet.direction = get_global_transform().basis.z
 #		bullet.apply_central_impulse(-transform.basis.z * (0.25 * rnd.randf_range(0.75, 1.0)))
-		bullet.velocity = -bullet.transform.basis.z * 5
+		bullet.velocity = -bullet.transform.basis.z * PlayerVars.shotSpeed
 		since_fire = 0.0
 	pass

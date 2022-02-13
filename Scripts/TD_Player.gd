@@ -97,8 +97,10 @@ func _on_PickupRadius_area_entered(area):
 	if area.is_in_group("pickup"):
 		#TODO: Pickup and apply powerup
 		var pickup = area.get_parent()
-		pickup.pickup()
-		PlayerVars.pickup(pickup)
-		power_ups.add_child(pickup)
+		if pickup.pick_active:
+			print_debug("Picking up: ", pickup)
+			pickup.pickup()
+			PlayerVars.pickup(pickup)
+			Global.reparent(pickup, power_ups)
 		
 	pass # Replace with function body.
