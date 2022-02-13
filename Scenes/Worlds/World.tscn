@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/Enemy_002.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemies/Enemy_001.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Powerups/Powerup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Powerups/FireRateUp.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PanoramaSky" id=2]
 
@@ -39,30 +39,34 @@ near = 0.01
 
 [node name="Enemy_001" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.178, 1.6, 13.236 )
+axis_lock_motion_y = true
+move_lock_y = true
 
 [node name="Position3D" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45922, 0, 5.20145 )
 
 [node name="Position3D2" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.776, 0, -3.56109 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1583, 0, -3.81715 )
 
 [node name="Position3D3" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56737, 0, -2.77995 )
 
 [node name="Position3D4" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75019, 0, 1.86928 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75019, 0, 0.639418 )
 
 [node name="Position3D5" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.483349, 0, -8.87825 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29003, 0, -8.40415 )
 
 [node name="Position3D6" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85984, 0, -3.76365 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24752, 0, -3.42738 )
 
 [node name="Position3D7" type="Position3D" parent="Enemy_001/AI/PatrolPoints" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85875, 0, -13.8402 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85875, 0, -12.662 )
 
 [node name="Enemy_002" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.743, 1.6, 17.068 )
+axis_lock_motion_y = true
+move_lock_y = true
 
 [node name="Position3D" type="Position3D" parent="Enemy_002/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.49312 )
@@ -70,20 +74,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.49312 )
 [node name="Position3D2" type="Position3D" parent="Enemy_002/AI/PatrolPoints" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4076, 0, -6.49312 )
 
-[node name="Powerup" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53725, 8.1961 )
+[node name="FireRateUp" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45838, 6.69308 )
 
-[node name="Powerup2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16277, 9.53725, 8.1961 )
+[node name="FireRateUp2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02323, 9.45838, 6.69308 )
 
-[node name="Powerup3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63981, 9.53725, 8.1961 )
+[node name="FireRateUp3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11713, 9.45838, 6.69308 )
 
-[node name="Powerup4" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53725, 9.73937 )
+[node name="FireRateUp4" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45838, 9.77239 )
 
-[node name="Powerup5" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53725, 6.40912 )
+[node name="FireRateUp5" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45838, 4.00313 )
 
 [editable path="BigDungeonRoom"]
 [editable path="Enemy_001"]

@@ -247,5 +247,7 @@ autoplay = "health_slide_in"
 anims/RESET = SubResource( 7 )
 anims/health_slide_in = SubResource( 8 )
 
+[node name="PowerUps" type="Spatial" parent="."]
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="area_entered" from="PickupRadius" to="." method="_on_PickupRadius_area_entered"]

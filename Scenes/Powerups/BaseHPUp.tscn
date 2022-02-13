@@ -19,10 +19,11 @@ radius = 0.163573
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.638867, 0.68412, 0.625603 )
 
-[node name="PowerUp" type="RigidBody"]
+[node name="BaseHPUp" type="RigidBody"]
 physics_material_override = SubResource( 3 )
 script = ExtResource( 1 )
-powerUpName = "PowerUp"
+powerUpName = "Base HP Up"
+baseHP = 10.0
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.152632

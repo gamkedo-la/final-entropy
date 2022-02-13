@@ -22,6 +22,7 @@ var raycast_position = null
 
 onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
+onready var power_ups = $PowerUps
 var fired: bool = false
 export var firerate: float = 0.8
 var since_fire: float = 0.0
@@ -75,19 +76,7 @@ func check_fire() -> void:
 #			print_debug(weap)
 			if weap.has_method("fire"):
 				weap.fire()
-#		Global.emit_signal("shake", 0.035)
-#		rnd.randomize()
-#		var bullet = BULLET.instance()
-#		add_child(bullet)
-#		bullet.collision_layer = 0b00000000000000000010
-#		bullet.collision_mask = 0b00000000000000000101
-#		bullet.set_as_toplevel(true)
-#		bullet.transform = gun_position.global_transform
-##		bullet.direction = get_global_transform().basis.z
-##		bullet.apply_central_impulse(-transform.basis.z * (0.25 * rnd.randf_range(0.75, 1.0)))
-#		bullet.velocity = -bullet.transform.basis.z * 5
-#		since_fire = 0.0
-#	pass
+
 
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)
@@ -108,6 +97,8 @@ func _on_PickupRadius_area_entered(area):
 	if area.is_in_group("pickup"):
 		#TODO: Pickup and apply powerup
 		var pickup = area.get_parent()
-		pickup.queue_free()
+		pickup.pickup()
+		PlayerVars.pickup(pickup)
+		power_ups.add_child(pickup)
 		
 	pass # Replace with function body.

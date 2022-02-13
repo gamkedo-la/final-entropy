@@ -6,9 +6,9 @@
 bounce = 0.25
 
 [sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.0196078, 0.968627, 0, 1 )
+albedo_color = Color( 1, 0.643137, 0, 1 )
 emission_enabled = true
-emission = Color( 0.0196078, 0.968627, 0, 1 )
+emission = Color( 1, 0.643137, 0, 1 )
 emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
@@ -19,10 +19,12 @@ radius = 0.163573
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.638867, 0.68412, 0.625603 )
 
-[node name="PowerUp" type="RigidBody"]
+[node name="FireRateUp" type="RigidBody"]
 physics_material_override = SubResource( 3 )
 script = ExtResource( 1 )
-powerUpName = "PowerUp"
+powerUpName = "Fire Rate Up"
+indexNum = 2
+fireRate = -0.1
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.152632
