@@ -24,7 +24,7 @@ physics_material_override = SubResource( 3 )
 script = ExtResource( 1 )
 powerUpName = "Fire Rate Up"
 indexNum = 2
-fireRate = -0.1
+rounds_per_minute_bonus = 30.0
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.152632

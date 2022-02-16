@@ -23,9 +23,7 @@ var raycast_position = null
 onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
-var fired: bool = false
-export var firerate: float = 0.8
-var since_fire: float = 0.0
+
 
 func _ready():
 	Global.player_node = get_node(player)
@@ -100,7 +98,6 @@ func _on_PickupRadius_area_entered(area):
 		if pickup.pick_active:
 			print_debug("Picking up: ", pickup)
 			pickup.pickup()
-			PlayerVars.pickup(pickup)
 			Global.reparent(pickup, power_ups)
 		
 	pass # Replace with function body.

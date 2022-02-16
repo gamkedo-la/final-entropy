@@ -8,8 +8,7 @@ export (float) var baseHP = 0.0
 export (float) var baseShields = 0.0
 
 # Weapons
-export (float) var fireRate = 0.0
-export (float) var fireRateMult = 0.0
+export (float) var rounds_per_minute_bonus = 0.0
 export (float) var shotDmg: float = 0.0
 export (float) var shotDmgMult: float = 0.0
 export (float) var shotSpeed: float = 0.0
@@ -28,9 +27,24 @@ func pickup() -> void:
 	pickup_area.monitorable = false
 	visible = false
 	pick_active = false
+	PlayerVars.baseHP += baseHP
+	PlayerVars.baseShields += baseShields
+	PlayerVars.rounds_per_minute_bonus += rounds_per_minute_bonus
+	PlayerVars.shotDmg += shotDmg
+	PlayerVars.shotDmgMult += shotDmgMult
+	PlayerVars.shotSpeed += shotSpeed
+	PlayerVars.bulletCount += bulletCount
 
 func drop() -> void:
 	visible = true
 	pickup_area.monitorable = true
 	sleeping = false
 	pick_active = true
+	PlayerVars.baseHP -= baseHP
+	PlayerVars.baseShields -= baseShields
+	PlayerVars.rounds_per_minute_bonus -= rounds_per_minute_bonus
+	PlayerVars.shotDmg -= shotDmg
+	PlayerVars.shotDmgMult -= shotDmgMult
+	PlayerVars.shotSpeed -= shotSpeed
+	PlayerVars.bulletCount -= bulletCount
+
