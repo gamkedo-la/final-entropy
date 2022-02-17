@@ -1,0 +1,351 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Textures/Noise/opensimplexnoise_dissolve.tres" type="Texture" id=1]
+[ext_resource path="res://Textures/RoomPortal/OuterAura.png" type="Texture" id=2]
+[ext_resource path="res://Textures/RoomPortal/NumberRing.png" type="Texture" id=3]
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=1]
+output_port_for_preview = 0
+function = 15
+
+[sub_resource type="VisualShaderNodeScalarOp" id=2]
+output_port_for_preview = 0
+default_input_values = [ 0, 0.0, 1, 0.05 ]
+operator = 1
+
+[sub_resource type="VisualShaderNodeScalarOp" id=3]
+output_port_for_preview = 0
+default_input_values = [ 0, 1.0, 1, 0.05 ]
+operator = 1
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=4]
+output_port_for_preview = 0
+function = 15
+
+[sub_resource type="VisualShaderNodeVectorOp" id=5]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id=6]
+constant = Color( 0.794119, 0, 1, 1 )
+
+[sub_resource type="VisualShaderNodeColorConstant" id=7]
+constant = Color( 0, 0.556863, 1, 0.470588 )
+
+[sub_resource type="VisualShaderNodeScalarOp" id=8]
+default_input_values = [ 0, 0.0, 1, 0.3 ]
+operator = 1
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=17]
+output_port_for_preview = 0
+function = 12
+
+[sub_resource type="VisualShaderNodeScalarOp" id=18]
+default_input_values = [ 0, 0.0, 1, 0.5 ]
+operator = 1
+
+[sub_resource type="VisualShaderNodeInput" id=9]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeInput" id=10]
+output_port_for_preview = 0
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=11]
+function = 0
+
+[sub_resource type="VisualShaderNodeScalarOp" id=12]
+default_input_values = [ 0, 0.0, 1, 2.0 ]
+operator = 3
+
+[sub_resource type="VisualShaderNodeTexture" id=13]
+texture = ExtResource( 1 )
+
+[sub_resource type="VisualShaderNodeScalarOp" id=14]
+output_port_for_preview = 0
+operator = 1
+
+[sub_resource type="VisualShader" id=15]
+code = "shader_type spatial;
+render_mode depth_draw_alpha_prepass, cull_disabled, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_8;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:16
+	vec3 n_out16p0 = vec3(0.000000, 0.556863, 1.000000);
+	float n_out16p1 = 0.470588;
+
+// Input:3
+	vec3 n_out3p0 = vec3(UV, 0.0);
+
+// Texture:8
+	vec4 tex_frg_8_read = texture(tex_frg_8, n_out3p0.xy);
+	vec3 n_out8p0 = tex_frg_8_read.rgb;
+	float n_out8p1 = tex_frg_8_read.a;
+
+// Input:4
+	float n_out4p0 = TIME;
+
+// ScalarFunc:5
+	float n_out5p0 = sin(n_out4p0);
+
+// ScalarFunc:18
+	float n_out18p0 = abs(n_out5p0);
+
+// ScalarOp:19
+	float n_in19p1 = 0.50000;
+	float n_out19p0 = n_out18p0 - n_in19p1;
+
+// ScalarOp:9
+	float n_out9p0 = dot(n_out8p0, vec3(0.333333, 0.333333, 0.333333)) - n_out19p0;
+
+// ScalarFunc:10
+	float n_out10p0 = round(n_out9p0);
+
+// ScalarOp:11
+	float n_in11p1 = 0.05000;
+	float n_out11p0 = n_out9p0 - n_in11p1;
+
+// ScalarOp:12
+	float n_in12p0 = 1.00000;
+	float n_out12p0 = n_in12p0 - n_out11p0;
+
+// ScalarFunc:13
+	float n_out13p0 = round(n_out12p0);
+
+// Color:15
+	vec3 n_out15p0 = vec3(0.794119, 0.000000, 1.000000);
+	float n_out15p1 = 1.000000;
+
+// VectorOp:14
+	vec3 n_out14p0 = vec3(n_out13p0) * n_out15p0;
+
+// Output:0
+	ALBEDO = n_out16p0;
+	ALPHA = n_out10p0;
+	EMISSION = n_out14p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -470.761, -119.227 )
+modes/cull = 2
+modes/depth_draw = 3
+nodes/fragment/0/position = Vector2( 2000, 200 )
+nodes/fragment/3/node = SubResource( 9 )
+nodes/fragment/3/position = Vector2( -700, -100 )
+nodes/fragment/4/node = SubResource( 10 )
+nodes/fragment/4/position = Vector2( -1420, 440 )
+nodes/fragment/5/node = SubResource( 11 )
+nodes/fragment/5/position = Vector2( -1100, 460 )
+nodes/fragment/6/node = SubResource( 12 )
+nodes/fragment/6/position = Vector2( -720, 660 )
+nodes/fragment/8/node = SubResource( 13 )
+nodes/fragment/8/position = Vector2( -340, -80 )
+nodes/fragment/9/node = SubResource( 14 )
+nodes/fragment/9/position = Vector2( 0, 240 )
+nodes/fragment/10/node = SubResource( 1 )
+nodes/fragment/10/position = Vector2( 280, 180 )
+nodes/fragment/11/node = SubResource( 2 )
+nodes/fragment/11/position = Vector2( 300, 580 )
+nodes/fragment/12/node = SubResource( 3 )
+nodes/fragment/12/position = Vector2( 580, 580 )
+nodes/fragment/13/node = SubResource( 4 )
+nodes/fragment/13/position = Vector2( 880, 580 )
+nodes/fragment/14/node = SubResource( 5 )
+nodes/fragment/14/position = Vector2( 1300, 560 )
+nodes/fragment/15/node = SubResource( 6 )
+nodes/fragment/15/position = Vector2( 960, 920 )
+nodes/fragment/16/node = SubResource( 7 )
+nodes/fragment/16/position = Vector2( 880, -160 )
+nodes/fragment/17/node = SubResource( 8 )
+nodes/fragment/17/position = Vector2( -280, 600 )
+nodes/fragment/18/node = SubResource( 17 )
+nodes/fragment/18/position = Vector2( -760, 260 )
+nodes/fragment/19/node = SubResource( 18 )
+nodes/fragment/19/position = Vector2( -420, 380 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 6, 0, 3, 0, 8, 0, 8, 0, 9, 0, 9, 0, 10, 0, 9, 0, 11, 0, 11, 0, 12, 1, 12, 0, 13, 0, 13, 0, 14, 0, 15, 0, 14, 1, 16, 0, 0, 0, 6, 0, 17, 0, 10, 0, 0, 1, 14, 0, 0, 5, 4, 0, 5, 0, 5, 0, 18, 0, 18, 0, 19, 0, 19, 0, 9, 1 )
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 15 )
+
+[sub_resource type="Curve" id=23]
+_data = [ Vector2( 0, 0.530675 ), 0.0, -2.21534, 0, 0, Vector2( 0.50122, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.506135 ), 2.5436, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=24]
+curve = SubResource( 23 )
+
+[sub_resource type="ParticlesMaterial" id=25]
+lifetime_randomness = 0.14
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+scale = 4.0
+scale_random = 0.5
+scale_curve = SubResource( 24 )
+
+[sub_resource type="SpatialMaterial" id=26]
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_color = Color( 1, 1, 1, 0.462745 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=27]
+material = SubResource( 26 )
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0, 0.502301 ), 0.0, 0.0, 0, 0, Vector2( 0.50122, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.508436 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=32]
+curve = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=28]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 66.05
+angular_velocity_random = 0.58
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.5
+scale_curve = SubResource( 32 )
+
+[sub_resource type="SpatialMaterial" id=29]
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_color = Color( 1, 1, 1, 0.34902 )
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=30]
+material = SubResource( 29 )
+flip_faces = true
+
+[sub_resource type="Animation" id=21]
+resource_name = "BobAndSpin"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGTorus:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 4.99864 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5, 0 ), Vector3( 0, 6, 0 ), Vector3( 0, 5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CSGTorus:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 90, -7.135, 0 ), Vector3( 90, 0, 0 ), Vector3( 90, 7.5, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CSGTorus/OmniLight:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGTorus:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CSGTorus:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CSGTorus/OmniLight:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="RoomPortal" type="Spatial"]
+
+[node name="CSGTorus" type="CSGTorus" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, 0 )
+outer_radius = 2.5
+sides = 12
+ring_sides = 10
+smooth_faces = false
+material = SubResource( 16 )
+
+[node name="Outer" type="Particles" parent="CSGTorus"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+amount = 4
+lifetime = 2.5
+process_material = SubResource( 25 )
+draw_pass_1 = SubResource( 27 )
+
+[node name="InnerRing" type="Particles" parent="CSGTorus"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+amount = 6
+lifetime = 4.5
+process_material = SubResource( 28 )
+draw_pass_1 = SubResource( 30 )
+
+[node name="OmniLight" type="OmniLight" parent="CSGTorus"]
+light_color = Color( 0.0392157, 0.482353, 0.701961, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "BobAndSpin"
+anims/BobAndSpin = SubResource( 21 )
+anims/RESET = SubResource( 22 )

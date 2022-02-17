@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BigDungeonRoom.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Enemies/Enemy_002.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemies/Enemy_001.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Powerups/FireRateUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PanoramaSky" id=2]
 
@@ -26,6 +27,12 @@ dof_blur_near_amount = 0.06
 
 [node name="BigDungeonRoom" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="RoomPortal" parent="BigDungeonRoom" instance=ExtResource( 7 )]
+transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -14.1678, -1.14128, 7.36595 )
+
+[node name="RoomPortal2" parent="BigDungeonRoom" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -1.78814e-07, 0, 1, 0, 1.78814e-07, 0, -1, -5.67377, -1.14128, 15.3955 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )

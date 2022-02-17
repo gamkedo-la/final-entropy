@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/RoomBoundary.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/Experimental/ShotData.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Bullets/Bullet_06.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Bullets/Bullet_02.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=2]
 rough = true
@@ -179,6 +180,12 @@ light_bake_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24186, 3.64405, 6.86462 )
 extents = Vector3( 10.348, 4.76174, 10 )
 environment_mode = 1
+
+[node name="RoomPortal" parent="BigDungeonRoom" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58592, -1.20176, 15.3883 )
+
+[node name="RoomPortal2" parent="BigDungeonRoom" instance=ExtResource( 8 )]
+transform = Transform( -1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, -14.3014, -1.20176, 6.5452 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 10 )
