@@ -6,15 +6,20 @@ var noise_y = 0
 
 onready var ai: AIController = $AI
 onready var hit_box: Area = $HitBox
-export (NodePath) var body_path
 
+export (NodePath) var body_path
 var body
 
 #temp movement logic
 export(float) var MAX_SPEED = 10.0
 export(float) var ACCELERATION = 10.0
 
+export (NodePath) var bar_path
+var bar
+
 export(float) var health = 1000.0
+var maxHealth
+
 var velocity: Vector3 = Vector3.ZERO
 onready var powerup_drops = preload("res://Resources/PowerUps.tres")
 onready var rng = RandomNumberGenerator.new()
@@ -26,12 +31,13 @@ func _ready():
 	noise.octaves = 2
 	ai.initialize(self)
 	if is_instance_valid(body_path):
-		body = get_node(body)
+		body = get_node(body_path)
 	if not hit_box.is_connected("area_entered", self, "_on_HitBox_area_entered"):
 		var con_res = hit_box.connect("area_entered", self, "_on_HitBox_area_entered")
 		assert(con_res == OK)
+	maxHealth = health
+	bar = get_node(bar_path)
 
-	pass # Replace with function body.
 
 func _physics_process(delta) -> void:
 #	move_state(delta)
@@ -57,6 +63,7 @@ func move_state(delta) -> void:
 
 func take_damage(dmg: float) -> void:
 	health -= dmg
+	bar.scale.x = health / maxHealth
 	var rand_scene = rng.randi_range(0, powerup_drops.powerup_scenes.size() - 1)
 	print_debug(rand_scene)
 	if health <= 0:
