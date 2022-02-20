@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Textures/Noise/opensimplexnoise_dissolve.tres" type="Texture" id=1]
 [ext_resource path="res://Textures/RoomPortal/OuterAura.png" type="Texture" id=2]
 [ext_resource path="res://Textures/RoomPortal/NumberRing.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/RoomGen/RoomPortal.gd" type="Script" id=4]
 
 [sub_resource type="VisualShaderNodeScalarFunc" id=1]
 output_port_for_preview = 0
@@ -396,6 +397,7 @@ tracks/2/keys = {
 }
 
 [node name="RoomPortal" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="CSGTorus" type="CSGTorus" parent="."]
 transform = Transform( 0.887209, 0, 0, 0, -4.36746e-08, -1, 0, 0.999159, -4.37114e-08, 0, 5, 0 )
