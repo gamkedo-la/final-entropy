@@ -15,7 +15,13 @@ func set_camera(cam: Camera):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
+	
 		
+func _unhandled_key_input(event):
+	var muted = AudioServer.is_bus_mute(0)
+	if event.is_action_pressed("mute"):
+		AudioServer.set_bus_mute(0, !muted)
+
 
 func reparent(child: Node, new_parent: Node):
 	if child:
