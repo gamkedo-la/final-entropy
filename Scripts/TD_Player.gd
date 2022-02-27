@@ -57,8 +57,8 @@ func rotate_to_cursor() -> void:
 func move_state(delta):
 	var move_dir = Vector3.ZERO
 	
-	move_dir.z = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
-	move_dir.x = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
+	move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	move_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 #	print_debug(move_dir)
 #	move_dir = move_dir.rotated(Vector3.UP, rotation.y)
 	if move_dir != Vector3.ZERO:

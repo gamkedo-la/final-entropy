@@ -93,6 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11713, 9.45838, 6.69308 )
 
 [node name="FireRateUp4" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45838, 9.77239 )
+rounds_per_minute_bonus = 3000.0
 
 [node name="FireRateUp5" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45838, 4.00313 )

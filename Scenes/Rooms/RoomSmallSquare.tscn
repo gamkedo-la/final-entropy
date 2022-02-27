@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BigDungeonRoom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PanoramaSky" id=2]
 
@@ -20,10 +19,17 @@ ssao_enabled = true
 dof_blur_far_quality = 2
 dof_blur_near_amount = 0.06
 
-[node name="World" type="Spatial"]
+[node name="Room" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="BigDungeonRoom" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, -6.61779 )
+
+[node name="Wall01" parent="BigDungeonRoom/WallsFloor" index="7"]
+visible = false
+
+[node name="Wall03" parent="BigDungeonRoom/WallsFloor" index="9"]
+visible = false
 
 [node name="RoomPortal" parent="BigDungeonRoom" instance=ExtResource( 6 )]
 transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -14.1678, -1.14128, 7.36595 )
@@ -34,11 +40,10 @@ transform = Transform( -1, 0, -1.78814e-07, 0, 1, 0, 1.78814e-07, 0, -1, -5.6737
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="TopDown_Player2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -6.71039 )
 
-[node name="OrthoCamera" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 6.18173e-08, -6.18173e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0.526043, 14.395, -2.9496 )
-near = 0.01
+[node name="CameraPos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 19.238, 0 )
 
 [editable path="BigDungeonRoom"]

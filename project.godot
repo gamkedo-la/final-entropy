@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Final Entropy"
-run/main_scene="res://Scenes/Worlds/World.tscn"
+run/main_scene="res://Scenes/Rooms/LevelController.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -73,6 +73,7 @@ window/size/height=1080
 [global]
 
 frames=false
+verbose=false
 
 [input]
 
