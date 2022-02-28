@@ -24,6 +24,8 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [node name="Actor" type="KinematicBody"]
+axis_lock_motion_y = true
+move_lock_y = true
 script = ExtResource( 3 )
 bar_path = NodePath("HealthBar")
 

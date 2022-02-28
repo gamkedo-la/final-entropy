@@ -26,15 +26,21 @@ enum State {
 	DEAD
 }
 
-var current_state: int = State.PATROL setget set_state
+var current_state: int = State.IDLE setget set_state
 
 #State Timers
+export (NodePath) var anim_tree
+var state_machine
 # Time to wait before firing on a newly engaged target, to avoid instant fire
-onready var engage_timer = Timer.new()
 export (float) var engage_speed = 2.0
+var engage_time: float = 0.0
 # Time to wait to return to patrolling/stop chasing a just lost target
-onready var patrol_timer = Timer.new()
 export (float) var patrol_wait = 3.0
+var patrol_time: float = 0.0
+#Time to idle before returning to patrol
+export (float) var idle_wait = 6.0
+var idle_time: float = 0.0
+
 var patrol_target: Vector3 = Vector3.ZERO
 export (float, 1.0, 100.0) var patrol_range = 6.0
 var patrol_reached: bool = true
@@ -54,7 +60,7 @@ onready var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	set_state(State.PATROL)
+#	set_state(State.IDLE)
 	DebugOverlay.draw.add_point(self, "patrol_target", 10, Color.red)
 		
 	if patrol_points_path.get_child_count() > 0:
@@ -62,7 +68,7 @@ func _ready() -> void:
 		patrol_points.append_array(patrol_points_path.get_children())
 		has_points = true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !actor:
 		return
 	
@@ -71,6 +77,8 @@ func _physics_process(_delta: float) -> void:
 			_patrol()
 		State.ENGAGE:
 			_engage()
+		State.IDLE:
+			_idle(delta)
 		State.SLEEP:
 			_sleep()
 		State.DEAD:
@@ -80,16 +88,31 @@ func _physics_process(_delta: float) -> void:
 
 func initialize(newActor):
 	actor = newActor
-	origin = actor.transform.origin
-	_install_state_timers()
+	origin = actor.transform.origin	
 	print_debug("Getting to AI Initialize")
 	steering.initialize(newActor, self)
+	var an_tree = get_node_or_null(anim_tree)
+	if is_instance_valid(an_tree):
+		state_machine = an_tree["parameters/playback"]
+		print_debug(state_machine)
+	else:
+		print_debug("Failed to initialize AnimationTree")
+	set_state(State.IDLE)
 
 func set_state(new_state: int) -> void:
 	if new_state == current_state:
 		return
 	current_state = new_state
 	emit_signal("state_changed", current_state)
+	if is_instance_valid(state_machine):
+		print_debug("Changing State Machine")
+		match current_state:
+			State.PATROL:
+				state_machine.travel("move")
+			State.IDLE:
+				state_machine.travel("idle")
+			_:
+				printerr("Error: Found a state for enemy that should not exist", self)
 	if current_state == State.DEAD && in_range == true:
 		emit_signal("near_player", false)
 		in_range = false
@@ -101,14 +124,6 @@ func get_current_target() -> Vector3:
 		return to_local(patrol_target)
 	else:
 		return Vector3.ZERO
-
-func _install_state_timers() -> void:
-	add_child(engage_timer)
-	engage_timer.wait_time = engage_speed
-	add_child(patrol_timer)
-	patrol_timer.wait_time = patrol_wait
-	add_child(origin_timer)
-	origin_timer.wait_time = origin_wait
 
 func _patrol() -> void:
 	if (patrol_target.distance_to(actor.global_transform.origin) < 0.5) || (!has_points && last_jp_cnt == 60):
@@ -146,3 +161,9 @@ func _sleep() -> void:
 func _dead() -> void:
 	pass
 
+func _idle(delta: float) -> void:
+	idle_time += delta
+	if idle_time > idle_wait:
+		idle_time = 0.0
+		set_state(State.PATROL)
+	pass

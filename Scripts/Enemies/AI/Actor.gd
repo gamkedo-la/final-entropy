@@ -7,6 +7,8 @@ var noise_y = 0
 onready var ai: AIController = $AI
 onready var hit_box: Area = $HitBox
 
+export (NodePath) var anim_tree
+
 export (NodePath) var body_path
 var body
 

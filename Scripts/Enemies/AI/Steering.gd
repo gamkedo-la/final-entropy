@@ -41,22 +41,24 @@ func _ready():
 	for i in num_rays:
 		var angle = i * 2 * PI / num_rays
 		ray_directions[i] = Vector3.FORWARD.rotated(Vector3.UP, angle)
+
 	
 
 		
 func _physics_process(delta: float) -> void:
 	if !initialized:
 		return
-	if ai.current_state != ai.State.SLEEP:
+
+	if ai.current_state != ai.State.IDLE:
 		move(delta)
 
 func move(delta: float) -> void:
-
 	set_interest()
 	set_danger()
 	choose_direction()
 	
 	var desired_velocity = chosen_dir.rotated(Vector3.UP, actor.rotation.y) * (actor.MAX_SPEED)
+#	var desired_velocity = chosen_dir * (actor.MAX_SPEED)
 	velocity = lerp(velocity, desired_velocity, steer_force * delta)
 	actor.look_at(actor.transform.origin + velocity, Vector3.UP)
 #	actor.rotation = velocity.
