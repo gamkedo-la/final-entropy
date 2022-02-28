@@ -19,9 +19,9 @@ var last_jp_cnt: int = 0
 var in_range: bool = false
 
 enum State {
+	IDLE,
 	PATROL,
 	ENGAGE,
-	IDLE,
 	SLEEP,
 	DEAD
 }
@@ -30,7 +30,10 @@ var current_state: int = State.IDLE setget set_state
 
 #State Timers
 export (NodePath) var anim_tree
+export (NodePath) var anim_play_node
+var an_tree: AnimationTree
 var state_machine
+var anim_player: AnimationPlayer
 # Time to wait before firing on a newly engaged target, to avoid instant fire
 export (float) var engage_speed = 2.0
 var engage_time: float = 0.0
@@ -91,12 +94,14 @@ func initialize(newActor):
 	origin = actor.transform.origin	
 	print_debug("Getting to AI Initialize")
 	steering.initialize(newActor, self)
-	var an_tree = get_node_or_null(anim_tree)
+	an_tree = get_node_or_null(anim_tree)
+	anim_player = get_node_or_null(anim_play_node)
 	if is_instance_valid(an_tree):
 		state_machine = an_tree["parameters/playback"]
 		print_debug(state_machine)
 	else:
 		print_debug("Failed to initialize AnimationTree")
+	ani_travel("idle")
 	set_state(State.IDLE)
 
 func set_state(new_state: int) -> void:
@@ -104,18 +109,22 @@ func set_state(new_state: int) -> void:
 		return
 	current_state = new_state
 	emit_signal("state_changed", current_state)
-	if is_instance_valid(state_machine):
-		print_debug("Changing State Machine")
-		match current_state:
-			State.PATROL:
-				state_machine.travel("move")
-			State.IDLE:
-				state_machine.travel("idle")
-			_:
-				printerr("Error: Found a state for enemy that should not exist", self)
+
 	if current_state == State.DEAD && in_range == true:
 		emit_signal("near_player", false)
 		in_range = false
+
+func ani_travel(tree_node) -> void:
+	if is_instance_valid(state_machine):
+		state_machine.travel(tree_node)
+#		print_debug("Changing State Machine")
+#		match current_state:
+#			State.PATROL:
+#				state_machine.travel("move")
+#			State.IDLE:
+#				state_machine.travel("idle")
+#			_:
+#				printerr("Error: Found a state for enemy that should not exist", self)
 
 func get_current_target() -> Vector3:
 	if target:
@@ -126,6 +135,9 @@ func get_current_target() -> Vector3:
 		return Vector3.ZERO
 
 func _patrol() -> void:
+	if state_machine:
+		an_tree.set("parameters/move_bt/TimeScale/scale", (steering.velocity.length() / actor.MAX_SPEED) * 2.0)
+#		print_debug(state_machine.)
 	if (patrol_target.distance_to(actor.global_transform.origin) < 0.5) || (!has_points && last_jp_cnt == 60):
 		patrol_reached = true
 		last_jp = 0.0
@@ -165,5 +177,6 @@ func _idle(delta: float) -> void:
 	idle_time += delta
 	if idle_time > idle_wait:
 		idle_time = 0.0
-		set_state(State.PATROL)
+#		set_state(State.PATROL)
+		ani_travel("move_bt")
 	pass
