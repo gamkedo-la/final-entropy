@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Models/enemy ground/eye.material" type="Material" id=1]
 [ext_resource path="res://Models/enemy ground/legs.material" type="Material" id=2]
@@ -309,9 +309,6 @@ tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1,
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "move"
-
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "move"
 
@@ -336,15 +333,10 @@ animation = "push"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-switch_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
@@ -357,8 +349,6 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/idle/node = SubResource( 10 )
 states/idle/position = Vector2( 131.667, 147.609 )
-states/move/node = SubResource( 11 )
-states/move/position = Vector2( 691.666, 88.7228 )
 states/move_bt/node = SubResource( 32 )
 states/move_bt/position = Vector2( 648.333, 221 )
 "states/pull leg/node" = SubResource( 12 )
@@ -367,7 +357,7 @@ states/move_bt/position = Vector2( 648.333, 221 )
 "states/pull leg in/position" = Vector2( 367.222, 48.3333 )
 states/push/node = SubResource( 13 )
 states/push/position = Vector2( 369, 237.667 )
-transitions = [ "idle", "pull leg", SubResource( 14 ), "pull leg", "move", SubResource( 15 ), "push", "pull leg", SubResource( 19 ), "push", "idle", SubResource( 20 ), "move", "pull leg in", SubResource( 25 ), "pull leg in", "idle", SubResource( 26 ), "pull leg", "move_bt", SubResource( 33 ), "move_bt", "pull leg in", SubResource( 34 ) ]
+transitions = [ "idle", "pull leg", SubResource( 14 ), "push", "pull leg", SubResource( 19 ), "push", "idle", SubResource( 20 ), "pull leg in", "idle", SubResource( 26 ), "pull leg", "move_bt", SubResource( 33 ), "move_bt", "pull leg in", SubResource( 34 ) ]
 start_node = "idle"
 graph_offset = Vector2( -162, -4 )
 
@@ -376,7 +366,7 @@ graph_offset = Vector2( -162, -4 )
 [sub_resource type="SphereShape" id=29]
 radius = 1.01306
 
-[node name="ENM_GRND" type="KinematicBody"]
+[node name="RollEPollE" type="KinematicBody"]
 script = ExtResource( 5 )
 MAX_SPEED = 2.0
 ACCELERATION = 1.0

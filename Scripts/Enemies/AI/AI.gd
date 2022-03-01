@@ -180,3 +180,6 @@ func _idle(delta: float) -> void:
 #		set_state(State.PATROL)
 		ani_travel("move_bt")
 	pass
+
+func _test_func() -> void:
+	print_debug("Yeah the animation played")

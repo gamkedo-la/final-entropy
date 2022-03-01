@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Rooms/RoomSmallSquare.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemies/ENM_GRND_NO_GUN.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
 [node name="LevelController" type="Spatial"]
 script = ExtResource( 2 )
@@ -31,4 +34,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56359, 0.1, 2.99625 )
 [node name="AnimationTree" parent="Rooms/Room/ENM_GRND/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 1 )
 
+[node name="TankerBot" parent="Rooms/Room" instance=ExtResource( 6 )]
+transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
+
+[node name="Position3D" type="Position3D" parent="Rooms/Room/TankerBot/AI/PatrolPoints" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
+
+[node name="Position3D2" type="Position3D" parent="Rooms/Room/TankerBot/AI/PatrolPoints" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326312, 0, -8.50067 )
+
+[node name="Position3D3" type="Position3D" parent="Rooms/Room/TankerBot/AI/PatrolPoints" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87087, 0, -2.79543 )
+
+[node name="AnimationTree" parent="Rooms/Room/TankerBot/easy common enemy ground" index="3"]
+parameters/playback = SubResource( 2 )
+
 [editable path="Rooms/Room/ENM_GRND"]
+[editable path="Rooms/Room/TankerBot"]
