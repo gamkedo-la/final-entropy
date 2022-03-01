@@ -41,7 +41,8 @@ func _ready():
 	for i in num_rays:
 		var angle = i * 2 * PI / num_rays
 		ray_directions[i] = Vector3.FORWARD.rotated(Vector3.UP, angle)
-
+		interest[i] = 0.0
+		danger[i] = 0.0
 	
 
 		

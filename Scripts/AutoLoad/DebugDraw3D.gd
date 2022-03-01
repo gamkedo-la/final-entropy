@@ -14,11 +14,13 @@ class Vector:
 		width = _width
 		color = _color
 
-	func draw(node, camera: Camera):
+	func draw(node, camera: Camera):		
 		var start = camera.unproject_position(object.global_transform.origin)
 		var end = camera.unproject_position(object.global_transform.origin + object.get(property) * scale)
 		node.draw_line(start, end, color, width)
 #		node.draw_triangle(end, start.direction_to(end), width*2, color)
+
+			
 
 class Point:
 	var object
@@ -114,14 +116,19 @@ func _process(delta):
 
 func _draw():
 	var camera = get_viewport().get_camera()
+	var trash_can = []
 	for vector in vectors:
-		vector.draw(self, camera)
+		if is_instance_valid(vector.object):
+			vector.draw(self, camera)
 	for point in points:
-		point.draw(self, camera)
+		if is_instance_valid(point.object):
+			point.draw(self, camera)
 	for steer_ray in steer_rays:
-		steer_ray.draw(self, camera)
+		if is_instance_valid(steer_ray.object):
+			steer_ray.draw(self, camera)
 	for ray_hit in ray_hits:
-		ray_hit.draw(self, camera)
+		if is_instance_valid(ray_hit.object):
+			ray_hit.draw(self, camera)
 		
 func add_vector(object, property, scale, width, color):
 	vectors.append(Vector.new(object, property, scale, width, color))
