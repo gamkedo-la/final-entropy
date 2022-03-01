@@ -60,10 +60,12 @@ func move(delta: float) -> void:
 	var desired_velocity = chosen_dir.rotated(Vector3.UP, actor.rotation.y) * (actor.MAX_SPEED)
 #	var desired_velocity = chosen_dir * (actor.MAX_SPEED)
 	velocity = lerp(velocity, desired_velocity, steer_force * delta)
-	actor.look_at(actor.transform.origin + velocity, Vector3.UP)
-#	actor.rotation = velocity.
+	var new_tform = actor.transform.looking_at(actor.transform.origin + velocity, Vector3.UP)
+	actor.transform = actor.transform.interpolate_with(new_tform, steer_force * delta)
 
 	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
+
+
 
 func initialize(newActor: Actor, newAI: AIController):
 
