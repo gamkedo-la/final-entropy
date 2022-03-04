@@ -27,12 +27,6 @@ script = ExtResource( 1 )
 [node name="BigDungeonRoom" parent="Stage" instance=ExtResource( 3 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, -6.61779 )
 
-[node name="Wall01" parent="Stage/BigDungeonRoom/WallsFloor" index="7"]
-visible = false
-
-[node name="Wall03" parent="Stage/BigDungeonRoom/WallsFloor" index="9"]
-visible = false
-
 [node name="RoomPortal" parent="Stage/BigDungeonRoom" instance=ExtResource( 6 )]
 transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -14.1678, -1.14128, 7.36595 )
 

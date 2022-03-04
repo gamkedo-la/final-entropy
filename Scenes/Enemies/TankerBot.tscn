@@ -702,7 +702,7 @@ nodes/Animation/position = Vector2( 66.6667, 133.333 )
 nodes/TimeScale/node = SubResource( 31 )
 nodes/TimeScale/position = Vector2( 360, 133.333 )
 nodes/output/position = Vector2( 626.667, 160 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "run loop"
@@ -715,7 +715,7 @@ nodes/Animation/position = Vector2( 333.333, 160 )
 nodes/TimeScale/node = SubResource( 34 )
 nodes/TimeScale/position = Vector2( 613.333, 160 )
 nodes/output/position = Vector2( 813.333, 146.667 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=22]
 animation = "prepatrol"
@@ -775,7 +775,7 @@ anim_play_node = NodePath("../easy common enemy ground/AnimationPlayer")
 transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 4.2564, 0 )
 
 [node name="easy common enemy ground" type="Spatial" parent="." index="3"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0 )
 
 [node name="Armature" type="Spatial" parent="easy common enemy ground" index="0"]
 transform = Transform( -0.995262, -0.0081467, -0.0968909, -0.00814659, -0.985993, 0.166585, -0.0968909, 0.166585, 0.981255, 0, 2.391, 0.242387 )
@@ -898,5 +898,5 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="HitBox" index="0"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0290489, 1.54745, 0 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0290489, 1.54745, 0 )
 shape = SubResource( 20 )

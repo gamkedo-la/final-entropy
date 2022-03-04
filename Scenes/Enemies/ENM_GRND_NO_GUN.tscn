@@ -320,7 +320,7 @@ nodes/Animation/position = Vector2( 106.667, 146.667 )
 nodes/TimeScale/node = SubResource( 31 )
 nodes/TimeScale/position = Vector2( 333.333, 146.667 )
 nodes/output/position = Vector2( 546.667, 186.667 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=24]
 animation = "pull leg in"
@@ -359,7 +359,7 @@ states/push/node = SubResource( 13 )
 states/push/position = Vector2( 369, 237.667 )
 transitions = [ "idle", "pull leg", SubResource( 14 ), "push", "pull leg", SubResource( 19 ), "push", "idle", SubResource( 20 ), "pull leg in", "idle", SubResource( 26 ), "pull leg", "move_bt", SubResource( 33 ), "move_bt", "pull leg in", SubResource( 34 ) ]
 start_node = "idle"
-graph_offset = Vector2( -162, -4 )
+graph_offset = Vector2( -162, 21.12 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
@@ -393,7 +393,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 3 )
 
 [node name="easy common enemy ground with no gun" type="Spatial" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.514333, 0 )
+transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.514333, 0 )
 
 [node name="Armature" type="Spatial" parent="easy common enemy ground with no gun"]
 
@@ -451,5 +451,5 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0290489, 0.428374, 0 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0290489, 0.428374, 0 )
 shape = SubResource( 29 )
