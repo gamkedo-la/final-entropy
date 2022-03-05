@@ -25,12 +25,6 @@ script = ExtResource( 2 )
 [node name="TankerBot" parent="Rooms/Room" instance=ExtResource( 6 )]
 transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
 
-[node name="AI" parent="Rooms/Room/TankerBot" index="1"]
-engage_speed = 2.0
-patrol_wait = 3.0
-idle_wait = 6.0
-patrol_range = 6.0
-
 [node name="Position3D" type="Position3D" parent="Rooms/Room/TankerBot/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
 
@@ -45,12 +39,6 @@ parameters/playback = SubResource( 2 )
 
 [node name="RollePolle" parent="Rooms/Room" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59512, -17.0484 )
-
-[node name="AI" parent="Rooms/Room/RollePolle" index="1"]
-engage_speed = 2.0
-patrol_wait = 3.0
-idle_wait = 6.0
-patrol_range = 6.0
 
 [node name="Position3D" type="Position3D" parent="Rooms/Room/RollePolle/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392197, 0, 7.43599 )
