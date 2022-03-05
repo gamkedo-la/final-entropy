@@ -189,4 +189,5 @@ func _on_AggroBox_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
 		set_state(State.ENGAGE)
+		ani_travel("move_bt")
 	pass # Replace with function body.
