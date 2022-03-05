@@ -173,7 +173,7 @@ tracks/2/keys = {
 "values": [ 0.0, 100.0 ]
 }
 
-[node name="TopDown_Player" type="KinematicBody"]
+[node name="TopDown_Player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 1 )
 GunPosPath = NodePath("WeaponMount/BaseGun")
 player = NodePath("Player")

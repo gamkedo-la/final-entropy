@@ -25,6 +25,8 @@ var maxHealth
 var velocity: Vector3 = Vector3.ZERO
 onready var powerup_drops = preload("res://Resources/PowerUps.tres")
 onready var rng = RandomNumberGenerator.new()
+export (float) var aggro_radius = 3.0
+onready var aggro_sphere: CollisionShape = $AggroBox/AggroSphere
 
 func _ready():
 	randomize()
@@ -39,7 +41,7 @@ func _ready():
 		assert(con_res == OK)
 	maxHealth = health
 	bar = get_node(bar_path)
-
+	aggro_sphere.shape.radius = aggro_radius
 
 func _physics_process(delta) -> void:
 #	move_state(delta)

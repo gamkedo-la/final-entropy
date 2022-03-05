@@ -1,33 +1,12 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://Models/enemy ground/eye.material" type="Material" id=1]
-[ext_resource path="res://Models/enemy ground/legs.material" type="Material" id=2]
-[ext_resource path="res://Models/enemy ground/base.material" type="Material" id=3]
-[ext_resource path="res://Models/enemy ground/glass.material" type="Material" id=4]
-[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Enemies/AI/AI.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/Enemies/AI/Steering.gd" type="Script" id=7]
+[ext_resource path="res://Models/enemy ground/base.material" type="Material" id=1]
+[ext_resource path="res://Models/enemy ground/eye.material" type="Material" id=2]
+[ext_resource path="res://Models/enemy ground/glass.material" type="Material" id=3]
+[ext_resource path="res://Models/enemy ground/legs.material" type="Material" id=4]
+[ext_resource path="res://Scenes/Enemies/Actor.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CapsuleShape" id=4]
-radius = 0.304886
-height = 0.527803
-
-[sub_resource type="QuadMesh" id=5]
-
-[sub_resource type="SpatialMaterial" id=3]
-render_priority = 1
-params_billboard_mode = 1
-params_billboard_keep_scale = true
-params_use_alpha_scissor = true
-params_alpha_scissor_threshold = 0.98
-albedo_color = Color( 1, 0, 0, 1 )
-emission_enabled = true
-emission = Color( 1, 0, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="ArrayMesh" id=7]
+[sub_resource type="ArrayMesh" id=35]
 resource_name = "easy common enemy ground with no gun_Sphere"
 surfaces/0 = {
 "aabb": AABB( -1.02314, 0.684834, -0.356163, 2.04627, 1.03095, 1.45234 ),
@@ -36,7 +15,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194903,
 "index_count": 3360,
-"material": ExtResource( 1 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -1.02314, 0.684834, -0.356163, 2.04627, 1.03095, 1.45234 ) ],
 "vertex_count": 810
@@ -48,7 +27,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194903,
 "index_count": 9648,
-"material": ExtResource( 3 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -1, 0.0752133, -1, 2, 1.83307, 1.9824 ) ],
 "vertex_count": 2331
@@ -60,7 +39,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194903,
 "index_count": 7344,
-"material": ExtResource( 2 ),
+"material": ExtResource( 4 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -0.972992, 0.0761204, -0.813051, 1.94349, 1.16964, 1.6356 ), AABB( -0.131688, 0.0761204, 0.145915, 1.10219, 1.16964, 0.676632 ), AABB( -0.972992, 0.0761204, 0.141304, 1.10219, 1.16964, 0.676632 ), AABB( -0.131688, 0.0761204, -0.808439, 1.10219, 1.16964, 0.676632 ), AABB( -0.972992, 0.0761204, -0.813051, 1.10219, 1.16964, 0.676632 ) ],
 "vertex_count": 1616
@@ -72,13 +51,13 @@ surfaces/3 = {
 "blend_shape_data": [  ],
 "format": 2194903,
 "index_count": 102,
-"material": ExtResource( 4 ),
+"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -0.209126, 0.770585, 1.06403, 0.418247, 0.418282, 0.00782204 ) ],
 "vertex_count": 36
 }
 
-[sub_resource type="Skin" id=8]
+[sub_resource type="Skin" id=36]
 resource_name = "Skin"
 bind_count = 5
 bind/0/name = "root"
@@ -97,7 +76,7 @@ bind/4/name = "leg3"
 bind/4/bone = -1
 bind/4/pose = Transform( 0, -1.62921e-07, 1, -1, 0, 0, 0, -1, -1.62921e-07, 0.359247, -0.287024, 0.643966 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=37]
 resource_name = "idle"
 length = 1.83333
 loop = true
@@ -137,7 +116,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, -0.0399526, 0.0800214, -0.0347859, 0, 0, 0.999395, 1, 1, 1, 0.0666667, 1, 0, -0.0399526, 0.0800214, -0.0346687, 0.00265143, -0.00098295, 0.999395, 1, 1, 1, 0.133333, 1, 0, -0.0399526, 0.0800214, -0.0339075, 0.0197115, -0.00730754, 0.999204, 1, 1, 1, 0.333333, 1, 0, -0.0399526, 0.0800214, -0.0295562, 0.11268, -0.0417731, 0.992313, 1, 1, 1, 0.4, 1, 0, -0.0399526, 0.0800214, -0.0288518, 0.127068, -0.047107, 0.990355, 1, 1, 1, 0.466667, 1, 0, -0.0399526, 0.0800214, -0.0290261, 0.125884, -0.0466683, 0.990522, 1, 1, 1, 0.533333, 1, 0, -0.0399526, 0.0800214, -0.0299345, 0.114868, -0.0425844, 0.992016, 1, 1, 1, 0.6, 1, 0, -0.0399526, 0.0800214, -0.0312492, 0.0966647, -0.0358359, 0.994181, 1, 1, 1, 0.866667, 1, 0, -0.0399526, 0.0800214, -0.0346537, -0.015408, 0.0057121, 0.999264, 1, 1, 1, 1.06667, 1, 0, -0.0399526, 0.0800214, -0.0312492, -0.0966647, 0.035836, 0.994181, 1, 1, 1, 1.13333, 1, 0, -0.0399526, 0.0800214, -0.0299345, -0.114868, 0.0425844, 0.992016, 1, 1, 1, 1.2, 1, 0, -0.0399526, 0.0800214, -0.0290261, -0.125884, 0.0466683, 0.990522, 1, 1, 1, 1.26667, 1, 0, -0.0399526, 0.0800214, -0.0288022, -0.128075, 0.0474803, 0.990209, 1, 1, 1, 1.33333, 1, 0, -0.0399526, 0.0800214, -0.0291134, -0.121744, 0.0451333, 0.991107, 1, 1, 1, 1.4, 1, 0, -0.0399526, 0.0800214, -0.0298053, -0.107552, 0.0398721, 0.992952, 1, 1, 1, 1.73333, 1, 0, -0.0399526, 0.0800214, -0.0343256, -0.0103738, 0.00384583, 0.999349, 1, 1, 1, 1.8, 1, 0, -0.0399526, 0.0800214, -0.0347195, -0.00150247, 0.000557004, 0.999396, 1, 1, 1, 1.83333, 1, 0, -0.0399526, 0.0800214, -0.0347859, 0, 0, 0.999395, 1, 1, 1 )
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=38]
 length = 0.833333
 loop = true
 tracks/0/type = "transform"
@@ -176,7 +155,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1, 0.0666667, 1, 0, 0.0473362, -0.0889838, 0.0397803, 0, 0, 0.999208, 1, 1, 1, 0.133333, 1, 0, 0.0473362, -0.0889838, 0.0340153, 0, 0, 0.999421, 1, 1, 1, 0.333333, 1, 0, 0.0473362, -0.0889838, 0.00256051, 0, 0, 0.999997, 1, 1, 1, 0.4, 1, 0, 0.0473362, -0.0889838, -0.0023465, 0, 0, 0.999997, 1, 1, 1, 0.466667, 1, 0, 0.0473362, -0.0889838, -0.0010604, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0.0473362, -0.0889838, 0.00550123, 0, 0, 0.999985, 1, 1, 1, 0.733333, 1, 0, 0.0473362, -0.0889838, 0.0341902, 0, 0, 0.999415, 1, 1, 1, 0.8, 1, 0, 0.0473362, -0.0889838, 0.0397008, 0, 0, 0.999212, 1, 1, 1, 0.833333, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1 )
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=39]
 length = 2.0
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:leg1")
@@ -228,7 +207,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=40]
 resource_name = "pull leg in"
 length = 2.0
 tracks/0/type = "transform"
@@ -267,7 +246,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0.000797655, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1, 2.00256, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=41]
 resource_name = "push"
 length = 1.79167
 tracks/0/type = "transform"
@@ -346,7 +325,7 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
-[sub_resource type="AnimationNodeStateMachine" id=21]
+[sub_resource type="AnimationNodeStateMachine" id=42]
 states/idle/node = SubResource( 10 )
 states/idle/position = Vector2( 131.667, 147.609 )
 states/move_bt/node = SubResource( 32 )
@@ -359,45 +338,28 @@ states/push/node = SubResource( 13 )
 states/push/position = Vector2( 369, 237.667 )
 transitions = [ "idle", "pull leg", SubResource( 14 ), "push", "pull leg", SubResource( 19 ), "push", "idle", SubResource( 20 ), "pull leg in", "idle", SubResource( 26 ), "pull leg", "move_bt", SubResource( 33 ), "move_bt", "pull leg in", SubResource( 34 ) ]
 start_node = "idle"
-graph_offset = Vector2( -162, -4 )
+graph_offset = Vector2( -282, 38 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=43]
 
-[sub_resource type="SphereShape" id=29]
+[sub_resource type="SphereShape" id=44]
 radius = 1.01306
 
-[node name="RollEPollE" type="KinematicBody"]
-script = ExtResource( 5 )
-MAX_SPEED = 2.0
+[node name="RollePolle" instance=ExtResource( 5 )]
+MAX_SPEED = 3.0
 ACCELERATION = 1.0
-bar_path = NodePath("HealthBar")
 health = 100.0
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00306821, 0 )
-shape = SubResource( 4 )
-
-[node name="AI" type="Spatial" parent="."]
-script = ExtResource( 6 )
+[node name="AI" parent="." index="1"]
 anim_tree = NodePath("../easy common enemy ground with no gun/AnimationTree")
 anim_play_node = NodePath("../easy common enemy ground with no gun/AnimationPlayer")
 
-[node name="Steering" type="Spatial" parent="AI"]
-script = ExtResource( 7 )
-
-[node name="PatrolPoints" type="Spatial" parent="AI"]
-
-[node name="HealthBar" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 2.19685, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 3 )
-
-[node name="easy common enemy ground with no gun" type="Spatial" parent="."]
+[node name="easy common enemy ground with no gun" type="Spatial" parent="." index="4"]
 transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.514333, 0 )
 
-[node name="Armature" type="Spatial" parent="easy common enemy ground with no gun"]
+[node name="Armature" type="Spatial" parent="easy common enemy ground with no gun" index="0"]
 
-[node name="Skeleton" type="Skeleton" parent="easy common enemy ground with no gun/Armature"]
+[node name="Skeleton" type="Skeleton" parent="easy common enemy ground with no gun/Armature" index="0"]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 0, 0, 0, 0.99758, -0.0695297, 0, 0.0695297, 0.99758, 0, 0.0454197, -0.0770498 )
@@ -424,32 +386,33 @@ bones/4/rest = Transform( 0, -1, 5.96046e-08, -5.96046e-08, -1.19209e-07, -1, 1,
 bones/4/enabled = true
 bones/4/bound_children = [  ]
 
-[node name="Sphere" type="MeshInstance" parent="easy common enemy ground with no gun/Armature/Skeleton"]
-mesh = SubResource( 7 )
-skin = SubResource( 8 )
+[node name="Sphere" type="MeshInstance" parent="easy common enemy ground with no gun/Armature/Skeleton" index="0"]
+mesh = SubResource( 35 )
+skin = SubResource( 36 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="easy common enemy ground with no gun"]
-anims/idle = SubResource( 9 )
-anims/move = SubResource( 27 )
-"anims/pull leg" = SubResource( 28 )
-"anims/pull leg in" = SubResource( 23 )
-anims/push = SubResource( 6 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="easy common enemy ground with no gun" index="1"]
+autoplay = "idle"
+anims/idle = SubResource( 37 )
+anims/move = SubResource( 38 )
+"anims/pull leg" = SubResource( 39 )
+"anims/pull leg in" = SubResource( 40 )
+anims/push = SubResource( 41 )
 
-[node name="AnimationTree" type="AnimationTree" parent="easy common enemy ground with no gun"]
-tree_root = SubResource( 21 )
+[node name="AnimationTree" type="AnimationTree" parent="easy common enemy ground with no gun" index="2"]
+tree_root = SubResource( 42 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 22 )
+parameters/playback = SubResource( 43 )
 parameters/move_bt/TimeScale/scale = 1.0
 
-[node name="HitBox" type="Area" parent="."]
+[node name="HitBox" type="Area" parent="." index="5"]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+[node name="CollisionShape" type="CollisionShape" parent="HitBox" index="0"]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0290489, 0.428374, 0 )
-shape = SubResource( 29 )
+shape = SubResource( 44 )

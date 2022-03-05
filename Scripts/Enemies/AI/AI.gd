@@ -183,3 +183,10 @@ func _idle(delta: float) -> void:
 
 func _test_func() -> void:
 	print_debug("Yeah the animation played")
+
+
+func _on_AggroBox_body_entered(body):
+	if body.is_in_group("player"):
+		target = body
+		set_state(State.ENGAGE)
+	pass # Replace with function body.

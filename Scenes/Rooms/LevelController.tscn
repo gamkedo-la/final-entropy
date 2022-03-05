@@ -4,12 +4,12 @@
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Enemies/ENM_GRND_NO_GUN.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemies/RollePolle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=6]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [node name="LevelController" type="Spatial"]
 script = ExtResource( 2 )
@@ -22,21 +22,14 @@ script = ExtResource( 2 )
 
 [node name="Room" parent="Rooms" instance=ExtResource( 1 )]
 
-[node name="ENM_GRND" parent="Rooms/Room" instance=ExtResource( 5 )]
-transform = Transform( -0.947957, 0, -0.318397, 0, 1, 0, 0.318397, 0, -0.947957, -1.23584, 1.46266, -16.0446 )
-health = 50.0
-
-[node name="Position3D" type="Position3D" parent="Rooms/Room/ENM_GRND/AI/PatrolPoints" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88391, 0.0995092, -3.41483 )
-
-[node name="Position3D2" type="Position3D" parent="Rooms/Room/ENM_GRND/AI/PatrolPoints" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56359, 0.1, 2.99625 )
-
-[node name="AnimationTree" parent="Rooms/Room/ENM_GRND/easy common enemy ground with no gun" index="2"]
-parameters/playback = SubResource( 1 )
-
 [node name="TankerBot" parent="Rooms/Room" instance=ExtResource( 6 )]
 transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
+
+[node name="AI" parent="Rooms/Room/TankerBot" index="1"]
+engage_speed = 2.0
+patrol_wait = 3.0
+idle_wait = 6.0
+patrol_range = 6.0
 
 [node name="Position3D" type="Position3D" parent="Rooms/Room/TankerBot/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
@@ -50,5 +43,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87087, 0, -2.79543 )
 [node name="AnimationTree" parent="Rooms/Room/TankerBot/easy common enemy ground" index="3"]
 parameters/playback = SubResource( 2 )
 
-[editable path="Rooms/Room/ENM_GRND"]
+[node name="RollePolle" parent="Rooms/Room" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59512, -17.0484 )
+
+[node name="AI" parent="Rooms/Room/RollePolle" index="1"]
+engage_speed = 2.0
+patrol_wait = 3.0
+idle_wait = 6.0
+patrol_range = 6.0
+
+[node name="Position3D" type="Position3D" parent="Rooms/Room/RollePolle/AI/PatrolPoints" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392197, 0, 7.43599 )
+
+[node name="Position3D2" type="Position3D" parent="Rooms/Room/RollePolle/AI/PatrolPoints" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20098, 0, 2.68125 )
+
+[node name="Position3D3" type="Position3D" parent="Rooms/Room/RollePolle/AI/PatrolPoints" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60667, 0, -2.10552 )
+
+[node name="AnimationTree" parent="Rooms/Room/RollePolle/easy common enemy ground with no gun" index="2"]
+parameters/playback = SubResource( 3 )
+
 [editable path="Rooms/Room/TankerBot"]
+[editable path="Rooms/Room/RollePolle"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Enemies/AI/Steering.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/AI/AI.gd" type="Script" id=2]
@@ -23,6 +23,9 @@ emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
 
+[sub_resource type="SphereShape" id=4]
+radius = 2.88364
+
 [node name="Actor" type="KinematicBody"]
 axis_lock_motion_y = true
 move_lock_y = true
@@ -45,3 +48,11 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="AggroBox" type="Area" parent="."]
+monitorable = false
+
+[node name="AggroSphere" type="CollisionShape" parent="AggroBox"]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="AggroBox" to="AI" method="_on_AggroBox_body_entered"]
