@@ -4,6 +4,8 @@ signal state_changed(new_state)
 signal near_player
 
 onready var steering: Spatial = $Steering
+onready var aim_ray: RayCast = $AimRay
+onready var weapon_mount: Spatial = $Weapons
 
 var actor = null
 var actor_velocity: Vector3 = Vector3.ZERO
@@ -26,6 +28,15 @@ enum State {
 	DEAD
 }
 
+#Free fire will fire while moving
+#FIXED fire will stop, anchor and fire a barrage
+enum EngageMode {
+	FREE,
+	FIXED,
+	NONPROJECTILE
+}
+
+export (EngageMode) var engage_style = EngageMode.FREE
 var current_state: int = State.IDLE setget set_state
 
 #State Timers
@@ -164,7 +175,10 @@ func _patrol() -> void:
 		last_jp = 0
 	last_jp = journey_percent
 
-func _engage() -> void:
+func _engage() -> void:	
+	if aim_ray.is_colliding():
+		if aim_ray.get_collider().get_parent() is Player:
+			pass
 	pass
 
 func _sleep() -> void:

@@ -1,5 +1,5 @@
 extends KinematicBody
-
+class_name Player
 export(NodePath) var GunPosPath = ""
 export(NodePath) var player;
 

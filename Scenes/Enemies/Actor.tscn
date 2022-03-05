@@ -44,6 +44,15 @@ script = ExtResource( 1 )
 
 [node name="PatrolPoints" type="Spatial" parent="AI"]
 
+[node name="AimRay" type="RayCast" parent="AI"]
+enabled = true
+cast_to = Vector3( 0, 0, -15 )
+collision_mask = 2
+collide_with_areas = true
+debug_shape_thickness = 3.0
+
+[node name="Weapons" type="Spatial" parent="AI"]
+
 [node name="HealthBar" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 2 )

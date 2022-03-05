@@ -51,7 +51,8 @@ func _process(delta) -> void:
 #	print_debug(powerup_drops.powerup_scenes)
 	pass
 
-	
+func grow_aggro() -> void:
+	aggro_sphere.shape.radius = aggro_radius * 5
 
 func move_state(delta) -> void:
 	var move_dir: Vector3 = Vector3.ZERO
@@ -86,6 +87,8 @@ func drop_loot() -> void:
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("bullet"):
+		if ai.current_state != ai.State.ENGAGE:
+			grow_aggro()
 		take_damage(area.damage)
 		area.hit()
 	pass # Replace with function body.

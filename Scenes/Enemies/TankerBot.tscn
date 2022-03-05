@@ -770,6 +770,7 @@ aggro_radius = 6.0
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25143, 0 )
 
 [node name="AI" parent="." index="1"]
+engage_style = 1
 anim_tree = NodePath("../easy common enemy ground/AnimationTree")
 anim_play_node = NodePath("../easy common enemy ground/AnimationPlayer")
 
