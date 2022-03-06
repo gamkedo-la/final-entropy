@@ -64,8 +64,8 @@ config/icon="res://icon.png"
 
 Global="*res://Scripts/AutoLoad/Global.gd"
 PlayerVars="*res://Scripts/AutoLoad/PlayerVars.gd"
-GUIOverlay="*res://Scenes/Overlay/GUIOverlay.tscn"
 DebugOverlay="*res://Scenes/Overlay/DebugOverlay.tscn"
+GUIOverlay="*res://Scenes/Overlay/GUIOverlay.tscn"
 
 [debug]
 

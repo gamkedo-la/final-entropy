@@ -49,6 +49,13 @@ var anim_player: AnimationPlayer
 # Time to wait before firing on a newly engaged target, to avoid instant fire
 export (float) var engage_speed = 2.0
 var engage_time: float = 0.0
+# Time to continue firing on a target before resuming engage
+export (float) var fire_time = 2.0
+var firing_time: float = 0.0
+# Time to wait to begin firing again
+export (float) var cooldown_time = 4.0
+var cooldown: float = 0.0
+var cooling_down: bool = false
 # Time to wait to return to patrolling/stop chasing a just lost target
 export (float) var patrol_wait = 3.0
 var patrol_time: float = 0.0
@@ -91,9 +98,9 @@ func _physics_process(delta: float) -> void:
 		State.PATROL:
 			_patrol()
 		State.ENGAGE:
-			_engage()
+			_engage(delta)
 		State.FIXEDAIM:
-			_engage()
+			_engage(delta)
 		State.IDLE:
 			_idle(delta)
 		State.SLEEP:
@@ -108,6 +115,8 @@ func initialize(newActor):
 	origin = actor.transform.origin	
 	print_debug("Getting to AI Initialize")
 	steering.initialize(newActor, self)
+	for weap in weapon_mount.get_children():
+		weap.initialize(actor, steering, self)
 	an_tree = get_node_or_null(anim_tree)
 	anim_player = get_node_or_null(anim_play_node)
 	if is_instance_valid(an_tree):
@@ -149,9 +158,24 @@ func get_current_target() -> Vector3:
 	else:
 		return Vector3.ZERO
 
-func fixed_fire() -> void:
-	set_state(State.FIXEDAIM)
-	pass
+func fixed_fire(delta: float) -> void:
+	if current_state != State.FIXEDAIM:
+		engage_time = 0.0
+		set_state(State.FIXEDAIM)
+		return
+	engage_time += delta
+	if engage_time > engage_speed:
+		firing_time += delta
+		if firing_time < fire_time:
+			for weapon in weapon_mount.get_children():
+				if weapon.has_method("fire"):
+					weapon.fire()
+		else: 
+			engage_time = 0.0
+			firing_time = 0.0
+			cooling_down = true
+			set_state(State.ENGAGE)
+
 
 func free_fire() -> void:
 	pass
@@ -189,19 +213,24 @@ func _patrol() -> void:
 		last_jp = 0
 	last_jp = journey_percent
 
-func _engage() -> void:	
-	if aim_ray.is_colliding():
-		if aim_ray.get_collider().get_parent() is Player:
-			match engage_style:
-				EngageMode.FIXED:
-					print_debug("FIXED FIRE")					
-					fixed_fire()
-				EngageMode.FREE:
-					free_fire()
-				EngageMode.NONPROJECTILE:
-					body_attack()
-				_:
-					printerr("Error: Found a engage mode for enemy that should not exist", self)
+func _engage(delta: float) -> void:
+	if !cooling_down:
+		if aim_ray.is_colliding():
+			if aim_ray.get_collider().get_parent() is Player:
+				match engage_style:
+					EngageMode.FIXED:
+						fixed_fire(delta)
+					EngageMode.FREE:
+						free_fire()
+					EngageMode.NONPROJECTILE:
+						body_attack()
+					_:
+						printerr("Error: Found a engage mode for enemy that should not exist", self)
+	else:
+		cooldown += delta
+		if cooldown > cooldown_time:
+			cooldown = 0.0
+			cooling_down = false
 			
 
 

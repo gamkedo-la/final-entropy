@@ -29,6 +29,7 @@ var danger_pos = []
 
 var chosen_dir: Vector3 = Vector3.ZERO
 var acceleration: Vector3 = Vector3.ZERO
+var knockback: Vector3 = Vector3.ZERO
 var steer_time: float = 1.0
 var initialized: bool = false
 
@@ -55,7 +56,10 @@ func _physics_process(delta: float) -> void:
 	if (ai.current_state == ai.State.FIXEDAIM):
 		aim(delta)
 
-
+func register_weapon(weap) -> void:
+	if not weap.is_connected("knockback", self, "_inc_knockback"):
+		var con_res = weap.connect("knockback", self, "_inc_knockback")
+		assert(con_res == OK)
 func move(delta: float) -> void:
 	set_interest()
 	set_danger()
@@ -70,16 +74,16 @@ func move(delta: float) -> void:
 	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func aim(delta: float) -> void:
-	print_debug("Aiming")
 	set_interest()
 	set_danger()
 	choose_direction()
 	var desired_velocity = chosen_dir.rotated(Vector3.UP, actor.rotation.y) * (actor.MAX_SPEED)
-#	velocity = lerp(velocity, desired_velocity, steer_force * delta)
+	velocity = lerp(velocity, Vector3.ZERO, steer_force * delta)
 	var new_tform = actor.transform.looking_at(actor.transform.origin + desired_velocity, Vector3.UP)
 	actor.transform = actor.transform.interpolate_with(new_tform, 0.1)
-	
-#	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
+	velocity += knockback.rotated(Vector3.UP, actor.rotation.y)
+	knockback = Vector3.ZERO
+	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func initialize(newActor: Actor, newAI: AIController):
 	
@@ -124,3 +128,6 @@ func choose_direction() -> void:
 	for i in num_rays:
 		chosen_dir += ray_directions[i] * interest[i]
 	chosen_dir = chosen_dir.normalized()
+
+func _inc_knockback(amount: float) -> void:
+	knockback += Vector3(0.0, 0.0, amount)

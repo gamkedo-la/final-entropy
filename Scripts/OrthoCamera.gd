@@ -26,7 +26,8 @@ func _ready():
 	noise.octaves = 2
 	Global.set_camera(self)
 	if not Global.is_connected("shake", self, "increase_trauma"):
-		assert(Global.connect("shake", self, "increase_trauma") == OK)
+		var con_res = Global.connect("shake", self, "increase_trauma")
+		assert(con_res == OK)
 	indicator.set_as_toplevel(true)
 	pass # Replace with function body.
 
