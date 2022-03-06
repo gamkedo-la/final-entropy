@@ -24,6 +24,7 @@ enum State {
 	IDLE,
 	PATROL,
 	ENGAGE,
+	FIXEDAIM,
 	SLEEP,
 	DEAD
 }
@@ -91,6 +92,8 @@ func _physics_process(delta: float) -> void:
 			_patrol()
 		State.ENGAGE:
 			_engage()
+		State.FIXEDAIM:
+			_engage()
 		State.IDLE:
 			_idle(delta)
 		State.SLEEP:
@@ -120,7 +123,8 @@ func set_state(new_state: int) -> void:
 		return
 	current_state = new_state
 	emit_signal("state_changed", current_state)
-
+	if current_state == State.ENGAGE && engage_style != EngageMode.NONPROJECTILE:
+		ani_travel("move_bt_engage")
 	if current_state == State.DEAD && in_range == true:
 		emit_signal("near_player", false)
 		in_range = false
@@ -144,6 +148,16 @@ func get_current_target() -> Vector3:
 		return to_local(patrol_target)
 	else:
 		return Vector3.ZERO
+
+func fixed_fire() -> void:
+	set_state(State.FIXEDAIM)
+	pass
+
+func free_fire() -> void:
+	pass
+	
+func body_attack() -> void:
+	pass
 
 func _patrol() -> void:
 	if state_machine:
@@ -178,8 +192,18 @@ func _patrol() -> void:
 func _engage() -> void:	
 	if aim_ray.is_colliding():
 		if aim_ray.get_collider().get_parent() is Player:
-			pass
-	pass
+			match engage_style:
+				EngageMode.FIXED:
+					print_debug("FIXED FIRE")					
+					fixed_fire()
+				EngageMode.FREE:
+					free_fire()
+				EngageMode.NONPROJECTILE:
+					body_attack()
+				_:
+					printerr("Error: Found a engage mode for enemy that should not exist", self)
+			
+
 
 func _sleep() -> void:
 	pass
@@ -203,5 +227,5 @@ func _on_AggroBox_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
 		set_state(State.ENGAGE)
-		ani_travel("move_bt")
 	pass # Replace with function body.
+

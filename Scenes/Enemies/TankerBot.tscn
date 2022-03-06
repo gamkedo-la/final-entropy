@@ -710,6 +710,7 @@ animation = "run loop"
 [sub_resource type="AnimationNodeTimeScale" id=34]
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
+graph_offset = Vector2( 66, 62 )
 nodes/Animation/node = SubResource( 33 )
 nodes/Animation/position = Vector2( 333.333, 160 )
 nodes/TimeScale/node = SubResource( 34 )
@@ -754,6 +755,7 @@ states/prepatrol/node = SubResource( 22 )
 states/prepatrol/position = Vector2( 529.667, 315.667 )
 transitions = [ "idle", "arm up", SubResource( 9 ), "arm up", "move_bt_engage", SubResource( 10 ), "move_bt", "arm up", SubResource( 13 ), "arm down", "idle", SubResource( 35 ), "move_bt_engage", "arm down", SubResource( 36 ), "idle", "prepatrol", SubResource( 23 ), "prepatrol", "move_bt", SubResource( 24 ), "move_bt", "idle", SubResource( 25 ) ]
 start_node = "idle"
+graph_offset = Vector2( 25, 57 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
@@ -861,25 +863,25 @@ material/3 = null
 transform = Transform( -0.995262, -0.0081467, -0.0968909, -0.00814659, -0.985993, 0.166585, -0.0968909, 0.166585, 0.981255, 0, 2.391, 0.242387 )
 
 [node name="root" type="Spatial" parent="easy common enemy ground/Armature001" index="0"]
-transform = Transform( 0.999776, 0.0210307, 0.00226596, -0.0210307, 0.976829, 0.212987, 0.00226581, -0.212987, 0.977052, 0, 0, 0 )
+transform = Transform( 0.999776, 0.0210307, 0.00226596, -0.0210307, 0.976829, 0.212987, 0.00226582, -0.212987, 0.977052, 0, 0, 0 )
 
 [node name="leg1" type="Spatial" parent="easy common enemy ground/Armature001/root" index="0"]
 transform = Transform( 0.845276, 0.50624, -0.170968, -0.473926, 0.562527, -0.677464, -0.246785, 0.65367, 0.715411, 0.0527304, 1.08244, 0.131686 )
 
 [node name="leg2" type="Spatial" parent="easy common enemy ground/Armature001/root" index="1"]
-transform = Transform( 0.706764, -0.69702, 0.121028, 0.658843, 0.586184, -0.471501, 0.257701, 0.412978, 0.873521, -0.222177, 1.08688, -0.0375187 )
+transform = Transform( 0.706764, -0.69702, 0.121028, 0.658844, 0.586184, -0.471501, 0.257701, 0.412978, 0.873521, -0.222177, 1.08688, -0.0375187 )
 
 [node name="leg3" type="Spatial" parent="easy common enemy ground/Armature001/root" index="2"]
-transform = Transform( 0.826665, -0.523647, -0.205958, 0.531739, 0.607252, 0.590338, -0.184061, -0.597527, 0.780437, -0.0239821, 1.08453, -0.277756 )
+transform = Transform( 0.826665, -0.523647, -0.205957, 0.531739, 0.607252, 0.590338, -0.184061, -0.597527, 0.780438, -0.0239821, 1.08453, -0.277756 )
 
 [node name="leg4" type="Spatial" parent="easy common enemy ground/Armature001/root" index="3"]
-transform = Transform( 0.765776, 0.615083, 0.187775, -0.617477, 0.621611, 0.481998, 0.179746, -0.485049, 0.855814, 0.221942, 1.09763, -0.142833 )
+transform = Transform( 0.765776, 0.615083, 0.187775, -0.617477, 0.62161, 0.481998, 0.179746, -0.48505, 0.855814, 0.221942, 1.09763, -0.142833 )
 
 [node name="arm1" type="Spatial" parent="easy common enemy ground/Armature001/root" index="4"]
-transform = Transform( 0.998724, -0.0129688, 0.0488099, 0.015246, 0.998798, -0.0465752, -0.0481472, 0.04726, 0.997721, -2.44972, -0.46376, -0.312405 )
+transform = Transform( 0.998724, -0.0129688, 0.0488099, 0.015246, 0.998798, -0.0465753, -0.0481472, 0.0472601, 0.997722, -2.44972, -0.46376, -0.312405 )
 
 [node name="arm2" type="Spatial" parent="easy common enemy ground/Armature001/root" index="5"]
-transform = Transform( 0.998724, -0.0129688, 0.0488099, 0.015246, 0.998798, -0.0465752, -0.0481472, 0.0472599, 0.997721, 2.49321, -0.422767, 0.177662 )
+transform = Transform( 0.998724, -0.0129688, 0.0488099, 0.015246, 0.998798, -0.0465751, -0.0481472, 0.0472599, 0.997722, 2.49321, -0.422767, 0.177662 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="easy common enemy ground" index="2"]
 autoplay = "idle"

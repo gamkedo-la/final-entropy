@@ -50,8 +50,11 @@ func _physics_process(delta: float) -> void:
 	if !initialized:
 		return
 
-	if ai.current_state != ai.State.IDLE:
+	if (ai.current_state == ai.State.PATROL) || (ai.current_state == ai.State.ENGAGE):
 		move(delta)
+	if (ai.current_state == ai.State.FIXEDAIM):
+		aim(delta)
+
 
 func move(delta: float) -> void:
 	set_interest()
@@ -66,10 +69,20 @@ func move(delta: float) -> void:
 
 	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
-
+func aim(delta: float) -> void:
+	print_debug("Aiming")
+	set_interest()
+	set_danger()
+	choose_direction()
+	var desired_velocity = chosen_dir.rotated(Vector3.UP, actor.rotation.y) * (actor.MAX_SPEED)
+#	velocity = lerp(velocity, desired_velocity, steer_force * delta)
+	var new_tform = actor.transform.looking_at(actor.transform.origin + desired_velocity, Vector3.UP)
+	actor.transform = actor.transform.interpolate_with(new_tform, 0.1)
+	
+#	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func initialize(newActor: Actor, newAI: AIController):
-
+	
 	actor = newActor
 	ai = newAI
 	origin = actor.global_transform.origin
