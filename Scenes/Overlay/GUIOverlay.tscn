@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/AutoLoad/GUIOverlay.gd" type="Script" id=1]
+
+[node name="GUIOverlay" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Indicators" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Muted" type="RichTextLabel" parent="Indicators"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -57.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 24.0
+text = "MUTED"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

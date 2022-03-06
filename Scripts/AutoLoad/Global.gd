@@ -21,6 +21,7 @@ func _unhandled_key_input(event):
 	var muted = AudioServer.is_bus_mute(0)
 	if event.is_action_pressed("mute"):
 		AudioServer.set_bus_mute(0, !muted)
+		GUIOverlay.toggle_muted(!muted)
 
 
 func reparent(child: Node, new_parent: Node):
