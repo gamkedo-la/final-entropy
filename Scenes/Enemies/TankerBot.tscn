@@ -911,6 +911,7 @@ anims/prepatrol = SubResource( 21 )
 [node name="AnimationTree" type="AnimationTree" parent="easy common enemy ground" index="3"]
 tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 15 )
 parameters/move_bt/TimeScale/scale = 1.0
 parameters/move_bt_engage/TimeScale/scale = 1.0
