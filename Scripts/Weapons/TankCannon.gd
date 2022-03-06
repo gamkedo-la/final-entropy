@@ -31,7 +31,7 @@ func initialize(_actor, _steering, _ai) -> void:
 	
 func fire() -> void:
 	if since_fire > fire_wait:
-#		shot_sfx.play()
+		shot_sfx.play()
 		rnd.randomize()
 		var bullet = BULLET.instance()
 		add_child(bullet)
