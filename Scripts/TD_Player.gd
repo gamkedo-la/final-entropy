@@ -83,6 +83,10 @@ func take_damage(dmg: float) -> void:
 	hit_sfx.play()
 	print_debug("Player HP left: " + String(hp))
 
+func spawn_at_portal(portal:Spatial) -> void:
+	if is_instance_valid(portal):
+		global_transform = portal.global_transform
+
 func _on_HitBox_area_entered(area):
 #	print_debug("Area entered player", area)
 	$TextureProgress2.value = int((float(hp) / maxHp) * 100)

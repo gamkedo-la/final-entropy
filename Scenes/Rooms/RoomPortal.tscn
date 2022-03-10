@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Textures/Noise/opensimplexnoise_dissolve.tres" type="Texture" id=1]
 [ext_resource path="res://Textures/RoomPortal/OuterAura.png" type="Texture" id=2]
 [ext_resource path="res://Textures/RoomPortal/NumberRing.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/RoomGen/RoomPortal.gd" type="Script" id=4]
+[ext_resource path="res://SFX/portal_room_hum.wav" type="AudioStream" id=5]
 
 [sub_resource type="VisualShaderNodeScalarFunc" id=1]
 output_port_for_preview = 0
@@ -321,31 +322,31 @@ resource_name = "BobAndSpin"
 length = 5.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("CSGTorus:translation")
+tracks/0/path = NodePath("CSGTorus:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5, 4.99864 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 5, 0 ), Vector3( 0, 6, 0 ), Vector3( 0, 5, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CSGTorus:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1.2, 2.5, 3.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 90, 0, 0 ), Vector3( 90, -7.135, 0 ), Vector3( 90, 0, 0 ), Vector3( 90, 7.5, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CSGTorus/OmniLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0, 1.0 ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("CSGTorus/OmniLight:light_energy")
+tracks/2/path = NodePath("CSGTorus:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -354,7 +355,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 2.5, 5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 2.0, 1.0 ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -396,6 +397,9 @@ tracks/2/keys = {
 "values": [ 1.0 ]
 }
 
+[sub_resource type="BoxShape" id=46]
+extents = Vector3( 2.05285, 2.90583, 1 )
+
 [node name="RoomPortal" type="Spatial"]
 script = ExtResource( 4 )
 
@@ -435,3 +439,16 @@ light_color = Color( 0.0392157, 0.482353, 0.701961, 1 )
 autoplay = "BobAndSpin"
 anims/BobAndSpin = SubResource( 21 )
 anims/RESET = SubResource( 22 )
+
+[node name="Area" type="Area" parent="."]
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 46 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "Ambience"
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
