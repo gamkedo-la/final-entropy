@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enemies/AI/Actor.gd"
 }, {
+"base": "Spatial",
+"class": "LevelController",
+"language": "GDScript",
+"path": "res://Scripts/RoomGen/LevelController.gd"
+}, {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
@@ -47,6 +52,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AIController": "",
 "Actor": "",
+"LevelController": "",
 "Player": "",
 "PowerUP": "",
 "PowerUps": "",

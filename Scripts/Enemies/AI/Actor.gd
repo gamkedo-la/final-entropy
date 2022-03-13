@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name Actor
 
+signal dead
+
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
 
@@ -68,6 +70,7 @@ func take_damage(dmg: float) -> void:
 	print_debug(rand_scene)
 	if health <= 0:
 		drop_loot()
+		emit_signal("dead", self)
 		call_deferred("queue_free")
 	pass
 
