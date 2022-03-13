@@ -1351,7 +1351,6 @@ environment = SubResource( 49 )
 [node name="Rooms" type="Spatial" parent="."]
 
 [node name="RoomA1" parent="Rooms" instance=ExtResource( 1 )]
-room_name = "A1"
 connected_rooms = [ "A2", "A3" ]
 
 [node name="TankerBot" parent="Rooms/RoomA1/Stage/Enemies" index="0" instance=ExtResource( 6 )]

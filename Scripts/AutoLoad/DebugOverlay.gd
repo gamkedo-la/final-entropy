@@ -1,5 +1,8 @@
 extends CanvasLayer
 # Adapting from https://kidscancode.org/godot_recipes/3d/debug_overlay/
+
+var is_debug = false
+
 onready var draw = $DebugDraw3D
 
 func _ready():
@@ -15,3 +18,8 @@ func _input(event):
 	if event.is_action_pressed("toggle_debug"):
 		for n in get_children():
 			n.visible = not n.visible
+			is_debug = n.visible
+		
+		print("Debug Mode: " + str(is_debug))
+		
+		
