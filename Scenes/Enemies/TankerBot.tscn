@@ -784,6 +784,7 @@ steer_force = 1.0
 [node name="TankCannon" type="Position3D" parent="AI/Weapons" index="0"]
 transform = Transform( 0.998505, 0, 0.0546539, 0, 1, 0, -0.0546539, 0, 0.998505, 0.736145, 1.14084, -0.463688 )
 script = ExtResource( 5 )
+base_rpm = 60.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon" index="0"]
 cast_to = Vector3( 0, 0, -10 )
@@ -795,6 +796,7 @@ bus = "SFX"
 [node name="TankCannon2" type="Position3D" parent="AI/Weapons" index="1"]
 transform = Transform( 0.995835, 0, -0.0911714, 0, 1, 0, 0.0911714, 0, 0.995835, -0.725765, 1.14084, -0.463688 )
 script = ExtResource( 5 )
+base_rpm = 60.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon2" index="0"]
 cast_to = Vector3( 0, 0, -10 )

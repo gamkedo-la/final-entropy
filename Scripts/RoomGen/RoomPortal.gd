@@ -1,6 +1,11 @@
 extends Spatial
+class_name RoomPortal
+
+signal traverse
 
 var initialized: bool = false
+var current_room: String = ""
+var connected_room: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -19,6 +24,5 @@ func _process(delta):
 func _on_Area_body_entered(body):
 	if body is Player:
 		print_debug("Player in portal")
-#		body.spawn_at_portal(connected_portal)
-		pass
-	pass # Replace with function body.
+		emit_signal("traverse", connected_room, current_room)
+

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/RoomGen/RoomContainer.gd"
 }, {
+"base": "Spatial",
+"class": "RoomPortal",
+"language": "GDScript",
+"path": "res://Scripts/RoomGen/RoomPortal.gd"
+}, {
 "base": "Resource",
 "class": "Shot",
 "language": "GDScript",
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "PowerUP": "",
 "PowerUps": "",
 "RoomContainer": "",
+"RoomPortal": "",
 "Shot": ""
 }
 

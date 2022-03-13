@@ -70,8 +70,7 @@ func take_damage(dmg: float) -> void:
 	print_debug(rand_scene)
 	if health <= 0:
 		drop_loot()
-		emit_signal("dead", self)
-		call_deferred("queue_free")
+
 	pass
 
 func drop_loot() -> void:
@@ -81,6 +80,12 @@ func drop_loot() -> void:
 	new_powerup.transform.origin = transform.origin + (Vector3.UP) 
 	get_tree().root.add_child(new_powerup)
 	new_powerup.apply_central_impulse(Vector3.UP * 10)
+	call_deferred("die")
+	
+func die() -> void:
+	get_parent().call_deferred("remove_child", self)
+	call_deferred("emit_signal", "dead", self)
+	call_deferred("queue_free")
 	pass
 
 func _on_HitBox_area_entered(area):

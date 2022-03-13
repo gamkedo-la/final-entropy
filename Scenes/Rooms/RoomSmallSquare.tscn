@@ -3,8 +3,9 @@
 [ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BigDungeonRoom.tscn" type="PackedScene" id=3]
 
-[node name="Room" type="Spatial"]
+[node name="RoomA1" type="Spatial"]
 script = ExtResource( 1 )
+room_name = "A1"
 room_portals = [ NodePath("Stage/Portals/PortalTopLeft"), NodePath("Stage/Portals/PortalTopRight") ]
 
 [node name="Stage" type="Spatial" parent="."]
@@ -21,6 +22,9 @@ transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.88761, 3.50052, -22.2896 )
 
 [node name="Enemies" type="Spatial" parent="Stage"]
+
+[node name="ReturnPortal" type="Position3D" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182007, 1.6, -16.9771 )
 
 [node name="PlayerSpawn" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -6.71039 )
