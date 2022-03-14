@@ -765,6 +765,8 @@ graph_offset = Vector2( 25, 57 )
 extents = Vector3( 1.1185, 1, 3.139 )
 
 [node name="TankerBot" instance=ExtResource( 1 )]
+axis_lock_motion_y = false
+move_lock_y = false
 MAX_SPEED = 1.0
 ACCELERATION = 0.1
 health = 100.0

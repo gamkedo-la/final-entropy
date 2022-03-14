@@ -27,6 +27,7 @@ func _start_level() -> void:
 		if rooms[i].room_name == first_room:
 			print_debug("FOUND ROOM", rooms[i].room_name)
 			main_camera.global_transform = rooms[i].camera_position.global_transform
+			main_camera.size = rooms[i].camera_size
 			player.global_transform = rooms[i].player_spawn.global_transform
 			rooms[i].activate()
 
@@ -41,6 +42,7 @@ func _traverse_to_room(to_room, from_room) -> void:
 			rooms[i].deactivate()
 		if rooms[i].room_name == to_room:
 			main_camera.global_transform = rooms[i].camera_position.global_transform
+			main_camera.size = rooms[i].camera_size
 			player.global_transform = rooms[i].player_spawn.global_transform
 			rooms[i].return_room = from_room
 			rooms[i].activate()

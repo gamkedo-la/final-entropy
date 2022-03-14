@@ -1,11 +1,11 @@
 tool
 extends Spatial
+class_name RoomController
 
-
-
-onready var camera_position = $CameraPos
-onready var player_spawn = $PlayerSpawn
-onready var return_portal = $Stage/ReturnPortal
+onready var camera_position: Position3D = $CameraPos
+export (float) var camera_size = 16.0
+onready var player_spawn: Position3D = $PlayerSpawn
+onready var return_portal: Position3D = $Stage/ReturnPortal
 onready var stage = $Stage
 onready var enemies = $Stage/Enemies
 onready var room_portal = preload("res://Scenes/Rooms/RoomPortal.tscn")
@@ -21,11 +21,15 @@ var level_controller: LevelController = null
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	if not Engine.editor_hint:
+		
 		deactivate()
 	pass # Replace with function body.
 
 func initialize(_lc:LevelController) -> void:
 	level_controller = _lc
+	if is_instance_valid($Stage/WorldEnvironment):
+		var world_e = $Stage/WorldEnvironment
+		world_e.call_deferred("queue_free")
 
 func set_name(new_name) -> void:
 	if room_name != new_name:

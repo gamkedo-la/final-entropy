@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Rooms/RoomSmallSquare.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
@@ -6,21 +6,7 @@
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemies/RollePolle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=6]
-
-[sub_resource type="PanoramaSky" id=2]
-
-[sub_resource type="Environment" id=49]
-background_mode = 1
-background_sky = SubResource( 2 )
-fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
-fog_sun_color = Color( 0, 0, 0, 1 )
-fog_depth_begin = 0.0
-auto_exposure_min_luma = 0.0
-auto_exposure_max_luma = 7.3
-ss_reflections_enabled = true
-ssao_enabled = true
-dof_blur_far_quality = 2
-dof_blur_near_amount = 0.06
+[ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=47]
 
@@ -1338,15 +1324,28 @@ tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1,
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=77]
 
+[sub_resource type="PanoramaSky" id=78]
+
+[sub_resource type="Environment" id=49]
+background_mode = 1
+background_sky = SubResource( 78 )
+fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 0.0
+auto_exposure_min_luma = 0.0
+auto_exposure_max_luma = 7.3
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_quality = 2
+dof_blur_near_amount = 0.06
+
 [node name="LevelController" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="OrthoCamera" parent="." instance=ExtResource( 3 )]
+size = 32.0
 
 [node name="TopDown_Player" parent="." instance=ExtResource( 4 )]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 49 )
 
 [node name="Rooms" type="Spatial" parent="."]
 
@@ -1508,6 +1507,10 @@ anims/push = SubResource( 76 )
 
 [node name="AnimationTree" parent="Rooms/RoomA3/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 77 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 49 )
+script = ExtResource( 7 )
 
 [editable path="Rooms/RoomA1"]
 [editable path="Rooms/RoomA1/Stage/BigDungeonRoom"]
