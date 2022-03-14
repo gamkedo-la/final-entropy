@@ -346,6 +346,8 @@ graph_offset = Vector2( -282, 38 )
 radius = 1.01306
 
 [node name="RollePolle" instance=ExtResource( 5 )]
+axis_lock_motion_y = false
+move_lock_y = false
 MAX_SPEED = 3.0
 ACCELERATION = 1.0
 health = 100.0
@@ -357,6 +359,9 @@ anim_play_node = NodePath("../easy common enemy ground with no gun/AnimationPlay
 
 [node name="Steering" parent="AI" index="0"]
 steer_force = 4.0
+
+[node name="GroundRay" parent="AI/Steering" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386802, 0 )
 
 [node name="easy common enemy ground with no gun" type="Spatial" parent="." index="4"]
 transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.514333, 0 )

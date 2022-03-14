@@ -1,0 +1,213 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=3]
+[ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=8]
+
+[sub_resource type="BoxShape" id=80]
+extents = Vector3( 1.99422, 1, 0.23394 )
+
+[sub_resource type="BoxShape" id=81]
+extents = Vector3( 0.12745, 1, 11.2064 )
+
+[sub_resource type="BoxShape" id=82]
+extents = Vector3( 33.1456, 3.28392, 0.579376 )
+
+[sub_resource type="BoxShape" id=83]
+extents = Vector3( 0.565186, 3.28392, 23.0783 )
+
+[sub_resource type="PanoramaSky" id=78]
+
+[sub_resource type="Environment" id=79]
+background_mode = 1
+background_sky = SubResource( 78 )
+fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 0.0
+auto_exposure_min_luma = 0.0
+auto_exposure_max_luma = 7.3
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_quality = 2
+dof_blur_near_amount = 0.06
+
+[node name="RoomA1" type="Spatial"]
+script = ExtResource( 3 )
+camera_size = 34.0
+room_name = "A1"
+room_portals = [ NodePath("Stage/Portals/PortalTopLeft"), NodePath("Stage/Portals/PortalTopMid"), NodePath("Stage/Portals/PortalTopRight") ]
+
+[node name="Stage" type="Spatial" parent="."]
+
+[node name="Floor" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="Level01_Floor01" parent="Stage/Floor" instance=ExtResource( 4 )]
+
+[node name="WallHitBoxes" type="Area" parent="Stage/Floor/Level01_Floor01"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00023, 3.03452, -2.93434 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96956, 3.03452, -2.99424 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01574, 3.03452, -3.01695 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97435, 3.03452, -2.94546 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9784, 3.03452, -3.0454 )
+shape = SubResource( 81 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0066, 3.03452, -2.99599 )
+shape = SubResource( 81 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 0.247811, 0.968808, 0, -0.968808, 0.247811, 0, 12.7973, 0 )
+light_color = Color( 0.898039, 0, 1, 1 )
+light_energy = 2.023
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="OmniLight" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 8.01289, 2.44403, -3.63256 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight2" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 2.19484, 2.44403, -3.63256 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight3" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -3.82384, 2.44403, -3.63256 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight4" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -9.84251, 2.44403, -3.63256 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight5" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 8.01289, 2.44403, -1.92727 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight6" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 2.19484, 2.44403, -1.92727 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight7" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -3.82384, 2.44403, -1.92727 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight8" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -9.84251, 2.44403, -1.92727 )
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="Boundary" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04948, 3.34357, 10.5864 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.409416 )
+shape = SubResource( 82 )
+
+[node name="Boundary2" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04948, 3.34357, -17.9473 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.409416 )
+shape = SubResource( 82 )
+
+[node name="Boundary3" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0835, 3.34357, -3.46531 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527485, 0, -0.409416 )
+shape = SubResource( 83 )
+
+[node name="Boundary4" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7161, 3.34357, -3.46531 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527485, 0, -0.409416 )
+shape = SubResource( 83 )
+
+[node name="Enemies" type="Spatial" parent="Stage"]
+
+[node name="TankerBot" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12.4678, 3.99166, 3.04282 )
+script = ExtResource( 8 )
+
+[node name="TankerBot2" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -8.54754, 3.99166, -0.877441 )
+script = ExtResource( 8 )
+
+[node name="TankerBot3" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -4.36726, 3.99166, -5.05772 )
+script = ExtResource( 8 )
+
+[node name="TankerBot4" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.111331, 3.99166, -9.53631 )
+script = ExtResource( 8 )
+
+[node name="TankerBot5" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.05886, 3.99166, -13.4838 )
+script = ExtResource( 8 )
+
+[node name="ReturnPortal" type="Position3D" parent="Stage"]
+transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 12.4118, 4.36, 9.99482 )
+
+[node name="RoomPortal" parent="Stage/ReturnPortal" instance=ExtResource( 6 )]
+
+[node name="Portals" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="PortalTopLeft" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.1995, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopLeft" instance=ExtResource( 6 )]
+
+[node name="PortalTopMid" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -2.62939, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopMid" instance=ExtResource( 6 )]
+
+[node name="PortalTopRight" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.5905, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopRight" instance=ExtResource( 6 )]
+
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883207, 3.49562, 19.7692 )
+
+[node name="CameraPos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.817879, 0.575391, 0, -0.575391, 0.817879, 3.77556, 19.7499, 26.7329 )
+
+[node name="OrthoCamera" parent="CameraPos" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+size = 34.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 79 )
+script = ExtResource( 2 )
+
+[connection signal="area_entered" from="Stage/Floor/Level01_Floor01/WallHitBoxes" to="Stage/Floor/Level01_Floor01/WallHitBoxes" method="_on_WallHitBoxes_area_entered"]

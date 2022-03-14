@@ -15,21 +15,35 @@ export (Array, String) var connected_rooms
 var return_room: String = ""
 var room_clear = false
 
+export (bool) var debug_mode = false
+
 #Level Vars
 var level_controller: LevelController = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	if not Engine.editor_hint:
-		
+	if not Engine.editor_hint && !debug_mode:		
+		_clean_test()
 		deactivate()
 	pass # Replace with function body.
 
+func _clean_test() -> void:
+	var test_world_env = get_node_or_null("Stage/WorldEnvironment")
+	if test_world_env:			
+		test_world_env.call_deferred("queue_free")
+	for i in room_portals.size():
+		var port_node = get_node_or_null(room_portals[i])
+		if return_portal.get_child_count() > 0:
+			for child in return_portal.get_children():
+				return_portal.remove_child(child)
+		if port_node:
+			if port_node.get_child_count() > 0:
+				for portal in port_node.get_children():
+					portal.call_deferred("queue_free")
+
 func initialize(_lc:LevelController) -> void:
 	level_controller = _lc
-	if is_instance_valid($Stage/WorldEnvironment):
-		var world_e = $Stage/WorldEnvironment
-		world_e.call_deferred("queue_free")
+
 
 func set_name(new_name) -> void:
 	if room_name != new_name:
@@ -67,7 +81,7 @@ func _stage_clear() -> void:
 		new_portal.connected_room = return_room
 		level_controller.register_portal(new_portal)
 		
-	for i in room_portals.size():
+	for i in min(room_portals.size(), connected_rooms.size()):
 		var new_portal = room_portal.instance()
 		var portal_node = get_node_or_null(room_portals[i])
 		portal_node.add_child(new_portal)

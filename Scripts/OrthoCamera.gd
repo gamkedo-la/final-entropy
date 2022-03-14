@@ -20,6 +20,10 @@ var ignore_bodies = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not get_parent() is LevelController && !get_parent().get_parent().debug_mode:
+		current = false
+		call_deferred("queue_free")
+		return
 	randomize()
 	noise.seed = randi()
 	noise.period = 4

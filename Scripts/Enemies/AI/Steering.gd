@@ -1,5 +1,6 @@
 extends Spatial
 
+const GRAVITY = 9.8
 
 var actor: Actor = null
 var ai: AIController = null
@@ -14,6 +15,12 @@ const m_s_maxsli = 4
 const m_s_fma = 0.785398
 
 var velocity: Vector3 = Vector3.ZERO
+
+# Simple gravity implementation to place enemy to ground based on raycast
+export (float, 1.0, 10.0) var mass = 8.0
+export (float, 0.1, 3.0, 0.1) var gravity_scl = 1.0
+onready var ground_ray: RayCast = $GroundRay
+var gravity_speed: float = 0.0
 
 # Context-Base Steering Variables borrowing and adapting from concepts found @
 # https://kidscancode.org/godot_recipes/ai/context_map/
@@ -36,6 +43,7 @@ var initialized: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# context steering prep
+	ground_ray.enabled = true
 	interest.resize(num_rays)
 	danger.resize(num_rays)
 	ray_directions.resize(num_rays)
@@ -50,16 +58,27 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if !initialized:
 		return
-
-	if (ai.current_state == ai.State.PATROL) || (ai.current_state == ai.State.ENGAGE):
-		move(delta)
-	if (ai.current_state == ai.State.FIXEDAIM):
-		aim(delta)
+	find_ground(delta)
+	if ground_ray.is_colliding():
+		if (ai.current_state == ai.State.PATROL) || (ai.current_state == ai.State.ENGAGE):
+			move(delta)
+		if (ai.current_state == ai.State.FIXEDAIM):
+			aim(delta)
+	
+	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func register_weapon(weap) -> void:
 	if not weap.is_connected("knockback", self, "_inc_knockback"):
 		var con_res = weap.connect("knockback", self, "_inc_knockback")
 		assert(con_res == OK)
+
+func find_ground(delta: float) -> void:
+	gravity_speed -= GRAVITY * gravity_scl * mass * delta
+	if ground_ray.is_colliding():
+		velocity.y = 0.0
+	else:
+		velocity.y = gravity_speed
+
 func move(delta: float) -> void:
 	set_interest()
 	set_danger()
@@ -71,7 +90,7 @@ func move(delta: float) -> void:
 	var new_tform = actor.transform.looking_at(actor.transform.origin + velocity, Vector3.UP)
 	actor.transform = actor.transform.interpolate_with(new_tform, steer_force * delta)
 
-	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
+#	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
 func aim(delta: float) -> void:
 	set_interest()
@@ -83,10 +102,9 @@ func aim(delta: float) -> void:
 	actor.transform = actor.transform.interpolate_with(new_tform, 0.1)
 	velocity += knockback.rotated(Vector3.UP, actor.rotation.y)
 	knockback = Vector3.ZERO
-	velocity = actor.move_and_slide(velocity, m_s_up, m_s_sos, m_s_maxsli, m_s_fma, false)
 
-func initialize(newActor: Actor, newAI: AIController):
-	
+
+func initialize(newActor: Actor, newAI: AIController):	
 	actor = newActor
 	ai = newAI
 	origin = actor.global_transform.origin

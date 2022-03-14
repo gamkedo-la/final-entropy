@@ -213,6 +213,7 @@ shape = SubResource( 6 )
 [node name="WeaponMount" type="Spatial" parent="."]
 
 [node name="BaseGun" parent="WeaponMount" instance=ExtResource( 3 )]
+base_rpm = 600.0
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
@@ -249,6 +250,10 @@ anims/RESET = SubResource( 7 )
 anims/health_slide_in = SubResource( 8 )
 
 [node name="PowerUps" type="Spatial" parent="."]
+
+[node name="GroundRay" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386597, 0 )
+enabled = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="area_entered" from="PickupRadius" to="." method="_on_PickupRadius_area_entered"]

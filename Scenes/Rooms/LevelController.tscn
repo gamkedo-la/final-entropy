@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Scenes/Rooms/RoomSmallSquare.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://Scenes/Enemies/RollePolle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Rooms/RoomMedRect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Enemies/AI/AI.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Enemies/AI/Steering.gd" type="Script" id=11]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=47]
 
@@ -1354,7 +1358,14 @@ connected_rooms = [ "A2", "A3" ]
 
 [node name="TankerBot" parent="Rooms/RoomA1/Stage/Enemies" index="0" instance=ExtResource( 6 )]
 transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA1/Stage/Enemies/TankerBot" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA1/Stage/Enemies/TankerBot/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA1/Stage/Enemies/TankerBot/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
@@ -1370,7 +1381,14 @@ parameters/playback = SubResource( 47 )
 
 [node name="RollePolle" parent="Rooms/RoomA1/Stage/Enemies" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68171, 1.6148, -17.0519 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA1/Stage/Enemies/RollePolle" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA1/Stage/Enemies/RollePolle/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA1/Stage/Enemies/RollePolle/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97207, 0, 0 )
@@ -1391,13 +1409,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463562, 0, -4.34847 )
 parameters/playback = SubResource( 48 )
 
 [node name="RoomA2" parent="Rooms" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9509, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.0366, 0, -19.7994 )
 room_name = "A2"
 connected_rooms = [ "B1", "B2" ]
 
 [node name="TankerBot" parent="Rooms/RoomA2/Stage/Enemies" index="0" instance=ExtResource( 6 )]
 transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA2/Stage/Enemies/TankerBot" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA2/Stage/Enemies/TankerBot/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA2/Stage/Enemies/TankerBot/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
@@ -1422,7 +1447,14 @@ parameters/playback = SubResource( 57 )
 
 [node name="RollePolle" parent="Rooms/RoomA2/Stage/Enemies" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68171, 1.6148, -17.0519 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA2/Stage/Enemies/RollePolle" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA2/Stage/Enemies/RollePolle/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA2/Stage/Enemies/RollePolle/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97207, 0, 0 )
@@ -1450,13 +1482,20 @@ anims/push = SubResource( 62 )
 parameters/playback = SubResource( 63 )
 
 [node name="RoomA3" parent="Rooms" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.556, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6951, 0, -27.8151 )
 room_name = "A3"
 connected_rooms = [ "C1", "C2" ]
 
 [node name="TankerBot" parent="Rooms/RoomA3/Stage/Enemies" index="0" instance=ExtResource( 6 )]
 transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -1.24149, 1.05499, -24.715 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA3/Stage/Enemies/TankerBot" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA3/Stage/Enemies/TankerBot/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA3/Stage/Enemies/TankerBot/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
@@ -1481,7 +1520,14 @@ parameters/playback = SubResource( 71 )
 
 [node name="RollePolle" parent="Rooms/RoomA3/Stage/Enemies" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68171, 1.6148, -17.0519 )
+script = ExtResource( 9 )
 health = 30.0
+
+[node name="AI" parent="Rooms/RoomA3/Stage/Enemies/RollePolle" index="1"]
+script = ExtResource( 10 )
+
+[node name="Steering" parent="Rooms/RoomA3/Stage/Enemies/RollePolle/AI" index="0"]
+script = ExtResource( 11 )
 
 [node name="Position3D" type="Position3D" parent="Rooms/RoomA3/Stage/Enemies/RollePolle/AI/PatrolPoints" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97207, 0, 0 )
@@ -1507,6 +1553,10 @@ anims/push = SubResource( 76 )
 
 [node name="AnimationTree" parent="Rooms/RoomA3/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 77 )
+
+[node name="RoomB1" parent="Rooms" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -113.187, -3.8147e-06, -66.9353 )
+room_name = "B1"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 49 )

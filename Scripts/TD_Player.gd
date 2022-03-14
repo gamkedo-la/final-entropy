@@ -1,16 +1,27 @@
 extends KinematicBody
 class_name Player
+
+const GRAVITY = 9.8
+
 export(NodePath) var GunPosPath = ""
 export(NodePath) var player;
+
+onready var ground_ray: RayCast = $GroundRay
 
 var maxHp = 100
 var hp = maxHp
 
 var mouse_sensitivity = 1
 var divide_mouse_sensitivity = 1
+
 var velocity = Vector3.ZERO
 var MAX_SPEED = 7.5
 var ACCELERATION = 50.0
+
+export (float, 1.0, 10.0) var mass = 8.0
+export (float, 0.1, 3.0, 0.1) var gravity_scl = 1.0
+var gravity_speed = 0.0
+
 var level_camera = null
 var gun_position: Position3D
 onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")
@@ -27,7 +38,7 @@ onready var power_ups = $PowerUps
 
 func _ready():
 	Global.player_node = get_node(player)
-
+	ground_ray.enabled = true
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
 	weapons.append_array(WeaponMount.get_children())
@@ -55,12 +66,15 @@ func rotate_to_cursor() -> void:
 		look_at(Vector3(Global.raycast_position.x, translation.y, Global.raycast_position.z), Vector3.UP)
 	
 func move_state(delta):
+	gravity_speed -= GRAVITY * gravity_scl * mass * delta
 	var move_dir = Vector3.ZERO
 	
 	move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	move_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-#	print_debug(move_dir)
-#	move_dir = move_dir.rotated(Vector3.UP, rotation.y)
+	if ground_ray.is_colliding():
+		velocity.y = 0.0
+	else:
+		velocity.y = gravity_speed
 	if move_dir != Vector3.ZERO:
 		velocity = velocity.move_toward(move_dir * MAX_SPEED, ACCELERATION * delta)
 	else:
