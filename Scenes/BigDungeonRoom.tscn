@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/SpatialEffects/ColumnPulse.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/SpinningTorus.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/RoomBoundary.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/SpatialEffects/ColumnsSpinner.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/tiles1.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=2]
 rough = true
@@ -152,6 +153,9 @@ width = 0.22338
 height = 3.04309
 depth = 17.2553
 material = SubResource( 8 )
+
+[node name="tiles1" parent="WallsFloor" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.45192, 1.60609, 8.0951 )
 
 [node name="Columns" type="Spatial" parent="."]
 transform = Transform( -0.42731, 0, 0.904105, 0, 1, 0, -0.904105, 0, -0.42731, -5.69722, 3.34506, 7.6385 )
