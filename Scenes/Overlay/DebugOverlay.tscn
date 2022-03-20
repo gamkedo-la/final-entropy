@@ -105,6 +105,7 @@ VScrollBar/styles/scroll = SubResource( 10 )
 VScrollBar/styles/scroll_focus = null
 
 [node name="DebugOverlay" type="CanvasLayer"]
+pause_mode = 2
 layer = 2
 script = ExtResource( 1 )
 
