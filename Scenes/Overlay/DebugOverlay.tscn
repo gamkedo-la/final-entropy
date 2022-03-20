@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/AutoLoad/DebugOverlay.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/AutoLoad/DebugDraw3D.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/AutoLoad/DebugSpeedSlider.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Overlay/DebugLevelSelectButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ImageTexture" id=5]
 
@@ -54,6 +55,55 @@ expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.498039, 0.0352941, 0.627451, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.643137, 0.137255, 0.784314, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.705882, 0.294118, 0.819608, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0196078, 0.00784314, 0.258824, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.0196078, 0.00784314, 0.258824, 1 )
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 1.0
+expand_margin_right = 2.0
+
+[sub_resource type="Theme" id=7]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VScrollBar/styles/grabber = SubResource( 6 )
+VScrollBar/styles/grabber_highlight = SubResource( 8 )
+VScrollBar/styles/grabber_pressed = SubResource( 9 )
+VScrollBar/styles/scroll = SubResource( 10 )
+VScrollBar/styles/scroll_focus = null
+
 [node name="DebugOverlay" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 1 )
@@ -63,7 +113,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true,
+"_edit_use_anchors_": true
 }
 
 [node name="DebugSpeedSlider" type="HSlider" parent="."]
@@ -85,7 +136,8 @@ step = 0.1
 value = 1.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true,
+"_edit_use_anchors_": true
 }
 
 [node name="ResetLabel" type="Label" parent="DebugSpeedSlider"]
@@ -99,8 +151,80 @@ margin_right = 62.0
 margin_bottom = 23.0
 text = "Right-Click to Reset"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
+
+[node name="LevelSelectorLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -187.0
+margin_top = -187.0
+margin_right = -63.0
+margin_bottom = -173.0
+text = "Level Selector"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LevelSelector" type="ScrollContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -243.0
+margin_top = -168.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource( 7 )
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grid" type="GridContainer" parent="LevelSelector"]
+margin_right = 243.0
+margin_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 3
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DebugLevelSelectButton" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_right = 75.0
+
+[node name="DebugLevelSelectButton2" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 83.0
+margin_right = 158.0
+
+[node name="DebugLevelSelectButton3" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 166.0
+margin_right = 241.0
+
+[node name="DebugLevelSelectButton4" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_top = 58.0
+margin_right = 75.0
+margin_bottom = 108.0
+
+[node name="DebugLevelSelectButton5" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 83.0
+margin_top = 58.0
+margin_right = 158.0
+margin_bottom = 108.0
+
+[node name="DebugLevelSelectButton6" parent="LevelSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 166.0
+margin_top = 58.0
+margin_right = 241.0
+margin_bottom = 108.0
 
 [connection signal="gui_input" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_gui_input"]
 [connection signal="mouse_entered" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_mouse_entered"]
