@@ -63,7 +63,7 @@ class SteerRay:
 		var start
 		var end
 		var danger_arr = object.get(danger)
-		var interest_arr = object.get(interest)		
+		var interest_arr = object.get(interest)
 		for i in ray_array.size():
 			if ray_array[i]:				
 				var rot_ray = ray_array[i].rotated(Vector3.UP, deg2rad(actor.rotation_degrees.y))
@@ -118,16 +118,16 @@ func _draw():
 	var camera = get_viewport().get_camera()
 	var trash_can = []
 	for vector in vectors:
-		if is_instance_valid(vector.object):
+		if is_instance_valid(vector.object) && vector.object.is_inside_tree():
 			vector.draw(self, camera)
 	for point in points:
-		if is_instance_valid(point.object):
+		if is_instance_valid(point.object) && point.object.is_inside_tree():
 			point.draw(self, camera)
 	for steer_ray in steer_rays:
-		if is_instance_valid(steer_ray.object):
+		if is_instance_valid(steer_ray.object) && steer_ray.object.is_inside_tree():
 			steer_ray.draw(self, camera)
 	for ray_hit in ray_hits:
-		if is_instance_valid(ray_hit.object):
+		if is_instance_valid(ray_hit.object) && ray_hit.object.is_inside_tree():
 			ray_hit.draw(self, camera)
 		
 func add_vector(object, property, scale, width, color):
