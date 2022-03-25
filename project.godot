@@ -84,6 +84,7 @@ Global="*res://Scripts/AutoLoad/Global.gd"
 PlayerVars="*res://Scripts/AutoLoad/PlayerVars.gd"
 DebugOverlay="*res://Scenes/Overlay/DebugOverlay.tscn"
 GUIOverlay="*res://Scenes/Overlay/GUIOverlay.tscn"
+Music="*res://Scripts/AutoLoad/Music.tscn"
 
 [debug]
 
