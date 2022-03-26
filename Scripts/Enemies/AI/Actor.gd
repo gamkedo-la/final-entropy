@@ -70,6 +70,7 @@ func take_damage(dmg: float) -> void:
 	print_debug(rand_scene)
 	if health <= 0:
 		drop_loot()
+		$die.play()
 
 	pass
 
