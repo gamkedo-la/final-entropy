@@ -84,7 +84,7 @@ func _ready() -> void:
 	rng.randomize()
 #	set_state(State.IDLE)
 	DebugOverlay.draw.add_point(self, "patrol_target", 10, Color.red)
-		
+	Music.register_enemy(self)
 	if patrol_points_path.get_child_count() > 0:
 		patrol_points_path.set_as_toplevel(true)
 		patrol_points.append_array(patrol_points_path.get_children())
@@ -255,6 +255,7 @@ func _test_func() -> void:
 func _on_AggroBox_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
+#		Music.regist
 		set_state(State.ENGAGE)
 	pass # Replace with function body.
 
