@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Enemies/AI/Steering.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemies/AI/AI.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=3]
+[ext_resource path="res://SFX/explosiontry.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.374707
@@ -67,5 +68,8 @@ monitorable = false
 shape = SubResource( 4 )
 
 [node name="die" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+attenuation_model = 3
+bus = "SFX"
 
 [connection signal="body_entered" from="AggroBox" to="AI" method="_on_AggroBox_body_entered"]

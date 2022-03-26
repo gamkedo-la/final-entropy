@@ -26,8 +26,15 @@ onready var powerup_drops = preload("res://Resources/PowerUps.tres")
 onready var rng = RandomNumberGenerator.new()
 export (float) var aggro_radius = 3.0
 onready var aggro_sphere: CollisionShape = $AggroBox/AggroSphere
+onready var die_sfx = $die
+onready var die_stream = preload("res://SFX/explosiontry.wav")
 
 func _ready():
+	die_sfx.stream = die_stream
+	if not die_sfx.is_connected("finished", self, "die"):
+		var con_res = die_sfx.connect("finished", self, "die")
+		assert(con_res == OK)
+	
 	randomize()
 	noise.seed = randi()
 	noise.period = 4
@@ -70,9 +77,6 @@ func take_damage(dmg: float) -> void:
 	print_debug(rand_scene)
 	if health <= 0:
 		drop_loot()
-		$die.play()
-
-	pass
 
 func drop_loot() -> void:
 	#TODO: Drop Chances etc..
@@ -82,7 +86,10 @@ func drop_loot() -> void:
 	new_powerup.global_transform.origin = global_transform.origin + (Vector3.UP)	
 	new_powerup.apply_central_impulse(Vector3.UP * 10)
 	ai.set_state(AIController.State.DEAD)
-	call_deferred("die")
+	hit_box.queue_free()
+	visible = false
+	die_sfx.play(0)
+#	call_deferred("die")
 	
 func die() -> void:
 	get_parent().call_deferred("remove_child", self)

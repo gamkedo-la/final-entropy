@@ -944,6 +944,7 @@ parameters/move_bt_engage/TimeScale/scale = 1.0
 visible = false
 collision_layer = 4
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="HitBox" index="0"]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.00337019, 1.54101, -0.107789 )
