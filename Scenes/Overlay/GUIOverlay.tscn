@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/AutoLoad/GUIOverlay.gd" type="Script" id=1]
 
 [node name="GUIOverlay" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Indicators" type="Control" parent="."]
