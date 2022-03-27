@@ -1,12 +1,91 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/AutoLoad/GUIOverlay.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/AutoLoad/GUIOverlayMenu.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Paused"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PausedText:percent_visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PausedText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="GUIOverlay" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="Indicators" type="Control" parent="."]
+[node name="GUIOverlayMenu" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PausedText" type="RichTextLabel" parent="GUIOverlayMenu"]
+anchor_left = 0.003
+anchor_top = 0.648
+anchor_right = 0.188
+anchor_bottom = 0.805
+margin_left = 316.24
+margin_top = 33.16
+margin_right = 30.04
+margin_bottom = -117.4
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = -3.37825
+rect_scale = Vector2( 10, 10 )
+rect_pivot_offset = Vector2( 34.9, 6 )
+focus_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_colors/default_color = Color( 0.164706, 1, 0.352941, 1 )
+custom_colors/selection_color = Color( 0.0313726, 1, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]PAUSED[/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "PAUSED"
+fit_content_height = true
+scroll_following = true
+selection_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUIOverlayMenu"]
+anims/Paused = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="GUIOverlayIndicators" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -16,7 +95,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Muted" type="RichTextLabel" parent="Indicators"]
+[node name="Muted" type="RichTextLabel" parent="GUIOverlayIndicators"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -57.0
@@ -28,3 +107,5 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[connection signal="visibility_changed" from="GUIOverlayMenu" to="GUIOverlayMenu" method="_on_GUIOverlayMenu_visibility_changed"]
