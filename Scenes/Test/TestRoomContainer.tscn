@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Test/TestRoomContainer.gd" type="Script" id=1]
+[ext_resource path="res://Resources/RoomContainers/RoomsLevel01.tres" type="Resource" id=2]
+
+[node name="TestRoomContainer" type="Spatial"]
+script = ExtResource( 1 )
+room_container = ExtResource( 2 )
