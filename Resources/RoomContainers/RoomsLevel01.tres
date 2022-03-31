@@ -6,6 +6,11 @@
 
 [resource]
 script = ExtResource( 3 )
+min_rooms = 5
+max_rooms = 8
+odds_of_special_room = 0.0
+vertical_seperation = 50
+horizontal_seperation = 50
 boss_rooms = [  ]
 special_rooms = [  ]
 common_rooms = [ ExtResource( 1 ), ExtResource( 2 ) ]

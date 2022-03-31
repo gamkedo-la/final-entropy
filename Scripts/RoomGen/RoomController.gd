@@ -82,10 +82,12 @@ func _stage_clear() -> void:
 		level_controller.register_portal(new_portal)
 		
 	for i in min(room_portals.size(), connected_rooms.size()):
-		var new_portal = room_portal.instance()
-		var portal_node = get_node_or_null(room_portals[i])
-		portal_node.add_child(new_portal)
-		new_portal.global_transform = portal_node.global_transform
-		new_portal.current_room = room_name
-		new_portal.connected_room = connected_rooms[i]
-		level_controller.register_portal(new_portal)
+		if connected_rooms[i] != "":
+			var new_portal = room_portal.instance()
+			var portal_node = get_node_or_null(room_portals[i])
+			portal_node.add_child(new_portal)
+			new_portal.global_transform = portal_node.global_transform
+			new_portal.current_room = room_name
+			new_portal.connected_room = connected_rooms[i]
+			level_controller.register_portal(new_portal)
+	
