@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=3]
 [ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=8]
 
 [sub_resource type="BoxShape" id=80]
 extents = Vector3( 1.99422, 1, 0.23394 )
@@ -20,21 +18,6 @@ extents = Vector3( 33.1456, 3.28392, 0.579376 )
 
 [sub_resource type="BoxShape" id=83]
 extents = Vector3( 0.565186, 3.28392, 23.0783 )
-
-[sub_resource type="PanoramaSky" id=78]
-
-[sub_resource type="Environment" id=79]
-background_mode = 1
-background_sky = SubResource( 78 )
-fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
-fog_sun_color = Color( 0, 0, 0, 1 )
-fog_depth_begin = 0.0
-auto_exposure_min_luma = 0.0
-auto_exposure_max_luma = 7.3
-ss_reflections_enabled = true
-ssao_enabled = true
-dof_blur_far_quality = 2
-dof_blur_near_amount = 0.06
 
 [node name="RoomA1" type="Spatial"]
 script = ExtResource( 3 )
@@ -155,23 +138,18 @@ shape = SubResource( 83 )
 
 [node name="TankerBot" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12.4678, 3.99166, 3.04282 )
-script = ExtResource( 8 )
 
 [node name="TankerBot2" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -8.54754, 3.99166, -0.877441 )
-script = ExtResource( 8 )
 
 [node name="TankerBot3" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -4.36726, 3.99166, -5.05772 )
-script = ExtResource( 8 )
 
 [node name="TankerBot4" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.111331, 3.99166, -9.53631 )
-script = ExtResource( 8 )
 
 [node name="TankerBot5" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.05886, 3.99166, -13.4838 )
-script = ExtResource( 8 )
 
 [node name="ReturnPortal" type="Position3D" parent="Stage"]
 transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 12.4118, 4.36, 9.99482 )
@@ -205,9 +183,5 @@ transform = Transform( 1, 0, 0, 0, 0.817879, 0.575391, 0, -0.575391, 0.817879, 3
 [node name="OrthoCamera" parent="CameraPos" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 size = 34.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 79 )
-script = ExtResource( 2 )
 
 [connection signal="area_entered" from="Stage/Floor/Level01_Floor01/WallHitBoxes" to="Stage/Floor/Level01_Floor01/WallHitBoxes" method="_on_WallHitBoxes_area_entered"]

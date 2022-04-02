@@ -771,7 +771,7 @@ extents = Vector3( 1.1185, 1, 3.139 )
 [node name="TankerBot" instance=ExtResource( 1 )]
 axis_lock_motion_y = false
 move_lock_y = false
-MAX_SPEED = 1.0
+MAX_SPEED = 4.0
 ACCELERATION = 0.1
 health = 100.0
 aggro_radius = 6.0
@@ -786,7 +786,8 @@ anim_tree = NodePath("../easy common enemy ground/AnimationTree")
 anim_play_node = NodePath("../easy common enemy ground/AnimationPlayer")
 
 [node name="Steering" parent="AI" index="0"]
-steer_force = 1.0
+steer_force = 5.0
+look_ahead = 6
 
 [node name="GroundRay" parent="AI/Steering" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923948, 0 )
@@ -795,9 +796,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923948, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331595, 0 )
 
 [node name="TankCannon" type="Position3D" parent="AI/Weapons" index="0"]
-transform = Transform( 0.998505, 0, 0.0546539, 0, 1, 0, -0.0546539, 0, 0.998505, 0.736145, 1.14084, -0.463688 )
+transform = Transform( 0.997564, 0, 0.0697564, 0, 1, 0, -0.0697564, 0, 0.997564, 0.736145, 1.14084, -0.463688 )
 script = ExtResource( 5 )
-base_rpm = 60.0
+shot_speed = 50.0
+base_rpm = 120.0
+shot_dmg = 10.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon" index="0"]
 cast_to = Vector3( 0, 0, -10 )
@@ -807,9 +810,11 @@ stream = ExtResource( 6 )
 bus = "SFX"
 
 [node name="TankCannon2" type="Position3D" parent="AI/Weapons" index="1"]
-transform = Transform( 0.995835, 0, -0.0911714, 0, 1, 0, 0.0911714, 0, 0.995835, -0.725765, 1.14084, -0.463688 )
+transform = Transform( 0.997564, 0, -0.0697565, 0, 1, 0, 0.0697565, 0, 0.997564, -0.725765, 1.14084, -0.463688 )
 script = ExtResource( 5 )
-base_rpm = 60.0
+shot_speed = 50.0
+base_rpm = 120.0
+shot_dmg = 10.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon2" index="0"]
 cast_to = Vector3( 0, 0, -10 )

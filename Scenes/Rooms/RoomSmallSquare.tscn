@@ -1,7 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/BigDungeonRoom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemies/RollePolle.tscn" type="PackedScene" id=5]
@@ -662,21 +661,6 @@ tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1,
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=93]
 
-[sub_resource type="PanoramaSky" id=78]
-
-[sub_resource type="Environment" id=79]
-background_mode = 1
-background_sky = SubResource( 78 )
-fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
-fog_sun_color = Color( 0, 0, 0, 1 )
-fog_depth_begin = 0.0
-auto_exposure_min_luma = 0.0
-auto_exposure_max_luma = 7.3
-ss_reflections_enabled = true
-ssao_enabled = true
-dof_blur_far_quality = 2
-dof_blur_near_amount = 0.06
-
 [node name="RoomA1" type="Spatial"]
 script = ExtResource( 1 )
 room_name = "A1"
@@ -759,10 +743,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101333, 3.32778, -7.42101 )
 
 [node name="CameraPos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 19.238, 0 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 79 )
-script = ExtResource( 2 )
 
 [editable path="Stage/BigDungeonRoom"]
 [editable path="Stage/Enemies/TankerBot"]

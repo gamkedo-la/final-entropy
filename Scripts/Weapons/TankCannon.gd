@@ -3,7 +3,7 @@ extends Position3D
 signal knockback(val)
 
 onready var rnd = RandomNumberGenerator.new()
-onready var BULLET = preload("res://Scenes/Bullets/Bullet.tscn")
+onready var BULLET = preload("res://Scenes/Bullets/TankBullet.tscn")
 onready var shot_sfx: AudioStreamPlayer3D = $ShotSFX
 export var shot_speed: float = 20
 export var base_rpm: float = 300

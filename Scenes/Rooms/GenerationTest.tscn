@@ -26,6 +26,10 @@ dof_blur_near_amount = 0.06
 script = ExtResource( 2 )
 first_room = "M0"
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 49 )
+script = ExtResource( 7 )
+
 [node name="OrthoCamera" parent="." instance=ExtResource( 3 )]
 size = 32.0
 
@@ -34,7 +38,3 @@ size = 32.0
 [node name="Rooms" type="Spatial" parent="."]
 script = ExtResource( 9 )
 room_container = ExtResource( 10 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 49 )
-script = ExtResource( 7 )
