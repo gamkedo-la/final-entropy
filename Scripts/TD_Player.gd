@@ -33,10 +33,16 @@ var raycast_position = null
 
 # Dash Mechanic
 var dash_now: bool = false
-var invuln_time: float = 2.0
-var dash_meter: float = 20.0
-var dash_recharge_time: float = 3.0
+var invuln_time: float = 1.0
+var invuln_elapse: float = 0.0
+var dash_max: float = 20.0
+var dash_amount: float = dash_max setget set_dash
+var dash_cost: float = 10.0
+var dash_recharge_time: float = .1
 var dash_recharge_elapse: float = 0.0
+var dash_recharge_amount: float = 0.2
+var invulnerable: bool = false
+onready var dash_meter = $DashMeter
 
 onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
@@ -50,6 +56,7 @@ func _ready():
 	gun_position = get_node(GunPosPath)
 	weapons.append_array(WeaponMount.get_children())
 	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0, 1, 0, 0.5))
+	dash_meter.value = dash_amount
 	print_debug("Weapons: ", weapons)
 
 func _physics_process(delta):
@@ -63,8 +70,12 @@ func _input(event):
 #		rotation_degrees.y -= event.relative.x * mouse_sensitivity / 18 / divide_mouse_sensitivity
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && dash_amount >= dash_cost:
 		dash_now = true
+		dash_amount -= dash_cost
+		invuln_elapse = 0.0
+		invulnerable = true
+		
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
@@ -110,7 +121,24 @@ func check_fire() -> void:
 			if weap.has_method("fire"):
 				weap.fire()
 
+func set_dash(val):	
+	print_debug("Getting to set_dash")
+	dash_amount = clamp(val, 0.0, dash_max)
+	dash_meter.value = dash_amount
+		
 func recharge(delta: float) -> void:
+	if invulnerable:
+		invuln_elapse += delta
+	if invuln_elapse > invuln_time:
+		invulnerable = false
+		
+	if dash_amount < dash_max:
+		dash_recharge_elapse += delta
+		if dash_recharge_elapse >= dash_recharge_time:
+			dash_recharge_elapse = 0.0
+			dash_amount = clamp(dash_amount + dash_recharge_amount, 0.0, dash_max)		
+	
+	dash_meter.value = dash_amount
 	pass
 
 func take_damage(dmg: float) -> void:
@@ -125,6 +153,8 @@ func spawn_at_portal(portal:Spatial) -> void:
 		global_transform = portal.global_transform
 
 func _on_HitBox_area_entered(area):
+	if invulnerable:
+		return
 #	print_debug("Area entered player", area)
 	$TextureProgress2.value = int((float(hp) / maxHp) * 100)
 	if area.is_in_group("bullet"):

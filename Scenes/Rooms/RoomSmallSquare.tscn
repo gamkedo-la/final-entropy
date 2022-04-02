@@ -686,13 +686,13 @@ transform = Transform( -0.99478, 0, 0.102046, 0, 1, 0, -0.102046, 0, -0.99478, -
 health = 30.0
 
 [node name="Position3D" type="Position3D" parent="Stage/Enemies/TankerBot/AI/PatrolPoints" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65599, 0, -6.17908 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.656, 1, -6.179 )
 
 [node name="Position3D2" type="Position3D" parent="Stage/Enemies/TankerBot/AI/PatrolPoints" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326312, 0, -8.50067 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326, 1, -8.501 )
 
 [node name="Position3D3" type="Position3D" parent="Stage/Enemies/TankerBot/AI/PatrolPoints" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87087, 0, -2.79543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.871, 1, -2.795 )
 
 [node name="AnimationPlayer" parent="Stage/Enemies/TankerBot/easy common enemy ground" index="2"]
 anims/ArmatureAction002 = SubResource( 80 )
@@ -711,19 +711,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68171, 1.6148, -17.0519 )
 health = 30.0
 
 [node name="Position3D" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97207, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.972, 1, 0 )
 
 [node name="Position3D2" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57652, 0, 0.688484 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57652, 1, 0.688484 )
 
 [node name="Position3D3" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0731, 0, 1.14417 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0731, 1, 1.14417 )
 
 [node name="Position3D4" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09059, -9.53674e-07, 10.7265 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96663, 1, 9.15926 )
 
 [node name="Position3D5" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463562, 0, -4.34847 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463562, 1, -4.34847 )
 
 [node name="AnimationPlayer" parent="Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="1"]
 anims/idle = SubResource( 88 )

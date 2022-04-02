@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/TD_Player.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
@@ -81,6 +81,11 @@ shader_param/scroll_direction = Vector2( 0, 0 )
 shader_param/scrolling_speed = 0.08
 shader_param/enable_palette_cycling = false
 shader_param/palette_speed = 0.1
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0.588235, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -240,6 +245,21 @@ margin_right = 1869.0
 margin_bottom = 1839.0
 rect_scale = Vector2( 0.4, 0.4 )
 texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DashMeter" type="ProgressBar" parent="."]
+margin_left = 80.0
+margin_top = 975.0
+margin_right = 608.0
+margin_bottom = 989.0
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
+max_value = 20.0
+step = 0.1
+value = 10.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
