@@ -31,6 +31,13 @@ var weapons = []
 const RAY_LENGTH = 100
 var raycast_position = null
 
+# Dash Mechanic
+var dash_now: bool = false
+var invuln_time: float = 2.0
+var dash_meter: float = 20.0
+var dash_recharge_time: float = 3.0
+var dash_recharge_elapse: float = 0.0
+
 onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
@@ -46,6 +53,7 @@ func _ready():
 	print_debug("Weapons: ", weapons)
 
 func _physics_process(delta):
+	recharge(delta)
 	rotate_to_cursor()
 	move_state(delta)
 	check_fire()
@@ -55,6 +63,8 @@ func _input(event):
 #		rotation_degrees.y -= event.relative.x * mouse_sensitivity / 18 / divide_mouse_sensitivity
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("dash"):
+		dash_now = true
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
@@ -68,17 +78,28 @@ func rotate_to_cursor() -> void:
 func move_state(delta):
 	gravity_speed -= GRAVITY * gravity_scl * mass * delta
 	var move_dir = Vector3.ZERO
-	
-	move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	move_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	if ground_ray.is_colliding():
-		velocity.y = 0.0
-	else:
-		velocity.y = gravity_speed
-	if move_dir != Vector3.ZERO:
-		velocity = velocity.move_toward(move_dir * MAX_SPEED, ACCELERATION * delta)
-	else:
-		velocity = velocity.move_toward(Vector3.ZERO, ACCELERATION * delta)
+	# Not Dashing
+	if !dash_now:
+		move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		move_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		if ground_ray.is_colliding():
+			velocity.y = 0.0
+		else:
+			velocity.y = gravity_speed
+		if move_dir != Vector3.ZERO:
+			velocity = velocity.move_toward(move_dir * MAX_SPEED, ACCELERATION * delta)
+		else:
+			velocity = velocity.move_toward(Vector3.ZERO, ACCELERATION * delta)
+	# Dashing
+	if dash_now:
+		move_dir = -transform.basis.z
+		if ground_ray.is_colliding():
+			velocity.y = 0.0
+		else:
+			velocity.y = gravity_speed
+		velocity = velocity.move_toward(move_dir * MAX_SPEED*10, ACCELERATION)
+		dash_now = false
+		pass
 	velocity = move_and_slide(velocity)
 
 func check_fire() -> void:
@@ -89,6 +110,8 @@ func check_fire() -> void:
 			if weap.has_method("fire"):
 				weap.fire()
 
+func recharge(delta: float) -> void:
+	pass
 
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)
