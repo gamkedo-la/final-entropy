@@ -15,6 +15,8 @@ var rooms = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not is_connected("level_loaded", GameLoader, "_on_LevelController_level_loaded"):
+		connect("level_loaded", GameLoader, "_on_LevelController_level_loaded")
 	if not is_connected("level_loaded", DebugOverlay, "_on_LevelController_level_loaded"):
 		connect("level_loaded", DebugOverlay, "_on_LevelController_level_loaded")
 
@@ -43,7 +45,7 @@ func register_portal(new_portal:RoomPortal) -> void:
 		var res_con = new_portal.connect("traverse", self, "_traverse_to_room")
 		assert(res_con == OK)
 
-func _traverse_to_room(to_room, from_room = "") -> void:	
+func _traverse_to_room(to_room, from_room = "") -> String:	
 	for i in rooms.size():
 		if rooms[i].room_name == from_room or from_room.empty():
 			rooms[i].deactivate()
@@ -53,3 +55,4 @@ func _traverse_to_room(to_room, from_room = "") -> void:
 			player.global_transform = rooms[i].player_spawn.global_transform
 			rooms[i].return_room = from_room
 			rooms[i].activate()
+	return to_room

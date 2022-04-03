@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name Player
 
+signal powered_up(pickup)
+
 const GRAVITY = 9.8
 
 export(NodePath) var GunPosPath = ""
@@ -50,6 +52,9 @@ onready var power_ups = $PowerUps
 
 
 func _ready():
+	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
+		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
+
 	Global.player_node = get_node(player)
 	ground_ray.enabled = true
 	rnd.randomize()
@@ -58,6 +63,7 @@ func _ready():
 	DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(0, 1, 0, 0.5))
 	dash_meter.value = dash_amount
 	print_debug("Weapons: ", weapons)
+	add_to_group("Save")
 
 func _physics_process(delta):
 	recharge(delta)
@@ -170,5 +176,7 @@ func _on_PickupRadius_area_entered(area):
 			print_debug("Picking up: ", pickup)
 			pickup.pickup()
 			Global.reparent(pickup, power_ups)
+			print_debug("Player HP left: " + String(hp))
+			emit_signal("powered_up", pickup)
 		
 	pass # Replace with function body.

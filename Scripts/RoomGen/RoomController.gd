@@ -14,6 +14,7 @@ export (Array, NodePath) var room_portals
 export (Array, String) var connected_rooms
 var return_room: String = ""
 var room_clear = false
+var is_activated = false
 
 export (bool) var debug_mode = false
 
@@ -54,9 +55,11 @@ func set_name(new_name) -> void:
 func activate() -> void:
 	call_deferred("add_child", stage)
 	call_deferred("_connect_enemies")
+	is_activated = true
 	
 func deactivate() -> void:
 	call_deferred("remove_child", stage)
+	is_activated = false
 
 func _connect_enemies() -> void:
 	var res_con
