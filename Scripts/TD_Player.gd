@@ -35,7 +35,7 @@ var raycast_position = null
 
 # Dash Mechanic
 var dash_now: bool = false
-var invuln_time: float = 1.0
+var invuln_time: float = 0.2
 var invuln_elapse: float = 0.0
 var dash_max: float = 20.0
 var dash_amount: float = dash_max setget set_dash
@@ -135,8 +135,9 @@ func set_dash(val):
 func recharge(delta: float) -> void:
 	if invulnerable:
 		invuln_elapse += delta
-	if invuln_elapse > invuln_time:
-		invulnerable = false
+		if invuln_elapse > invuln_time:
+			invulnerable = false
+			velocity = Vector3.ZERO
 		
 	if dash_amount < dash_max:
 		dash_recharge_elapse += delta
