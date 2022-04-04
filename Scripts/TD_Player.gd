@@ -46,6 +46,8 @@ var dash_recharge_amount: float = 0.2
 var invulnerable: bool = false
 onready var dash_meter = $DashMeter
 
+var traversing = false
+
 onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
@@ -66,10 +68,11 @@ func _ready():
 	add_to_group("Save")
 
 func _physics_process(delta):
-	recharge(delta)
-	rotate_to_cursor()
-	move_state(delta)
-	check_fire()
+	if !traversing:
+		recharge(delta)
+		rotate_to_cursor()
+		move_state(delta)
+		check_fire()
 
 func _input(event):
 #	if event is InputEventMouseMotion:
