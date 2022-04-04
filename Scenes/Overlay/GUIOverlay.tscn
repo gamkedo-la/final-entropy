@@ -82,6 +82,7 @@ scroll_following = true
 selection_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUIOverlayMenu"]
+playback_speed = 2.0
 anims/Paused = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
@@ -108,4 +109,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="visibility_changed" from="GUIOverlayMenu" to="GUIOverlayMenu" method="_on_GUIOverlayMenu_visibility_changed"]
+[connection signal="menu_toggled" from="GUIOverlayMenu" to="." method="_on_GUIOverlayMenu_menu_toggled"]
+[connection signal="animation_finished" from="GUIOverlayMenu/AnimationPlayer" to="GUIOverlayMenu" method="_on_AnimationPlayer_animation_finished"]
