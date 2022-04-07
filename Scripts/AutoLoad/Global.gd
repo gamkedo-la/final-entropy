@@ -3,16 +3,24 @@ extends Node
 signal shake(val)
 
 var ortho_camera: Camera = null
+var player_camera: Camera = null
+var player_cam_anim: AnimationPlayer = null
 var raycast_position = null
 var player_node: Spatial = null
+
+
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 
 func set_camera(cam: Camera):
 	ortho_camera = cam
+
+func set_player_camera(cam: Camera, anim: AnimationPlayer):
+	player_camera = cam
+	player_cam_anim = anim
 	
-		
+
 func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
@@ -23,6 +31,13 @@ func _unhandled_key_input(event):
 		AudioServer.set_bus_mute(0, !muted)
 		GUIOverlay.toggle_muted(!muted)
 
+func transition_camera() -> void:
+	player_camera.current = true
+	player_cam_anim.play("LevelTransition")
+
+func level_camera() -> void:
+	ortho_camera.current = true
+	player_cam_anim.stop()
 
 func reparent(child: Node, new_parent: Node):
 	if child:

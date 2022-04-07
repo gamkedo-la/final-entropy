@@ -52,12 +52,17 @@ onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
 
+# Transition Camera
+onready var player_cam: Camera = $CameraPivot/Camera
+onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
+
 
 func _ready():
 	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
 		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
 
 	Global.player_node = get_node(player)
+	Global.set_player_camera(player_cam, cam_anim)
 	ground_ray.enabled = true
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
@@ -66,6 +71,7 @@ func _ready():
 	dash_meter.value = dash_amount
 	print_debug("Weapons: ", weapons)
 	add_to_group("Save")
+	
 
 func _physics_process(delta):
 	if !traversing:
