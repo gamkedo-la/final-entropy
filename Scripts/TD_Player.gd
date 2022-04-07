@@ -53,6 +53,7 @@ onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
 
 # Transition Camera
+onready var player_cam_pivot: Position3D =$CameraPivot
 onready var player_cam: Camera = $CameraPivot/Camera
 onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
 
@@ -62,7 +63,7 @@ func _ready():
 		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
 
 	Global.player_node = get_node(player)
-	Global.set_player_camera(player_cam, cam_anim)
+	Global.set_player_camera(player_cam, cam_anim, player_cam_pivot)
 	ground_ray.enabled = true
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)

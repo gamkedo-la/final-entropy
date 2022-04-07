@@ -34,6 +34,7 @@ func _ready():
 	start_timer.connect("timeout", self, "_start_level")
 	start_timer.one_shot = true
 	start_timer.start()
+	Global.level_camera()
 
 	
 func _start_level() -> void:

@@ -5,6 +5,7 @@ signal shake(val)
 var ortho_camera: Camera = null
 var player_camera: Camera = null
 var player_cam_anim: AnimationPlayer = null
+
 var raycast_position = null
 var player_node: Spatial = null
 
@@ -12,11 +13,12 @@ var player_node: Spatial = null
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	
 
 func set_camera(cam: Camera):
 	ortho_camera = cam
 
-func set_player_camera(cam: Camera, anim: AnimationPlayer):
+func set_player_camera(cam: Camera, anim: AnimationPlayer, pivot: Position3D):
 	player_camera = cam
 	player_cam_anim = anim
 	
@@ -33,6 +35,7 @@ func _unhandled_key_input(event):
 
 func transition_camera() -> void:
 	player_camera.current = true
+	
 	player_cam_anim.play("LevelTransition")
 
 func level_camera() -> void:
