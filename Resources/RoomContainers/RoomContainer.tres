@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Rooms/RoomSmallSquare.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Rooms/RoomMedRect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/RoomGen/RoomContainer.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Rooms/RoomPlusSign.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 3 )
@@ -13,4 +14,4 @@ vertical_seperation = 50
 horizontal_seperation = 50
 boss_rooms = [  ]
 special_rooms = [  ]
-common_rooms = [ ExtResource( 2 ), ExtResource( 1 ) ]
+common_rooms = [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ]

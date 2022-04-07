@@ -1,0 +1,384 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
+[ext_resource path="res://Models/Floors/Level01_Floor02.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Enemies/RollePolle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=6]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6.45777, 1, 5.08323 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 1.83333
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:leg1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.83333, 1, 0, 0, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:leg4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.83333, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:leg2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 0, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.83333, 1, 0, 0, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:leg3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.83333, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:root")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, -0.0399526, 0.0800214, -0.0347859, 0, 0, 0.999395, 1, 1, 1, 0.0666667, 1, 0, -0.0399526, 0.0800214, -0.0346687, 0.00265143, -0.00098295, 0.999395, 1, 1, 1, 0.133333, 1, 0, -0.0399526, 0.0800214, -0.0339075, 0.0197115, -0.00730754, 0.999204, 1, 1, 1, 0.333333, 1, 0, -0.0399526, 0.0800214, -0.0295562, 0.11268, -0.0417731, 0.992313, 1, 1, 1, 0.4, 1, 0, -0.0399526, 0.0800214, -0.0288518, 0.127068, -0.047107, 0.990355, 1, 1, 1, 0.466667, 1, 0, -0.0399526, 0.0800214, -0.0290261, 0.125884, -0.0466683, 0.990522, 1, 1, 1, 0.533333, 1, 0, -0.0399526, 0.0800214, -0.0299345, 0.114868, -0.0425844, 0.992016, 1, 1, 1, 0.6, 1, 0, -0.0399526, 0.0800214, -0.0312492, 0.0966647, -0.0358359, 0.994181, 1, 1, 1, 0.866667, 1, 0, -0.0399526, 0.0800214, -0.0346537, -0.015408, 0.0057121, 0.999264, 1, 1, 1, 1.06667, 1, 0, -0.0399526, 0.0800214, -0.0312492, -0.0966647, 0.035836, 0.994181, 1, 1, 1, 1.13333, 1, 0, -0.0399526, 0.0800214, -0.0299345, -0.114868, 0.0425844, 0.992016, 1, 1, 1, 1.2, 1, 0, -0.0399526, 0.0800214, -0.0290261, -0.125884, 0.0466683, 0.990522, 1, 1, 1, 1.26667, 1, 0, -0.0399526, 0.0800214, -0.0288022, -0.128075, 0.0474803, 0.990209, 1, 1, 1, 1.33333, 1, 0, -0.0399526, 0.0800214, -0.0291134, -0.121744, 0.0451333, 0.991107, 1, 1, 1, 1.4, 1, 0, -0.0399526, 0.0800214, -0.0298053, -0.107552, 0.0398721, 0.992952, 1, 1, 1, 1.73333, 1, 0, -0.0399526, 0.0800214, -0.0343256, -0.0103738, 0.00384583, 0.999349, 1, 1, 1, 1.8, 1, 0, -0.0399526, 0.0800214, -0.0347195, -0.00150247, 0.000557004, 0.999396, 1, 1, 1, 1.83333, 1, 0, -0.0399526, 0.0800214, -0.0347859, 0, 0, 0.999395, 1, 1, 1 )
+
+[sub_resource type="Animation" id=4]
+length = 0.833333
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:leg1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.0751949, 1, 0.494313, 0.378331, 6.04834e-09, 0.0575517, 0.92388, 1, 1, 1, 0.0666667, 1, -0.0736477, 1, 0.484142, 0.378331, -6.04834e-09, 0.0575517, 0.92388, 1, 1, 1, 0.133333, 1, -0.0637043, 1, 0.418776, 0.378331, -2.11692e-08, 0.0575517, 0.92388, 1, 1, 1, 0.333333, 1, -0.00948954, 1, 0.0623825, 0.378331, -9.07251e-09, 0.0575517, 0.92388, 1, 1, 1, 0.4, 1, -0.00103152, 1, 0.00678065, 0.378331, -6.04834e-09, 0.0575517, 0.92388, 1, 1, 1, 0.466667, 1, -0.00324839, 1, 0.0213543, 0.378331, -7.05639e-09, 0.0575517, 0.92388, 1, 1, 1, 0.533333, 1, -0.0145577, 1, 0.0956991, 0.378331, 6.04834e-09, 0.0575517, 0.92388, 1, 1, 1, 0.733333, 1, -0.0640059, 1, 0.420759, 0.378331, -9.07251e-09, 0.0575517, 0.92388, 1, 1, 1, 0.8, 1, -0.0735105, 1, 0.483241, 0.378331, -1.20967e-08, 0.0575517, 0.92388, 1, 1, 1, 0.833333, 1, -0.0751949, 1, 0.494313, 0.378331, 6.04834e-09, 0.0575517, 0.92388, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:leg4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -1.19209e-07, 1, -5.96046e-08, -0.0575518, -1.10886e-07, -0.378331, 0.92388, 1, 1, 1, 0.0666667, 1, 0.010171, 1, -0.00154728, -0.0575518, -1.12902e-07, -0.378331, 0.92388, 1, 1, 1, 0.133333, 1, 0.075537, 1, -0.0114908, -0.0575518, -1.4516e-07, -0.378331, 0.92388, 1, 1, 1, 0.333333, 1, 0.431931, 1, -0.0657054, -0.0575518, -1.12902e-07, -0.378331, 0.92388, 1, 1, 1, 0.4, 1, 0.487533, 1, -0.0741636, -0.0575518, -1.20967e-07, -0.378331, 0.92388, 1, 1, 1, 0.466667, 1, 0.472959, 1, -0.0719466, -0.0575518, -1.12902e-07, -0.378331, 0.92388, 1, 1, 1, 0.533333, 1, 0.398614, 1, -0.0606374, -0.0575518, -1.33063e-07, -0.378331, 0.92388, 1, 1, 1, 0.733333, 1, 0.0735537, 1, -0.011189, -0.0575518, -1.12902e-07, -0.378331, 0.92388, 1, 1, 1, 0.8, 1, 0.0110726, 1, -0.00168449, -0.0575518, -8.26606e-08, -0.378331, 0.92388, 1, 1, 1, 0.833333, 1, -1.19209e-07, 1, -5.96046e-08, -0.0575518, -1.10886e-07, -0.378331, 0.92388, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:leg2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 1, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.0666667, 1, 0.00154722, 1, -0.0101711, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0.0114906, 1, -0.075537, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.0657052, 1, -0.431931, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.4, 1, 0.0741633, 1, -0.487533, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.466667, 1, 0.0719464, 1, -0.472959, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.533333, 1, 0.060637, 1, -0.398614, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.733333, 1, 0.0111889, 1, -0.0735538, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.8, 1, 0.00168437, 1, -0.0110726, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.833333, 1, 0, 1, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:leg3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, -0.494313, 1, 0.0751949, 0.0575517, -6.35075e-08, 0.378331, 0.92388, 1, 1, 1, 0.0666667, 1, -0.484142, 1, 0.0736476, 0.0575517, -6.45156e-08, 0.378331, 0.92388, 1, 1, 1, 0.133333, 1, -0.418777, 1, 0.0637042, 0.0575517, -8.77009e-08, 0.378331, 0.92388, 1, 1, 1, 0.333333, 1, -0.0623827, 1, 0.0094896, 0.0575517, -6.45156e-08, 0.378331, 0.92388, 1, 1, 1, 0.4, 1, -0.0067808, 1, 0.00103146, 0.0575517, -5.24189e-08, 0.378331, 0.92388, 1, 1, 1, 0.466667, 1, -0.0213544, 1, 0.00324845, 0.0575517, -6.45156e-08, 0.378331, 0.92388, 1, 1, 1, 0.533333, 1, -0.0956992, 1, 0.0145577, 0.0575516, -1.11894e-07, 0.378331, 0.92388, 1, 1, 1, 0.733333, 1, -0.42076, 1, 0.0640059, 0.0575517, -6.45156e-08, 0.378331, 0.92388, 1, 1, 1, 0.8, 1, -0.483241, 1, 0.0735106, 0.0575517, -2.52014e-08, 0.378331, 0.92388, 1, 1, 1, 0.833333, 1, -0.494313, 1, 0.0751949, 0.0575517, -6.35075e-08, 0.378331, 0.92388, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:root")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1, 0.0666667, 1, 0, 0.0473362, -0.0889838, 0.0397803, 0, 0, 0.999208, 1, 1, 1, 0.133333, 1, 0, 0.0473362, -0.0889838, 0.0340153, 0, 0, 0.999421, 1, 1, 1, 0.333333, 1, 0, 0.0473362, -0.0889838, 0.00256051, 0, 0, 0.999997, 1, 1, 1, 0.4, 1, 0, 0.0473362, -0.0889838, -0.0023465, 0, 0, 0.999997, 1, 1, 1, 0.466667, 1, 0, 0.0473362, -0.0889838, -0.0010604, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0.0473362, -0.0889838, 0.00550123, 0, 0, 0.999985, 1, 1, 1, 0.733333, 1, 0, 0.0473362, -0.0889838, 0.0341902, 0, 0, 0.999415, 1, 1, 1, 0.8, 1, 0, 0.0473362, -0.0889838, 0.0397008, 0, 0, 0.999212, 1, 1, 1, 0.833333, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1 )
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:leg1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, -2.98023e-08, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.499654, 1, 0, 0.0205761, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.09645, 1, 0, 0.152812, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.59899, 1, 0, 0.8738, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.97235, 1, 0, 0.986283, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.98902, 1, 0, 1, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:leg4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -5.96046e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.499654, 1, -5.96046e-08, 0.0205761, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.09645, 1, -5.96046e-08, 0.152812, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.59899, 1, -1.19209e-07, 0.8738, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.97235, 1, -1.19209e-07, 0.986283, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.98902, 1, -1.19209e-07, 1, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:leg2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, -2.98023e-08, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.499654, 1, 0, 0.0205761, -2.98023e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.09645, 1, 0, 0.152812, -2.98023e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.59899, 1, 0, 0.8738, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.97235, 1, 0, 0.986283, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.98902, 1, 0, 1, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:leg3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.499654, 1, -2.98023e-08, 0.0205761, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.09645, 1, -2.98023e-08, 0.152812, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.59899, 1, -8.9407e-08, 0.8738, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.97235, 1, -8.9407e-08, 0.986283, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.98902, 1, -8.9407e-08, 1, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:root")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1, 1.98902, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1 )
+tracks/5/type = "method"
+tracks/5/path = NodePath("../AI")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "set_state"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "pull leg in"
+length = 2.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:leg1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0.000797655, 1, 0, 1, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.0350139, 1, 0, 0.986283, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.398559, 1, 0, 0.8738, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.979878, 1, 0, 0.152812, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.50163, 1, 0, 0.0205761, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 2.00256, 1, 0, -2.98023e-08, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:leg4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0.000797655, 1, -1.19209e-07, 1, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.0350139, 1, -1.19209e-07, 0.986283, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.398559, 1, -1.19209e-07, 0.8738, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.979878, 1, -5.96046e-08, 0.152812, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.50163, 1, -5.96046e-08, 0.0205761, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 2.00256, 1, -5.96046e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:leg2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0.000797655, 1, 0, 1, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.0350139, 1, 0, 0.986283, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.398559, 1, 0, 0.8738, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 0.979878, 1, 0, 0.152812, -2.98023e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.50163, 1, 0, 0.0205761, -2.98023e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 2.00256, 1, 0, -2.98023e-08, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:leg3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0.000797655, 1, -8.9407e-08, 1, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.0350139, 1, -8.9407e-08, 0.986283, -5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.398559, 1, -8.9407e-08, 0.8738, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 0.979878, 1, -2.98023e-08, 0.152812, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.50163, 1, -2.98023e-08, 0.0205761, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1, 2.00256, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:root")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0.000797655, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1, 2.00256, 1, 0, 0.0473362, -0.0889838, 0.0406772, 0, 0, 0.999172, 1, 1, 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "push"
+length = 1.79167
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:leg1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.79167, 1, 0, 0, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:leg4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.79167, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:leg2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1, 1.79167, 1, 0, 0, -2.98023e-08, 4.48416e-44, -3.55271e-15, -1.26218e-29, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:leg3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.77636e-15, 0, 0, 1, 1, 1, 1, 1.79167, 1, -2.98023e-08, 0, 5.96046e-08, -1.77636e-15, 0, 0, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:root")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0.0852928, -0.156074, 0.0729547, 0, 0, 0.997335, 1, 1, 1, 0.133333, 1, 0, 0.206027, -0.355167, 0.173869, 0, 0, 0.984769, 1, 1, 1, 0.2, 1, 0, 0.358443, -0.572398, 0.295305, 0, 0, 0.955403, 1, 1, 1, 0.266667, 1, 0, 0.534899, -0.775375, 0.423948, 0, 0, 0.905686, 1, 1, 1, 0.333333, 1, 0, 0.727351, -0.938918, 0.547578, 0, 0, 0.836755, 1, 1, 1, 0.4, 1, 0, 0.930359, -1.0221, 0.657069, 0, 0, 0.75383, 1, 1, 1, 0.466667, 1, 0, 1.13453, -1.02162, 0.749688, 0, 0, 0.661791, 1, 1, 1, 0.533333, 1, 0, 1.33056, -0.948769, 0.826538, 0, 0, 0.562881, 1, 1, 1, 0.6, 1, 0, 1.50851, -0.816954, 0.889565, 0, 0, 0.45681, 1, 1, 1, 0.666667, 1, 0, 1.66186, -0.63997, 0.939123, 0, 0, 0.34358, 1, 1, 1, 0.733333, 1, 0, 1.77615, -0.422389, 0.974698, 0, 0, 0.223527, 1, 1, 1, 0.8, 1, 0, 1.84808, -0.180385, 0.995142, 0, 0, 0.0984521, 1, 1, 1, 0.866667, 1, 0, 1.8639, 0.0780335, 0.999577, 0, 0, -0.02909, 1, 1, 1, 0.933333, 1, 0, 1.81469, 0.339164, 0.987784, 0, 0, -0.15583, 1, 1, 1, 1, 1, 0, 1.71326, 0.588951, 0.960261, 0, 0, -0.279104, 1, 1, 1, 1.06667, 1, 0, 1.56481, 0.806982, 0.917986, 0, 0, -0.396612, 1, 1, 1, 1.13333, 1, 0, 1.38795, 0.981915, -0.86182, 0, 0, 0.507215, 1, 1, 1, 1.2, 1, 0, 1.19182, 1.09481, -0.792293, 0, 0, 0.610141, 1, 1, 1, 1.26667, 1, -0.000612406, 0.989341, 1.12789, -0.709011, 0, 0, 0.705197, 1, 1, 1, 1.33333, 1, -0.00579303, 0.789325, 1.0776, -0.611824, 0, 0, 0.790994, 1, 1, 1, 1.4, 1, -0.0172301, 0.599104, 0.949045, -0.50287, 0, 0, 0.864362, 1, 1, 1, 1.46667, 1, -0.0320437, 0.422847, 0.777652, -0.388172, 0, 0, 0.921587, 1, 1, 1, 1.53333, 1, -0.0485952, 0.2671, 0.583282, -0.276388, 0, 0, 0.961046, 1, 1, 1, 1.66667, 1, -0.0786196, 0.0384349, 0.226939, -0.0987798, 0, 0, 0.995109, 1, 1, 1, 1.73333, 1, -0.0876733, -0.0201415, 0.118763, -0.0511522, 0, 0, 0.998691, 1, 1, 1, 1.79167, 1, -0.0909091, -0.0399525, 0.0800221, -0.0347859, 0, 0, 0.999395, 1, 1, 1 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[node name="RoomA1" type="Spatial"]
+script = ExtResource( 1 )
+camera_size = 24.0
+room_name = "A1"
+room_portals = [ NodePath("Stage/Portals/PortalLeft"), NodePath("Stage/Portals/PortalTopMid"), NodePath("Stage/Portals/PortalTopRight") ]
+
+[node name="Stage" type="Spatial" parent="."]
+
+[node name="Floor" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="Level01_Floor02" parent="Stage/Floor" instance=ExtResource( 2 )]
+transform = Transform( -0.999819, 0, -0.0190229, 0, 1, 0, 0.0190229, 0, -0.999819, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999993, 0, 0.00382227, 0, 1, 0, -0.00382227, 0, 0.999993, 11.7186, 2.9462, 10.8135 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999993, 0, 0.00382227, 0, 1, 0, -0.00382227, 0, 0.999993, -13.2938, 2.9462, 11.0996 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody2"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody3" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999993, 0, 0.00382227, 0, 1, 0, -0.00382227, 0, 0.999993, -13.5798, 2.9462, -11.1795 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody3"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody4" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999993, 0, 0.00382227, 0, 1, 0, -0.00382227, 0, 0.999993, 11.4007, 2.9462, -11.4973 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody4"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody5" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( -0.00204211, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00204211, 22.7787, 2.9462, 0.834035 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody5"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody6" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( -0.00204211, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00204211, -23.4322, 2.9462, 1.53324 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody6"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody7" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999998, 0, 0.002042, 0, 1, 0, -0.002042, 0, 0.999998, -0.739923, 2.9462, 20.9837 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody7"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="StaticBody8" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 0.999998, 0, 0.002042, 0, 1, 0, -0.002042, 0, 0.999998, -1.59803, 2.9462, -21.3179 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/StaticBody8"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.978002, 0, 0.192615 )
+shape = SubResource( 1 )
+
+[node name="Enemies" type="Spatial" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337093, 0, -0.379227 )
+
+[node name="RollePolle" parent="Stage/Enemies" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07597, 0 )
+
+[node name="Position3D" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52286, -0.29215, 11.1662 )
+
+[node name="Position3D2" type="Position3D" parent="Stage/Enemies/RollePolle/AI/PatrolPoints" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6184, -0.508497, -10.3235 )
+
+[node name="AnimationTree" parent="Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
+parameters/playback = SubResource( 2 )
+
+[node name="RollePolle2" parent="Stage/Enemies" instance=ExtResource( 4 )]
+transform = Transform( 0.00499159, 0, -0.999988, 0, 1, 0, 0.999988, 0, 0.00499159, 2.98023e-08, 3.07597, 0 )
+
+[node name="Position3D" type="Position3D" parent="Stage/Enemies/RollePolle2/AI/PatrolPoints" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57402, -0.618793, 7.92869 )
+
+[node name="Position3D2" type="Position3D" parent="Stage/Enemies/RollePolle2/AI/PatrolPoints" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92227, -0.595329, -9.02666 )
+
+[node name="AnimationPlayer" parent="Stage/Enemies/RollePolle2/easy common enemy ground with no gun" index="1"]
+anims/idle = SubResource( 3 )
+anims/move = SubResource( 4 )
+"anims/pull leg" = SubResource( 5 )
+"anims/pull leg in" = SubResource( 6 )
+anims/push = SubResource( 7 )
+
+[node name="AnimationTree" parent="Stage/Enemies/RollePolle2/easy common enemy ground with no gun" index="2"]
+parameters/playback = SubResource( 8 )
+
+[node name="TankerBot" parent="Stage/Enemies" instance=ExtResource( 6 )]
+transform = Transform( -0.707613, 0, -0.706601, 0, 1, 0, 0.706601, 0, -0.707613, -7.22345, 2.42421, -5.92825 )
+
+[node name="Position3D" type="Position3D" parent="Stage/Enemies/TankerBot/AI/PatrolPoints" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01772, 0, -0.323988 )
+
+[node name="Position3D2" type="Position3D" parent="Stage/Enemies/TankerBot/AI/PatrolPoints" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43983, 0, -10.032 )
+
+[node name="AnimationTree" parent="Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
+parameters/playback = SubResource( 9 )
+
+[node name="ReturnPortal" type="Position3D" parent="Stage"]
+transform = Transform( 0.703941, 0, 0.71026, 0, 1, 0, -0.71026, 0, 0.703941, 0.403921, 4.36, -0.083437 )
+
+[node name="RoomPortal" parent="Stage/ReturnPortal" instance=ExtResource( 5 )]
+
+[node name="Portals" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="PortalLeft" type="Position3D" parent="Stage/Portals"]
+transform = Transform( 0.0229318, 0, -0.999737, 0, 1, 0, 0.999737, 0, 0.0229318, 17.1117, 4.36583, -0.295301 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalLeft" instance=ExtResource( 5 )]
+
+[node name="PortalTopMid" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.203821, 4.36583, 15.3359 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopMid" instance=ExtResource( 5 )]
+
+[node name="PortalTopRight" type="Position3D" parent="Stage/Portals"]
+transform = Transform( 0.00876129, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876129, -17.2816, 4.36583, 0.714276 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopRight" instance=ExtResource( 5 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, -0.169126, 0.985594, 0, -0.985594, -0.169126, 0.735329, 27.1287, -0.0817051 )
+light_color = Color( 0.164706, 0.352941, 0.643137, 1 )
+light_energy = 2.41
+
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1566, 3.49562, 9.61428 )
+
+[node name="CameraPos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.817879, 0.575391, 0, -0.575391, 0.817879, -0.227888, 19.7499, 24.5269 )
+
+[node name="OrthoCamera" parent="CameraPos" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+size = 24.0
+
+[editable path="Stage/Enemies/RollePolle"]
+[editable path="Stage/Enemies/RollePolle2"]
+[editable path="Stage/Enemies/TankerBot"]

@@ -356,6 +356,10 @@ health = 100.0
 engage_style = 2
 anim_tree = NodePath("../easy common enemy ground with no gun/AnimationTree")
 anim_play_node = NodePath("../easy common enemy ground with no gun/AnimationPlayer")
+fire_time = 6.0
+cooldown_time = 2.0
+patrol_wait = 1.0
+idle_wait = 1.0
 
 [node name="Steering" parent="AI" index="0"]
 steer_force = 4.0
