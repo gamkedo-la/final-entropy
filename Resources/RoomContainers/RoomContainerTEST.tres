@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/RoomGen/RoomContainer.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Rooms/BossRoom01.tscn" type="PackedScene" id=5]
+
+[resource]
+script = ExtResource( 3 )
+min_rooms = 5
+max_rooms = 8
+odds_of_special_room = 0.0
+vertical_seperation = 50
+horizontal_seperation = 50
+boss_rooms = [  ]
+special_rooms = [  ]
+common_rooms = [ ExtResource( 5 ) ]

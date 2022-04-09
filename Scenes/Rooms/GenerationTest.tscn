@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Resources/RoomContainers/RoomContainerTEST.tres" type="Resource" id=1]
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/RoomGen/LevelGeneration.gd" type="Script" id=9]
-[ext_resource path="res://Resources/RoomContainers/RoomContainer.tres" type="Resource" id=10]
 
 [sub_resource type="PanoramaSky" id=78]
 
@@ -37,4 +37,4 @@ size = 32.0
 
 [node name="Rooms" type="Spatial" parent="."]
 script = ExtResource( 9 )
-room_container = ExtResource( 10 )
+room_container = ExtResource( 1 )

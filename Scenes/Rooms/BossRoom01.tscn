@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Textures/cracked_glow_floor/cracked_glow_floor_pink.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/BossSphere.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "GlowPulse"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 5, 6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.3, 12.0, 2.0, 12.0, 0.3 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 28.5015, 1, 33.8907 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 2.78718, 32.8664 )
+
+[node name="RoomA1" type="Spatial"]
+script = ExtResource( 1 )
+camera_size = 52.0
+room_name = "A1"
+room_portals = [ NodePath(""), NodePath("Stage/Portals/PortalTopMid"), NodePath("") ]
+
+[node name="Stage" type="Spatial" parent="."]
+
+[node name="Floor" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Stage/Floor"]
+width = 57.0715
+height = 0.2
+depth = 65.8758
+material = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage/Floor/CSGBox"]
+autoplay = "GlowPulse"
+anims/GlowPulse = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Stage/Floor/CSGBox"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/CSGBox/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.884609, 0 )
+shape = SubResource( 3 )
+
+[node name="Wall" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3297, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Wall"]
+shape = SubResource( 4 )
+
+[node name="Wall2" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8135, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Wall2"]
+shape = SubResource( 4 )
+
+[node name="Wall3" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 1.06081, 0, 33.3277 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Wall3"]
+shape = SubResource( 4 )
+
+[node name="Wall4" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 1.0608, 0, -33.1652 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Wall4"]
+shape = SubResource( 4 )
+
+[node name="Enemies" type="Spatial" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337093, 0, -0.379227 )
+
+[node name="BossSphere" parent="Stage/Enemies" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42395, -0.935789 )
+
+[node name="ReturnPortal" type="Position3D" parent="Stage"]
+transform = Transform( 0.703941, 0, 0.71026, 0, 1, 0, -0.71026, 0, 0.703941, 0.403921, 2.66484, -0.083437 )
+
+[node name="RoomPortal" parent="Stage/ReturnPortal" instance=ExtResource( 4 )]
+
+[node name="Portals" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="PortalTopMid" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.203818, 2.79215, 31.9442 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopMid" instance=ExtResource( 4 )]
+
+[node name="PortalTopRight" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -23.9897, 2.79215, 31.9443 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopRight" instance=ExtResource( 4 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, -0.169126, 0.985594, 0, -0.985594, -0.169126, 0.735329, 27.1287, -0.0817051 )
+light_color = Color( 0.164706, 0.352941, 0.643137, 1 )
+light_energy = 2.41
+
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8021, 3.49562, 21.4426 )
+
+[node name="CameraPos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.817879, 0.575391, 0, -0.575391, 0.817879, -0.537535, 21.3672, 29.1187 )
+
+[node name="OrthoCamera" parent="CameraPos" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+size = 52.0
