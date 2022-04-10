@@ -32,7 +32,7 @@ func _ready():
 		main_path.push_back((new_room))
 		
 	# Add Boss
-	var boss_room = room_container.common_rooms[randi() % room_container.common_rooms.size()].instance()
+	var boss_room = room_container.boss_rooms[randi() % room_container.boss_rooms.size()].instance()
 	add_child(boss_room)
 	boss_room.room_name = "B0"
 	boss_room.name = boss_room.room_name
