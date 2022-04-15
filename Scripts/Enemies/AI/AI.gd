@@ -187,7 +187,7 @@ func _patrol() -> void:
 	if state_machine:
 		an_tree.set("parameters/move_bt/TimeScale/scale", (steering.velocity.length() / actor.MAX_SPEED) * 2.0)
 #		print_debug(state_machine.)
-	if (patrol_target.distance_to(actor.global_transform.origin) < 1.5) || (!has_points && last_jp_cnt == 60):
+	if (patrol_target.distance_to(actor.global_transform.origin) < 1.5) || (last_jp_cnt == 60):
 		patrol_reached = true
 		last_jp = 0.0
 		last_jp_cnt = 0
@@ -206,7 +206,7 @@ func _patrol() -> void:
 			patrol_target = Vector3(random_x, 0.0, random_z) + actor.global_transform.origin
 		journey_distance = actor.global_transform.origin.distance_to(patrol_target)
 		patrol_reached = false
-	if !has_points && abs(journey_percent - last_jp) < 0.001:
+	if abs(journey_percent - last_jp) < 0.001:
 #		print_debug("journey_percent:", journey_percent, " last_jp: ", last_jp, " diff: ", journey_percent-last_jp)
 		last_jp_cnt += 1
 	else:

@@ -363,6 +363,7 @@ idle_wait = 1.0
 
 [node name="Steering" parent="AI" index="0"]
 steer_force = 4.0
+num_rays = 32
 
 [node name="GroundRay" parent="AI/Steering" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386802, 0 )

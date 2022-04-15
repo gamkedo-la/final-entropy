@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Final Entropy"
-run/main_scene="res://Scenes/Rooms/LevelController.tscn"
+run/main_scene="res://Scenes/Rooms/GenerationTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
