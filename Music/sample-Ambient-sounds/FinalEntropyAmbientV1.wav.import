@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FinalEntropyAmbientV1.wav-37a3ec1d9b3fe8767756c23aa60ccab6.sample"
+
+[deps]
+
+source_file="res://Music/sample-Ambient-sounds/FinalEntropyAmbientV1.wav"
+dest_files=[ "res://.import/FinalEntropyAmbientV1.wav-37a3ec1d9b3fe8767756c23aa60ccab6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
