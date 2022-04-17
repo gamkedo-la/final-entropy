@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/AutoLoad/Music.gd" type="Script" id=1]
 [ext_resource path="res://Music/combat_bgm_01.wav" type="AudioStream" id=2]
-[ext_resource path="res://Music/ambient_desolateWIP.wav" type="AudioStream" id=3]
+[ext_resource path="res://Music/AmbientLongVersion1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Music/menu_bgm.wav" type="AudioStream" id=4]
+[ext_resource path="res://Music/AmbientLongVersion2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Music/AmbientSongVersion3.wav" type="AudioStream" id=6]
+[ext_resource path="res://Music/AmbientLongVersion4.wav" type="AudioStream" id=7]
+[ext_resource path="res://Music/ambient_desolateWIP.wav" type="AudioStream" id=8]
+[ext_resource path="res://Music/silence_30s.wav" type="AudioStream" id=9]
 
 [node name="Music" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
+ambient_tracks = [ ExtResource( 9 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ) ]
 
 [node name="AmbientBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 8 )
 volume_db = -80.0
 autoplay = true
 bus = "Music"
@@ -26,3 +32,5 @@ stream = ExtResource( 2 )
 volume_db = -80.0
 autoplay = true
 bus = "Music"
+
+[connection signal="finished" from="AmbientBGM" to="." method="_on_AmbientBGM_finished"]

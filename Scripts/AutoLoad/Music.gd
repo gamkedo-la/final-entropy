@@ -5,6 +5,8 @@ onready var menu_bgm: AudioStreamPlayer = $MenuBGM
 onready var ambient_bgm: AudioStreamPlayer = $AmbientBGM
 onready var action01_bgm: AudioStreamPlayer = $ActionBGM1
 
+export (Array, AudioStream) var ambient_tracks
+
 var fade_speed := 20.0
 
 var ambient_target = 0
@@ -88,3 +90,8 @@ func _set_levels(delta: float) -> void:
 #	if boss_music.volume_db > boss_target + fade_this_frame:
 #		boss_music.volume_db -= fade_this_frame
 	pass
+
+
+func _on_AmbientBGM_finished():
+	ambient_bgm.stream = ambient_tracks[randi() % ambient_tracks.size()]
+	ambient_bgm.play()
