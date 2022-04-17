@@ -27,6 +27,7 @@ func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
 		GUIOverlay.toggle_menu(get_tree().paused)
+		OptionsMenu.enabled(get_tree().paused)
 
 	var muted = AudioServer.is_bus_mute(0)
 	if event.is_action_pressed("mute"):

@@ -1,0 +1,203 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/OptionsMenu.gd" type="Script" id=1]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 1 )
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -320.0
+margin_right = 320.0
+margin_bottom = 1080.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenVB" type="VBoxContainer" parent="MC"]
+margin_right = 640.0
+margin_bottom = 1080.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Spacer" type="HBoxContainer" parent="MC/CenVB"]
+margin_right = 640.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 270 )
+
+[node name="TabCon" type="TabContainer" parent="MC/CenVB"]
+margin_top = 274.0
+margin_right = 640.0
+margin_bottom = 806.0
+mouse_default_cursor_shape = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_align = 0
+
+[node name="Audio" type="PanelContainer" parent="MC/CenVB/TabCon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="AudVBox" type="VBoxContainer" parent="MC/CenVB/TabCon/Audio"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 625.0
+margin_bottom = 489.0
+
+[node name="Spacer" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
+margin_right = 618.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 33 )
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/Spacer"]
+margin_left = 263.0
+margin_top = 9.0
+margin_right = 355.0
+margin_bottom = 23.0
+text = "Audio Settings"
+
+[node name="MainHB" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
+margin_top = 37.0
+margin_right = 618.0
+margin_bottom = 61.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/MainHB"]
+margin_right = 180.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_vertical = 1
+text = "Main Volume"
+align = 1
+
+[node name="MainSlider" type="HSlider" parent="MC/CenVB/TabCon/Audio/AudVBox/MainHB"]
+margin_left = 184.0
+margin_right = 590.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MainCB" type="CheckBox" parent="MC/CenVB/TabCon/Audio/AudVBox/MainHB"]
+margin_left = 594.0
+margin_right = 618.0
+margin_bottom = 24.0
+
+[node name="MusicHB" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
+margin_top = 65.0
+margin_right = 618.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/MusicHB"]
+margin_right = 180.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_vertical = 1
+text = "Music "
+align = 1
+
+[node name="MusSlider" type="HSlider" parent="MC/CenVB/TabCon/Audio/AudVBox/MusicHB"]
+margin_left = 184.0
+margin_right = 590.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusCB" type="CheckBox" parent="MC/CenVB/TabCon/Audio/AudVBox/MusicHB"]
+margin_left = 594.0
+margin_right = 618.0
+margin_bottom = 24.0
+
+[node name="SFXHB" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
+margin_top = 93.0
+margin_right = 618.0
+margin_bottom = 117.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/SFXHB"]
+margin_right = 180.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_vertical = 1
+text = "SFX"
+align = 1
+
+[node name="SFXSlider" type="HSlider" parent="MC/CenVB/TabCon/Audio/AudVBox/SFXHB"]
+margin_left = 184.0
+margin_right = 590.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXCB" type="CheckBox" parent="MC/CenVB/TabCon/Audio/AudVBox/SFXHB"]
+margin_left = 594.0
+margin_right = 618.0
+margin_bottom = 24.0
+
+[node name="AmbHB" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
+margin_top = 121.0
+margin_right = 618.0
+margin_bottom = 145.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/AmbHB"]
+margin_right = 180.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_vertical = 1
+text = "Ambience"
+align = 1
+
+[node name="AmbSlider" type="HSlider" parent="MC/CenVB/TabCon/Audio/AudVBox/AmbHB"]
+margin_left = 184.0
+margin_right = 590.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="AmbCB" type="CheckBox" parent="MC/CenVB/TabCon/Audio/AudVBox/AmbHB"]
+margin_left = 594.0
+margin_right = 618.0
+margin_bottom = 24.0
+
+[node name="Spacer2" type="HBoxContainer" parent="MC/CenVB"]
+margin_top = 810.0
+margin_right = 640.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 270 )
+
+[connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainSlider" to="." method="_on_MainSlider_value_changed"]
+[connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainCB" to="." method="_on_MainCB_toggled"]
+[connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MusicHB/MusSlider" to="." method="_on_MusSlider_value_changed"]
+[connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/MusicHB/MusCB" to="." method="_on_MusCB_toggled"]
+[connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/SFXHB/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/SFXHB/SFXCB" to="." method="_on_SFXCB_toggled"]
+[connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/AmbHB/AmbSlider" to="." method="_on_AmbSlider_value_changed"]
+[connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/AmbHB/AmbCB" to="." method="_on_AmbCB_toggled"]

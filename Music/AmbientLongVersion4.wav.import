@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AmbientLongVersion4.wav-f4af30f8fe018f631f99514258966042.sample"
+
+[deps]
+
+source_file="res://Music/AmbientLongVersion4.wav"
+dest_files=[ "res://.import/AmbientLongVersion4.wav-f4af30f8fe018f631f99514258966042.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

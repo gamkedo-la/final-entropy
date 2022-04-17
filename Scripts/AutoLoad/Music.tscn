@@ -6,6 +6,7 @@
 [ext_resource path="res://Music/menu_bgm.wav" type="AudioStream" id=4]
 
 [node name="Music" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="AmbientBGM" type="AudioStreamPlayer" parent="."]

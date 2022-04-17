@@ -86,6 +86,7 @@ PlayerVars="*res://Scripts/AutoLoad/PlayerVars.gd"
 DebugOverlay="*res://Scenes/Overlay/DebugOverlay.tscn"
 GUIOverlay="*res://Scenes/Overlay/GUIOverlay.tscn"
 Music="*res://Scripts/AutoLoad/Music.tscn"
+OptionsMenu="*res://Scenes/UI/OptionsMenu.tscn"
 
 [debug]
 
