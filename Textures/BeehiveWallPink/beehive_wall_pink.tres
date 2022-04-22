@@ -6,6 +6,7 @@
 [ext_resource path="res://Textures/BeehiveWallPink/beehive_wall_pink_depth.png" type="Texture" id=4]
 
 [resource]
+flags_world_triplanar = true
 albedo_texture = ExtResource( 1 )
 roughness_texture = ExtResource( 2 )
 roughness_texture_channel = 1
@@ -26,3 +27,4 @@ depth_flip_tangent = false
 depth_flip_binormal = false
 depth_texture = ExtResource( 4 )
 uv1_scale = Vector3( 4, 4, 4 )
+uv1_triplanar = true

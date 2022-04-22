@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/heavy_shot01.wav-ce59492f8305c3aeba5c17197e4c7cc4.sample"
+
+[deps]
+
+source_file="res://SFX/heavy_shot01.wav"
+dest_files=[ "res://.import/heavy_shot01.wav-ce59492f8305c3aeba5c17197e4c7cc4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

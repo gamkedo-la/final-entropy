@@ -158,7 +158,7 @@ func get_current_target() -> Vector3:
 	else:
 		return Vector3.ZERO
 
-func fixed_fire(delta: float) -> void:
+func fixed_fire(delta: float, targ: Player) -> void:
 	if current_state != State.FIXEDAIM:
 		engage_time = 0.0
 		set_state(State.FIXEDAIM)
@@ -168,6 +168,7 @@ func fixed_fire(delta: float) -> void:
 		firing_time += delta
 		if firing_time < fire_time:
 			for weapon in weapon_mount.get_children():
+				weapon.look_at(targ.global_transform.origin, Vector3.UP)
 				if weapon.has_method("fire"):
 					weapon.fire()
 		else: 
@@ -216,10 +217,12 @@ func _patrol() -> void:
 func _engage(delta: float) -> void:
 	if !cooling_down:
 		if aim_ray.is_colliding():
+			var p_check = aim_ray.get_collider().get_parent()
+			print_debug("p_check: ", p_check, "aim_ray.: ", aim_ray.get_collider().get_parent())
 			if aim_ray.get_collider().get_parent() is Player:
 				match engage_style:
 					EngageMode.FIXED:
-						fixed_fire(delta)
+						fixed_fire(delta, p_check)
 					EngageMode.FREE:
 						free_fire()
 					EngageMode.NONPROJECTILE:

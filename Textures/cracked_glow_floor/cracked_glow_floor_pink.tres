@@ -7,6 +7,7 @@
 [ext_resource path="res://Textures/cracked_glow_floor/cracked_glow_floor_pink_emission.png" type="Texture" id=5]
 
 [resource]
+flags_world_triplanar = true
 albedo_texture = ExtResource( 1 )
 metallic = 1.0
 metallic_texture = ExtResource( 2 )
@@ -36,3 +37,4 @@ depth_flip_tangent = false
 depth_flip_binormal = false
 depth_texture = ExtResource( 4 )
 uv1_scale = Vector3( 4, 4, 4 )
+uv1_triplanar = true

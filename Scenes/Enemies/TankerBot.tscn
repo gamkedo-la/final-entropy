@@ -1,12 +1,11 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Models/enemy ground/corpo.material" type="Material" id=2]
 [ext_resource path="res://Models/enemy ground/plastic.material" type="Material" id=3]
 [ext_resource path="res://Models/enemy ground/glass.material" type="Material" id=4]
 [ext_resource path="res://Scripts/Weapons/TankCannon.gd" type="Script" id=5]
-[ext_resource path="res://SFX/BulletFiringLight.wav" type="AudioStream" id=6]
-[ext_resource path="res://SFX/explosiontry.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX/heavy_shot01.wav" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=37]
 extents = Vector3( 0.70245, 0.853072, 1.22967 )
@@ -787,7 +786,7 @@ anim_play_node = NodePath("../easy common enemy ground/AnimationPlayer")
 fire_time = 4.0
 cooldown_time = 2.0
 patrol_wait = 0.5
-idle_wait = 1.0
+idle_wait = 0.1
 
 [node name="Steering" parent="AI" index="0"]
 steer_force = 5.0
@@ -796,9 +795,12 @@ num_rays = 32
 
 [node name="GroundRay" parent="AI/Steering" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923948, 0 )
+enabled = true
+collide_with_areas = true
 
 [node name="AimRay" parent="AI" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331595, 0 )
+cast_to = Vector3( 0, 0, -50 )
 
 [node name="TankCannon" type="Position3D" parent="AI/Weapons" index="0"]
 transform = Transform( 0.997564, 0, 0.0697564, 0, 1, 0, -0.0697564, 0, 0.997564, 0.736145, 1.14084, -0.463688 )
@@ -806,12 +808,14 @@ script = ExtResource( 5 )
 shot_speed = 50.0
 base_rpm = 120.0
 shot_dmg = 10.0
+knock_back = 1.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon" index="0"]
 cast_to = Vector3( 0, 0, -10 )
 
 [node name="ShotSFX" type="AudioStreamPlayer3D" parent="AI/Weapons/TankCannon" index="1"]
 stream = ExtResource( 6 )
+attenuation_model = 3
 bus = "SFX"
 
 [node name="TankCannon2" type="Position3D" parent="AI/Weapons" index="1"]
@@ -820,12 +824,14 @@ script = ExtResource( 5 )
 shot_speed = 50.0
 base_rpm = 120.0
 shot_dmg = 10.0
+knock_back = 1.0
 
 [node name="RayCast" type="RayCast" parent="AI/Weapons/TankCannon2" index="0"]
 cast_to = Vector3( 0, 0, -10 )
 
 [node name="ShotSFX" type="AudioStreamPlayer3D" parent="AI/Weapons/TankCannon2" index="1"]
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
+attenuation_model = 3
 bus = "SFX"
 
 [node name="HealthBar" parent="." index="2"]
@@ -961,4 +967,7 @@ transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0
 shape = SubResource( 20 )
 
 [node name="AggroBox" parent="." index="5"]
+visible = false
+
+[node name="die" parent="." index="6"]
 visible = false
