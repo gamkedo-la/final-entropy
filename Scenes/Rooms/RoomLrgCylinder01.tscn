@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Textures/cyber_brick_purple.tres" type="Material" id=5]
+[ext_resource path="res://Scenes/Enemies/OrbPhaserEnemy.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -73,6 +74,9 @@ shape = SubResource( 4 )
 [node name="TankerBot" parent="Stage/Enemies" instance=ExtResource( 2 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.322172, 3.99166, -0.428102 )
 
+[node name="OrbPhaser" parent="Stage/Enemies" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67737, 5.84957, 0 )
+
 [node name="ReturnPortal" type="Position3D" parent="Stage"]
 transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 23.0365, 4.36, 16.6499 )
 
@@ -82,17 +86,17 @@ transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 23.
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
 
 [node name="PortalTopLeft" type="Position3D" parent="Stage/Portals"]
-transform = Transform( -0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, -0.819152, 19.2135, 4.36583, 19.7914 )
+transform = Transform( -0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, -0.819152, 19.2135, 2.57744, 19.7914 )
 
 [node name="RoomPortal" parent="Stage/Portals/PortalTopLeft" instance=ExtResource( 4 )]
 
 [node name="PortalTopMid" type="Position3D" parent="Stage/Portals"]
-transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -4.50939, 4.36583, 28.0922 )
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -4.50939, 2.57744, 28.0922 )
 
 [node name="RoomPortal" parent="Stage/Portals/PortalTopMid" instance=ExtResource( 4 )]
 
 [node name="PortalTopRight" type="Position3D" parent="Stage/Portals"]
-transform = Transform( -0.659215, 0, 0.751955, 0, 1, 0, -0.751955, 0, -0.659215, -22.8754, 4.36583, 15.4189 )
+transform = Transform( -0.659215, 0, 0.751955, 0, 1, 0, -0.751955, 0, -0.659215, -22.8754, 2.57744, 15.4189 )
 
 [node name="RoomPortal" parent="Stage/Portals/PortalTopRight" instance=ExtResource( 4 )]
 

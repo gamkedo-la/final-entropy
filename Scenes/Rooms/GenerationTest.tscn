@@ -1,26 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/RoomContainers/RoomContainerTEST.tres" type="Resource" id=1]
 [ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/RoomPlusSign.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/RoomGen/LevelGeneration.gd" type="Script" id=9]
 
-[sub_resource type="PanoramaSky" id=78]
+[sub_resource type="ProceduralSky" id=50]
 
 [sub_resource type="Environment" id=49]
 background_mode = 1
-background_sky = SubResource( 78 )
+background_sky = SubResource( 50 )
+background_color = Color( 0.0666667, 0.0117647, 0.0745098, 1 )
+ambient_light_color = Color( 0.45098, 0.0392157, 0.6, 1 )
 fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
 fog_sun_color = Color( 0, 0, 0, 1 )
-fog_depth_begin = 0.0
-auto_exposure_min_luma = 0.0
-auto_exposure_max_luma = 7.3
+fog_depth_enabled = false
 ss_reflections_enabled = true
 ssao_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 96.73
+dof_blur_far_transition = 7.51
 dof_blur_far_quality = 2
-dof_blur_near_amount = 0.06
+dof_blur_near_enabled = true
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=51]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=52]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=53]
 
 [node name="LevelController" type="Spatial"]
 script = ExtResource( 2 )
@@ -38,3 +48,19 @@ size = 32.0
 [node name="Rooms" type="Spatial" parent="."]
 script = ExtResource( 9 )
 room_container = ExtResource( 1 )
+
+[node name="RoomA1" parent="Rooms" instance=ExtResource( 5 )]
+
+[node name="AnimationTree" parent="Rooms/RoomA1/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
+parameters/playback = SubResource( 51 )
+
+[node name="AnimationTree" parent="Rooms/RoomA1/Stage/Enemies/RollePolle2/easy common enemy ground with no gun" index="2"]
+parameters/playback = SubResource( 52 )
+
+[node name="AnimationTree" parent="Rooms/RoomA1/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
+parameters/playback = SubResource( 53 )
+
+[editable path="Rooms/RoomA1"]
+[editable path="Rooms/RoomA1/Stage/Enemies/RollePolle"]
+[editable path="Rooms/RoomA1/Stage/Enemies/RollePolle2"]
+[editable path="Rooms/RoomA1/Stage/Enemies/TankerBot"]
