@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AmbientSoundVersion5.wav-f5c667b8f30e1440c1e13c6b31196def.sample"
+
+[deps]
+
+source_file="res://Music/AmbientSoundVersion5.wav"
+dest_files=[ "res://.import/AmbientSoundVersion5.wav-f5c667b8f30e1440c1e13c6b31196def.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
