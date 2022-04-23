@@ -38,6 +38,7 @@ enum EngageMode {
 }
 
 export (EngageMode) var engage_style = EngageMode.FREE
+export (bool) var start_on_own = false
 var current_state: int = State.IDLE setget set_state
 
 #State Timers
@@ -90,6 +91,7 @@ func _ready() -> void:
 		patrol_points.append_array(patrol_points_path.get_children())
 		has_points = true
 
+
 func _physics_process(delta: float) -> void:
 	if !actor:
 		return
@@ -125,7 +127,10 @@ func initialize(newActor):
 	else:
 		print_debug("Failed to initialize AnimationTree")
 	ani_travel("idle")
-	set_state(State.IDLE)
+	if start_on_own:
+		set_state(State.PATROL)
+	else:
+		set_state(State.IDLE)
 
 func set_state(new_state: int) -> void:
 	if new_state == current_state:

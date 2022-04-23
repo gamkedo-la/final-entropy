@@ -15,6 +15,7 @@ health = 100.0
 
 [node name="AI" parent="." index="1"]
 engage_style = 2
+start_on_own = true
 fire_time = 6.0
 cooldown_time = 2.0
 patrol_wait = 1.0
