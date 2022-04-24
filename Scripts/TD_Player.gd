@@ -44,7 +44,7 @@ var dash_recharge_time: float = .1
 var dash_recharge_elapse: float = 0.0
 var dash_recharge_amount: float = 0.2
 var invulnerable: bool = false
-onready var dash_meter = $DashMeter
+onready var dash_meter = $DashMeter3
 
 var traversing = false
 
