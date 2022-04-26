@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Enemies/Enemy_001.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=6]
 
 [sub_resource type="PanoramaSky" id=2]
 
@@ -47,11 +46,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85131, 2.80093, -16.8377 )
 
 [node name="Enemy_001" parent="Stage" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0056, 2.74832, 4.57532 )
-script = ExtResource( 6 )
 
 [node name="Enemy_003" parent="Stage" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2093, 2.74832, 6.35199 )
-script = ExtResource( 6 )
 
 [node name="Level01_Floor01" parent="Stage" instance=ExtResource( 2 )]
 
