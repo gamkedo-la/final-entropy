@@ -50,6 +50,9 @@ transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0
 [node name="OmniLight5" parent="BigDungeonRoom/WallLights" index="2"]
 light_color = Color( 1, 0.913725, 0, 1 )
 
+[node name="ColumnMesh" parent="BigDungeonRoom/Columns/Column04Static/HitBox" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562254, 0 )
+
 [node name="RoomPortal" parent="BigDungeonRoom" instance=ExtResource( 7 )]
 transform = Transform( -8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, -14.1678, -1.14128, 7.36595 )
 
