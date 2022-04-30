@@ -80,8 +80,8 @@ func take_damage(dmg: float) -> void:
 
 func drop_loot() -> void:
 	#TODO: Drop Chances etc..
-	var rand_scene = rng.randi_range(0, powerup_drops.powerup_scenes.size() - 1)
-	var new_powerup: RigidBody = powerup_drops.powerup_scenes[rand_scene].instance()
+	rng.randomize()
+	var new_powerup: RigidBody = powerup_drops.powerup_scenes[rng.randi() % powerup_drops.powerup_scenes.size()].instance()
 	get_tree().root.add_child(new_powerup)
 	new_powerup.global_transform.origin = global_transform.origin + (Vector3.UP)	
 	new_powerup.apply_central_impulse(Vector3.UP * 10)
