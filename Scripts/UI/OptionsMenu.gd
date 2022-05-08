@@ -117,4 +117,5 @@ func _on_Save_pressed(slot:int):
 
 func _on_Load_pressed(slot:int):
 	GameLoader.load(slot)
+	Global.toggle_pause()
 

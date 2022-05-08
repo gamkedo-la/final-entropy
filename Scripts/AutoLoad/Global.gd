@@ -18,6 +18,7 @@ func _ready():
 func set_camera(cam: Camera):
 	ortho_camera = cam
 
+
 func set_player_camera(cam: Camera, anim: AnimationPlayer, pivot: Position3D):
 	player_camera = cam
 	player_cam_anim = anim
@@ -25,14 +26,19 @@ func set_player_camera(cam: Camera, anim: AnimationPlayer, pivot: Position3D):
 
 func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().paused = !get_tree().paused
-		GUIOverlay.toggle_menu(get_tree().paused)
-		OptionsMenu.enabled(get_tree().paused)
+		toggle_pause()
 
 	var muted = AudioServer.is_bus_mute(0)
 	if event.is_action_pressed("mute"):
 		AudioServer.set_bus_mute(0, !muted)
 		GUIOverlay.toggle_muted(!muted)
+
+
+func toggle_pause():
+	get_tree().paused = !get_tree().paused
+	GUIOverlay.toggle_menu(get_tree().paused)
+	OptionsMenu.enabled(get_tree().paused)
+
 
 func transition_camera() -> void:
 	player_camera.current = true
