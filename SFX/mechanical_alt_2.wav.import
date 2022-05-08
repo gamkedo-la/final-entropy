@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mechanical_alt_2.wav-7607a14ce52936aa3b7c9c025729c7d2.sample"
+
+[deps]
+
+source_file="res://SFX/mechanical_alt_2.wav"
+dest_files=[ "res://.import/mechanical_alt_2.wav-7607a14ce52936aa3b7c9c025729c7d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -111,3 +111,10 @@ func _on_SFXCB_toggled(button_pressed):
 func _on_AmbCB_toggled(button_pressed):
 	amb_disabled = button_pressed
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Ambience"), button_pressed)
+
+func _on_Save_pressed(slot:int):
+	GameLoader.save(slot)
+
+func _on_Load_pressed(slot:int):
+	GameLoader.load(slot)
+

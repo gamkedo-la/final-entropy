@@ -97,6 +97,10 @@ func _input(event):
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
+func reset_from_save(save_vars):
+	hp = save_vars.player_vars.hp
+	$TextureProgress2.value = int((float(hp) / maxHp) * 100)
+
 
 func rotate_to_cursor() -> void:
 	if Global.raycast_position:

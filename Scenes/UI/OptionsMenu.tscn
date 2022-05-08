@@ -39,7 +39,74 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_align = 0
 
+[node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="GameSaveSlots" type="ScrollContainer" parent="MC/CenVB/TabCon/Game Saves"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 625.0
+margin_bottom = 489.0
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="Slots" type="VBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots"]
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+custom_constants/separation = 0
+alignment = 1
+
+[node name="SaveSlot" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
 [node name="Audio" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -193,6 +260,8 @@ margin_right = 640.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 0, 270 )
 
+[connection signal="pressed" from="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot/Save" to="." method="_on_Save_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot/Load" to="." method="_on_Load_pressed" binds= [ 0 ]]
 [connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainSlider" to="." method="_on_MainSlider_value_changed"]
 [connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainCB" to="." method="_on_MainCB_toggled"]
 [connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MusicHB/MusSlider" to="." method="_on_MusSlider_value_changed"]

@@ -61,6 +61,8 @@ func register_portal(new_portal:RoomPortal) -> void:
 		assert(res_con == OK)
 
 func _traverse_to_room(to_room, from_room = "") -> String:
+	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
+	
 	var destination = player.global_transform.translated(Vector3.UP * 30)
 	var cam_destination = main_camera.global_transform.translated(Vector3.UP * 50)
 	Global.transition_camera()
@@ -72,6 +74,7 @@ func _traverse_to_room(to_room, from_room = "") -> String:
 	lift_tween.interpolate_property(main_camera, "global_transform", main_camera.global_transform, cam_destination, 1.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 #	lift_tween.interpolate_property(main_camera, "size", main_camera.size, cam_size, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	lift_tween.start()
+
 	return to_room
 
 func _complete_lift() -> void:
