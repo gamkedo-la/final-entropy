@@ -45,7 +45,6 @@ func _clean_test() -> void:
 func initialize(_lc:LevelController) -> void:
 	level_controller = _lc
 
-
 func set_name(new_name) -> void:
 	if room_name != new_name:
 		room_name = new_name

@@ -4,8 +4,10 @@ extends Node
 
 var rooms
 var room_loader
-var current_room
-var current_room_node
+
+var current_room = ""
+var current_connected_rooms = []
+var current_room_node = null
 
 var old_room_node
 
@@ -13,6 +15,7 @@ var save_nodes
 
 var save_vars = {
 	"current_room": current_room,
+	"current_connected_rooms": [],
 	"current_room_scene": "",
 	"power_ups": [],
 	"player_vars": {}
@@ -66,6 +69,8 @@ func load(slot:int):
 		room_node.deactivate()
 		if room_node.room_name == save_vars.current_room:
 			old_room_node = room_node
+			loaded_room.connected_rooms = save_vars.current_connected_rooms
+			loaded_room.level_controller = room_nodes.get_parent()
 			room_node.replace_by(loaded_room)
 			old_room_node.free()
 
@@ -79,6 +84,8 @@ func load(slot:int):
 	for node in save_nodes:
 		if node is Player:
 			node.reset_from_save(save_vars)
+
+	current_room_node.activate()
 
 	save_file.close()
 
@@ -96,8 +103,11 @@ func _on_LevelController_level_loaded(all_rooms, _room_loader):
 	for room in all_rooms:
 		if room.is_activated:
 			current_room = room.room_name
+			current_connected_rooms = room.connected_rooms
 			current_room_node = room
+
 			save_vars.current_room = room.room_name
+			save_vars.current_connected_rooms = room.connected_rooms
 			save_vars.current_room_scene = room.filename
 	room_loader = _room_loader
 
