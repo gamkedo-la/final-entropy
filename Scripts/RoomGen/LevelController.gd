@@ -65,8 +65,6 @@ func _traverse_to_room(to_room, from_room = "", refresh_rooms = false) -> String
 		rooms.clear()
 		for room in room_node.get_children():
 			rooms.append(room)
-
-	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
 	
 	var destination = player.global_transform.translated(Vector3.UP * 30)
 	var cam_destination = main_camera.global_transform.translated(Vector3.UP * 50)
@@ -102,7 +100,7 @@ func _complete_lift() -> void:
 	trav_tween.interpolate_property(main_camera, "global_transform", main_camera.global_transform, cam_destination, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	trav_tween.interpolate_property(main_camera, "size", main_camera.size, cam_size, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	trav_tween.start()
-	pass
+	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
 
 func _complete_traversal() -> void:
 #	main_camera.projection = Camera.PROJECTION_ORTHOGONAL

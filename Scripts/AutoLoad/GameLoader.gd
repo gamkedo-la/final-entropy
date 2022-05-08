@@ -100,6 +100,8 @@ func reset_loaded_room():
 
 func _on_LevelController_level_loaded(all_rooms, _room_loader):
 	rooms = all_rooms
+	room_loader = _room_loader
+
 	for room in all_rooms:
 		if room.is_activated:
 			current_room = room.room_name
@@ -109,7 +111,6 @@ func _on_LevelController_level_loaded(all_rooms, _room_loader):
 			save_vars.current_room = room.room_name
 			save_vars.current_connected_rooms = room.connected_rooms
 			save_vars.current_room_scene = room.filename
-	room_loader = _room_loader
 
 	print_debug("Current room: " + str(save_vars.current_room))
 
