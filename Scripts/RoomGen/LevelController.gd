@@ -60,7 +60,12 @@ func register_portal(new_portal:RoomPortal) -> void:
 		var res_con = new_portal.connect("traverse", self, "_traverse_to_room")
 		assert(res_con == OK)
 
-func _traverse_to_room(to_room, from_room = "") -> String:
+func _traverse_to_room(to_room, from_room = "", refresh_rooms = false) -> String:
+	if refresh_rooms:
+		rooms.clear()
+		for room in room_node.get_children():
+			rooms.append(room)
+
 	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
 	
 	var destination = player.global_transform.translated(Vector3.UP * 30)

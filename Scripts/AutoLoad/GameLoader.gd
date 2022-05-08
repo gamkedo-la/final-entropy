@@ -5,11 +5,15 @@ extends Node
 var rooms
 var room_loader
 var current_room
+var current_room_node
+
+var old_room_node
 
 var save_nodes
 
 var save_vars = {
 	"current_room": current_room,
+	"current_room_scene": "",
 	"power_ups": [],
 	"player_vars": {}
 }
@@ -54,9 +58,24 @@ func load(slot:int):
 	save_file.open("user://saves/slot" + slot_name, File.READ)
 	save_vars = save_file.get_var(true)
 
+	var room_nodes = current_room_node.get_parent()
+
+	var loaded_room = load(save_vars.current_room_scene).instance()
+
+	for room_node in room_nodes.get_children():
+		room_node.deactivate()
+		if room_node.room_name == save_vars.current_room:
+			old_room_node = room_node
+			room_node.replace_by(loaded_room)
+			old_room_node.free()
+
+	current_room = save_vars.current_room
+	current_room_node = loaded_room
+	reset_loaded_room()
+
 	print_debug(save_vars)
 	
-	room_loader.call_deferred("call_func", save_vars.current_room)
+	room_loader.call_deferred("call_func", save_vars.current_room, "", true)
 	for node in save_nodes:
 		if node is Player:
 			node.reset_from_save(save_vars)
@@ -64,12 +83,22 @@ func load(slot:int):
 	save_file.close()
 
 
+func reset_loaded_room():
+	current_room_node.room_name = current_room
+	current_room_node.name = current_room
+	for child in current_room_node.get_children():
+		if child.name.begins_with("@"):
+			child.queue_free()
+
+
 func _on_LevelController_level_loaded(all_rooms, _room_loader):
 	rooms = all_rooms
 	for room in all_rooms:
 		if room.is_activated:
 			current_room = room.room_name
+			current_room_node = room
 			save_vars.current_room = room.room_name
+			save_vars.current_room_scene = room.filename
 	room_loader = _room_loader
 
 	print_debug("Current room: " + str(save_vars.current_room))

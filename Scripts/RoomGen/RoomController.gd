@@ -26,7 +26,7 @@ func _ready():
 	if not Engine.editor_hint && !debug_mode:		
 		_clean_test()
 		deactivate()
-	pass # Replace with function body.
+	name = room_name
 
 func _clean_test() -> void:
 	var test_world_env = get_node_or_null("Stage/WorldEnvironment")
