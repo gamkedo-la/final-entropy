@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Enemies/FlyingEnemy01.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=3]
 [ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=5]
@@ -19,7 +20,7 @@ extents = Vector3( 33.1456, 3.28392, 0.579376 )
 [sub_resource type="BoxShape" id=83]
 extents = Vector3( 0.565186, 3.28392, 23.0783 )
 
-[node name="RoomA1" type="Spatial"]
+[node name="A1" type="Spatial"]
 script = ExtResource( 3 )
 camera_size = 34.0
 room_name = "A1"
@@ -155,6 +156,15 @@ transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107,
 
 [node name="TankerBot5" parent="Stage/Enemies" instance=ExtResource( 7 )]
 transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.05886, 3.99166, -13.4838 )
+
+[node name="FlyingEnemy01" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, 18.5057, 4.27196, -4.88152 )
+
+[node name="FlyingEnemy02" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, -8.93631, 4.27196, 13.0029 )
+
+[node name="FlyingEnemy03" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, 9.43855, 4.27196, 4.76194 )
 
 [node name="ReturnPortal" type="Position3D" parent="Stage"]
 transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 12.4118, 4.36, 9.99482 )

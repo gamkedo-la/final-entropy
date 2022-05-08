@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://SFX/explosiontry.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/Enemies/AI/Steering.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Enemies/AI/Actor.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Enemies/AI/AI.gd" type="Script" id=4]
+[ext_resource path="res://Models/flying enemy/FlyingEnemyMod01.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.374707
+height = 0.402769
+
+[sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+render_priority = 1
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereShape" id=4]
+radius = 5.16806
+
+[sub_resource type="Animation" id=6]
+resource_name = "FlyFloat"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CollisionShape:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0.25, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -20 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 21 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CollisionShape:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.838691, 0.367093, 2.38515 )
+
+[node name="FlyingEnemy01" type="KinematicBody"]
+axis_lock_motion_y = true
+move_lock_y = true
+script = ExtResource( 3 )
+MAX_SPEED = 5.0
+ACCELERATION = 0.25
+bar_path = NodePath("HealthBar")
+health = 50.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="AI" type="Spatial" parent="."]
+script = ExtResource( 4 )
+engage_style = 2
+start_on_own = true
+
+[node name="Steering" type="Spatial" parent="AI"]
+script = ExtResource( 2 )
+steer_force = 10.0
+
+[node name="GroundRay" type="RayCast" parent="AI/Steering"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134682, 0 )
+enabled = true
+cast_to = Vector3( 0, -2.5, 0 )
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
+debug_shape_thickness = 5.0
+
+[node name="PatrolPoints" type="Spatial" parent="AI"]
+
+[node name="AimRay" type="RayCast" parent="AI"]
+enabled = true
+cast_to = Vector3( 0, 0, -15 )
+collision_mask = 2
+collide_with_areas = true
+debug_shape_thickness = 3.0
+
+[node name="Weapons" type="Spatial" parent="AI"]
+
+[node name="HealthBar" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="AggroBox" type="Area" parent="."]
+visible = false
+monitorable = false
+
+[node name="AggroSphere" type="CollisionShape" parent="AggroBox"]
+shape = SubResource( 4 )
+
+[node name="die" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 1 )
+attenuation_model = 3
+bus = "SFX"
+
+[node name="FlyingEnemy01_Model" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlyingEnemy01_Model"]
+autoplay = "FlyFloat"
+anims/FlyFloat = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="OmniLight" type="OmniLight" parent="FlyingEnemy01_Model"]
+transform = Transform( 3.8942, 0.913897, 0, -0.913897, 3.8942, 0, 0, 0, 4, -0.0238562, 0.78594, -2.46713 )
+light_energy = 3.215
+shadow_enabled = true
+omni_range = 4.894
+
+[node name="HitBox" type="Area" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="AggroBox" to="AI" method="_on_AggroBox_body_entered"]

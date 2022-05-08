@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Models/flying enemy/sketch-model/FlyingEnemy2.fbx" type="PackedScene" id=1]
+
+[node name="FlyingEnemy01_Model" type="Spatial"]
+
+[node name="FlyingEnemy2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
