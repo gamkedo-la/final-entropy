@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/PowerUps/Powerup.gd" type="Script" id=1]
+[ext_resource path="res://Models/power_ups/firerate up.tres" type="ArrayMesh" id=2]
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 0.25
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0.643137, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0.643137, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.163573
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.638867, 0.68412, 0.625603 )
+
+[node name="ShotSize" type="RigidBody"]
+physics_material_override = SubResource( 3 )
+script = ExtResource( 1 )
+powerUpName = "Fire Rate Up"
+indexNum = 2
+shotDmg = 10.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.0820244, 0.141421, 0, -0.0820244, 0.141421, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+visible = false
+radius = 0.152632
+material = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="." groups=["pickup"]]
+monitoring = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 4 )
