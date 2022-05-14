@@ -345,7 +345,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2000, 759 ), Vector2( -51, 759 ) ]
+"values": [ Vector2( -2000, 759 ), Vector2( -41, 951 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TextureProgress3:rect_position")
@@ -357,7 +357,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2000, 759 ), Vector2( -51, 759 ) ]
+"values": [ Vector2( -2000, 759 ), Vector2( -41, 951 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("TextureProgress2:value")
@@ -381,7 +381,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2000, 801 ), Vector2( 440, 801 ) ]
+"values": [ Vector2( -2000, 801 ), Vector2( 207, 971 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("DashMeter3:value")
@@ -456,7 +456,7 @@ margin_left = -51.0
 margin_top = 759.0
 margin_right = 1869.0
 margin_bottom = 1839.0
-rect_scale = Vector2( 0.4, 0.4 )
+rect_scale = Vector2( 0.2, 0.2 )
 value = 100.0
 texture_under = ExtResource( 6 )
 tint_progress = Color( 1, 0.890196, 0, 1 )
@@ -467,40 +467,31 @@ margin_left = -51.0
 margin_top = 759.0
 margin_right = 1869.0
 margin_bottom = 1839.0
-rect_scale = Vector2( 0.4, 0.4 )
+rect_scale = Vector2( 0.2, 0.2 )
 texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DashMeter3" type="TextureProgress" parent="."]
 material = SubResource( 16 )
 margin_left = -2000.0
 margin_top = 801.0
 margin_right = -1492.0
-margin_bottom = 972.0
-rect_scale = Vector2( 0.395954, 0.398896 )
+margin_bottom = 972.001
+rect_scale = Vector2( 0.2, 0.2 )
 max_value = 20.0
 step = 0.1
 texture_progress = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DashMeter2" type="TextureProgress" parent="."]
 material = SubResource( 14 )
-margin_left = -51.0
-margin_top = 759.0
-margin_right = 1869.0
-margin_bottom = 1839.0
-rect_scale = Vector2( 0.4, 0.4 )
+margin_left = 36.0
+margin_top = 371.0
+margin_right = 1956.0
+margin_bottom = 1451.0
+rect_scale = Vector2( 0.2, 0.2 )
 max_value = 20.0
 step = 0.1
 value = 10.0
 texture_progress = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DashMeter" type="ProgressBar" parent="."]
 visible = false
