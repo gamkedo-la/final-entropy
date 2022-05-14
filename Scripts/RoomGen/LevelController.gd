@@ -1,7 +1,7 @@
 extends Spatial
 class_name LevelController
 
-signal level_loaded(all_rooms, room_loader)
+signal level_loaded(all_rooms, room_loader, player_node)
 
 onready var DebugOverlay = get_tree().root.get_node("DebugOverlay")
 
@@ -53,7 +53,7 @@ func _start_level() -> void:
 			main_camera.size = rooms[i].camera_size
 			player.global_transform = rooms[i].player_spawn.global_transform
 			rooms[i].activate()	
-	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
+	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"), player)
 
 func register_portal(new_portal:RoomPortal) -> void:
 	if not new_portal.is_connected("traverse", self, "_traverse_to_room"):

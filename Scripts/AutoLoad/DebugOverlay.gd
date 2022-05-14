@@ -7,6 +7,7 @@ var is_debug = false
 
 onready var draw = $DebugDraw3D
 onready var LevelSelecttorGrid = $LevelSelector/Grid
+onready var PowerupSelectorGrid = $PowerupSelector/Grid
 
 func _ready():
 	if not InputMap.has_action("toggle_debug"):
@@ -26,9 +27,12 @@ func _input(event):
 		print("Debug Mode: " + str(is_debug))
 		
 		
-func _on_LevelController_level_loaded(rooms, room_loader):
+func _on_LevelController_level_loaded(rooms, room_loader, player_node):
 	for button in LevelSelecttorGrid.get_children():
 		button.queue_free()
+		
+	for button in PowerupSelectorGrid.get_children():
+		button.player = player_node
 	
 	for room in rooms:
 		var level_select_button = LevelSelectButtonScn.instance()		

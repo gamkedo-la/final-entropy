@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/AutoLoad/DebugOverlay.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/AutoLoad/DebugDraw3D.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/AutoLoad/DebugSpeedSlider.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Overlay/DebugLevelSelectButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/AutoLoad/DebugPowerupSelectButton.gd" type="Script" id=5]
 
 [sub_resource type="ImageTexture" id=5]
 
@@ -227,7 +228,89 @@ margin_top = 58.0
 margin_right = 241.0
 margin_bottom = 108.0
 
+[node name="PowerupSelector" type="ScrollContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -243.0
+margin_top = -312.0
+margin_bottom = -192.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource( 7 )
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grid" type="GridContainer" parent="PowerupSelector"]
+margin_right = 243.0
+margin_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DebugPowerupBaseHPButton" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_right = 117.0
+text = "Base HP"
+script = ExtResource( 5 )
+
+[node name="DebugPowerupShotSizeButton" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 125.0
+margin_right = 242.0
+text = "Shot Size"
+script = ExtResource( 5 )
+index = 2
+
+[node name="DebugPowerupFireRateButton" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_top = 58.0
+margin_right = 117.0
+margin_bottom = 108.0
+text = "Fire Rate"
+script = ExtResource( 5 )
+index = 1
+
+[node name="DebugPowerupShotSpeedButton" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 125.0
+margin_top = 58.0
+margin_right = 242.0
+margin_bottom = 108.0
+text = "Shot Speed"
+script = ExtResource( 5 )
+index = 3
+
+[node name="PowerupSelectorLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -184.0
+margin_top = -336.0
+margin_right = -60.0
+margin_bottom = -322.0
+text = "Powerup Selector"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="gui_input" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_gui_input"]
 [connection signal="mouse_entered" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_mouse_entered"]
 [connection signal="mouse_exited" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_mouse_exited"]
 [connection signal="value_changed" from="DebugSpeedSlider" to="DebugSpeedSlider" method="_on_DebugSpeedSlider_value_changed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupBaseHPButton" to="PowerupSelector/Grid/DebugPowerupBaseHPButton" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupBaseHPButton" to="PowerupSelector/Grid/DebugPowerupBaseHPButton" method="_on_DebugPowerupSelectButton_pressed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupShotSizeButton" to="PowerupSelector/Grid/DebugPowerupShotSizeButton" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupShotSizeButton" to="PowerupSelector/Grid/DebugPowerupShotSizeButton" method="_on_DebugPowerupSelectButton_pressed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupFireRateButton" to="PowerupSelector/Grid/DebugPowerupFireRateButton" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupFireRateButton" to="PowerupSelector/Grid/DebugPowerupFireRateButton" method="_on_DebugPowerupSelectButton_pressed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupShotSpeedButton" to="PowerupSelector/Grid/DebugPowerupShotSpeedButton" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupShotSpeedButton" to="PowerupSelector/Grid/DebugPowerupShotSpeedButton" method="_on_DebugPowerupSelectButton_pressed"]
