@@ -357,6 +357,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("ArrowPos:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 3, 0 ), Vector3( 0, 4.3, 0 ), Vector3( 0, 3, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ArrowPos:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 359.9, 0 ) ]
+}
 
 [sub_resource type="Animation" id=22]
 length = 0.001
@@ -395,6 +419,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ArrowPos:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ArrowPos:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 3, 0 ) ]
 }
 
 [sub_resource type="BoxShape" id=46]
@@ -450,5 +498,8 @@ shape = SubResource( 46 )
 stream = ExtResource( 5 )
 autoplay = true
 bus = "Ambience"
+
+[node name="ArrowPos" type="Position3D" parent="."]
+transform = Transform( 1.01288, 0, 0, 0, 0.989743, 0, 0, 0, 1, 0, 3, 0 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
