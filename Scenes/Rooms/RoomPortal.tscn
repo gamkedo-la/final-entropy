@@ -1,10 +1,12 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Textures/Noise/opensimplexnoise_dissolve.tres" type="Texture" id=1]
 [ext_resource path="res://Textures/RoomPortal/OuterAura.png" type="Texture" id=2]
 [ext_resource path="res://Textures/RoomPortal/NumberRing.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/RoomGen/RoomPortal.gd" type="Script" id=4]
 [ext_resource path="res://SFX/portal_room_hum.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Rooms/PortalParts/DownArrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Rooms/PortalParts/UpArrow.tscn" type="PackedScene" id=7]
 
 [sub_resource type="VisualShaderNodeScalarFunc" id=1]
 output_port_for_preview = 0
@@ -450,6 +452,8 @@ extents = Vector3( 2.05285, 2.90583, 1 )
 
 [node name="RoomPortal" type="Spatial"]
 script = ExtResource( 4 )
+uparrow = ExtResource( 7 )
+downarrow = ExtResource( 6 )
 
 [node name="CSGTorus" type="CSGTorus" parent="."]
 transform = Transform( 0.887209, 0, 0, 0, -4.36746e-08, -1, 0, 0.999159, -4.37114e-08, 0, 0, 0 )

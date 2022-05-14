@@ -81,6 +81,7 @@ func _stage_clear() -> void:
 		new_portal.global_transform = return_portal.global_transform
 		new_portal.current_room = room_name
 		new_portal.connected_room = return_room
+		new_portal.initialize(RoomPortal.PortalType.RETURN)
 		level_controller.register_portal(new_portal)
 		
 	for i in min(room_portals.size(), connected_rooms.size()):
@@ -91,5 +92,6 @@ func _stage_clear() -> void:
 			new_portal.global_transform = portal_node.global_transform
 			new_portal.current_room = room_name
 			new_portal.connected_room = connected_rooms[i]
+			new_portal.initialize(RoomPortal.PortalType.FORWARD)
 			level_controller.register_portal(new_portal)
 	
