@@ -254,6 +254,34 @@ margin_left = 594.0
 margin_right = 618.0
 margin_bottom = 24.0
 
+[node name="Cheatcodes" type="PanelContainer" parent="MC/CenVB/TabCon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC/CenVB/TabCon/Cheatcodes"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 625.0
+margin_bottom = 489.0
+text = "Cheatcodes (Work In Progress)"
+
+[node name="CheckBox" type="CheckBox" parent="MC/CenVB/TabCon/Cheatcodes"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 625.0
+margin_bottom = 489.0
+text = "Nothing (Test)"
+
 [node name="Spacer2" type="HBoxContainer" parent="MC/CenVB"]
 margin_top = 810.0
 margin_right = 640.0
