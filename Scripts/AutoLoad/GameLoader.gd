@@ -7,6 +7,7 @@ var room_loader
 
 var current_room = ""
 var current_connected_rooms = []
+var return_room = ""
 var current_room_node = null
 
 var old_room_node
@@ -16,6 +17,7 @@ var save_nodes
 var save_vars = {
 	"current_room": current_room,
 	"current_connected_rooms": [],
+	"return_room": return_room,
 	"current_room_scene": "",
 	"power_ups": [],
 	"player_vars": {}
@@ -75,7 +77,9 @@ func load(slot:int):
 			old_room_node.free()
 
 	current_room = save_vars.current_room
+	return_room = save_vars.return_room
 	current_room_node = loaded_room
+
 	reset_loaded_room()
 
 	print_debug(save_vars)
@@ -93,6 +97,8 @@ func load(slot:int):
 func reset_loaded_room():
 	current_room_node.room_name = current_room
 	current_room_node.name = current_room
+	current_room_node.return_room = return_room
+
 	for child in current_room_node.get_children():
 		if child.name.begins_with("@"):
 			child.queue_free()
@@ -107,12 +113,15 @@ func _on_LevelController_level_loaded(all_rooms, _room_loader, player_node=null)
 			current_room = room.room_name
 			current_connected_rooms = room.connected_rooms
 			current_room_node = room
+			current_room_node.return_room = save_vars.return_room
 
 			save_vars.current_room = room.room_name
 			save_vars.current_connected_rooms = room.connected_rooms
+			save_vars.return_room = room.return_room
 			save_vars.current_room_scene = room.filename
 
 	print_debug("Current room: " + str(save_vars.current_room))
+	print_debug("Return room: " + str(save_vars.return_room))
 
 
 func _on_TD_Player_powered_up(pickup):
