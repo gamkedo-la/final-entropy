@@ -27,7 +27,10 @@ func _input(event):
 		print("Debug Mode: " + str(is_debug))
 		
 		
-func _on_LevelController_level_loaded(rooms, room_loader, player_node):
+func _on_LevelController_level_loaded(rooms, room_loader, player_node=null):
+	if not player_node:
+		return
+
 	for button in LevelSelecttorGrid.get_children():
 		button.queue_free()
 		

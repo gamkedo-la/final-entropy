@@ -98,7 +98,7 @@ func reset_loaded_room():
 			child.queue_free()
 
 
-func _on_LevelController_level_loaded(all_rooms, _room_loader):
+func _on_LevelController_level_loaded(all_rooms, _room_loader, player_node=null):
 	rooms = all_rooms
 	room_loader = _room_loader
 

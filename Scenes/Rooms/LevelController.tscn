@@ -44,38 +44,38 @@ size = 32.0
 
 [node name="Rooms" type="Spatial" parent="."]
 
-[node name="RoomA1" parent="Rooms" instance=ExtResource( 1 )]
+[node name="A1" parent="Rooms" instance=ExtResource( 1 )]
 connected_rooms = [ "A2", "A3" ]
 
-[node name="AnimationTree" parent="Rooms/RoomA1/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
+[node name="AnimationTree" parent="Rooms/A1/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
 parameters/playback = SubResource( 79 )
 
-[node name="AnimationTree" parent="Rooms/RoomA1/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
+[node name="AnimationTree" parent="Rooms/A1/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 80 )
 
-[node name="RoomA2" parent="Rooms" instance=ExtResource( 1 )]
+[node name="A2" parent="Rooms" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.0366, 0, -19.7994 )
 room_name = "A2"
 connected_rooms = [ "B1", "B2" ]
 
-[node name="AnimationTree" parent="Rooms/RoomA2/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
+[node name="AnimationTree" parent="Rooms/A2/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
 parameters/playback = SubResource( 81 )
 
-[node name="AnimationTree" parent="Rooms/RoomA2/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
+[node name="AnimationTree" parent="Rooms/A2/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 82 )
 
-[node name="RoomA3" parent="Rooms" instance=ExtResource( 1 )]
+[node name="A3" parent="Rooms" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6951, 0, -27.8151 )
 room_name = "A3"
 connected_rooms = [ "C1", "C2" ]
 
-[node name="AnimationTree" parent="Rooms/RoomA3/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
+[node name="AnimationTree" parent="Rooms/A3/Stage/Enemies/TankerBot/easy common enemy ground" index="3"]
 parameters/playback = SubResource( 83 )
 
-[node name="AnimationTree" parent="Rooms/RoomA3/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
+[node name="AnimationTree" parent="Rooms/A3/Stage/Enemies/RollePolle/easy common enemy ground with no gun" index="2"]
 parameters/playback = SubResource( 84 )
 
-[node name="RoomB1" parent="Rooms" instance=ExtResource( 8 )]
+[node name="B1" parent="Rooms" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -113.187, -3.8147e-06, -66.9353 )
 room_name = "B1"
 
@@ -83,15 +83,15 @@ room_name = "B1"
 environment = SubResource( 49 )
 script = ExtResource( 7 )
 
-[editable path="Rooms/RoomA1"]
-[editable path="Rooms/RoomA1/Stage/BigDungeonRoom"]
-[editable path="Rooms/RoomA1/Stage/Enemies/TankerBot"]
-[editable path="Rooms/RoomA1/Stage/Enemies/RollePolle"]
-[editable path="Rooms/RoomA2"]
-[editable path="Rooms/RoomA2/Stage/BigDungeonRoom"]
-[editable path="Rooms/RoomA2/Stage/Enemies/TankerBot"]
-[editable path="Rooms/RoomA2/Stage/Enemies/RollePolle"]
-[editable path="Rooms/RoomA3"]
-[editable path="Rooms/RoomA3/Stage/BigDungeonRoom"]
-[editable path="Rooms/RoomA3/Stage/Enemies/TankerBot"]
-[editable path="Rooms/RoomA3/Stage/Enemies/RollePolle"]
+[editable path="Rooms/A1"]
+[editable path="Rooms/A1/Stage/BigDungeonRoom"]
+[editable path="Rooms/A1/Stage/Enemies/TankerBot"]
+[editable path="Rooms/A1/Stage/Enemies/RollePolle"]
+[editable path="Rooms/A2"]
+[editable path="Rooms/A2/Stage/BigDungeonRoom"]
+[editable path="Rooms/A2/Stage/Enemies/TankerBot"]
+[editable path="Rooms/A2/Stage/Enemies/RollePolle"]
+[editable path="Rooms/A3"]
+[editable path="Rooms/A3/Stage/BigDungeonRoom"]
+[editable path="Rooms/A3/Stage/Enemies/TankerBot"]
+[editable path="Rooms/A3/Stage/Enemies/RollePolle"]

@@ -20,7 +20,7 @@ extents = Vector3( 33.1456, 3.28392, 0.579376 )
 [sub_resource type="BoxShape" id=83]
 extents = Vector3( 0.565186, 3.28392, 23.0783 )
 
-[node name="RoomA1" type="Spatial"]
+[node name="A1" type="Spatial"]
 script = ExtResource( 3 )
 camera_size = 34.0
 room_name = "A1"

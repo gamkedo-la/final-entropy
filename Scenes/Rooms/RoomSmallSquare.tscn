@@ -661,7 +661,7 @@ tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1,
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=93]
 
-[node name="RoomA1" type="Spatial"]
+[node name="A1" type="Spatial"]
 script = ExtResource( 1 )
 room_name = "A1"
 room_portals = [ NodePath("Stage/Portals/PortalTopLeft"), NodePath("Stage/Portals/PortalTopRight") ]
