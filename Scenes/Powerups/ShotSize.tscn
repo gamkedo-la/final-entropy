@@ -23,8 +23,8 @@ extents = Vector3( 0.638867, 0.68412, 0.625603 )
 [node name="ShotSize" type="RigidBody"]
 physics_material_override = SubResource( 3 )
 script = ExtResource( 1 )
-powerUpName = "Fire Rate Up"
-indexNum = 2
+powerUpName = "Shot Size"
+indexNum = 4
 shotDmg = 10.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
