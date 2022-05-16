@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Powerups/BaseHPUp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Powerups/ShotSpeedUp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Powerups/Powerup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Powerups/ShotSize.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Powerups/ShotSizeUp.tscn" type="PackedScene" id=6]
 
 [resource]
 script = ExtResource( 1 )

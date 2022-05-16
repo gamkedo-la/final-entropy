@@ -1,10 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=2]
 
-[ext_resource path="res://Models/power_ups/firerate up.tres" type="ArrayMesh" id=1]
+[node name="shotsize up" type="Spatial"]
 
-[node name="firerate up" type="Spatial"]
-
-[node name="Cube002" type="MeshInstance" parent="."]
+[node name="Cube009" type="MeshInstance" parent="."]
 transform = Transform( 0.133894, 0, 0, 0, 0.0452305, 0.094677, 0, -0.0452305, 0.094677, 0, 0, 0 )
-mesh = ExtResource( 1 )
-material/0 = null
