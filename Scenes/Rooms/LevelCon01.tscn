@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/RoomGen/LevelGeneration.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/RoomGen/LevelController.gd" type="Script" id=2]
+[ext_resource path="res://Resources/RoomContainers/RoomContainerTEST.tres" type="Resource" id=3]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/TD_Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=6]
+
+[node name="LevelController01" type="Spatial"]
+script = ExtResource( 2 )
+first_room = "M0"
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 6 )]
+
+[node name="OrthoCamera" parent="." instance=ExtResource( 4 )]
+size = 32.0
+
+[node name="TopDown_Player" parent="." instance=ExtResource( 5 )]
+
+[node name="Rooms" type="Spatial" parent="."]
+script = ExtResource( 1 )
+room_container = ExtResource( 3 )

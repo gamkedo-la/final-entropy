@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/RoomGen/WorldEnvironment.gd" type="Script" id=1]
+
+[sub_resource type="ProceduralSky" id=50]
+
+[sub_resource type="Environment" id=49]
+background_mode = 1
+background_sky = SubResource( 50 )
+background_color = Color( 0.0666667, 0.0117647, 0.0745098, 1 )
+ambient_light_color = Color( 0.45098, 0.0392157, 0.6, 1 )
+fog_color = Color( 0.0705882, 0.0941176, 0.117647, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_enabled = false
+ss_reflections_enabled = true
+ssao_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 96.73
+dof_blur_far_transition = 7.51
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 49 )
+script = ExtResource( 1 )
