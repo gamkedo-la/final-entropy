@@ -30,6 +30,23 @@ func _ready():
 	load_settings()
 	set_sliders()
 	enabled(false)
+	_connect_save_slots()
+	_check_if_slot_exists()
+
+func _connect_save_slots():
+	var slots = $"MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots".get_children()
+	for s in range(0, slots.size()):
+		var slot_name_label = slots[s].get_node("SlotName")
+		slot_name_label.text = slot_name_label.text + " " + str(s + 1)
+		var save_button = slots[s].get_node("Save")
+		var load_button = slots[s].get_node("Load")
+		save_button.connect("pressed", self, "_on_Save_pressed", [s])	
+		load_button.connect("pressed", self, "_on_Load_pressed", [s])	
+
+func _check_if_slot_exists():
+	var slots = $"MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots".get_children()
+	for s in range(0, slots.size()):
+		slots[s].get_node("Load").disabled = not GameLoader.check_if_slot_exists(s)
 
 func enabled(enable: bool) -> void:
 	menu.visible = enable
@@ -114,6 +131,7 @@ func _on_AmbCB_toggled(button_pressed):
 
 func _on_Save_pressed(slot:int):
 	GameLoader.save(slot)
+	_check_if_slot_exists()
 
 func _on_Load_pressed(slot:int):
 	GameLoader.load(slot)

@@ -28,6 +28,16 @@ func _ready():
 	save_nodes = get_tree().get_nodes_in_group("Save")
 
 
+func check_if_slot_exists(slot):
+	var slot_name = str(slot).pad_zeros(3)
+	var save_file = File.new()
+	if not save_file.file_exists("user://saves/slot" + slot_name):
+		save_file.close()
+		return false
+	save_file.close()
+	return true
+
+
 func save(slot:int):
 	save_nodes = get_tree().get_nodes_in_group("Save")
 
@@ -56,7 +66,7 @@ func load(slot:int):
 
 	var slot_name = str(slot).pad_zeros(3)
 	var save_file = File.new()
-	if not save_file.file_exists("user://saves/slot" + slot_name):
+	if not check_if_slot_exists(slot):
 		return
 	
 	print_debug("Loading from slot " + str(slot))

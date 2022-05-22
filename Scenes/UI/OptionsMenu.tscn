@@ -40,7 +40,6 @@ size_flags_vertical = 3
 tab_align = 0
 
 [node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -61,7 +60,7 @@ scroll_horizontal_enabled = false
 
 [node name="Slots" type="VBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots"]
 margin_right = 618.0
-margin_bottom = 20.0
+margin_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
@@ -97,6 +96,396 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot2" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 20.0
+margin_right = 618.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot3" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 40.0
+margin_right = 618.0
+margin_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot4" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 60.0
+margin_right = 618.0
+margin_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot5" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 80.0
+margin_right = 618.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot6" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 100.0
+margin_right = 618.0
+margin_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot7" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 120.0
+margin_right = 618.0
+margin_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot8" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 140.0
+margin_right = 618.0
+margin_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot9" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 160.0
+margin_right = 618.0
+margin_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot10" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 180.0
+margin_right = 618.0
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
+margin_left = 414.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Load"
+
+[node name="SaveSlot11" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
+margin_top = 200.0
+margin_right = 618.0
+margin_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
+margin_right = 203.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Slot"
+align = 1
+valign = 1
+
+[node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Save"
+
+[node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
 margin_left = 414.0
 margin_right = 618.0
 margin_bottom = 20.0
@@ -256,6 +645,7 @@ margin_right = 618.0
 margin_bottom = 24.0
 
 [node name="Cheatcodes" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -301,8 +691,6 @@ margin_right = 640.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 0, 270 )
 
-[connection signal="pressed" from="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot/Save" to="." method="_on_Save_pressed" binds= [ 0 ]]
-[connection signal="pressed" from="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot/Load" to="." method="_on_Load_pressed" binds= [ 0 ]]
 [connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainSlider" to="." method="_on_MainSlider_value_changed"]
 [connection signal="toggled" from="MC/CenVB/TabCon/Audio/AudVBox/MainHB/MainCB" to="." method="_on_MainCB_toggled"]
 [connection signal="value_changed" from="MC/CenVB/TabCon/Audio/AudVBox/MusicHB/MusSlider" to="." method="_on_MusSlider_value_changed"]
