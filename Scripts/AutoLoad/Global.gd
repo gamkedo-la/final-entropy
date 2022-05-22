@@ -9,10 +9,16 @@ var player_cam_anim: AnimationPlayer = null
 var raycast_position = null
 var player_node: Spatial = null
 
+var main_menu: bool = false
 
+var current_scene = null
+
+var level_one = "res://Scenes/Rooms/LevelCon01.tscn"
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	var root = get_tree().get_root()
+	current_scene = root.get_child(root.get_child_count() - 1)
 	
 
 func set_camera(cam: Camera):
@@ -32,7 +38,18 @@ func _unhandled_key_input(event):
 	if event.is_action_pressed("mute"):
 		AudioServer.set_bus_mute(0, !muted)
 		GUIOverlay.toggle_muted(!muted)
+		
+func goto_scene(path):
+	# Defer the load until the current scene is done executing code
+	print("Getting to goto_scene...")
+	call_deferred("_deferred_goto_scene", path)
 
+func _deferred_goto_scene(path):	
+	current_scene.free()
+	var s = load(path)	
+	current_scene = s.instance()	
+	get_tree().get_root().add_child(current_scene)	
+	get_tree().set_current_scene(current_scene)
 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused

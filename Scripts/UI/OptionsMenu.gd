@@ -15,6 +15,8 @@ onready var sfx_cb = $MC/CenVB/TabCon/Audio/AudVBox/SFXHB/SFXCB
 onready var amb_cb = $MC/CenVB/TabCon/Audio/AudVBox/AmbHB/AmbCB
 onready var menu = $MC
 
+onready var tab_con: TabContainer = $MC/CenVB/TabCon
+
 var main_vol: float = 1.0
 var music_vol: float = 1.0
 var sfx_vol: float = 1.0
@@ -32,6 +34,10 @@ func _ready():
 	enabled(false)
 
 func enabled(enable: bool) -> void:
+	if Global.main_menu:
+		tab_con.set_tab_hidden(0, true)
+	else:
+		tab_con.set_tab_hidden(0, false)
 	menu.visible = enable
 	if !menu.visible:
 		save_settings()

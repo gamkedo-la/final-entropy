@@ -40,7 +40,6 @@ size_flags_vertical = 3
 tab_align = 0
 
 [node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -256,6 +255,7 @@ margin_right = 618.0
 margin_bottom = 24.0
 
 [node name="Cheatcodes" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
