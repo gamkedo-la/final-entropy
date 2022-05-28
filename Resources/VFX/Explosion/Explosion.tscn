@@ -1,10 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/VFX/Explosion/light_smoke_material.tres" type="Material" id=1]
 [ext_resource path="res://Resources/VFX/Explosion/Explosion.gd" type="Script" id=2]
 
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0332464, 0.875767 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.017601, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.349693 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
 curve = SubResource( 1 )
@@ -15,13 +21,14 @@ emission_shape = 5
 emission_ring_radius = 2.5
 emission_ring_inner_radius = 0.0
 emission_ring_height = 1.0
-emission_ring_axis = Vector3( 0, 0, 1 )
+emission_ring_axis = Vector3( 0, 1, 0 )
 direction = Vector3( 0, 1, 0 )
 spread = 180.0
-gravity = Vector3( 0, -6, 0 )
+gravity = Vector3( 0, -1, 0 )
 scale = 2.0
 scale_random = 1.0
 scale_curve = SubResource( 2 )
+color_ramp = SubResource( 13 )
 
 [sub_resource type="SphereMesh" id=4]
 material = ExtResource( 1 )
@@ -71,8 +78,7 @@ particle_collection = [ NodePath("Particles"), NodePath("Particles2") ]
 emitting = false
 amount = 45
 one_shot = true
-preprocess = 3.83
-speed_scale = 0.14
+speed_scale = 0.62
 explosiveness = 0.96
 randomness = 0.13
 process_material = SubResource( 3 )

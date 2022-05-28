@@ -96,8 +96,7 @@ func drop_loot() -> void:
 	die_sfx.play(0)
 #	call_deferred("die")
 	
-func die() -> void:
-	explo.call_deferred("queue_free")
+func die() -> void:	
 	get_parent().call_deferred("remove_child", self)
 	call_deferred("emit_signal", "dead", self)
 	call_deferred("queue_free")
