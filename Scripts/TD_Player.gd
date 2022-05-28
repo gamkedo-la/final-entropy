@@ -61,7 +61,10 @@ onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
 func _ready():
 	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
 		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
-
+	if not PlayerVars.is_connected("hp_changed", self, "_update_HP_Bar"):
+		var con_res = PlayerVars.connect("hp_changed", self, "_update_HP_Bar")
+		assert(con_res == OK)
+		
 	Global.player_node = get_node(player)
 	Global.set_player_camera(player_cam, cam_anim, player_cam_pivot)
 	ground_ray.enabled = true
@@ -161,10 +164,13 @@ func recharge(delta: float) -> void:
 	
 	dash_meter.value = dash_amount
 	pass
+	
+func _update_HP_Bar() -> void:
+	$TextureProgress2.value = int((float(PlayerVars.HP) / PlayerVars.baseHP) * 100)
 
 func take_damage(dmg: float) -> void:
 	Global.emit_signal("shake", 0.1)
-	hp -= dmg
+	PlayerVars.HP -= dmg
 
 	hit_sfx.play()
 	print_debug("Player HP left: " + String(hp))
@@ -177,9 +183,10 @@ func _on_HitBox_area_entered(area):
 	if invulnerable:
 		return
 #	print_debug("Area entered player", area)
-	$TextureProgress2.value = int((float(hp) / maxHp) * 100)
+#	$TextureProgress2.value = int((float(hp) / maxHp) * 100)
 	if area.is_in_group("bullet"):
 		take_damage(area.damage)
+		_update_HP_Bar()
 		area.hit()
 
 

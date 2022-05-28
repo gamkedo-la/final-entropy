@@ -34,15 +34,8 @@ func _process(delta):
 			var path = shots[index].bulletPaths[i % shots[index].bulletPaths.size()]
 			if path == null:
 				continue
-			
-			var bullet = path.instance()
-			add_child(bullet)
-			bullet.set_as_toplevel(true)
-			bullet.transform = global_transform
-			bullet.collision_layer = 0b00000000000000000100
-			bullet.collision_mask = 0b00000000000000000011
-			bullet.velocity.x = shots[index].bulletSpeed * cos(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
-			bullet.velocity.z = shots[index].bulletSpeed * sin(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
+			call_deferred("deferred_fire", path, i)
+		
 		angleOffset += shots[index].angleOffset
 		timer = shots[index].delay
 		index = index + 1
@@ -50,3 +43,14 @@ func _process(delta):
 			index = 0
 	else:
 		timer -= delta
+
+func deferred_fire(path, i) -> void:
+	var bullet = path.instance()
+	add_child(bullet)
+	bullet.set_as_toplevel(true)
+	bullet.transform = global_transform
+	bullet.collision_layer = 0b00000000000000000100
+	bullet.collision_mask = 0b00000000000000000011
+	bullet.velocity.x = shots[index].bulletSpeed * cos(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
+	bullet.velocity.z = shots[index].bulletSpeed * sin(targetAngle + deg2rad((-shots[index].angleRange / 2) + angleOffset + ((i / float(shots[index].bullets)) * shots[index].angleRange) + rnd.randf_range(-shots[index].bulletAngleRandom, shots[index].bulletAngleRandom)))
+	pass

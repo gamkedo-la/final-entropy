@@ -1,8 +1,10 @@
 extends Node
 
 signal rounds_per_minute_bonus_changed
+signal hp_changed
 # Player 
-var baseHP: float = 100.0
+var baseHP: float = 100.0 setget _set_baseHP
+var HP: float = baseHP
 var baseShields: float = 0.0
 
 # Weapons
@@ -32,3 +34,9 @@ func _set_rpm_bonus(val) -> void:
 	rounds_per_minute_bonus = clamp(val, 0.0, rounds_per_minute_bonus_max)
 	emit_simple_signal_if_value_changed("rounds_per_minute_bonus_changed", rounds_per_minute_bonus - previous_val)
 
+func _set_baseHP(val) -> void:
+	print_debug("set_baseHP: ", val, " Current BaseHP: ", baseHP)
+	var previous_val = baseHP
+	baseHP = val
+	HP += val - previous_val
+	emit_simple_signal_if_value_changed("hp_changed", baseHP - previous_val)

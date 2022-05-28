@@ -469,6 +469,9 @@ margin_right = 1869.0
 margin_bottom = 1839.0
 rect_scale = Vector2( 0.2, 0.2 )
 texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DashMeter3" type="TextureProgress" parent="."]
 material = SubResource( 16 )

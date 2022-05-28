@@ -7,7 +7,7 @@
 script = ExtResource( 1 )
 bulletPaths = [ ExtResource( 2 ), null ]
 delay = 1.0
-bullets = 15
+bullets = 12
 bulletSpeed = 10.0
 angleRange = 360.0
 angleOffset = 15.0
