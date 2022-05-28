@@ -460,6 +460,9 @@ rect_scale = Vector2( 0.2, 0.2 )
 value = 100.0
 texture_under = ExtResource( 6 )
 tint_progress = Color( 1, 0.890196, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureProgress2" type="TextureProgress" parent="."]
 material = SubResource( 5 )

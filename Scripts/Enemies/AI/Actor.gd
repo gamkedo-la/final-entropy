@@ -23,6 +23,8 @@ var maxHealth
 
 var velocity: Vector3 = Vector3.ZERO
 onready var powerup_drops = preload("res://Resources/PowerUps.tres")
+onready var explosion = preload("res://Resources/VFX/Explosion/Explosion.tscn")
+var explo = null
 onready var rng = RandomNumberGenerator.new()
 export (float) var aggro_radius = 3.0
 onready var aggro_sphere: CollisionShape = $AggroBox/AggroSphere
@@ -81,6 +83,9 @@ func take_damage(dmg: float) -> void:
 func drop_loot() -> void:
 	#TODO: Drop Chances etc..
 	rng.randomize()
+	explo = explosion.instance()
+	get_tree().root.add_child(explo)
+	explo.global_transform.origin = global_transform.origin
 	var new_powerup: RigidBody = powerup_drops.powerup_scenes[rng.randi() % powerup_drops.powerup_scenes.size()].instance()
 	get_tree().root.add_child(new_powerup)
 	new_powerup.global_transform.origin = global_transform.origin + (Vector3.UP)	
@@ -92,6 +97,7 @@ func drop_loot() -> void:
 #	call_deferred("die")
 	
 func die() -> void:
+	explo.call_deferred("queue_free")
 	get_parent().call_deferred("remove_child", self)
 	call_deferred("emit_signal", "dead", self)
 	call_deferred("queue_free")

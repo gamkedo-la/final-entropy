@@ -1,0 +1,209 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/GridWallHitBox.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Enemies/FlyingEnemy01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/RoomGen/RoomController.gd" type="Script" id=3]
+[ext_resource path="res://Models/Level01_Floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/OrthoCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Rooms/RoomPortal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Enemies/TankerBot.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=80]
+extents = Vector3( 1.99422, 1, 0.23394 )
+
+[sub_resource type="BoxShape" id=81]
+extents = Vector3( 0.12745, 1, 11.2064 )
+
+[sub_resource type="BoxShape" id=82]
+extents = Vector3( 33.1456, 3.28392, 0.579376 )
+
+[sub_resource type="BoxShape" id=83]
+extents = Vector3( 0.565186, 3.28392, 23.0783 )
+
+[node name="A1" type="Spatial"]
+script = ExtResource( 3 )
+camera_size = 34.0
+room_name = "A1"
+room_portals = [ NodePath("Stage/Portals/PortalTopLeft"), NodePath("Stage/Portals/PortalTopMid"), NodePath("Stage/Portals/PortalTopRight") ]
+
+[node name="Stage" type="Spatial" parent="."]
+
+[node name="Floor" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="Level01_Floor01" parent="Stage/Floor" instance=ExtResource( 4 )]
+
+[node name="GridMap" parent="Stage/Floor/Level01_Floor01" index="0"]
+data = {
+"cells": PoolIntArray( 0, 0, 1507329, 1, 0, 1507329, 2, 0, 1507329, 3, 0, 1507329, 4, 0, 1507329, 5, 0, 1507329, 6, 0, 1507329, 7, 0, 1507329, 8, 0, 1507329, 9, 0, 1507328, 10, 0, 1507329, 65523, 0, 1507329, 65524, 0, 1507328, 65525, 0, 1507329, 65526, 0, 1507329, 65527, 0, 1507329, 65528, 0, 1507329, 65529, 0, 1507329, 65530, 0, 1507329, 65531, 0, 1507329, 65532, 0, 1507329, 65533, 0, 1507329, 65534, 0, 1507329, 65535, 0, 1507329, 65545, 0, 262146, 131060, 0, 917506, 0, 1, 1507329, 1, 1, 1507329, 2, 1, 1507329, 3, 1, 1507329, 4, 1, 1507329, 5, 1, 1507329, 6, 1, 1507329, 7, 1, 1507329, 8, 1, 1507329, 9, 1, 1507328, 10, 1, 1507329, 65523, 1, 1507329, 65524, 1, 1507328, 65525, 1, 1507329, 65526, 1, 1507329, 65527, 1, 1507329, 65528, 1, 1507329, 65529, 1, 1507329, 65530, 1, 1507329, 65531, 1, 1507329, 65532, 1, 1507329, 65533, 1, 1507329, 65534, 1, 1507329, 65535, 1, 1507329, 65545, 1, 262146, 131060, 1, 917506, 0, 2, 1507329, 1, 2, 1507329, 2, 2, 1507329, 3, 2, 1507329, 4, 2, 1507329, 5, 2, 1507329, 6, 2, 1507329, 7, 2, 1507329, 8, 2, 1507329, 9, 2, 1507328, 10, 2, 1507329, 65523, 2, 1507329, 65524, 2, 1507328, 65525, 2, 1507329, 65526, 2, 1507329, 65527, 2, 1507329, 65528, 2, 1507329, 65529, 2, 1507329, 65530, 2, 1507329, 65531, 2, 1507329, 65532, 2, 1507329, 65533, 2, 1507329, 65534, 2, 1507329, 65535, 2, 1507329, 65545, 2, 262146, 131060, 2, 917506, 0, 3, 1507329, 1, 3, 1507329, 2, 3, 1507329, 3, 3, 1507329, 4, 3, 1507329, 5, 3, 1507329, 6, 3, 1507329, 7, 3, 1507329, 8, 3, 1507329, 9, 3, 1507328, 10, 3, 1507329, 65523, 3, 1507329, 65524, 3, 1507328, 65525, 3, 1507329, 65526, 3, 1507329, 65527, 3, 1507329, 65528, 3, 1507329, 65529, 3, 1507329, 65530, 3, 1507329, 65531, 3, 1507329, 65532, 3, 1507329, 65533, 3, 1507329, 65534, 3, 1507329, 65535, 3, 1507329, 65545, 3, 262146, 131060, 3, 917506, 0, 4, 1507329, 1, 4, 1507329, 2, 4, 1507329, 3, 4, 1507329, 4, 4, 1507329, 5, 4, 1507329, 6, 4, 1507329, 7, 4, 1507329, 8, 4, 1507329, 9, 4, 1507329, 10, 4, 1507329, 65523, 4, 1507329, 65524, 4, 1507329, 65525, 4, 1507329, 65526, 4, 1507329, 65527, 4, 1507329, 65528, 4, 1507329, 65529, 4, 1507329, 65530, 4, 1507329, 65531, 4, 1507329, 65532, 4, 1507329, 65533, 4, 1507329, 65534, 4, 1507329, 65535, 4, 1507329, 0, 65527, 1507329, 1, 65527, 1507329, 2, 65527, 1507329, 3, 65527, 1507329, 4, 65527, 1507329, 5, 65527, 1507329, 6, 65527, 1507329, 7, 65527, 1507329, 8, 65527, 1507329, 9, 65527, 1507329, 10, 65527, 1507329, 65523, 65527, 1507329, 65524, 65527, 1507329, 65525, 65527, 1507329, 65526, 65527, 1507329, 65527, 65527, 1507329, 65528, 65527, 1507329, 65529, 65527, 1507329, 65530, 65527, 1507329, 65531, 65527, 1507329, 65532, 65527, 1507329, 65533, 65527, 1507329, 65534, 65527, 1507329, 65535, 65527, 1507329, 0, 65528, 1507329, 1, 65528, 1507329, 2, 65528, 1507329, 3, 65528, 1507329, 4, 65528, 1507329, 5, 65528, 1507329, 6, 65528, 1507329, 7, 65528, 1507329, 8, 65528, 1507329, 9, 65528, 1507329, 10, 65528, 1507329, 65523, 65528, 1507329, 65524, 65528, 1507329, 65525, 65528, 1507329, 65526, 65528, 1507329, 65527, 65528, 1507329, 65528, 65528, 1507329, 65529, 65528, 1507329, 65530, 65528, 1507329, 65531, 65528, 1507329, 65532, 65528, 1507329, 65533, 65528, 1507329, 65534, 65528, 1507329, 65535, 65528, 1507329, 0, 65529, 1507329, 1, 65529, 1507329, 2, 65529, 1507329, 3, 65529, 1507329, 4, 65529, 1507329, 5, 65529, 1507329, 6, 65529, 1507329, 7, 65529, 1507329, 8, 65529, 1507329, 9, 65529, 1507328, 10, 65529, 1507329, 65523, 65529, 1507329, 65524, 65529, 1507328, 65525, 65529, 1507329, 65526, 65529, 1507329, 65527, 65529, 1507329, 65528, 65529, 1507329, 65529, 65529, 1507329, 65530, 65529, 1507329, 65531, 65529, 1507329, 65532, 65529, 1507329, 65533, 65529, 1507329, 65534, 65529, 1507329, 65535, 65529, 1507329, 65545, 65529, 262146, 131060, 65529, 917506, 0, 65530, 1507329, 1, 65530, 1507329, 2, 65530, 1507329, 3, 65530, 1507329, 4, 65530, 1507329, 5, 65530, 1507329, 6, 65530, 1507329, 7, 65530, 1507329, 8, 65530, 1507329, 9, 65530, 1507328, 10, 65530, 1507329, 65523, 65530, 1507329, 65524, 65530, 1507328, 65525, 65530, 1507329, 65526, 65530, 1507329, 65527, 65530, 1507329, 65528, 65530, 1507329, 65529, 65530, 1507329, 65530, 65530, 1507329, 65531, 65530, 1507329, 65532, 65530, 1507329, 65533, 65530, 1507329, 65534, 65530, 1507329, 65535, 65530, 1507329, 65545, 65530, 262146, 131060, 65530, 917506, 0, 65531, 1507329, 1, 65531, 1507329, 2, 65531, 1507329, 3, 65531, 1507329, 4, 65531, 1507329, 5, 65531, 1507329, 6, 65531, 1507329, 7, 65531, 1507329, 8, 65531, 1507329, 9, 65531, 1507328, 10, 65531, 1507329, 65523, 65531, 1507329, 65524, 65531, 1507328, 65525, 65531, 1507329, 65526, 65531, 1507329, 65527, 65531, 1507329, 65528, 65531, 1507329, 65529, 65531, 1507329, 65530, 65531, 1507329, 65531, 65531, 1507329, 65532, 65531, 1507329, 65533, 65531, 1507329, 65534, 65531, 1507329, 65535, 65531, 1507329, 65545, 65531, 262146, 131060, 65531, 917506, 0, 65532, 1507329, 1, 65532, 1507329, 2, 65532, 1507329, 3, 65532, 1507329, 4, 65532, 1507329, 5, 65532, 1507329, 6, 65532, 1507329, 7, 65532, 1507329, 8, 65532, 1507329, 9, 65532, 1507328, 10, 65532, 1507329, 65523, 65532, 1507329, 65524, 65532, 1507328, 65525, 65532, 1507329, 65526, 65532, 1507329, 65527, 65532, 1507329, 65528, 65532, 1507329, 65529, 65532, 1507329, 65530, 65532, 1507329, 65531, 65532, 1507329, 65532, 65532, 1507329, 65533, 65532, 1507329, 65534, 65532, 1507329, 65535, 65532, 1507329, 65545, 65532, 262146, 131060, 65532, 917506, 0, 65533, 1507329, 1, 65533, 1507329, 2, 65533, 1507329, 3, 65533, 1507329, 4, 65533, 1507329, 5, 65533, 1507329, 6, 65533, 1507329, 7, 65533, 1507329, 8, 65533, 1507329, 9, 65533, 1507328, 10, 65533, 1507329, 65523, 65533, 1507329, 65524, 65533, 1507328, 65525, 65533, 1507329, 65526, 65533, 1507329, 65527, 65533, 1507329, 65528, 65533, 1507329, 65529, 65533, 1507329, 65530, 65533, 1507329, 65531, 65533, 1507329, 65532, 65533, 1507329, 65533, 65533, 1507329, 65534, 65533, 1507329, 65535, 65533, 1507329, 65545, 65533, 262146, 131060, 65533, 917506, 0, 65534, 1507328, 1, 65534, 1507328, 2, 65534, 1507329, 3, 65534, 1507328, 4, 65534, 1507328, 5, 65534, 1507329, 6, 65534, 1507329, 7, 65534, 1507329, 8, 65534, 1507329, 9, 65534, 1507328, 10, 65534, 1507329, 65523, 65534, 1507329, 65524, 65534, 1507328, 65525, 65534, 1507329, 65526, 65534, 1507329, 65527, 65534, 1507329, 65528, 65534, 1507329, 65529, 65534, 1507329, 65530, 65534, 1507328, 65531, 65534, 1507328, 65532, 65534, 1507329, 65533, 65534, 1507328, 65534, 65534, 1507328, 65535, 65534, 1507329, 65536, 65534, 1245186, 65537, 65534, 1245186, 65539, 65534, 1245186, 65540, 65534, 1245186, 65545, 65534, 262146, 131060, 65534, 917506, 131066, 65534, 1245186, 131067, 65534, 1245186, 131069, 65534, 1245186, 131070, 65534, 1245186, 0, 65535, 1507329, 1, 65535, 1507329, 2, 65535, 1507329, 3, 65535, 1507329, 4, 65535, 1507329, 5, 65535, 1507329, 6, 65535, 1507329, 7, 65535, 1507329, 8, 65535, 1507329, 9, 65535, 1507328, 10, 65535, 1507329, 65523, 65535, 1507329, 65524, 65535, 1507328, 65525, 65535, 1507329, 65526, 65535, 1507329, 65527, 65535, 1507329, 65528, 65535, 1507329, 65529, 65535, 1507329, 65530, 65535, 1507329, 65531, 65535, 1507329, 65532, 65535, 1507329, 65533, 65535, 1507329, 65534, 65535, 1507329, 65535, 65535, 1507329, 65545, 65535, 262146, 131060, 65535, 917506 )
+}
+
+[node name="WallHitBoxes" type="Area" parent="Stage/Floor/Level01_Floor01"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 0.121731, 0, -0.992563, 0, 1, 0, 0.992563, 0, 0.121731, -10.6092, 3.03452, -6.30997 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( -0.0211343, 0, -0.999777, 0, 1, 0, 0.999777, 0, -0.0211343, -10.561, 3.03452, 0.830523 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( -0.0438635, 0, -0.999038, 0, 1, 0, 0.999038, 0, -0.0438635, 0.872251, 3.03452, 0.571229 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 0.00539309, 0, -0.999986, 0, 1, 0, 0.999986, 0, 0.00539309, 1.074, 3.03452, -6.53365 )
+shape = SubResource( 80 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9784, 3.03452, -3.0454 )
+shape = SubResource( 81 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0066, 3.03452, -2.99599 )
+shape = SubResource( 81 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 0.247811, 0.968808, 0, -0.968808, 0.247811, 0.433736, 12.7973, -0.118292 )
+light_color = Color( 0.898039, 0, 1, 1 )
+light_energy = 2.023
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="OmniLight" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 14.0206, 2.44403, -11.9737 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight2" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 3.83219, 2.44403, -11.724 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight3" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -8.47638, 2.44403, -12.1269 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight4" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -18.4281, 2.44403, -11.9593 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight5" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 15.295, 2.44403, 3.25195 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight6" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, 5.27122, 2.44403, 3.17407 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight7" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -5.49832, 2.44403, 2.86253 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="OmniLight8" type="OmniLight" parent="Stage/Floor"]
+transform = Transform( 0.642266, 0, 0.766482, 0, 1, 0, -0.766482, 0, 0.642266, -16.6183, 2.44403, 2.90148 )
+visible = false
+light_energy = 2.124
+shadow_enabled = true
+
+[node name="Boundary" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04948, 3.34357, 10.5864 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.409416 )
+shape = SubResource( 82 )
+
+[node name="Boundary2" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04948, 3.34357, -17.9473 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.409416 )
+shape = SubResource( 82 )
+
+[node name="Boundary3" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0835, 3.34357, -3.46531 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527485, 0, -0.409416 )
+shape = SubResource( 83 )
+
+[node name="Boundary4" type="StaticBody" parent="Stage/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7161, 3.34357, -3.46531 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Boundary4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527485, 0, -0.409416 )
+shape = SubResource( 83 )
+
+[node name="Enemies" type="Spatial" parent="Stage"]
+
+[node name="TankerBot1" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12.6426, 3.99166, 6.10153 )
+
+[node name="TankerBot2" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -0.600839, 3.99166, -4.13369 )
+
+[node name="TankerBot3" parent="Stage/Enemies" instance=ExtResource( 7 )]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10.1893, 3.99166, -13.6785 )
+
+[node name="FlyingEnemy01" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, 19.6418, 4.27196, -9.42589 )
+
+[node name="FlyingEnemy02" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, -1.24583, 4.27196, 7.84679 )
+
+[node name="FlyingEnemy03" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, -8.1272, 4.27196, 14.375 )
+
+[node name="FlyingEnemy04" parent="Stage/Enemies" instance=ExtResource( 2 )]
+transform = Transform( -0.828999, 0, 0.559251, 0, 1, 0, -0.559251, 0, -0.828999, 11.099, 4.27196, -0.743743 )
+
+[node name="ReturnPortal" type="Position3D" parent="Stage"]
+transform = Transform( 0.742479, 0, 0.66987, 0, 1, 0, -0.66987, 0, 0.742479, 12.4118, 4.36, 9.99482 )
+
+[node name="RoomPortal" parent="Stage/ReturnPortal" instance=ExtResource( 6 )]
+
+[node name="Portals" type="Spatial" parent="Stage"]
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0 )
+
+[node name="PortalTopLeft" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.1995, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopLeft" instance=ExtResource( 6 )]
+
+[node name="PortalTopMid" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -2.62939, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopMid" instance=ExtResource( 6 )]
+
+[node name="PortalTopRight" type="Position3D" parent="Stage/Portals"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.5905, 4.36583, 8.72701 )
+
+[node name="RoomPortal" parent="Stage/Portals/PortalTopRight" instance=ExtResource( 6 )]
+
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883207, 3.49562, 19.7692 )
+
+[node name="CameraPos" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.817879, 0.575391, 0, -0.575391, 0.817879, 3.77556, 19.7499, 26.7329 )
+
+[node name="OrthoCamera" parent="CameraPos" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+size = 34.0
+
+[connection signal="area_entered" from="Stage/Floor/Level01_Floor01/WallHitBoxes" to="Stage/Floor/Level01_Floor01/WallHitBoxes" method="_on_WallHitBoxes_area_entered"]
+
+[editable path="Stage/Floor/Level01_Floor01"]
