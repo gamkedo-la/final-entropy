@@ -57,25 +57,27 @@ func project() -> void:
 	# whether the mouse has been clicked.
 	
 	var mouse_position = get_viewport().get_mouse_position()
-	var raycast_from = project_ray_origin(mouse_position)
-	var raycast_to = raycast_from + project_ray_normal(mouse_position) * 1000
+	Global.mouse_position = project_ray_origin(mouse_position)
+	Global.mouse_direction = project_ray_normal(mouse_position)
+#	var raycast_from = project_ray_origin(mouse_position)
+#	var raycast_to = raycast_from + project_ray_normal(mouse_position) * 1000
 	# You might need a collision mask to avoid objects like the player...
-	var space_state = get_world().direct_space_state
-	for body in ignore_bodies:
-		if ! is_instance_valid(body):
-			ignore_bodies.erase(body)
-	var raycast_result = space_state.intersect_ray(raycast_from, raycast_to, ignore_bodies)
-	if (raycast_result):
+#	var space_state = get_world().direct_space_state
+#	for body in ignore_bodies:
+#		if ! is_instance_valid(body):
+#			ignore_bodies.erase(body)
+#	var raycast_result = space_state.intersect_ray(raycast_from, raycast_to, ignore_bodies)
+#	if (raycast_result):
 #		print_debug(raycast_result)
 		# store the location.
 #		Global.raycast_position = raycast_result["position"]
 #		indicator.translation = Global.raycast_position
 #		var result_parent = raycast_result.collider.get_parent()
-		if raycast_result.collider is StaticBody or raycast_result.collider is GridMap:
-			Global.raycast_position = raycast_result["position"]
-			indicator.translation = Global.raycast_position
-		else:
-			ignore_bodies.append(raycast_result.collider)
+#		if raycast_result.collider is StaticBody or raycast_result.collider is GridMap:
+#			Global.raycast_position = raycast_result["position"]
+#			indicator.translation = Global.raycast_position
+#		else:
+#			ignore_bodies.append(raycast_result.collider)
 
 func shake() -> void:
 	var amount = pow(trauma, trauma_power)

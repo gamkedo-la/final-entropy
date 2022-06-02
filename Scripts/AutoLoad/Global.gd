@@ -7,6 +7,8 @@ var player_camera: Camera = null
 var player_cam_anim: AnimationPlayer = null
 
 var raycast_position = null
+var mouse_direction = null
+var mouse_position = null
 var player_node: Spatial = null
 
 var main_menu: bool = false

@@ -106,8 +106,10 @@ func reset_from_save(save_vars):
 
 
 func rotate_to_cursor() -> void:
-	if Global.raycast_position:
-		look_at(Vector3(Global.raycast_position.x, translation.y, Global.raycast_position.z), Vector3.UP)
+	if Global.mouse_position && Global.mouse_direction:
+		var yDifference = translation.y- Global.mouse_position.y  
+		var mouseProjectedOnPlayerXZPlane = Global.mouse_position + Global.mouse_direction*yDifference/Global.mouse_direction.y;
+		look_at(mouseProjectedOnPlayerXZPlane,Vector3.UP)
 	
 func move_state(delta):
 	gravity_speed -= GRAVITY * gravity_scl * mass * delta
