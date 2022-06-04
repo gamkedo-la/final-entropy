@@ -195,12 +195,32 @@ func _on_HitBox_area_entered(area):
 func _on_PickupRadius_area_entered(area):
 	if area.is_in_group("pickup"):
 		#TODO: Pickup and apply powerup
-		var pickup = area.get_parent()
+		var pickup: PowerUP = area.get_parent()
 		if pickup.pick_active:
-			print_debug("Picking up: ", pickup)
-			pickup.pickup()
-			Global.reparent(pickup, power_ups)
-			print_debug("Player HP left: " + String(hp))
-			emit_signal("powered_up", pickup)
+			if pickup.isWeaponPowerUp:
+				print_debug("It is a weapon")
+				call_deferred("deferred_equip_Weapon", pickup)
+					
+			else:
+				print_debug("Picking up: ", pickup)
+				pickup.pickup()
+				Global.reparent(pickup, power_ups)
+				print_debug("Player HP left: " + String(hp))
+				emit_signal("powered_up", pickup)
 		
 	pass # Replace with function body.
+
+func deferred_equip_Weapon(pickup) -> void:
+	var newGun = pickup.weapon.instance()
+	WeaponMount.add_child(newGun)
+	newGun.global_transform.origin = WeaponMount.global_transform.origin
+	var totWeaps = WeaponMount.get_child_count()
+	if totWeaps % 2 == 0:
+		newGun.rotate_y(deg2rad(2 * (totWeaps - 1)))
+	else:
+		newGun.rotate_y(deg2rad(-2 * (totWeaps - 1)))
+	pickup.pickup()
+	Global.reparent(pickup, power_ups)
+	emit_signal("powered_up", pickup)
+	weapons.clear()
+	weapons.append_array(WeaponMount.get_children())

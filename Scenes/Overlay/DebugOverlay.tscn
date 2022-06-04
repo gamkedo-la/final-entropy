@@ -234,7 +234,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -243.0
-margin_top = -312.0
+margin_top = -362.0
 margin_bottom = -192.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -242,12 +242,13 @@ theme = SubResource( 7 )
 follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
-"_edit_lock_": true
+"_edit_lock_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Grid" type="GridContainer" parent="PowerupSelector"]
 margin_right = 243.0
-margin_bottom = 108.0
+margin_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -287,15 +288,23 @@ text = "Shot Speed"
 script = ExtResource( 5 )
 index = 3
 
+[node name="DebugPowerupRocketGun" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_top = 116.0
+margin_right = 117.0
+margin_bottom = 166.0
+text = "RocketGun"
+script = ExtResource( 5 )
+index = 5
+
 [node name="PowerupSelectorLabel" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -184.0
-margin_top = -336.0
+margin_top = -386.0
 margin_right = -60.0
-margin_bottom = -322.0
+margin_bottom = -372.0
 text = "Powerup Selector"
 align = 1
 __meta__ = {
@@ -314,3 +323,5 @@ __meta__ = {
 [connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupFireRateButton" to="PowerupSelector/Grid/DebugPowerupFireRateButton" method="_on_DebugPowerupSelectButton_pressed"]
 [connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupShotSpeedButton" to="PowerupSelector/Grid/DebugPowerupShotSpeedButton" method="_on_DebugPowerupSelectButton_mouse_exited"]
 [connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupShotSpeedButton" to="PowerupSelector/Grid/DebugPowerupShotSpeedButton" method="_on_DebugPowerupSelectButton_pressed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupRocketGun" to="PowerupSelector/Grid/DebugPowerupRocketGun" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupRocketGun" to="PowerupSelector/Grid/DebugPowerupRocketGun" method="_on_DebugPowerupSelectButton_pressed"]

@@ -3,6 +3,11 @@ class_name PowerUP
 
 export (String) var powerUpName = ""
 export (int) var indexNum = 0
+
+# Weapon Addon?
+export (bool) var isWeaponPowerUp = false
+export (PackedScene) var weapon
+
 #bonuses
 export (float) var baseHP = 0.0
 export (float) var baseShields = 0.0
@@ -27,24 +32,26 @@ func pickup() -> void:
 	pickup_area.monitorable = false
 	visible = false
 	pick_active = false
-	PlayerVars.baseHP += baseHP
-	PlayerVars.baseShields += baseShields
-	PlayerVars.rounds_per_minute_bonus += rounds_per_minute_bonus
-	PlayerVars.shotDmg += shotDmg
-	PlayerVars.shotDmgMult += shotDmgMult
-	PlayerVars.shotSpeed += shotSpeed
-	PlayerVars.bulletCount += bulletCount
+	if !isWeaponPowerUp:
+		PlayerVars.baseHP += baseHP
+		PlayerVars.baseShields += baseShields
+		PlayerVars.rounds_per_minute_bonus += rounds_per_minute_bonus
+		PlayerVars.shotDmg += shotDmg
+		PlayerVars.shotDmgMult += shotDmgMult
+		PlayerVars.shotSpeed += shotSpeed
+		PlayerVars.bulletCount += bulletCount
 
 func drop() -> void:
 	visible = true
 	pickup_area.monitorable = true
 	sleeping = false
 	pick_active = true
-	PlayerVars.baseHP -= baseHP
-	PlayerVars.baseShields -= baseShields
-	PlayerVars.rounds_per_minute_bonus -= rounds_per_minute_bonus
-	PlayerVars.shotDmg -= shotDmg
-	PlayerVars.shotDmgMult -= shotDmgMult
-	PlayerVars.shotSpeed -= shotSpeed
-	PlayerVars.bulletCount -= bulletCount
+	if !isWeaponPowerUp:
+		PlayerVars.baseHP -= baseHP
+		PlayerVars.baseShields -= baseShields
+		PlayerVars.rounds_per_minute_bonus -= rounds_per_minute_bonus
+		PlayerVars.shotDmg -= shotDmg
+		PlayerVars.shotDmgMult -= shotDmgMult
+		PlayerVars.shotSpeed -= shotSpeed
+		PlayerVars.bulletCount -= bulletCount
 

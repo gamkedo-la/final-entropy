@@ -87,6 +87,6 @@ size_flags_horizontal = 15
 size_flags_vertical = 15
 theme = SubResource( 11 )
 script = ExtResource( 1 )
-
-[connection signal="mouse_exited" from="." to="." method="_on_DebugLevelSelectButton_mouse_exited"]
-[connection signal="pressed" from="." to="." method="_on_DebugLevelSelectButton_pressed"]
+__meta__ = {
+"_edit_use_anchors_": false
+}

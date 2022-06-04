@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/TD_Player.gd" type="Script" id=1]
 [ext_resource path="res://Models/capsule/capsule.obj" type="ArrayMesh" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Textures/health-shield bar.png" type="Texture" id=6]
 [ext_resource path="res://Textures/dashbarprogress.png" type="Texture" id=7]
 [ext_resource path="res://Textures/dashbarprogress2.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/Weapons/RocketGun.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=11]
 resource_name = "LevelTransition"
@@ -447,10 +446,6 @@ shape = SubResource( 6 )
 
 [node name="BaseGun" parent="WeaponMount" instance=ExtResource( 3 )]
 base_rpm = 600.0
-
-[node name="RocketGun" parent="WeaponMount" instance=ExtResource( 3 )]
-script = ExtResource( 9 )
-base_rpm = 60.0
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )

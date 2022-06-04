@@ -1,6 +1,6 @@
 extends Button
 
-export var index = 0
+export (int) var index = 0
 onready var powerup_drops = preload("res://Resources/PowerUps.tres")
 var player
 
