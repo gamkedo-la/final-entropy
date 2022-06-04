@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/PowerUps/PowerupsResource.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Powerups/FireRateUp.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Scenes/Powerups/Powerup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Powerups/ShotSizeUp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Powerups/RocketGunPickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Powerups/BaseGunPickup.tscn" type="PackedScene" id=8]
 
 [resource]
 script = ExtResource( 1 )
-powerup_scenes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+powerup_scenes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]

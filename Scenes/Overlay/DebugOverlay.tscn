@@ -296,6 +296,15 @@ text = "RocketGun"
 script = ExtResource( 5 )
 index = 5
 
+[node name="DebugPowerupBaseGun" parent="PowerupSelector/Grid" instance=ExtResource( 4 )]
+margin_left = 125.0
+margin_top = 116.0
+margin_right = 242.0
+margin_bottom = 166.0
+text = "BaseGun"
+script = ExtResource( 5 )
+index = 6
+
 [node name="PowerupSelectorLabel" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -325,3 +334,5 @@ __meta__ = {
 [connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupShotSpeedButton" to="PowerupSelector/Grid/DebugPowerupShotSpeedButton" method="_on_DebugPowerupSelectButton_pressed"]
 [connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupRocketGun" to="PowerupSelector/Grid/DebugPowerupRocketGun" method="_on_DebugPowerupSelectButton_mouse_exited"]
 [connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupRocketGun" to="PowerupSelector/Grid/DebugPowerupRocketGun" method="_on_DebugPowerupSelectButton_pressed"]
+[connection signal="mouse_exited" from="PowerupSelector/Grid/DebugPowerupBaseGun" to="PowerupSelector/Grid/DebugPowerupBaseGun" method="_on_DebugPowerupSelectButton_mouse_exited"]
+[connection signal="pressed" from="PowerupSelector/Grid/DebugPowerupBaseGun" to="PowerupSelector/Grid/DebugPowerupBaseGun" method="_on_DebugPowerupSelectButton_pressed"]

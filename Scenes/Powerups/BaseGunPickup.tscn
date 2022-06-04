@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/PowerUps/Powerup.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Weapons/BaseGun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Bullets/Bullet.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 0.25
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.163573
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.638867, 0.68412, 0.625603 )
+
+[node name="BaseGunPickup" type="RigidBody"]
+physics_material_override = SubResource( 3 )
+script = ExtResource( 1 )
+powerUpName = "RocketGunPickup"
+indexNum = 6
+isWeaponPowerUp = true
+weapon = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="." groups=["pickup"]]
+monitoring = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 4 )
+
+[node name="Bullet" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
