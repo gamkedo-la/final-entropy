@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Rocket.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.0586611
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0.0124224, 0.21118, 0.347826, 0.782609 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0.935547, 1, 1, 0.142578, 0, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 2.3369, 0, 0, Vector2( 0.217391, 1.97727 ), 0.0, 0.0, 0, 0, Vector2( 0.619565, 0.613636 ), -3.46494, -3.46494, 0, 0, Vector2( 1, 0 ), 0.099567, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+trail_divisor = 6
+emission_shape = 1
+emission_sphere_radius = 0.03
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 0.1
+angular_velocity = 40.0
+angular_velocity_random = 1.0
+linear_accel = 2.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_random = 0.8
+scale_curve = SubResource( 13 )
+color = Color( 0.0470588, 0.333333, 0.764706, 1 )
+color_ramp = SubResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=15]
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=16]
+material = SubResource( 15 )
+size = Vector2( 0.1, 0.1 )
+
+[node name="Rocket" type="Area" groups=["bullet"]]
+monitoring = false
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000573516, -0.00112849, -1.65105e-05 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 0.0699408, 0, 0, 0, -1.34048e-08, 0.0699408, 0, -0.306666, -3.05721e-09, 0, 0, 0 )
+
+[node name="CSGSphere" type="CSGSphere" parent="CSGCombiner"]
+transform = Transform( 0.07, 0, 0, 0, -3.0598e-09, -0.07, 0, 0.07, -3.0598e-09, -0.00025411, -0.000621982, -0.153736 )
+radial_segments = 8
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00605783, -0.00083749, 0.0565145 )
+amount = 200
+lifetime = 0.5
+randomness = 1.0
+visibility_aabb = AABB( -0.330129, -0.442608, -1.09876, 0.660259, 0.885216, 2.19752 )
+draw_order = 2
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
