@@ -42,13 +42,16 @@ func _connect_save_slots():
 		slot_name_label.text = slot_name_label.text + " " + str(s + 1)
 		var save_button = slots[s].get_node("Save")
 		var load_button = slots[s].get_node("Load")
+		var delete_button = slots[s].get_node("Delete")
 		save_button.connect("pressed", self, "_on_Save_pressed", [s])	
 		load_button.connect("pressed", self, "_on_Load_pressed", [s])	
+		delete_button.connect("pressed", self, "_on_Delete_pressed", [s])	
 
 func _check_if_slot_exists():
 	var slots = $"MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots".get_children()
 	for s in range(0, slots.size()):
 		slots[s].get_node("Load").disabled = not GameLoader.check_if_slot_exists(s)
+		slots[s].get_node("Delete").disabled = not GameLoader.check_if_slot_exists(s)
 
 func enabled(enable: bool) -> void:
 	if Global.main_menu:
@@ -142,4 +145,8 @@ func _on_Save_pressed(slot:int):
 func _on_Load_pressed(slot:int):
 	GameLoader.load(slot)
 	Global.toggle_pause()
+
+func _on_Delete_pressed(slot:int):
+	GameLoader.delete(slot)
+	_check_if_slot_exists()
 

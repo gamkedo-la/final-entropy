@@ -75,7 +75,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -86,8 +86,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -96,14 +96,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot2" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 20.0
@@ -114,7 +124,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -125,8 +135,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -135,14 +145,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot2"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot3" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 40.0
@@ -153,7 +173,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -164,8 +184,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -174,14 +194,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot3"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot4" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 60.0
@@ -192,7 +222,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -203,8 +233,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -213,14 +243,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot4"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot5" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 80.0
@@ -231,7 +271,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -242,8 +282,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -252,14 +292,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot5"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot6" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 100.0
@@ -270,7 +320,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -281,8 +331,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -291,14 +341,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot6"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot7" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 120.0
@@ -309,7 +369,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -320,8 +380,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -330,14 +390,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot7"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot8" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 140.0
@@ -348,7 +418,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -359,8 +429,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -369,14 +439,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot8"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot9" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 160.0
@@ -387,7 +467,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -398,8 +478,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -408,14 +488,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot9"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot10" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 180.0
@@ -426,7 +516,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -437,8 +527,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -447,14 +537,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot10"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot11" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 200.0
@@ -465,7 +565,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -476,8 +576,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -486,14 +586,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot11"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot12" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 220.0
@@ -504,7 +614,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot12"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -515,8 +625,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot12"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -525,14 +635,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot12"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot12"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot13" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 240.0
@@ -543,7 +663,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot13"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -554,8 +674,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot13"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -564,14 +684,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot13"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot13"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot14" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 260.0
@@ -582,7 +712,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot14"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -593,8 +723,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot14"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -603,14 +733,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot14"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot14"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot15" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 280.0
@@ -621,7 +761,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot15"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -632,8 +772,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot15"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -642,14 +782,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot15"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot15"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot16" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 300.0
@@ -660,7 +810,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot16"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -671,8 +821,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot16"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -681,14 +831,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot16"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot16"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot17" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 320.0
@@ -699,7 +859,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot17"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -710,8 +870,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot17"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -720,14 +880,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot17"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot17"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot18" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 340.0
@@ -738,7 +908,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot18"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -749,8 +919,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot18"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -759,14 +929,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot18"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot18"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot19" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 360.0
@@ -777,7 +957,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot19"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -788,8 +968,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot19"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -798,14 +978,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot19"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot19"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot20" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 380.0
@@ -816,7 +1006,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot20"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -827,8 +1017,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot20"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -837,14 +1027,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot20"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot20"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot21" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 400.0
@@ -855,7 +1055,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot21"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -866,8 +1066,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot21"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -876,14 +1076,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot21"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot21"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot22" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 420.0
@@ -894,7 +1104,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot22"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -905,8 +1115,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot22"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -915,14 +1125,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot22"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot22"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot23" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 440.0
@@ -933,7 +1153,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot23"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -944,8 +1164,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot23"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -954,14 +1174,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot23"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot23"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="SaveSlot24" type="HBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots"]
 margin_top = 460.0
@@ -972,7 +1202,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SlotName" type="Label" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot24"]
-margin_right = 203.0
+margin_right = 151.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -983,8 +1213,8 @@ align = 1
 valign = 1
 
 [node name="Save" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot24"]
-margin_left = 207.0
-margin_right = 410.0
+margin_left = 155.0
+margin_right = 307.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -993,14 +1223,24 @@ size_flags_vertical = 15
 text = "Save"
 
 [node name="Load" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot24"]
-margin_left = 414.0
-margin_right = 618.0
+margin_left = 311.0
+margin_right = 462.0
 margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 text = "Load"
+
+[node name="Delete" type="Button" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots/Slots/SaveSlot24"]
+margin_left = 466.0
+margin_right = 618.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "Delete"
 
 [node name="Audio" type="PanelContainer" parent="MC/CenVB/TabCon"]
 visible = false

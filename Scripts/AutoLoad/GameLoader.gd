@@ -104,6 +104,18 @@ func load(slot:int):
 	save_file.close()
 
 
+func delete(slot:int):
+	var slot_name = str(slot).pad_zeros(3)
+	if not check_if_slot_exists(slot):
+		return
+	
+	print_debug("Deleting slot " + str(slot))
+
+	var dir = Directory.new()
+	dir.open("user://saves/slot" + str(slot_name))
+	dir.remove("user://saves/slot" + str(slot_name))
+
+
 func reset_loaded_room():
 	current_room_node.room_name = current_room
 	current_room_node.name = current_room
