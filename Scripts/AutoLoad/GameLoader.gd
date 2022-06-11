@@ -135,7 +135,7 @@ func _on_LevelController_level_loaded(all_rooms, _room_loader, player_node=null)
 			current_room = room.room_name
 			current_connected_rooms = room.connected_rooms
 			current_room_node = room
-			current_room_node.return_room = save_vars.return_room
+			current_room_node.return_room = room.return_room
 
 			save_vars.current_room = room.room_name
 			save_vars.current_connected_rooms = room.connected_rooms
