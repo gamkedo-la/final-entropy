@@ -56,15 +56,17 @@ onready var power_ups = $PowerUps
 onready var player_cam_pivot: Position3D =$CameraPivot
 onready var player_cam: Camera = $CameraPivot/Camera
 onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
+onready var run_anim: AnimationPlayer = $tecnomancer1/AnimationPlayer
 
 
 func _ready():
+	
 	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
 		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
 	if not PlayerVars.is_connected("hp_changed", self, "_update_HP_Bar"):
 		var con_res = PlayerVars.connect("hp_changed", self, "_update_HP_Bar")
 		assert(con_res == OK)
-		
+	
 	Global.player_node = get_node(player)
 	Global.set_player_camera(player_cam, cam_anim, player_cam_pivot)
 	ground_ray.enabled = true
@@ -83,8 +85,9 @@ func _physics_process(delta):
 		rotate_to_cursor()
 		move_state(delta)
 		check_fire()
-
+	
 func _input(event):
+	
 #	if event is InputEventMouseMotion:
 #		rotation_degrees.y -= event.relative.x * mouse_sensitivity / 18 / divide_mouse_sensitivity
 	if Input.is_action_pressed("ui_cancel"):
@@ -116,7 +119,8 @@ func move_state(delta):
 	var move_dir = Vector3.ZERO
 	# Not Dashing
 	if !dash_now:
-		move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		
+		move_dir.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up") 
 		move_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		if ground_ray.is_colliding():
 			velocity.y = 0.0
