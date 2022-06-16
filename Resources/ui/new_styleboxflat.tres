@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxFlat" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+[resource]
+bg_color = Color( 0.184314, 0, 0.196078, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+anti_aliasing = false
+script = SubResource( 1 )
