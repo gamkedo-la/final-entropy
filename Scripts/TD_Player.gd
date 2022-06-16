@@ -8,6 +8,10 @@ const GRAVITY = 9.8
 export(NodePath) var GunPosPath = ""
 export(NodePath) var player;
 
+export(NodePath) var anim_tree = ""
+var an_tree
+var state_machine
+
 onready var ground_ray: RayCast = $GroundRay
 
 var maxHp = 100
@@ -59,6 +63,7 @@ onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
 onready var run_anim: AnimationPlayer = $tecnomancer1/AnimationPlayer
 
 
+
 func _ready():
 	
 	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
@@ -77,6 +82,10 @@ func _ready():
 	dash_meter.value = dash_amount
 	print_debug("Weapons: ", weapons)
 	add_to_group("Save")
+	an_tree = get_node_or_null(anim_tree)
+	if is_instance_valid(an_tree):
+		state_machine = an_tree["parameters/playback"]
+	ani_travel("stand")
 	
 
 func _physics_process(delta):
@@ -85,6 +94,8 @@ func _physics_process(delta):
 		rotate_to_cursor()
 		move_state(delta)
 		check_fire()
+	else:
+		ani_travel("stand")
 	
 func _input(event):
 	
@@ -125,13 +136,17 @@ func move_state(delta):
 		if ground_ray.is_colliding():
 			velocity.y = 0.0
 		else:
+			ani_travel("stand")
 			velocity.y = gravity_speed
 		if move_dir != Vector3.ZERO:
+			ani_travel("walk")
 			velocity = velocity.move_toward(move_dir * MAX_SPEED, ACCELERATION * delta)
 		else:
+			ani_travel("stand")
 			velocity = velocity.move_toward(Vector3.ZERO, ACCELERATION * delta)
 	# Dashing
 	if dash_now:
+		ani_travel("stand")
 		move_dir = -transform.basis.z
 		if ground_ray.is_colliding():
 			velocity.y = 0.0
@@ -141,6 +156,12 @@ func move_state(delta):
 		dash_now = false
 		pass
 	velocity = move_and_slide(velocity)
+
+func ani_travel(tree_node) -> void:
+	if is_instance_valid(state_machine):
+		if state_machine.get_current_node() != tree_node:
+			print_debug("PlayerAnimation moving to ", tree_node)
+			state_machine.travel(tree_node)
 
 func check_fire() -> void:
 	if (Input.is_action_pressed("shoot")):
