@@ -265,5 +265,7 @@ func _on_AggroBox_body_entered(body):
 		target = body
 #		Music.regist
 		set_state(State.ENGAGE)
+		if actor.is_a_boss:
+			Music.boss_inrange = true
 	pass # Replace with function body.
 

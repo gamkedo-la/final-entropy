@@ -4,10 +4,11 @@ extends Node
 onready var menu_bgm: AudioStreamPlayer = $MenuBGM
 onready var ambient_bgm: AudioStreamPlayer = $AmbientBGM
 onready var action01_bgm: AudioStreamPlayer = $ActionBGM1
+onready var boss01_bgm: AudioStreamPlayer = $BossBGM1
 
 export (Array, AudioStream) var ambient_tracks
 
-var fade_speed := 20.0
+var fade_speed := 50.0
 
 var ambient_target = -80
 var menu_target = -80
@@ -54,16 +55,24 @@ func _set_targets() -> void:
 	if Global.main_menu:
 		menu_target = 0
 	elif total_engaged > 0:		
-		combat_target = 0
-	elif boss_inrange:
-		boss_target = 0
+		combat_target = 0	
 	else:
 		ambient_target = 0
+	
+	if boss_inrange:
+		boss_target = 0
+		ambient_target = -80
+		combat_target = -80
+		menu_target = -80
+	
 
 
 func _set_levels(delta: float) -> void:
-	var fade_this_frame = fade_speed * delta
-	
+	var fade_this_frame
+	if boss_inrange:
+		fade_this_frame = (fade_speed * 3) * delta
+	else:
+		fade_this_frame = fade_speed * delta
 	if menu_bgm.volume_db < menu_target - fade_this_frame:
 		menu_bgm.volume_db += fade_this_frame
 	if menu_bgm.volume_db > menu_target + fade_this_frame:
@@ -84,10 +93,10 @@ func _set_levels(delta: float) -> void:
 	if action01_bgm.volume_db > combat_target + fade_this_frame:
 		action01_bgm.volume_db -= fade_this_frame
 	
-#	if boss_music.volume_db < boss_target - fade_this_frame:
-#		boss_music.volume_db += fade_this_frame
-#	if boss_music.volume_db > boss_target + fade_this_frame:
-#		boss_music.volume_db -= fade_this_frame
+	if boss01_bgm.volume_db < boss_target - fade_this_frame:
+		boss01_bgm.volume_db += fade_this_frame
+	if boss01_bgm.volume_db > boss_target + fade_this_frame:
+		boss01_bgm.volume_db -= fade_this_frame
 	pass
 
 

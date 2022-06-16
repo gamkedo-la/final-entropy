@@ -11,6 +11,9 @@ onready var hit_box: Area = $HitBox
 
 var body
 
+# Boss?
+export(bool) var is_a_boss = false
+
 #temp movement logic
 export(float) var MAX_SPEED = 10.0
 export(float) var ACCELERATION = 10.0
@@ -30,9 +33,14 @@ export (float) var aggro_radius = 3.0
 onready var aggro_sphere: CollisionShape = $AggroBox/AggroSphere
 onready var die_sfx = $die
 onready var die_stream = preload("res://SFX/explosiontry.wav")
+onready var bossdie_stream = preload("res://Music/FinalEntropyBossDeathSound.mp3")
+var boss_cntdwn: float = 0.0
 
 func _ready():
-	die_sfx.stream = die_stream
+	if is_a_boss:
+		die_sfx.stream = bossdie_stream
+	else:
+		die_sfx.stream = die_stream
 	if not die_sfx.is_connected("finished", self, "die"):
 		var con_res = die_sfx.connect("finished", self, "die")
 		assert(con_res == OK)
@@ -54,6 +62,18 @@ func _physics_process(delta) -> void:
 	pass
 
 func _process(delta) -> void: 
+	if is_a_boss and die_sfx.playing:
+		boss_cntdwn += delta
+		if boss_cntdwn > .25:		
+			rng.randomize()
+			var new_explo = explosion.instance()
+			get_tree().root.add_child(new_explo)
+			new_explo.global_transform.origin = global_transform.origin + Vector3(
+				rng.randf_range(-2.0, 2.0),
+				0.0, 
+				rng.randf_range(-3.0, 3.0)
+				)
+			boss_cntdwn = 0.0
 #	print_debug(powerup_drops.powerup_scenes)
 	pass
 
@@ -97,6 +117,8 @@ func drop_loot() -> void:
 #	call_deferred("die")
 	
 func die() -> void:	
+	if is_a_boss:
+		Music.boss_inrange = false		
 	get_parent().call_deferred("remove_child", self)
 	call_deferred("emit_signal", "dead", self)
 	call_deferred("queue_free")

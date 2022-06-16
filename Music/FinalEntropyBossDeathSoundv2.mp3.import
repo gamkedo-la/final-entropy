@@ -11,5 +11,5 @@ dest_files=[ "res://.import/FinalEntropyBossDeathSoundv2.mp3-804cc870798dad06bfd
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
