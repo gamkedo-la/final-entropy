@@ -3,8 +3,9 @@
 [ext_resource path="res://Scenes/Enemies/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Models/orb_enemy/OrbEnemy.tscn" type="PackedScene" id=2]
 
-[sub_resource type="SphereShape" id=44]
-radius = 9.83589
+[sub_resource type="CapsuleShape" id=1]
+radius = 9.07294
+height = 10.0369
 
 [node name="OrbPhaser" instance=ExtResource( 1 )]
 axis_lock_motion_y = false
@@ -28,13 +29,17 @@ num_rays = 32
 [node name="GroundRay" parent="AI/Steering" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.56481, 0 )
 
+[node name="HealthBar" parent="." index="2"]
+transform = Transform( 4, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 4.9642, 0 )
+
 [node name="HitBox" type="Area" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79277, 0 )
 collision_layer = 4
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="HitBox" index="0"]
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0290489, 0.428374, 0 )
-shape = SubResource( 44 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0 )
+shape = SubResource( 1 )
 
 [node name="OrbEnemy" parent="." index="6" instance=ExtResource( 2 )]

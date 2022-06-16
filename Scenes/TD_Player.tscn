@@ -449,6 +449,7 @@ monitorable = false
 shape = SubResource( 6 )
 
 [node name="WeaponMount" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0582492, 1.50501, -0.909388 )
 
 [node name="BaseGun" parent="WeaponMount" instance=ExtResource( 3 )]
 base_rpm = 600.0
