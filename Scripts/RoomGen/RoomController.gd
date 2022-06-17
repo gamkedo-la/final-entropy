@@ -67,6 +67,7 @@ func _connect_enemies() -> void:
 			res_con = enemy.connect("dead", self, "_enemy_dead")
 			assert(res_con == OK)
 
+# warning-ignore:unused_argument
 func _enemy_dead(enemy:Actor) -> void:
 	print_debug("Enemy Died")
 	print_debug("Total Enemies Left:", enemies.get_child_count())

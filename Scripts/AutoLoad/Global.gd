@@ -1,5 +1,6 @@
 extends Node
 
+# warning-ignore:unused_signal
 signal shake(val)
 
 var ortho_camera: Camera = null
@@ -27,6 +28,7 @@ func set_camera(cam: Camera):
 	ortho_camera = cam
 
 
+# warning-ignore:unused_argument
 func set_player_camera(cam: Camera, anim: AnimationPlayer, pivot: Position3D):
 	player_camera = cam
 	player_cam_anim = anim

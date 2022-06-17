@@ -1,6 +1,8 @@
 extends Node
 
+# warning-ignore:unused_signal
 signal rounds_per_minute_bonus_changed
+# warning-ignore:unused_signal
 signal hp_changed
 # Player 
 var baseHP: float = 100.0 setget _set_baseHP

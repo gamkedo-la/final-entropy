@@ -56,18 +56,21 @@ onready var rnd = RandomNumberGenerator.new()
 onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
 
+onready var explosion = preload("res://Resources/VFX/Explosion/Explosion.tscn")
+
 # Transition Camera
 onready var player_cam_pivot: Position3D =$CameraPivot
 onready var player_cam: Camera = $CameraPivot/Camera
 onready var cam_anim: AnimationPlayer = $CameraPivot/CameraPlayer
 onready var run_anim: AnimationPlayer = $tecnomancer1/AnimationPlayer
 
-
+var alive: bool = true
 
 func _ready():
-	
+	alive = true
 	if not is_connected("powered_up", GameLoader, "_on_TD_Player_powered_up"):
-		connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
+		var con_res = connect("powered_up", GameLoader, "_on_TD_Player_powered_up")
+		assert(con_res == OK)
 	if not PlayerVars.is_connected("hp_changed", self, "_update_HP_Bar"):
 		var con_res = PlayerVars.connect("hp_changed", self, "_update_HP_Bar")
 		assert(con_res == OK)
@@ -89,7 +92,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	if !traversing:
+	if !traversing and alive:
 		recharge(delta)
 		rotate_to_cursor()
 		move_state(delta)
@@ -203,10 +206,19 @@ func take_damage(dmg: float) -> void:
 
 	hit_sfx.play()
 	print_debug("Player HP left: " + String(hp))
+	if PlayerVars.HP <= 0:
+		_die()
 
 func spawn_at_portal(portal:Spatial) -> void:
 	if is_instance_valid(portal):
 		global_transform = portal.global_transform
+
+func _die() -> void:
+	var new_explo = explosion.instance()
+	get_tree().root.add_child(new_explo)
+	new_explo.global_transform.origin = global_transform.origin
+	alive = false
+	pass
 
 func _on_HitBox_area_entered(area):
 	if invulnerable:

@@ -45,7 +45,7 @@ func _process(delta) -> void:
 	elif Input.is_action_just_pressed("camera_2"):
 		projection = Camera.PROJECTION_PERSPECTIVE
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	project()
 
 func increase_trauma(val:float) -> void:

@@ -10,7 +10,7 @@ export (float) var rotation_speed = 1.0
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	rotation_degrees += Vector3(rotation_speed, rotation_speed, rotation_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

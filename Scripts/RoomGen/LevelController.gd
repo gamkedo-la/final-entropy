@@ -23,9 +23,11 @@ func _ready():
 	call_deferred("add_child", lift_tween)
 	call_deferred("add_child", trav_tween)
 	if not is_connected("level_loaded", GameLoader, "_on_LevelController_level_loaded"):
-		connect("level_loaded", GameLoader, "_on_LevelController_level_loaded")
+		var con_res = connect("level_loaded", GameLoader, "_on_LevelController_level_loaded")
+		assert(con_res == OK)
 	if not is_connected("level_loaded", DebugOverlay, "_on_LevelController_level_loaded"):
-		connect("level_loaded", DebugOverlay, "_on_LevelController_level_loaded")
+		var con_res = connect("level_loaded", DebugOverlay, "_on_LevelController_level_loaded")
+		assert(con_res == OK)
 
 	for room in room_node.get_children():
 		rooms.append(room)
@@ -73,9 +75,12 @@ func _traverse_to_room(to_room, from_room = "", refresh_rooms = false) -> String
 	drop_from_room = from_room
 	drop_to_room = to_room
 #	main_camera.projection = Camera.PROJECTION_PERSPECTIVE
+# warning-ignore:return_value_discarded
 	lift_tween.interpolate_property(player, "global_transform", player.global_transform, destination, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	lift_tween.interpolate_property(main_camera, "global_transform", main_camera.global_transform, cam_destination, 1.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 #	lift_tween.interpolate_property(main_camera, "size", main_camera.size, cam_size, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	lift_tween.start()
 
 	return to_room
@@ -96,9 +101,13 @@ func _complete_lift() -> void:
 			destination = rooms[i].player_spawn.global_transform
 			rooms[i].return_room = drop_from_room
 			rooms[i].activate()
+# warning-ignore:return_value_discarded
 	trav_tween.interpolate_property(player, "global_transform", player.global_transform, destination, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	trav_tween.interpolate_property(main_camera, "global_transform", main_camera.global_transform, cam_destination, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	trav_tween.interpolate_property(main_camera, "size", main_camera.size, cam_size, 2.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	trav_tween.start()
 	emit_signal("level_loaded", rooms, funcref(self, "_traverse_to_room"))
 

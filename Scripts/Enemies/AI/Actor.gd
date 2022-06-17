@@ -1,6 +1,7 @@
 extends KinematicBody
 class_name Actor
 
+# warning-ignore:unused_signal
 signal dead
 
 onready var noise = OpenSimplexNoise.new()
@@ -57,9 +58,9 @@ func _ready():
 	bar = get_node(bar_path)
 	aggro_sphere.shape.radius = aggro_radius
 
-func _physics_process(delta) -> void:
-#	move_state(delta)
-	pass
+#func _physics_process(delta) -> void:
+##	move_state(delta)
+#	pass
 
 func _process(delta) -> void: 
 	if is_a_boss and die_sfx.playing:

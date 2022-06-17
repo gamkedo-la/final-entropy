@@ -109,14 +109,14 @@ var steer_rays = []
 var ray_hits = []
 var ray_hits_tracked = []
 
-func _process(delta):
+func _process(_delta):
 	if not visible:
 		return
 	update()
 
 func _draw():
 	var camera = get_viewport().get_camera()
-	var trash_can = []
+	var _trash_can = []
 	for vector in vectors:
 		if is_instance_valid(vector.object) && vector.object.is_inside_tree():
 			vector.draw(self, camera)
