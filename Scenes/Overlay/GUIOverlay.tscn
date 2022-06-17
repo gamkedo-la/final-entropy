@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/AutoLoad/GUIOverlay.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/AutoLoad/GUIOverlayMenu.gd" type="Script" id=2]
+[ext_resource path="res://Resources/ui/themefinalentrophy.tres" type="Theme" id=3]
+[ext_resource path="res://Resources/Orbitron/orbitronfont.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -47,31 +49,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
+theme = ExtResource( 3 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="PausedText" type="RichTextLabel" parent="GUIOverlayMenu"]
 anchor_left = 0.003
 anchor_top = 0.648
 anchor_right = 0.188
 anchor_bottom = 0.805
-margin_left = 316.24
-margin_top = 33.16
-margin_right = 30.04
-margin_bottom = -117.4
+margin_left = 158.24
+margin_top = 33.1599
+margin_right = -86.96
+margin_bottom = -102.4
 grow_horizontal = 2
 grow_vertical = 2
 rect_rotation = -3.37825
-rect_scale = Vector2( 10, 10 )
+rect_scale = Vector2( 6, 6 )
 rect_pivot_offset = Vector2( 34.9, 6 )
 focus_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
+theme = ExtResource( 3 )
 custom_colors/default_color = Color( 0.164706, 1, 0.352941, 1 )
 custom_colors/selection_color = Color( 0.0313726, 1, 0, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[center]PAUSED[/center]"
 visible_characters = 0
@@ -80,6 +82,9 @@ text = "PAUSED"
 fit_content_height = true
 scroll_following = true
 selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUIOverlayMenu"]
 playback_speed = 2.0
@@ -91,6 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -99,13 +105,13 @@ __meta__ = {
 [node name="Muted" type="RichTextLabel" parent="GUIOverlayIndicators"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -57.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = 24.0
+margin_left = -113.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = 29.0
+custom_fonts/normal_font = ExtResource( 4 )
 text = "MUTED"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

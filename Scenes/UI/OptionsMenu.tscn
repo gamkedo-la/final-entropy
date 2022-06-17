@@ -44,6 +44,7 @@ size_flags_vertical = 3
 tab_align = 0
 
 [node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 36.0
@@ -58,7 +59,7 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="Slots" type="VBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots"]
-margin_right = 616.0
+margin_right = 640.0
 margin_bottom = 1163.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1245,14 +1246,14 @@ text = "Delete"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 24.0
+margin_top = 36.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
 
 [node name="AudVBox" type="VBoxContainer" parent="MC/CenVB/TabCon/Audio"]
 margin_right = 640.0
-margin_bottom = 508.0
+margin_bottom = 496.0
 
 [node name="Spacer" type="HBoxContainer" parent="MC/CenVB/TabCon/Audio/AudVBox"]
 margin_right = 640.0
@@ -1261,9 +1262,9 @@ rect_min_size = Vector2( 0, 33 )
 alignment = 1
 
 [node name="Label" type="Label" parent="MC/CenVB/TabCon/Audio/AudVBox/Spacer"]
-margin_left = 240.0
+margin_left = 234.0
 margin_top = 3.0
-margin_right = 399.0
+margin_right = 406.0
 margin_bottom = 29.0
 text = "Audio Settings"
 
@@ -1394,10 +1395,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Cheatcodes" type="PanelContainer" parent="MC/CenVB/TabCon"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 24.0
+margin_top = 36.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
@@ -1407,25 +1407,30 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MC/CenVB/TabCon/Cheatcodes"]
 margin_right = 640.0
-margin_bottom = 508.0
+margin_bottom = 496.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MC/CenVB/TabCon/Cheatcodes"]
-margin_right = 640.0
-margin_bottom = 508.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 635.0
+margin_bottom = 496.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 5, 5 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MC/CenVB/TabCon/Cheatcodes/VBoxContainer"]
-margin_right = 640.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 0, 24 )
+margin_right = 630.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Cheatcodes (Work In Progress)"
 
 [node name="CheckBox" type="CheckBox" parent="MC/CenVB/TabCon/Cheatcodes/VBoxContainer"]
-margin_top = 28.0
-margin_right = 640.0
-margin_bottom = 54.0
+margin_top = 34.0
+margin_right = 630.0
+margin_bottom = 60.0
 text = "Nothing (Test)"
 
 [node name="Spacer2" type="HBoxContainer" parent="MC/CenVB"]
