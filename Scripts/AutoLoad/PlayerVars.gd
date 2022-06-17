@@ -38,5 +38,6 @@ func _set_baseHP(val) -> void:
 	print_debug("set_baseHP: ", val, " Current BaseHP: ", baseHP)
 	var previous_val = baseHP
 	baseHP = val
-	HP += val - previous_val
+#	HP += val - previous_val
+	HP = baseHP
 	emit_simple_signal_if_value_changed("hp_changed", baseHP - previous_val)

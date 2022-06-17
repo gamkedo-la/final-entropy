@@ -144,6 +144,8 @@ func move_state(delta):
 		else:
 			ani_travel("stand")
 			velocity = velocity.move_toward(Vector3.ZERO, ACCELERATION * delta)
+		if global_transform.origin.y <= -1.0:
+			global_transform.origin.y = 10.0
 	# Dashing
 	if dash_now:
 		ani_travel("stand")
