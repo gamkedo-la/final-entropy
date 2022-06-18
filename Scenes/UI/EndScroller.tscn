@@ -114,7 +114,7 @@ margin_right = 480.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 480, 0 )
 bbcode_enabled = true
-bbcode_text = "The singularities mission to drain the known universe of all energy and turn it into [rainbow freq=0.2 sat=1 val=1][wave amp=50 freq=2] Value Tokens[/wave][/rainbow]has been thwarted... for now.  You, a lowly technomancer have saved the universe, but must stay vigilant for they surely will try again!
+bbcode_text = "The singularity's mission to drain the known universe of all energy and turn it into [rainbow freq=0.2 sat=1 val=1][wave amp=50 freq=2] Value Tokens[/wave][/rainbow]has been thwarted... for now.  You, a lowly technomancer have saved the universe, but must stay vigilant for they surely will try again!
 
 
 
@@ -148,7 +148,7 @@ rect_min_size = Vector2( 480, 0 )
 bbcode_enabled = true
 bbcode_text = "[color=aqua]Kyle Black [/color] :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
 
-[color=aqua]Rohit \"n4rwal\" Kumar[/color]: Multiple enemy models (including technomancer, liquid tank), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
+[color=aqua]Rohit \"n4rwal\" Kumar[/color]: Multiple models (technomancer, tanker bot, Roll-E Poll-E,  liquid tank, terminal), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
 
 [color=aqua]Randy Tan Shaoxian[/color]: Save system, debug overlay (including level selector, adjustable game speed), mute toggle, room loading fix, pause indicator
 
@@ -175,7 +175,7 @@ bbcode_text = "[color=aqua]Kyle Black [/color] :  Project lead, core gameplay, m
 [color=aqua]Nick O'Connell[/color]: Power-up selector debug tool"
 text = "Kyle Black  :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
 
-Rohit \"n4rwal\" Kumar: Multiple enemy models (including technomancer, liquid tank), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
+Rohit \"n4rwal\" Kumar: Multiple models (technomancer, tanker bot, Roll-E Poll-E,  liquid tank, terminal), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
 
 Randy Tan Shaoxian: Save system, debug overlay (including level selector, adjustable game speed), mute toggle, room loading fix, pause indicator
 

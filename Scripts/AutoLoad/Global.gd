@@ -2,6 +2,7 @@ extends Node
 
 # warning-ignore:unused_signal
 signal shake(val)
+# warning-ignore:unused_signal
 signal exit_game
 
 var ortho_camera: Camera = null
