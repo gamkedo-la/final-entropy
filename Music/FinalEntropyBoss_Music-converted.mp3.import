@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FinalEntropyBoss_Music-converted.mp3-db114f010f7929419f203c638dd084e9.mp3str"
+
+[deps]
+
+source_file="res://Music/FinalEntropyBoss_Music-converted.mp3"
+dest_files=[ "res://.import/FinalEntropyBoss_Music-converted.mp3-db114f010f7929419f203c638dd084e9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

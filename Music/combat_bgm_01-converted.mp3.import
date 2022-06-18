@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/combat_bgm_01-converted.mp3-ac738db4afc83063b24e99ef05f7446a.mp3str"
+
+[deps]
+
+source_file="res://Music/combat_bgm_01-converted.mp3"
+dest_files=[ "res://.import/combat_bgm_01-converted.mp3-ac738db4afc83063b24e99ef05f7446a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
