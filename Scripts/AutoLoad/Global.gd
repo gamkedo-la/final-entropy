@@ -2,6 +2,7 @@ extends Node
 
 # warning-ignore:unused_signal
 signal shake(val)
+signal exit_game
 
 var ortho_camera: Camera = null
 var player_camera: Camera = null
@@ -16,6 +17,7 @@ var main_menu: bool = false
 
 var current_scene = null
 
+var main_menu_scn = "res://Scenes/UI/MainMenu/MainMenu.tscn"
 var level_one = "res://Scenes/Rooms/LevelCon01.tscn"
 
 func _ready():
@@ -42,6 +44,9 @@ func _unhandled_key_input(event):
 	if event.is_action_pressed("mute"):
 		AudioServer.set_bus_mute(0, !muted)
 		GUIOverlay.toggle_muted(!muted)
+
+func exit_game() -> void:
+	get_tree().quit()
 		
 func goto_scene(path):
 	# Defer the load until the current scene is done executing code

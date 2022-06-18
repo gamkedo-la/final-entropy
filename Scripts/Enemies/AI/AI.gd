@@ -223,7 +223,7 @@ func _engage(delta: float) -> void:
 	if !cooling_down:
 		if aim_ray.is_colliding():
 			var p_check = aim_ray.get_collider().get_parent()
-			print_debug("p_check: ", p_check, "aim_ray.: ", aim_ray.get_collider().get_parent())
+#			print_debug("p_check: ", p_check, "aim_ray.: ", aim_ray.get_collider().get_parent())
 			if aim_ray.get_collider().get_parent() is Player:
 				match engage_style:
 					EngageMode.FIXED:

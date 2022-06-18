@@ -18,6 +18,8 @@ var rooms = []
 var drop_from_room
 var drop_to_room
 
+var exiting = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	call_deferred("add_child", lift_tween)
@@ -28,7 +30,10 @@ func _ready():
 	if not is_connected("level_loaded", DebugOverlay, "_on_LevelController_level_loaded"):
 		var con_res = connect("level_loaded", DebugOverlay, "_on_LevelController_level_loaded")
 		assert(con_res == OK)
-
+	if not Global.is_connected("exit_game", self, "cleanup"):
+		var con_res = Global.connect("exit_game", self, "cleanup")
+		assert(con_res == OK
+		)
 	for room in room_node.get_children():
 		rooms.append(room)
 	add_child(start_timer)
@@ -38,6 +43,23 @@ func _ready():
 	start_timer.start()
 	Global.level_camera()
 
+func _process(_delta):
+	if exiting:
+		var trash_can = []
+		if rooms.size() < 1: 
+			Global.exit_game()
+		for i in rooms.size():
+			if rooms[i].cleaned:
+				trash_can.append(rooms[i])
+		if trash_can.size() > 0:
+			for trash in trash_can:
+				_on_room_removed(trash)
+
+func _on_room_removed(room) -> void:
+	if room in rooms:
+		rooms.erase(room)
+		room.queue_free()
+			
 	
 func _start_level() -> void:
 	if not lift_tween.is_connected("tween_all_completed", self, "_complete_lift"):
@@ -61,6 +83,9 @@ func register_portal(new_portal:RoomPortal) -> void:
 	if not new_portal.is_connected("traverse", self, "_traverse_to_room"):
 		var res_con = new_portal.connect("traverse", self, "_traverse_to_room")
 		assert(res_con == OK)
+
+func cleanup() -> void:
+	exiting = true
 
 func _traverse_to_room(to_room, from_room = "", refresh_rooms = false) -> String:
 	if refresh_rooms:

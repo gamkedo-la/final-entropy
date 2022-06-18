@@ -57,6 +57,7 @@ onready var hit_sfx: AudioStreamPlayer3D = $HitSound
 onready var power_ups = $PowerUps
 
 onready var explosion = preload("res://Resources/VFX/Explosion/Explosion.tscn")
+onready var die_screen = preload("res://Scenes/UI/DieScreen.tscn")
 
 # Transition Camera
 onready var player_cam_pivot: Position3D =$CameraPivot
@@ -77,6 +78,7 @@ func _ready():
 	
 	Global.player_node = get_node(player)
 	Global.set_player_camera(player_cam, cam_anim, player_cam_pivot)
+	PlayerVars.initialize()
 	ground_ray.enabled = true
 	rnd.randomize()
 	gun_position = get_node(GunPosPath)
@@ -99,23 +101,21 @@ func _physics_process(delta):
 		check_fire()
 	else:
 		ani_travel("stand")
-	
-func _input(event):
-	
-#	if event is InputEventMouseMotion:
-#		rotation_degrees.y -= event.relative.x * mouse_sensitivity / 18 / divide_mouse_sensitivity
-	if Input.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("dash") && dash_amount >= dash_cost:
-		dash_now = true
-		dash_amount -= dash_cost
-		invuln_elapse = 0.0
-		invulnerable = true
 		
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+func _input(event):
+	if alive:
+		if Input.is_action_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if Input.is_action_just_pressed("dash") && dash_amount >= dash_cost:
+			dash_now = true
+			dash_amount -= dash_cost
+			invuln_elapse = 0.0
+			invulnerable = true
+			
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT and event.pressed:
+				if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+					Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func reset_from_save(save_vars):
 	hp = save_vars.player_vars.hp
@@ -214,10 +214,14 @@ func spawn_at_portal(portal:Spatial) -> void:
 		global_transform = portal.global_transform
 
 func _die() -> void:
-	var new_explo = explosion.instance()
-	get_tree().root.add_child(new_explo)
-	new_explo.global_transform.origin = global_transform.origin
-	alive = false
+	if alive:
+		var new_explo = explosion.instance()
+		get_tree().root.add_child(new_explo)
+		new_explo.global_transform.origin = global_transform.origin
+		alive = false
+		visible = false
+		var death_ui = die_screen.instance()
+		add_child(death_ui)
 	pass
 
 func _on_HitBox_area_entered(area):

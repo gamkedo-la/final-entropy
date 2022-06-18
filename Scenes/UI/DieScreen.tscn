@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/ui/themefinalentrophy.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/DieScreen.gd" type="Script" id=2]
+
+[node name="DieScreen" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Retry" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_left = 921.0
+margin_top = 482.0
+margin_right = 998.0
+margin_bottom = 518.0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+text = "Retry"
+
+[node name="Main Menu" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_left = 892.0
+margin_top = 522.0
+margin_right = 1027.0
+margin_bottom = 558.0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_left = 931.0
+margin_top = 562.0
+margin_right = 988.0
+margin_bottom = 598.0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Main Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

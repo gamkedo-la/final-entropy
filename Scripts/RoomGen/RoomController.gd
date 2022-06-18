@@ -15,6 +15,7 @@ export (Array, String) var connected_rooms
 var return_room: String = ""
 var room_clear = false
 var is_activated = false
+var cleaned = false
 
 export (bool) var debug_mode = false
 
@@ -26,6 +27,9 @@ func _ready():
 	if not Engine.editor_hint && !debug_mode:		
 		_clean_test()
 		deactivate()
+		if not Global.is_connected("exit_game", self, "cleanup"):
+			var con_res = Global.connect("exit_game", self, "cleanup")
+			assert(con_res == OK)
 	name = room_name
 
 func _clean_test() -> void:
@@ -59,6 +63,10 @@ func activate() -> void:
 func deactivate() -> void:
 	call_deferred("remove_child", stage)
 	is_activated = false
+
+func cleanup() -> void:
+	stage.queue_free()
+	cleaned = true
 
 func _connect_enemies() -> void:
 	var res_con

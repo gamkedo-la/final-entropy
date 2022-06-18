@@ -22,6 +22,22 @@ var bulletCount: int = 1
 func _ready():
 	pass # Replace with function body.
 
+func initialize() -> void:
+	baseHP = 100.0
+	HP = baseHP
+	baseShields = 0.0
+
+	# Weapons
+	rounds_per_minute_bonus = 0.0
+	rounds_per_minute_bonus_max = 1800.0
+	fireRate = 1.0
+	fireRateMult = 1.0
+	shotDmg = 10.0
+	shotDmgMult = 1.0
+	shotSpeed = 20.0
+	bulletCount = 1
+	
+
 func emit_signal_if_value_changed(signal_name, value, change_amount) -> void:
 	if change_amount != 0:
 		emit_signal(signal_name, value, change_amount)
