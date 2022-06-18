@@ -1,43 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Rocket.gd" type="Script" id=1]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.0586611
-
-[sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0.0124224, 0.21118, 0.347826, 0.782609 )
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0.935547, 1, 1, 0.142578, 0, 1, 1, 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 10 )
-
-[sub_resource type="Curve" id=12]
-max_value = 2.0
-_data = [ Vector2( 0, 0 ), 0.0, 2.3369, 0, 0, Vector2( 0.217391, 1.97727 ), 0.0, 0.0, 0, 0, Vector2( 0.619565, 0.613636 ), -3.46494, -3.46494, 0, 0, Vector2( 1, 0 ), 0.099567, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=18]
-curve = SubResource( 12 )
-
-[sub_resource type="ParticlesMaterial" id=14]
-trail_divisor = 6
-emission_shape = 1
-emission_sphere_radius = 0.03
-direction = Vector3( 0, 0, 1 )
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
-initial_velocity_random = 0.1
-angular_velocity = 40.0
-angular_velocity_random = 1.0
-linear_accel = 2.0
-linear_accel_random = 1.0
-angle = 360.0
-angle_random = 1.0
-scale_random = 0.8
-scale_curve = SubResource( 18 )
-color = Color( 0.0470588, 0.333333, 0.764706, 1 )
-color_ramp = SubResource( 17 )
 
 [sub_resource type="SpatialMaterial" id=19]
 vertex_color_use_as_albedo = true
@@ -50,6 +16,14 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id=16]
 material = SubResource( 19 )
 size = Vector2( 0.1, 0.1 )
+
+[sub_resource type="Curve" id=12]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 2.3369, 0, 0, Vector2( 0.217391, 1.97727 ), 0.0, 0.0, 0, 0, Vector2( 0.619565, 0.613636 ), -3.46494, -3.46494, 0, 0, Vector2( 1, 0 ), 0.099567, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0.0124224, 0.21118, 0.347826, 0.782609 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0.935547, 1, 1, 0.142578, 0, 1, 1, 0, 0, 0, 1 )
 
 [node name="Rocket" type="Area" groups=["bullet"]]
 monitoring = false
@@ -69,14 +43,29 @@ transform = Transform( 0.0699408, 0, 0, 0, -1.34048e-08, 0.0699408, 0, -0.306666
 transform = Transform( 0.07, 0, 0, 0, -3.0598e-09, -0.07, 0, 0.07, -3.0598e-09, -0.00025411, -0.000621982, -0.153736 )
 radial_segments = 8
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Particles" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00605783, -0.00083749, 0.0565145 )
 amount = 200
 lifetime = 0.5
 randomness = 1.0
-visibility_aabb = AABB( -0.330129, -0.442608, -1.09876, 0.660259, 0.885216, 2.19752 )
 draw_order = 2
-process_material = SubResource( 14 )
-draw_pass_1 = SubResource( 16 )
+mesh = SubResource( 16 )
+emission_shape = 1
+emission_sphere_radius = 0.03
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 0.1
+angular_velocity = 40.0
+angular_velocity_random = 1.0
+linear_accel = 2.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount_random = 0.8
+scale_amount_curve = SubResource( 12 )
+color = Color( 0.0470588, 0.333333, 0.764706, 1 )
+color_ramp = SubResource( 10 )
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

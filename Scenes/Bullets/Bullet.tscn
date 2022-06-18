@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 
@@ -12,14 +12,6 @@ emission = Color( 0, 5.9, 10, 1 )
 emission_energy = 16.0
 emission_operator = 0
 emission_on_uv2 = false
-
-[sub_resource type="ParticlesMaterial" id=3]
-lifetime_randomness = 0.8
-direction = Vector3( 0, 0, 1 )
-spread = 22.79
-flatness = 1.0
-gravity = Vector3( 0, -0.98, 0 )
-initial_velocity = 0.1
 
 [sub_resource type="SpatialMaterial" id=5]
 emission_enabled = true
@@ -46,14 +38,18 @@ shape = SubResource( 1 )
 radius = 0.05
 material = SubResource( 2 )
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Particles" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.87145e-05, 0 )
 amount = 256
 explosiveness = 0.16
 randomness = 1.0
-visibility_aabb = AABB( 0, -4.81833, 0, 0, 4.81833, 0 )
+lifetime_randomness = 0.8
 local_coords = false
-process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 4 )
+mesh = SubResource( 4 )
+direction = Vector3( 0, 0, 1 )
+spread = 22.79
+flatness = 1.0
+gravity = Vector3( 0, -0.98, 0 )
+initial_velocity = 0.1
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
