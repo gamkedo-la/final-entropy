@@ -14,6 +14,7 @@ var body
 
 # Boss?
 export(bool) var is_a_boss = false
+export(bool) var is_final_boss = false
 
 #temp movement logic
 export(float) var MAX_SPEED = 10.0
@@ -119,7 +120,11 @@ func drop_loot() -> void:
 	
 func die() -> void:	
 	if is_a_boss:
-		Music.boss_inrange = false		
+		Music.boss_inrange = false
+	if is_final_boss:
+		Global.game_over = true
+		Global.scroll_credits()
+
 	get_parent().call_deferred("remove_child", self)
 	call_deferred("emit_signal", "dead", self)
 	call_deferred("queue_free")

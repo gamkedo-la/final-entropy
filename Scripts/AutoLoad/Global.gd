@@ -20,6 +20,9 @@ var current_scene = null
 var main_menu_scn = "res://Scenes/UI/MainMenu/MainMenu.tscn"
 var level_one = "res://Scenes/Rooms/LevelCon01.tscn"
 
+var game_over: bool = false
+onready var credit_scroller = preload("res://Scenes/UI/EndScroller.tscn")
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	var root = get_tree().get_root()
@@ -65,6 +68,12 @@ func toggle_pause():
 	GUIOverlay.toggle_menu(get_tree().paused)
 	OptionsMenu.enabled(get_tree().paused)
 
+func pause_game(pause: bool) -> void:
+	get_tree().paused = pause
+
+func scroll_credits() -> void:
+	var credits = credit_scroller.instance()
+	call_deferred("add_child", credits)
 
 func transition_camera() -> void:
 	player_camera.current = true

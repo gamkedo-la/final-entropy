@@ -1,0 +1,209 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/EndScroller.gd" type="Script" id=1]
+[ext_resource path="res://Resources/ui/themefinalentrophy.tres" type="Theme" id=2]
+
+[node name="EndScrollerCanvas" type="CanvasLayer"]
+layer = 100
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -459.0
+margin_top = -10.0
+margin_right = 459.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 80, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="Control/HBoxContainer"]
+margin_right = 86.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slower" type="Button" parent="Control/HBoxContainer"]
+margin_left = 90.0
+margin_right = 119.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "<<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Faster" type="Button" parent="Control/HBoxContainer"]
+margin_left = 123.0
+margin_right = 154.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer"]
+margin_left = 158.0
+margin_right = 958.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 800, 0 )
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End" type="Button" parent="Control/HBoxContainer/HBoxContainer"]
+margin_left = 746.0
+margin_right = 800.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroller" type="MarginContainer" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_right = 240.0
+rect_min_size = Vector2( 480, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="Control/Scroller"]
+margin_right = 480.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 480, 540 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="HBoxContainer" parent="Control/Scroller/Content"]
+margin_right = 480.0
+alignment = 1
+
+[node name="ThankYou" type="HBoxContainer" parent="Control/Scroller/Content"]
+margin_top = 4.0
+margin_right = 480.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 480, 0 )
+alignment = 1
+
+[node name="WinMsg" type="RichTextLabel" parent="Control/Scroller/Content/ThankYou"]
+margin_right = 480.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 480, 0 )
+bbcode_enabled = true
+bbcode_text = "The singularities mission to drain the known universe of all energy and turn it into [rainbow freq=0.2 sat=1 val=1][wave amp=50 freq=2] Value Tokens[/wave][/rainbow]has been thwarted... for now.  You, a lowly technomancer have saved the universe, but must stay vigilant for they surely will try again!
+
+
+
+
+
+
+This has been a [color=aqua]HomeTeam GameDev[/color] production.  Thank you to everyone who contributed to this fun project in ways both big and small!
+"
+text = "The singularities mission to drain the known universe of all energy and turn it into  Value Tokenshas been thwarted... for now.  You, a lowly technomancer have saved the universe, but must stay vigilant for they surely will try again!
+
+
+
+
+
+
+This has been a HomeTeam GameDev production.  Thank you to everyone who contributed to this fun project in ways both big and small!
+"
+fit_content_height = true
+scroll_active = false
+
+[node name="Credits" type="HBoxContainer" parent="Control/Scroller/Content"]
+margin_top = 203.0
+margin_right = 480.0
+margin_bottom = 833.0
+alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="Control/Scroller/Content/Credits"]
+margin_right = 480.0
+margin_bottom = 630.0
+rect_min_size = Vector2( 480, 0 )
+bbcode_enabled = true
+bbcode_text = "[color=aqua]Kyle Black [/color] :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
+
+[color=aqua]Rohit \"n4rwal\" Kumar[/color]: Multiple enemy models (including technomancer, liquid tank), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
+
+[color=aqua]Randy Tan Shaoxian[/color]: Save system, debug overlay (including level selector, adjustable game speed), mute toggle, room loading fix, pause indicator
+
+[color=aqua]Bilal A. Cheema[/color]: Bullet pattern shooter (with multiple pattern definitions and angle randomization), player targeting, new bullet and enemy type, player and enemy health, movement controls made more responsive, pause toggle
+
+[color=aqua]Michael \"Misha\" Fewkes[/color]: Level generation (including branching and boss room placement)
+
+[color=aqua]Patrick McKeown[/color]: Shot size powerup with related model, Sounds (background whoosh, mechanical ambience), additional room design
+
+[color=aqua]Gabriel Cornish[/color]: Healthbar animation, sounds and related integration (player hit, bullet firing), UI layout touch up, additional main menu decoration
+
+[color=aqua]Ashleigh M.[/color]: Flying enemy model and texture
+
+[color=aqua]Rodrigo Bonzerr Lopez[/color]: Ambient sounds, flying enemy model, boss death sounds
+
+[color=aqua]Patrick Moffett[/color]: Player collision fix, rocket weapon and projectile
+
+[color=aqua]Abhishek @akhmin_ak[/color]: Ambient music
+
+[color=aqua]Jeremy Kesten[/color]: Boss music, twinkles audio
+
+[color=aqua]MrPhil (Philip Ludington)[/color]: Cheat codes panel UI
+
+[color=aqua]Nick O'Connell[/color]: Power-up selector debug tool"
+text = "Kyle Black  :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
+
+Rohit \"n4rwal\" Kumar: Multiple enemy models (including technomancer, liquid tank), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
+
+Randy Tan Shaoxian: Save system, debug overlay (including level selector, adjustable game speed), mute toggle, room loading fix, pause indicator
+
+Bilal A. Cheema: Bullet pattern shooter (with multiple pattern definitions and angle randomization), player targeting, new bullet and enemy type, player and enemy health, movement controls made more responsive, pause toggle
+
+Michael \"Misha\" Fewkes: Level generation (including branching and boss room placement)
+
+Patrick McKeown: Shot size powerup with related model, Sounds (background whoosh, mechanical ambience), additional room design
+
+Gabriel Cornish: Healthbar animation, sounds and related integration (player hit, bullet firing), UI layout touch up, additional main menu decoration
+
+Ashleigh M.: Flying enemy model and texture
+
+Rodrigo Bonzerr Lopez: Ambient sounds, flying enemy model, boss death sounds
+
+Patrick Moffett: Player collision fix, rocket weapon and projectile
+
+Abhishek @akhmin_ak: Ambient music
+
+Jeremy Kesten: Boss music, twinkles audio
+
+MrPhil (Philip Ludington): Cheat codes panel UI
+
+Nick O'Connell: Power-up selector debug tool"
+fit_content_height = true
+scroll_active = false
+
+[connection signal="pressed" from="Control/HBoxContainer/Pause" to="Control" method="_on_Pause_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Slower" to="Control" method="_on_Slower_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Faster" to="Control" method="_on_Faster_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/HBoxContainer/End" to="Control" method="_on_End_pressed"]
