@@ -61,6 +61,7 @@ func enabled(enable: bool) -> void:
 	menu.visible = enable
 	if !menu.visible:
 		save_settings()
+	$Blank.visible = enable
 
 func save_settings() -> void:
 	var f = File.new()
@@ -150,3 +151,7 @@ func _on_Delete_pressed(slot:int):
 	GameLoader.delete(slot)
 	_check_if_slot_exists()
 
+func _on_Blank_gui_input(event):
+	if event is InputEventMouseButton or event is InputEventScreenTouch:
+		Global.toggle_pause()
+		enabled(false)
