@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=31 format=2]
+[gd_resource type="Theme" load_steps=34 format=2]
 
 [ext_resource path="res://Resources/ui/B-hover.png" type="Texture" id=1]
 [ext_resource path="res://Resources/ui/B-pressed.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Resources/ui/new_styleboxflat.tres" type="StyleBox" id=6]
 [ext_resource path="res://Resources/ui/T-foreground-variant.png" type="Texture" id=7]
 [ext_resource path="res://Resources/ui/T-background.png" type="Texture" id=8]
+[ext_resource path="res://Resources/ui/slidersize.png" type="Texture" id=9]
+[ext_resource path="res://Resources/ui/uncheck.png" type="Texture" id=10]
+[ext_resource path="res://Resources/ui/check.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxTexture" id=2]
 content_margin_left = 5.0
@@ -189,8 +192,8 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
-CheckBox/icons/checked = null
-CheckBox/icons/unchecked = null
+CheckBox/icons/checked = ExtResource( 11 )
+CheckBox/icons/unchecked = ExtResource( 10 )
 CheckBox/icons/unchecked_disabled = null
 CheckBox/styles/disabled = SubResource( 20 )
 CheckBox/styles/focus = SubResource( 21 )
@@ -214,9 +217,9 @@ CheckButton/styles/hover_pressed = null
 CheckButton/styles/normal = null
 CheckButton/styles/pressed = null
 HBoxContainer/styles/bg = ExtResource( 6 )
-HSlider/icons/grabber = null
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = null
+HSlider/icons/grabber = ExtResource( 9 )
+HSlider/icons/grabber_disabled = ExtResource( 9 )
+HSlider/icons/grabber_highlight = ExtResource( 9 )
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = SubResource( 10 )
 HSlider/styles/grabber_area_highlight = SubResource( 11 )
