@@ -44,6 +44,9 @@ func register_enemy(newEnemy: AIController) -> void:
 func boss_from_the_top() -> void:
 	boss01_bgm.seek(0.0)
 
+func menu_from_the_top() -> void:
+	menu_bgm.seek(0.0)
+
 func _enemy_state_changed(state: int) -> void:
 	if state == AIController.State.DEAD && total_engaged > 0:
 		total_engaged -= 1

@@ -11,6 +11,7 @@ func _ready() -> void:
 		scroller.rect_position.y = 1100
 		Global.pause_game(true)
 		Global.main_menu = true
+		Music.menu_from_the_top()
 	else:
 		win_msg.visible = false
 		scroller.rect_position.y = 900
