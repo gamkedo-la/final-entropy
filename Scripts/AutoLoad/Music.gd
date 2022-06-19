@@ -40,6 +40,9 @@ func register_enemy(newEnemy: AIController) -> void:
 	if not newEnemy.is_connected("state_changed", self, "_enemy_state_changed"):
 		var con_res = newEnemy.connect("state_changed", self, "_enemy_state_changed")
 		assert(con_res == OK)
+		
+func boss_from_the_top() -> void:
+	boss01_bgm.seek(0.0)
 
 func _enemy_state_changed(state: int) -> void:
 	if state == AIController.State.DEAD && total_engaged > 0:

@@ -267,5 +267,8 @@ func _on_AggroBox_body_entered(body):
 		set_state(State.ENGAGE)
 		if actor.is_a_boss:
 			Music.boss_inrange = true
+			if !actor.boss_triggered:
+				Music.boss_from_the_top()
+				actor.boss_triggered = true
 	pass # Replace with function body.
 

@@ -14,6 +14,7 @@ var body
 
 # Boss?
 export(bool) var is_a_boss = false
+var boss_triggered: bool = false
 export(bool) var is_final_boss = false
 
 #temp movement logic
