@@ -146,7 +146,7 @@ margin_right = 480.0
 margin_bottom = 630.0
 rect_min_size = Vector2( 480, 0 )
 bbcode_enabled = true
-bbcode_text = "[color=aqua]Kyle Black [/color] :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
+bbcode_text = "[color=aqua]Kyle Black[/color] :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
 
 [color=aqua]Rohit \"n4rwal\" Kumar[/color]: Multiple models (technomancer, tanker bot, Roll-E Poll-E,  liquid tank, terminal), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
 
@@ -173,7 +173,7 @@ bbcode_text = "[color=aqua]Kyle Black [/color] :  Project lead, core gameplay, m
 [color=aqua]MrPhil (Philip Ludington)[/color]: Cheat codes panel UI
 
 [color=aqua]Nick O'Connell[/color]: Power-up selector debug tool"
-text = "Kyle Black  :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
+text = "Kyle Black :  Project lead, core gameplay, main level and enemy design (including orb phaser, tanker bot), collision system, boss, enemy AI, portals, dash, asset integration, Menu BGM, Combat BGM, music cycling, assorted sounds (enemy, mechanical), rocket gun, tuning, bug fixes 
 
 Rohit \"n4rwal\" Kumar: Multiple models (technomancer, tanker bot, Roll-E Poll-E,  liquid tank, terminal), UI theme, world tiles, terminal, explosion effect, dashboard UI, health/shield bar, powerup models (heal, speed, rate of fire), pause menu improvement
 
