@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Models/enemy ground/base.material" type="Material" id=1]
 [ext_resource path="res://Models/enemy ground/eye.material" type="Material" id=2]
@@ -345,6 +345,9 @@ graph_offset = Vector2( -282, 38 )
 [sub_resource type="CapsuleShape" id=44]
 height = 3.79733
 
+[sub_resource type="BoxShape" id=45]
+extents = Vector3( 0.838691, 0.553877, 0.856402 )
+
 [node name="RollePolle" instance=ExtResource( 5 )]
 axis_lock_motion_y = false
 move_lock_y = false
@@ -431,3 +434,12 @@ monitorable = false
 [node name="CollisionShape" type="CollisionShape" parent="HitBox" index="0"]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0290489, 0.661203, 0 )
 shape = SubResource( 44 )
+
+[node name="Hurtbox" type="Area" parent="." index="7" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Hurtbox" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 45 )
