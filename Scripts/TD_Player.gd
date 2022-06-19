@@ -39,7 +39,7 @@ var raycast_position = null
 
 # Dash Mechanic
 var dash_now: bool = false
-var invuln_time: float = 0.2
+var invuln_time: float = 1.0
 var invuln_elapse: float = 0.0
 var dash_max: float = 20.0
 var dash_amount: float = dash_max setget set_dash
@@ -48,6 +48,7 @@ var dash_recharge_time: float = .1
 var dash_recharge_elapse: float = 0.0
 var dash_recharge_amount: float = 0.2
 var invulnerable: bool = false
+onready var invuln_ind = $InvulnIndicator
 onready var dash_meter = $DashMeter3
 
 var traversing = false
@@ -75,7 +76,7 @@ func _ready():
 	if not PlayerVars.is_connected("hp_changed", self, "_update_HP_Bar"):
 		var con_res = PlayerVars.connect("hp_changed", self, "_update_HP_Bar")
 		assert(con_res == OK)
-	
+	invuln_ind.visible = false
 	Global.player_node = get_node(player)
 	Global.set_player_camera(player_cam, cam_anim, player_cam_pivot)
 	PlayerVars.initialize()
@@ -183,9 +184,11 @@ func set_dash(val):
 		
 func recharge(delta: float) -> void:
 	if invulnerable:
+		invuln_ind.visible = true
 		invuln_elapse += delta
 		if invuln_elapse > invuln_time:
 			invulnerable = false
+			invuln_ind.visible = false
 			velocity = Vector3.ZERO
 		
 	if dash_amount < dash_max:
@@ -205,7 +208,9 @@ func take_damage(dmg: float) -> void:
 	PlayerVars.HP -= dmg
 
 	hit_sfx.play()
-	print_debug("Player HP left: " + String(hp))
+#	print_debug("Player HP left: " + String(hp))
+	invuln_elapse = 0.0
+	invulnerable = true
 	if PlayerVars.HP <= 0:
 		_die()
 
@@ -233,6 +238,9 @@ func _on_HitBox_area_entered(area):
 		take_damage(area.damage)
 		_update_HP_Bar()
 		area.hit()
+	if area.is_in_group("enemy"):
+		take_damage(2.0)
+		_update_HP_Bar()
 
 
 func _on_PickupRadius_area_entered(area):

@@ -42,19 +42,19 @@ data = {
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
-transform = Transform( 0.121731, 0, -0.992563, 0, 1, 0, 0.992563, 0, 0.121731, -10.6092, 3.03452, -6.30997 )
+transform = Transform( -0.999581, 0, -0.0289513, 0, 1, 0, 0.0289513, 0, -0.999581, -10.2125, 3.03452, -3.07572 )
 shape = SubResource( 80 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
-transform = Transform( -0.0211343, 0, -0.999777, 0, 1, 0, 0.999777, 0, -0.0211343, -10.561, 3.03452, 0.830523 )
+transform = Transform( -0.9996, 0, -0.0282882, 0, 1, 0, 0.0282882, 0, -0.9996, -3.54569, 3.03452, -3.40239 )
 shape = SubResource( 80 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
-transform = Transform( -0.0438635, 0, -0.999038, 0, 1, 0, 0.999038, 0, -0.0438635, 0.872251, 3.03452, 0.571229 )
+transform = Transform( -0.999694, 0, -0.0247636, 0, 1, 0, 0.0247636, 0, -0.999694, 2.11281, 3.03452, -3.01683 )
 shape = SubResource( 80 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
-transform = Transform( 0.00539309, 0, -0.999986, 0, 1, 0, 0.999986, 0, 0.00539309, 1.074, 3.03452, -6.53365 )
+transform = Transform( -0.999994, 0, 0.00359529, 0, 1, 0, -0.00359529, 0, -0.999994, 8.04783, 3.03452, -2.97901 )
 shape = SubResource( 80 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Stage/Floor/Level01_Floor01/WallHitBoxes"]
