@@ -17,10 +17,10 @@ onready var menu = $MC
 
 onready var tab_con: TabContainer = $MC/CenVB/TabCon
 
-var main_vol: float = 1.0
-var music_vol: float = 1.0
-var sfx_vol: float = 1.0
-var amb_vol: float = 1.0
+var main_vol: float = 0.75
+var music_vol: float = 0.5
+var sfx_vol: float = 0.5
+var amb_vol: float = 0.5
 
 var main_disabled: bool = false
 var music_disabled: bool = false

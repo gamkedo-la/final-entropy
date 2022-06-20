@@ -111,7 +111,7 @@ func drop_loot() -> void:
 	explo = explosion.instance()
 	get_tree().root.add_child(explo)
 	explo.global_transform.origin = global_transform.origin
-	if chance > 700:
+	if chance > 400:
 		rng.randomize()
 		var new_powerup: RigidBody = powerup_drops.powerup_scenes[rng.randi() % powerup_drops.powerup_scenes.size()].instance()
 		get_tree().root.add_child(new_powerup)

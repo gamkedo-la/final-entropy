@@ -53,6 +53,7 @@ size_flags_vertical = 3
 tab_align = 0
 
 [node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 36.0
@@ -67,7 +68,7 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="Slots" type="VBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots"]
-margin_right = 616.0
+margin_right = 640.0
 margin_bottom = 1163.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1409,6 +1410,69 @@ margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 2 )
+
+[node name="Controls" type="PanelContainer" parent="MC/CenVB/TabCon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 36.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/CenVB/TabCon/Controls"]
+margin_right = 640.0
+margin_bottom = 496.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MC/CenVB/TabCon/Controls/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MC/CenVB/TabCon/Controls/VBoxContainer"]
+margin_top = 74.0
+margin_right = 640.0
+margin_bottom = 100.0
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="MC/CenVB/TabCon/Controls/VBoxContainer/HBoxContainer4"]
+margin_left = 205.0
+margin_right = 435.0
+margin_bottom = 26.0
+text = "Movement: W,A,S,D"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MC/CenVB/TabCon/Controls/VBoxContainer"]
+margin_top = 104.0
+margin_right = 640.0
+margin_bottom = 130.0
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="MC/CenVB/TabCon/Controls/VBoxContainer/HBoxContainer2"]
+margin_left = 171.0
+margin_right = 468.0
+margin_bottom = 26.0
+text = "Fire Weapon: Left Mouse"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MC/CenVB/TabCon/Controls/VBoxContainer"]
+margin_top = 134.0
+margin_right = 640.0
+margin_bottom = 160.0
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="MC/CenVB/TabCon/Controls/VBoxContainer/HBoxContainer3"]
+margin_left = 224.0
+margin_right = 416.0
+margin_bottom = 26.0
+text = "Dash: SpaceBar"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MC/CenVB/TabCon/Controls/VBoxContainer"]
+margin_top = 164.0
+margin_right = 640.0
+margin_bottom = 190.0
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="MC/CenVB/TabCon/Controls/VBoxContainer/HBoxContainer5"]
+margin_left = 200.0
+margin_right = 439.0
+margin_bottom = 26.0
+text = "Options/Pause: ESC"
 
 [node name="Cheatcodes" type="PanelContainer" parent="MC/CenVB/TabCon"]
 visible = false
