@@ -28,6 +28,9 @@ func _on_Pause_pressed():
 
 func _on_End_pressed():
 	Global.pause_game(false)
+	if Global.game_over:
+		Global.game_over = false
+		Global.goto_scene(Global.main_menu_scn)
 	call_deferred("queue_free")
 
 
