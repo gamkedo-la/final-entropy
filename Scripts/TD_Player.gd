@@ -239,7 +239,7 @@ func _on_HitBox_area_entered(area):
 		_update_HP_Bar()
 		area.hit()
 	if area.is_in_group("enemy"):
-		take_damage(2.0)
+		take_damage(6.0)
 		_update_HP_Bar()
 
 

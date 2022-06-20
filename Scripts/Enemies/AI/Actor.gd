@@ -106,13 +106,17 @@ func take_damage(dmg: float) -> void:
 func drop_loot() -> void:
 	#TODO: Drop Chances etc..
 	rng.randomize()
+	var chance = rng.randi_range(0, 1000)
+
 	explo = explosion.instance()
 	get_tree().root.add_child(explo)
 	explo.global_transform.origin = global_transform.origin
-	var new_powerup: RigidBody = powerup_drops.powerup_scenes[rng.randi() % powerup_drops.powerup_scenes.size()].instance()
-	get_tree().root.add_child(new_powerup)
-	new_powerup.global_transform.origin = global_transform.origin + (Vector3.UP)	
-	new_powerup.apply_central_impulse(Vector3.UP * 10)
+	if chance > 700:
+		rng.randomize()
+		var new_powerup: RigidBody = powerup_drops.powerup_scenes[rng.randi() % powerup_drops.powerup_scenes.size()].instance()
+		get_tree().root.add_child(new_powerup)
+		new_powerup.global_transform.origin = global_transform.origin + (Vector3.UP)	
+		new_powerup.apply_central_impulse(Vector3.UP * 10)
 	ai.set_state(AIController.State.DEAD)
 	hit_box.queue_free()
 	visible = false
