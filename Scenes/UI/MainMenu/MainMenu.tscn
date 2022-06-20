@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MMCamera.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/MainMenu/MainLogo.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/UI/MainMenu/Orbital.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/ui/themefinalentrophy.tres" type="Theme" id=6]
 [ext_resource path="res://Resources/Orbitron/orbitronfont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Scenes/UI/MainMenu/MenuScroller.gd" type="Script" id=8]
 
 [node name="MainMenu" type="Spatial"]
 pause_mode = 2
@@ -131,6 +132,55 @@ margin_top = 727.0
 margin_right = 139.0
 margin_bottom = 741.0
 text = "ESC for Options Menu"
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+anchor_bottom = 1.0
+margin_left = 200.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroller" type="MarginContainer" parent="CanvasLayer/Control"]
+anchor_bottom = 1.0
+margin_right = 480.0
+rect_min_size = Vector2( 480, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="CanvasLayer/Control/Scroller"]
+margin_right = 480.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 480, 540 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoryHB" type="HBoxContainer" parent="CanvasLayer/Control/Scroller/Content"]
+margin_right = 480.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 480, 0 )
+alignment = 1
+
+[node name="Story" type="RichTextLabel" parent="CanvasLayer/Control/Scroller/Content/StoryHB"]
+margin_right = 480.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 480, 0 )
+bbcode_enabled = true
+bbcode_text = "You are a Technomancer living amongst the ruins of human society, long past the rise of the singularity and the fall of human civilization. Yet, you have till now managed to thrive and stay ahead of the always present AIs that run the universe.
+
+Now, you have learned of a particular strain of AI from the [color=purple]San Frandromeda Galaxy[/color]. Due to the universe being entirely post-scarcity, money and goods no longer hold value. But the AI realizes, that if they drain all of the energy from the universe and convert it into [rainbow freq=0.2 sat=1 val=1][wave amp=50 freq=2] Value Tokens[/wave][/rainbow] then the many human subordinates in the empire may once again be persuaded to work harder for their machine overlords. However, you've learned their power is so immense, they will very quickly drain the known universe of all heat.. bringing about universal heat death... or FINAL ENTROPY.
+
+It's up to you wise [color=aqua]Technomancer[/color]... Set off to stop the singularity!"
+text = "You are a Technomancer living amongst the ruins of human society, long past the rise of the singularity and the fall of human civilization. Yet, you have till now managed to thrive and stay ahead of the always present AIs that run the universe.
+
+Now, you have learned of a particular strain of AI from the San Frandromeda Galaxy. Due to the universe being entirely post-scarcity, money and goods no longer hold value. But the AI realizes, that if they drain all of the energy from the universe and convert it into  Value Tokens then the many human subordinates in the empire may once again be persuaded to work harder for their machine overlords. However, you've learned their power is so immense, they will very quickly drain the known universe of all heat.. bringing about universal heat death... or FINAL ENTROPY.
+
+It's up to you wise Technomancer... Set off to stop the singularity!"
+fit_content_height = true
+scroll_active = false
 
 [connection signal="tween_all_completed" from="MMCamera/WobTween" to="MMCamera" method="_on_WobTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="MMCamera/ZoomTween" to="MMCamera" method="_on_ZoomTween_tween_all_completed"]
