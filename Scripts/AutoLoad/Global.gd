@@ -4,6 +4,7 @@ extends Node
 signal shake(val)
 # warning-ignore:unused_signal
 signal exit_game
+signal game_started
 
 var ortho_camera: Camera = null
 var player_camera: Camera = null
@@ -57,12 +58,20 @@ func goto_scene(path):
 	print("Getting to goto_scene...")
 	call_deferred("_deferred_goto_scene", path)
 
+func continue_game(slot: int = 0):
+	call_deferred("_deferred_goto_scene", Global.level_one)
+	yield(self, "game_started")
+	GameLoader.current_room_node = current_scene.rooms[0]
+	GameLoader.room_loader = funcref(current_scene, "_traverse_to_room")
+	GameLoader.call_deferred("load", slot)
+
 func _deferred_goto_scene(path):	
 	current_scene.free()
 	var s = load(path)	
 	current_scene = s.instance()	
 	get_tree().get_root().add_child(current_scene)	
 	get_tree().set_current_scene(current_scene)
+	call_deferred("emit_signal", "game_started")
 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused

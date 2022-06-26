@@ -38,6 +38,24 @@ func check_if_slot_exists(slot):
 	return true
 
 
+func get_latest_save_slot():
+	var save_file = File.new()
+	var latest_slot = -1
+	var latest_time = 0
+	for slot in range(0, 24):
+		var slot_name = str(slot).pad_zeros(3)
+
+		if not save_file.file_exists("user://saves/slot" + slot_name):
+			continue
+
+		var modified = save_file.get_modified_time("user://saves/slot" + slot_name)
+		if modified > latest_time:
+			latest_time = modified
+			latest_slot = slot
+	save_file.close()
+	return latest_slot
+
+
 func save(slot:int):
 	save_nodes = get_tree().get_nodes_in_group("Save")
 

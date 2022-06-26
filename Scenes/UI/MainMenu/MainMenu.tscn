@@ -83,14 +83,11 @@ anchor_bottom = 1.0
 margin_left = -69.5
 margin_right = 69.5
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NewGame" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 339.0
+margin_top = 319.0
 margin_right = 139.0
-margin_bottom = 375.0
+margin_bottom = 355.0
 theme = ExtResource( 6 )
 custom_fonts/font = ExtResource( 7 )
 text = "New Game"
@@ -98,19 +95,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 379.0
+[node name="Continue" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 359.0
 margin_right = 139.0
-margin_bottom = 529.0
+margin_bottom = 395.0
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 399.0
+margin_right = 139.0
+margin_bottom = 549.0
 rect_min_size = Vector2( 0, 150 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Credits" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 533.0
+margin_top = 553.0
 margin_right = 139.0
-margin_bottom = 569.0
+margin_bottom = 589.0
 theme = ExtResource( 6 )
 custom_fonts/font = ExtResource( 7 )
 text = "Credits"
@@ -119,18 +127,18 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 573.0
+margin_top = 593.0
 margin_right = 139.0
-margin_bottom = 723.0
+margin_bottom = 743.0
 rect_min_size = Vector2( 0, 150 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 727.0
+margin_top = 747.0
 margin_right = 139.0
-margin_bottom = 741.0
+margin_bottom = 761.0
 text = "ESC for Options Menu"
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -185,4 +193,5 @@ scroll_active = false
 [connection signal="tween_all_completed" from="MMCamera/WobTween" to="MMCamera" method="_on_WobTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="MMCamera/ZoomTween" to="MMCamera" method="_on_ZoomTween_tween_all_completed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]

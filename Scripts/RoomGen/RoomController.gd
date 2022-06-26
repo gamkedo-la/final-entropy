@@ -70,10 +70,11 @@ func cleanup() -> void:
 
 func _connect_enemies() -> void:
 	var res_con
-	for enemy in enemies.get_children():
-		if not enemy.is_connected("dead", self, "_enemy_dead"):
-			res_con = enemy.connect("dead", self, "_enemy_dead")
-			assert(res_con == OK)
+	if enemies:
+		for enemy in enemies.get_children():
+			if not enemy.is_connected("dead", self, "_enemy_dead"):
+				res_con = enemy.connect("dead", self, "_enemy_dead")
+				assert(res_con == OK)
 
 # warning-ignore:unused_argument
 func _enemy_dead(enemy:Actor) -> void:

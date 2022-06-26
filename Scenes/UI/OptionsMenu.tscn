@@ -53,7 +53,6 @@ size_flags_vertical = 3
 tab_align = 0
 
 [node name="Game Saves" type="PanelContainer" parent="MC/CenVB/TabCon"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 36.0
@@ -68,7 +67,7 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="Slots" type="VBoxContainer" parent="MC/CenVB/TabCon/Game Saves/GameSaveSlots"]
-margin_right = 640.0
+margin_right = 616.0
 margin_bottom = 1163.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1412,6 +1411,7 @@ grow_vertical = 2
 theme = ExtResource( 2 )
 
 [node name="Controls" type="PanelContainer" parent="MC/CenVB/TabCon"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 36.0
